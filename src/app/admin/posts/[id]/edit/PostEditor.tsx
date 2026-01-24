@@ -1,14 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import type { Post, PostStatus, Visibility } from '@/types';
-import { EditPage } from '@/components/admin/EditPage';
-import { MetaBox } from '@/components/admin/MetaBox';
-import { TextareaField, SelectField, RadioField } from '@/components/admin/FormField';
-import { hasHorrorMeta, getObservationNotes } from '@/lib/horror/utils';
-import styles from './PostEditor.module.css';
-import horrorStyles from '@/styles/horror.module.css';
+import { useState } from "react";
+import Link from "next/link";
+import type { Post, PostStatus, Visibility } from "@/types";
+import { EditPage } from "@/components/admin/EditPage";
+import { MetaBox } from "@/components/admin/MetaBox";
+import {
+  TextareaField,
+  SelectField,
+  RadioField,
+} from "@/components/admin/FormField";
+import { hasHorrorMeta, getObservationNotes } from "@/lib/horror/utils";
+import styles from "./PostEditor.module.css";
+import horrorStyles from "@/styles/horror.module.css";
 
 interface PostEditorProps {
   post: Post;
@@ -16,26 +20,30 @@ interface PostEditorProps {
   tags: string[];
 }
 
-export function PostEditor({ post: initialPost, categories, tags: allTags }: PostEditorProps) {
+export function PostEditor({
+  post: initialPost,
+  categories,
+  tags: allTags,
+}: PostEditorProps) {
   const [post, setPost] = useState(initialPost);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialPost.tags);
-  const [tagInput, setTagInput] = useState('');
+  const [tagInput, setTagInput] = useState("");
 
   const handleSave = () => {
     // TODO: Implement save functionality
-    console.log('Saving post:', post);
+    console.log("Saving post:", post);
   };
 
   const handleSaveDraft = () => {
     // TODO: Implement draft save functionality
-    console.log('Saving draft:', { ...post, status: 'draft' });
+    console.log("Saving draft:", { ...post, status: "draft" });
   };
 
   const addTag = () => {
     if (tagInput.trim() && !selectedTags.includes(tagInput.trim())) {
       setSelectedTags([...selectedTags, tagInput.trim()]);
       setPost({ ...post, tags: [...selectedTags, tagInput.trim()] });
-      setTagInput('');
+      setTagInput("");
     }
   };
 
@@ -54,16 +62,16 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
           <div className={styles.publishInfo}>
             <span className={styles.infoLabel}>ステータス:</span>
             <span className={styles.infoValue}>
-              {post.status === 'publish' && '公開'}
-              {post.status === 'draft' && '下書き'}
-              {post.status === 'pending' && '保留中'}
+              {post.status === "publish" && "公開"}
+              {post.status === "draft" && "下書き"}
+              {post.status === "pending" && "保留中"}
             </span>
           </div>
 
           <div className={styles.publishInfo}>
             <span className={styles.infoLabel}>可視性:</span>
             <span className={styles.infoValue}>
-              {post.visibility === 'public' ? '公開' : '非公開'}
+              {post.visibility === "public" ? "公開" : "非公開"}
             </span>
           </div>
 
@@ -71,7 +79,7 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
             <div className={styles.publishInfo}>
               <span className={styles.infoLabel}>公開日:</span>
               <span className={styles.infoValue}>
-                {new Date(post.publishedAt).toLocaleString('ja-JP')}
+                {new Date(post.publishedAt).toLocaleString("ja-JP")}
               </span>
             </div>
           )}
@@ -82,11 +90,13 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
             label="ステータス"
             name="status"
             value={post.status}
-            onChange={(value) => setPost({ ...post, status: value as PostStatus })}
+            onChange={(value) =>
+              setPost({ ...post, status: value as PostStatus })
+            }
             options={[
-              { value: 'draft', label: '下書き' },
-              { value: 'pending', label: '保留中' },
-              { value: 'publish', label: '公開' },
+              { value: "draft", label: "下書き" },
+              { value: "pending", label: "保留中" },
+              { value: "publish", label: "公開" },
             ]}
           />
 
@@ -94,19 +104,29 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
             label="可視性"
             name="visibility"
             value={post.visibility}
-            onChange={(value) => setPost({ ...post, visibility: value as Visibility })}
+            onChange={(value) =>
+              setPost({ ...post, visibility: value as Visibility })
+            }
             options={[
-              { value: 'public', label: '公開' },
-              { value: 'private', label: '非公開' },
+              { value: "public", label: "公開" },
+              { value: "private", label: "非公開" },
             ]}
           />
 
           <div className={styles.publishActions}>
-            <button type="button" onClick={handleSaveDraft} className={styles.draftButton}>
+            <button
+              type="button"
+              onClick={handleSaveDraft}
+              className={styles.draftButton}
+            >
               下書き保存
             </button>
-            <button type="button" onClick={handleSave} className={styles.publishButton}>
-              {post.status === 'publish' ? '更新' : '公開'}
+            <button
+              type="button"
+              onClick={handleSave}
+              className={styles.publishButton}
+            >
+              {post.status === "publish" ? "更新" : "公開"}
             </button>
           </div>
         </div>
@@ -137,7 +157,7 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key === "Enter") {
                   e.preventDefault();
                   addTag();
                 }
@@ -145,7 +165,11 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
               placeholder="タグを入力"
               className={styles.input}
             />
-            <button type="button" onClick={addTag} className={styles.addTagButton}>
+            <button
+              type="button"
+              onClick={addTag}
+              className={styles.addTagButton}
+            >
               追加
             </button>
           </div>
@@ -209,7 +233,8 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
           className={styles.titleInput}
         />
         <div className={styles.permalink}>
-          パーマリンク: <span className={styles.permalinkValue}>/journal/{post.slug}</span>
+          パーマリンク:{" "}
+          <span className={styles.permalinkValue}>/news/{post.slug}</span>
         </div>
       </div>
 
@@ -240,24 +265,31 @@ export function PostEditor({ post: initialPost, categories, tags: allTags }: Pos
       <MetaBox title="内部レビューコメント" defaultCollapsed>
         <div className={styles.reviewComments}>
           {post.reviewComments.length === 0 ? (
-            <p className={styles.noComments}>レビューコメントはまだありません</p>
+            <p className={styles.noComments}>
+              レビューコメントはまだありません
+            </p>
           ) : (
             post.reviewComments.map((comment) => {
               // Horror element: Show threatening/ominous review comments
-              const isHorrorComment = comment.content.includes('公開してはならない') ||
-                comment.content.includes('記録を改変') ||
-                comment.content.includes('焼却');
+              const isHorrorComment =
+                comment.content.includes("公開してはならない") ||
+                comment.content.includes("記録を改変") ||
+                comment.content.includes("焼却");
 
               return (
                 <div
                   key={comment.id}
-                  className={`${styles.comment} ${isHorrorComment ? horrorStyles.horrorReviewComment : ''}`}
+                  className={`${styles.comment} ${isHorrorComment ? horrorStyles.horrorReviewComment : ""}`}
                 >
                   <div className={styles.commentHeader}>
-                    <strong className={isHorrorComment ? horrorStyles.horrorText : ''}>
+                    <strong
+                      className={isHorrorComment ? horrorStyles.horrorText : ""}
+                    >
                       {comment.author}
                     </strong>
-                    <time>{new Date(comment.createdAt).toLocaleString('ja-JP')}</time>
+                    <time>
+                      {new Date(comment.createdAt).toLocaleString("ja-JP")}
+                    </time>
                   </div>
                   <p className={styles.commentContent}>{comment.content}</p>
                 </div>

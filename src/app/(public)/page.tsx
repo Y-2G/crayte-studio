@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getRecentPosts, getRecentWorks } from '@/lib/data';
-import { Button } from '@/components/shared/Button/Button';
-import { Card, CardBody } from '@/components/shared/Card/Card';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getRecentPosts, getRecentWorks } from "@/lib/data";
+import { Button } from "@/components/shared/Button/Button";
+import { Card, CardBody } from "@/components/shared/Card/Card";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'obserq | Web制作・イベント企画',
-  description: '株式会社obserqは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。観察から始まる価値創造で、クライアントのビジネスをサポートします。',
+  title: "obserq | Web制作・イベント企画",
+  description:
+    "株式会社obserqは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。観察から始まる価値創造で、クライアントのビジネスをサポートします。",
 };
 
 export default async function HomePage() {
@@ -16,22 +17,25 @@ export default async function HomePage() {
 
   const services = [
     {
-      title: 'Web制作',
-      description: 'コーポレートサイト、ECサイト、Webアプリケーションなど、目的に合わせた最適なWeb制作を提供します。',
-      icon: '🌐',
-      link: '/services#web',
+      title: "Web制作",
+      description:
+        "コーポレートサイト、ECサイト、Webアプリケーションなど、目的に合わせた最適なWeb制作を提供します。",
+      icon: "🌐",
+      link: "/services#web",
     },
     {
-      title: 'イベント企画・運営',
-      description: '企画から当日運営まで一貫してサポート。記憶に残る体験を創出します。',
-      icon: '🎪',
-      link: '/services#event',
+      title: "イベント企画・運営",
+      description:
+        "企画から当日運営まで一貫してサポート。記憶に残る体験を創出します。",
+      icon: "🎪",
+      link: "/services#event",
     },
     {
-      title: '映像制作',
-      description: 'ブランドストーリーを映像で表現。企業PR、ドキュメンタリー、CM制作など幅広く対応。',
-      icon: '🎬',
-      link: '/services#video',
+      title: "映像制作",
+      description:
+        "ブランドストーリーを映像で表現。企業PR、ドキュメンタリー、CM制作など幅広く対応。",
+      icon: "🎬",
+      link: "/services#video",
     },
   ];
 
@@ -41,18 +45,25 @@ export default async function HomePage() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            観察から始まる、<br />価値創造
+            観察から始まる、
+            <br />
+            価値創造
           </h1>
           <p className={styles.heroSubtitle}>
-            obserqは、Web制作・イベント企画・映像制作を通じて、<br />
+            obserqは、Web制作・イベント企画・映像制作を通じて、
+            <br />
             クライアントの潜在ニーズを引き出し、新しい価値を創造します。
           </p>
           <div className={styles.heroCta}>
             <Link href="/contact">
-              <Button variant="primary" size="lg">お問い合わせ</Button>
+              <Button variant="primary" size="lg">
+                お問い合わせ
+              </Button>
             </Link>
             <Link href="/works">
-              <Button variant="ghost" size="lg">実績を見る</Button>
+              <Button variant="ghost" size="lg">
+                実績を見る
+              </Button>
             </Link>
           </div>
         </div>
@@ -68,12 +79,22 @@ export default async function HomePage() {
 
           <div className={styles.servicesGrid}>
             {services.map((service) => (
-              <Link key={service.title} href={service.link} className={styles.serviceLink}>
-                <Card variant="bordered" padding="lg" className={styles.serviceCard}>
+              <Link
+                key={service.title}
+                href={service.link}
+                className={styles.serviceLink}
+              >
+                <Card
+                  variant="bordered"
+                  padding="lg"
+                  className={styles.serviceCard}
+                >
                   <CardBody>
                     <div className={styles.serviceIcon}>{service.icon}</div>
                     <h3 className={styles.serviceTitle}>{service.title}</h3>
-                    <p className={styles.serviceDescription}>{service.description}</p>
+                    <p className={styles.serviceDescription}>
+                      {service.description}
+                    </p>
                   </CardBody>
                 </Card>
               </Link>
@@ -89,17 +110,26 @@ export default async function HomePage() {
       </section>
 
       {/* Works Section */}
-      <section className={styles.section} style={{ backgroundColor: 'var(--public-bg-alt)' }}>
+      <section
+        className={styles.section}
+        style={{ backgroundColor: "var(--public-bg-alt)" }}
+      >
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>実績</h2>
-          <p className={styles.sectionDescription}>
-            最近の実績をご紹介します
-          </p>
+          <p className={styles.sectionDescription}>最近の実績をご紹介します</p>
 
           <div className={styles.worksGrid}>
             {recentWorks.map((work) => (
-              <Link key={work.id} href={`/works/${work.slug}`} className={styles.workLink}>
-                <Card variant="elevated" padding="none" className={styles.workCard}>
+              <Link
+                key={work.id}
+                href={`/works/${work.slug}`}
+                className={styles.workLink}
+              >
+                <Card
+                  variant="elevated"
+                  padding="none"
+                  className={styles.workCard}
+                >
                   <div className={styles.workImagePlaceholder}>
                     {work.images.length > 0 ? (
                       <span className={styles.workImageText}>画像</span>
@@ -112,7 +142,9 @@ export default async function HomePage() {
                     <p className={styles.workClient}>{work.client}</p>
                     <div className={styles.workTags}>
                       {work.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className={styles.workTag}>{tag}</span>
+                        <span key={tag} className={styles.workTag}>
+                          {tag}
+                        </span>
                       ))}
                     </div>
                   </CardBody>
@@ -133,18 +165,22 @@ export default async function HomePage() {
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>News</h2>
-          <p className={styles.sectionDescription}>
-            最新のお知らせ
-          </p>
+          <p className={styles.sectionDescription}>最新のお知らせ</p>
 
           <div className={styles.newsList}>
             {recentPosts.map((post) => (
-              <Link key={post.id} href={`/journal/${post.slug}`} className={styles.newsItem}>
+              <Link
+                key={post.id}
+                href={`/news/${post.slug}`}
+                className={styles.newsItem}
+              >
                 <time className={styles.newsDate}>
-                  {new Date(post.publishedAt || post.createdAt).toLocaleDateString('ja-JP', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
+                  {new Date(
+                    post.publishedAt || post.createdAt,
+                  ).toLocaleDateString("ja-JP", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
                   })}
                 </time>
                 <span className={styles.newsCategory}>{post.category}</span>
@@ -154,7 +190,7 @@ export default async function HomePage() {
           </div>
 
           <div className={styles.sectionCta}>
-            <Link href="/journal">
+            <Link href="/news">
               <Button variant="secondary">一覧を見る</Button>
             </Link>
           </div>
@@ -166,12 +202,15 @@ export default async function HomePage() {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>お気軽にご相談ください</h2>
           <p className={styles.ctaDescription}>
-            プロジェクトに関するご相談、お見積もりなど、<br />
+            プロジェクトに関するご相談、お見積もりなど、
+            <br />
             お気軽にお問い合わせください。
           </p>
           <div className={styles.ctaCta}>
             <Link href="/contact">
-              <Button variant="primary" size="lg">お問い合わせ</Button>
+              <Button variant="primary" size="lg">
+                お問い合わせ
+              </Button>
             </Link>
           </div>
         </div>

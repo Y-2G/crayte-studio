@@ -18,10 +18,10 @@ obserq-studioは、表向きは普通のWeb制作会社のコーポレートサ�
 
 ### 二層構造
 
-| 層 | URL | 目的 | 雰囲気 |
-|----|-----|------|--------|
-| **表（公開サイト）** | `/` 以下 | 普通のコーポレートサイト | クリーン、プロフェッショナル |
-| **裏（管理画面）** | `/admin` 以下 | WordPress風CMS UI | 不穏、徐々に異常が露呈 |
+| 層                   | URL           | 目的                     | 雰囲気                       |
+| -------------------- | ------------- | ------------------------ | ---------------------------- |
+| **表（公開サイト）** | `/` 以下      | 普通のコーポレートサイト | クリーン、プロフェッショナル |
+| **裏（管理画面）**   | `/admin` 以下 | WordPress風CMS UI        | 不穏、徐々に異常が露呈       |
 
 ### ディレクトリ構造
 
@@ -29,11 +29,11 @@ obserq-studioは、表向きは普通のWeb制作会社のコーポレートサ�
 src/
 ├── app/
 │   ├── (public)/          # 公開サイト（表）
-│   │   ├── page.tsx       # TOP
+│   │   ├── page.tsx       # トップ
 │   │   ├── company/       # 会社概要
 │   │   ├── services/      # サービス
 │   │   ├── works/         # 実績
-│   │   ├── journal/       # ニュース
+│   │   ├── news/          # ニュース
 │   │   ├── staff/         # スタッフ
 │   │   └── contact/       # お問い合わせ
 │   └── admin/             # 管理画面（裏）
@@ -80,6 +80,7 @@ yarn dev
 ```
 
 ブラウザで以下のURLにアクセス:
+
 - 公開サイト: http://localhost:3000
 - 管理画面: http://localhost:3000/admin
 
@@ -126,16 +127,19 @@ yarn start
 管理画面に段階的に実装された異常要素:
 
 #### レベル1（表層）
+
 - 統計の微妙な不整合（表示件数と実際の件数のズレ）
 - 不自然なタイムスタンプ（未来日付の下書き）
 - 謎のカテゴリ・タグ（`[REDACTED]`, `archived_v0`）
 
 #### レベル2（中層）
+
 - 削除済みアイテムの痕跡
 - 異常なメタデータ（`review_status: "under_observation"`）
 - 見えないコメント（件数と表示の不一致）
 
 #### レベル3（深層）
+
 - Sealedコンテンツ（`status: "sealed"`）
 - Rewrittenコンテンツ（編集履歴の謎の書き換え）
 - 削除理由の異常（`removed_reason: "voluntary_absence"`）
@@ -162,6 +166,7 @@ yarn start
 ### スタイリング
 
 CSS Variables（`src/styles/variables.css`）で一元管理:
+
 - カラー（表/裏で別テーマ）
 - タイポグラフィ
 - スペーシング
@@ -170,6 +175,7 @@ CSS Variables（`src/styles/variables.css`）で一元管理:
 ### 型定義
 
 すべての主要エンティティは`src/types/`で定義:
+
 - `entities.ts`: Post, Work, Staff等
 - `horror.ts`: HorrorState, AnomalyLevel等
 - `ui.ts`: Navigation, Table, Form等
@@ -177,6 +183,7 @@ CSS Variables（`src/styles/variables.css`）で一元管理:
 ### データ管理
 
 JSONベースの静的データ（`src/data/`）:
+
 - `posts.json`: ブログ投稿
 - `works.json`: 実績
 - `staff.json`: スタッフ

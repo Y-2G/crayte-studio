@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getPublishedPosts, getAllCategories } from '@/lib/data';
-import { Card, CardBody } from '@/components/shared/Card/Card';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getPublishedPosts, getAllCategories } from "@/lib/data";
+import { Card, CardBody } from "@/components/shared/Card/Card";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Journal | obserq',
+  title: "news | obserq",
   description:
-    'OBSERQのニュースや記事をご紹介します。お知らせ、実績紹介、サービス情報など、最新情報をお届けします。',
+    "OBSERQのニュースや記事をご紹介します。お知らせ、実績紹介、サービス情報など、最新情報をお届けします。",
 };
 
-export default async function JournalPage() {
+export default async function NewsPage() {
   const posts = await getPublishedPosts();
   const allCategories = await getAllCategories();
 
@@ -23,15 +23,15 @@ export default async function JournalPage() {
 
   // Get unique categories from published posts only
   const publishedCategories = allCategories.filter((category) =>
-    posts.some((post) => post.category === category)
+    posts.some((post) => post.category === category),
   );
 
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.pageTitle}>ジャーナル</h1>
-          <p className={styles.pageSubtitle}>Journal</p>
+          <h1 className={styles.pageTitle}>ニュース</h1>
+          <p className={styles.pageSubtitle}>News</p>
         </div>
       </section>
 
@@ -54,9 +54,7 @@ export default async function JournalPage() {
 
           <div className={styles.postsList}>
             {sortedPosts.map((post) => {
-              const publishDate = new Date(
-                post.publishedAt || post.createdAt
-              );
+              const publishDate = new Date(post.publishedAt || post.createdAt);
               return (
                 <Link
                   key={post.id}
@@ -67,10 +65,10 @@ export default async function JournalPage() {
                     <CardBody>
                       <div className={styles.postHeader}>
                         <time className={styles.postDate}>
-                          {publishDate.toLocaleDateString('ja-JP', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
+                          {publishDate.toLocaleDateString("ja-JP", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
                           })}
                         </time>
                         <span className={styles.postCategory}>

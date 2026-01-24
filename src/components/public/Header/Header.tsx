@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import styles from './Header.module.css';
+import { useState } from "react";
+import Link from "next/link";
+import styles from "./Header.module.css";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,13 +11,13 @@ export function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const navItems = [
-    { label: 'TOP', href: '/' },
-    { label: '会社概要', href: '/company' },
-    { label: 'サービス', href: '/services' },
-    { label: '実績', href: '/works' },
-    { label: 'Journal', href: '/journal' },
-    { label: 'スタッフ', href: '/staff' },
-    { label: 'お問い合わせ', href: '/contact' },
+    { label: "トップ", href: "/" },
+    { label: "会社概要", href: "/company" },
+    { label: "サービス", href: "/services" },
+    { label: "実績", href: "/works" },
+    { label: "ニュース", href: "/news" },
+    { label: "スタッフ", href: "/staff" },
+    { label: "お問い合わせ", href: "/contact" },
   ];
 
   return (
@@ -27,11 +27,18 @@ export function Header() {
           <span className={styles.logoText}>OBSERQ</span>
         </Link>
 
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`} aria-label="メインナビゲーション">
+        <nav
+          className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}
+          aria-label="メインナビゲーション"
+        >
           <ul className={styles.navList}>
             {navItems.map((item) => (
               <li key={item.href} className={styles.navItem}>
-                <Link href={item.href} className={styles.navLink} onClick={closeMenu}>
+                <Link
+                  href={item.href}
+                  className={styles.navLink}
+                  onClick={closeMenu}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -46,7 +53,9 @@ export function Header() {
           aria-expanded={isMenuOpen}
           aria-label="メニューを開く"
         >
-          <span className={`${styles.menuIcon} ${isMenuOpen ? styles.menuIconOpen : ''}`}>
+          <span
+            className={`${styles.menuIcon} ${isMenuOpen ? styles.menuIconOpen : ""}`}
+          >
             <span></span>
             <span></span>
             <span></span>
