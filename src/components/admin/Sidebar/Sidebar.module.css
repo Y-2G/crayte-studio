@@ -40,7 +40,6 @@
   color: var(--admin-sidebar-text);
   cursor: pointer;
   font-size: var(--font-size-lg);
-  padding: var(--spacing-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +90,7 @@
 }
 
 .menuLink.active::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
