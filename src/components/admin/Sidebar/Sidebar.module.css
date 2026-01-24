@@ -23,7 +23,6 @@
   justify-content: space-between;
   padding: var(--spacing-3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  min-height: calc(var(--admin-header-height) + var(--spacing-6));
 }
 
 .logo {
