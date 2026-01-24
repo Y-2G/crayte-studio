@@ -1,0 +1,108 @@
+.field {
+  margin-bottom: var(--spacing-4);
+}
+
+.field.fullWidth {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--admin-text);
+  background-color: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 1px var(--admin-primary);
+}
+
+.input.error,
+.textarea.error,
+.select.error {
+  border-color: var(--color-error);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.help {
+  margin: var(--spacing-1) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+}
+
+.errorMessage {
+  margin: var(--spacing-1) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+/* Checkbox */
+.checkboxField {
+  margin-bottom: var(--spacing-3);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--admin-text);
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--admin-primary);
+}
+
+/* Radio */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--admin-text);
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--admin-primary);
+}

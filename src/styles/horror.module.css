@@ -1,0 +1,286 @@
+/* Horror element styles for admin panel */
+
+/* === Anomaly levels === */
+
+.anomalySubtle {
+  background-color: var(--horror-subtle);
+  border-left: 2px solid var(--horror-text);
+}
+
+.anomalyNoticeable {
+  background-color: var(--horror-noticeable);
+  border-left: 3px solid var(--horror-text);
+  box-shadow: 0 0 5px rgba(139, 0, 0, 0.1);
+}
+
+.anomalySevere {
+  background-color: var(--horror-severe);
+  border-left: 4px solid var(--horror-text);
+  box-shadow: var(--horror-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* === Horror text === */
+
+.horrorText {
+  color: var(--horror-text);
+  font-weight: 500;
+}
+
+.horrorTextGlow {
+  color: var(--horror-text);
+  text-shadow: 0 0 8px rgba(139, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+/* === Anomalous date/time === */
+
+.anomalousDate {
+  color: var(--horror-text);
+  font-weight: 500;
+  position: relative;
+}
+
+.anomalousDate::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--horror-text);
+  animation: flicker 3s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* === Sealed content === */
+
+.sealedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--horror-severe);
+  color: var(--horror-text);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sealedRow {
+  background-color: var(--horror-subtle);
+  position: relative;
+}
+
+.sealedRow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--horror-text),
+    var(--horror-text) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* === Rewritten content === */
+
+.rewrittenBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--horror-noticeable);
+  color: var(--horror-text);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.rewrittenText {
+  color: var(--horror-text);
+  font-style: italic;
+  position: relative;
+}
+
+.rewrittenText::before {
+  content: '[改変済] ';
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* === Missing/removed === */
+
+.missingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--admin-error);
+  color: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.missingRow {
+  background-color: rgba(214, 54, 56, 0.05);
+  opacity: 0.7;
+}
+
+/* === Observation notes === */
+
+.observationNote {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--horror-subtle);
+  border-left: 3px solid var(--horror-text);
+  font-size: var(--font-size-sm);
+  color: var(--horror-text);
+  font-family: var(--font-mono);
+}
+
+.observationNote::before {
+  content: '⚠ 観察メモ: ';
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* === Review comments (horror) === */
+
+.horrorReviewComment {
+  padding: 0.75rem;
+  background-color: var(--horror-subtle);
+  border-left: 3px solid var(--horror-text);
+  margin-bottom: 0.5rem;
+}
+
+.horrorReviewComment .author {
+  font-weight: 600;
+  color: var(--horror-text);
+  margin-bottom: 0.25rem;
+}
+
+.horrorReviewComment .content {
+  color: var(--admin-text);
+  font-size: var(--font-size-sm);
+}
+
+.horrorReviewComment .date {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* === Redacted text === */
+
+.redacted {
+  background-color: var(--admin-text);
+  color: transparent;
+  user-select: none;
+  border-radius: 2px;
+}
+
+/* === Warning messages === */
+
+.warningBox {
+  padding: 1rem;
+  background-color: var(--horror-noticeable);
+  border: 2px solid var(--horror-text);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1rem;
+}
+
+.warningBox .title {
+  font-weight: 600;
+  color: var(--horror-text);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.warningBox .title::before {
+  content: '⚠';
+  font-size: var(--font-size-lg);
+}
+
+.warningBox .message {
+  color: var(--admin-text);
+  font-size: var(--font-size-sm);
+}
+
+/* === Table row highlights === */
+
+.horrorRow {
+  position: relative;
+}
+
+.horrorRow:hover {
+  background-color: var(--horror-subtle) !important;
+}
+
+/* === Glitch effect (subtle) === */
+
+.glitch {
+  animation: glitch 5s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+  }
+  91% {
+    transform: translate(-1px, 0);
+  }
+  92% {
+    transform: translate(1px, 0);
+  }
+  93% {
+    transform: translate(0, -1px);
+  }
+}
+
+/* === Count discrepancy === */
+
+.discrepantCount {
+  color: var(--horror-text);
+  font-weight: 600;
+  position: relative;
+}
+
+.discrepantCount::after {
+  content: '?';
+  font-size: var(--font-size-xs);
+  vertical-align: super;
+  margin-left: 1px;
+}

@@ -1,0 +1,42 @@
+@import './reset.css';
+@import './variables.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--public-bg);
+  color: var(--public-text);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--public-primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--public-primary);
+  color: var(--color-white);
+}
+
+/* Scrollbar (for webkit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--public-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--public-border);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--public-secondary);
+}

@@ -1,0 +1,61 @@
+.spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  border-right-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === サイズ === */
+.sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.md {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+.lg {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+/* === カラー === */
+.primary {
+  border-color: var(--public-primary);
+  border-right-color: transparent;
+}
+
+.secondary {
+  border-color: var(--public-secondary);
+  border-right-color: transparent;
+}
+
+.white {
+  border-color: var(--color-white);
+  border-right-color: transparent;
+}
+
+/* === アクセシビリティ === */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

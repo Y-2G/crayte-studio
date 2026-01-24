@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-full);
+  white-space: nowrap;
+}
+
+/* === サイズ === */
+.sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+/* === バリアント === */
+.default {
+  background-color: var(--public-bg-alt);
+  color: var(--public-text);
+  border: 1px solid var(--public-border);
+}
+
+.success {
+  background-color: rgba(0, 163, 42, 0.1);
+  color: var(--admin-success);
+  border: 1px solid var(--admin-success);
+}
+
+.warning {
+  background-color: rgba(219, 166, 23, 0.1);
+  color: var(--admin-warning);
+  border: 1px solid var(--admin-warning);
+}
+
+.error {
+  background-color: rgba(214, 54, 56, 0.1);
+  color: var(--admin-error);
+  border: 1px solid var(--admin-error);
+}
+
+.info {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--public-primary);
+  border: 1px solid var(--public-primary);
+}

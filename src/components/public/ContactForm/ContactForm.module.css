@@ -1,0 +1,95 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.textareaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--public-text);
+}
+
+.required {
+  color: var(--public-primary);
+}
+
+.textarea {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--public-border);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--public-text);
+  background-color: var(--public-bg);
+  transition: border-color var(--transition-fast);
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--public-primary);
+}
+
+.textareaError {
+  border-color: var(--admin-error);
+}
+
+.errorText {
+  font-size: var(--font-size-sm);
+  color: var(--admin-error);
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* Success Message */
+.successMessage {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-12);
+  background-color: var(--public-bg-alt);
+  border-radius: var(--border-radius-lg);
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-6);
+  border-radius: 50%;
+  background-color: var(--admin-success);
+  color: var(--public-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.successTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-4);
+  color: var(--public-text);
+}
+
+.successText {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--public-text-muted);
+  margin: 0;
+}

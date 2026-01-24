@@ -1,0 +1,27 @@
+.adminLayout {
+  min-height: 100vh;
+  background-color: var(--admin-bg);
+}
+
+.main {
+  margin-top: var(--admin-header-height);
+  transition: margin-left var(--transition-normal);
+  min-height: calc(100vh - var(--admin-header-height));
+}
+
+.content {
+  padding: var(--spacing-6);
+  max-width: var(--admin-content-max-width);
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0 !important;
+  }
+
+  .content {
+    padding: var(--spacing-4);
+  }
+}

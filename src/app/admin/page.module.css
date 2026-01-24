@@ -1,0 +1,237 @@
+.dashboard {
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--admin-text);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+/* 統計カード */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.statCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-5);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.statCard:hover {
+  border-color: var(--admin-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.statIcon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--admin-text-muted);
+  margin-bottom: var(--spacing-1);
+}
+
+.statCount {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--admin-text);
+}
+
+/* ウィジェットグリッド */
+.widgetsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.widgetLink {
+  color: var(--admin-primary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+
+.widgetLink:hover {
+  text-decoration: underline;
+}
+
+/* 投稿リスト */
+.postList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.postItem {
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.postItem:last-child {
+  border-bottom: none;
+}
+
+.postLink {
+  color: var(--admin-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  display: block;
+  margin-bottom: var(--spacing-1);
+}
+
+.postLink:hover {
+  color: var(--admin-primary);
+}
+
+.postMeta {
+  font-size: var(--font-size-sm);
+  color: var(--admin-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.statusPublish {
+  color: var(--admin-success);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusDraft {
+  color: var(--admin-text-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusPending {
+  color: var(--admin-warning);
+  font-weight: var(--font-weight-medium);
+}
+
+/* アクティビティリスト */
+.activityList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.activityItem {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityIcon {
+  font-size: var(--font-size-xl);
+  line-height: 1;
+}
+
+.activityContent {
+  flex: 1;
+}
+
+.activityText {
+  font-size: var(--font-size-sm);
+  color: var(--admin-text);
+  margin-bottom: var(--spacing-1);
+}
+
+.activityLink {
+  color: var(--admin-primary);
+  text-decoration: none;
+}
+
+.activityLink:hover {
+  text-decoration: underline;
+}
+
+.activityMeta {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+}
+
+/* クイックドラフト */
+.quickDraft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.quickDraftTitle {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+}
+
+.quickDraftTitle:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+}
+
+.quickDraftContent {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  resize: vertical;
+}
+
+.quickDraftContent:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+}
+
+.quickDraftButton {
+  align-self: flex-start;
+  padding: var(--spacing-2) var(--spacing-5);
+  background-color: var(--admin-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.quickDraftButton:hover {
+  background-color: var(--admin-primary-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .widgetsGrid {
+    grid-template-columns: 1fr;
+  }
+}

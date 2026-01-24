@@ -1,0 +1,62 @@
+[
+  {
+    "id": "inbox-001",
+    "name": "山田 太郎",
+    "email": "yamada@example.com",
+    "subject": "Webサイト制作についてのお問い合わせ",
+    "message": "弊社のコーポレートサイトリニューアルを検討しております。実績を拝見し、ぜひ御社にお願いしたいと考えております。一度お打ち合わせの機会をいただけますでしょうか。",
+    "category": "general",
+    "severity": "low",
+    "status": "resolved",
+    "createdAt": "2024-02-15T14:30:00Z",
+    "updatedAt": "2024-02-16T10:00:00Z"
+  },
+  {
+    "id": "inbox-002",
+    "name": "佐々木 美咲",
+    "email": "sasaki@press-media.jp",
+    "subject": "取材のお願い",
+    "message": "Web業界専門誌の記者をしております。貴社の事業展開について取材させていただきたく、ご連絡いたしました。代表の田中様にお話を伺えれば幸いです。",
+    "category": "press",
+    "severity": "medium",
+    "status": "resolved",
+    "createdAt": "2024-03-01T10:15:00Z",
+    "updatedAt": "2024-03-02T14:00:00Z"
+  },
+  {
+    "id": "inbox-003",
+    "name": "株式会社サンプル商事 総務部",
+    "email": "soumu@sample-trading.co.jp",
+    "subject": "周年イベントのお見積りについて",
+    "message": "来年の創業50周年記念イベントの企画・運営をお願いしたく存じます。参加予定人数は300名程度です。概算のお見積りをいただけますでしょうか。",
+    "category": "quote",
+    "severity": "medium",
+    "status": "pending",
+    "createdAt": "2024-04-10T09:00:00Z",
+    "updatedAt": "2024-04-10T15:30:00Z"
+  },
+  {
+    "id": "inbox-004",
+    "name": "田中 花子",
+    "email": "hanako.t@webmail.ne.jp",
+    "subject": "サービス内容について",
+    "message": "SNSマーケティングのサポートをお願いできますか？小規模な事業者でも対応していただけるのでしょうか。料金体系について教えてください。",
+    "category": "general",
+    "severity": "low",
+    "status": "open",
+    "createdAt": "2024-05-20T16:45:00Z",
+    "updatedAt": "2024-05-20T16:45:00Z"
+  },
+  {
+    "id": "inbox-005",
+    "name": "観察者",
+    "email": "observer@void.local",
+    "subject": "警告",
+    "message": "気づいていますか？\n\n小林さんは最後にいつ出勤しましたか？\n誰も覚えていないのではないですか？\n\nそれとも、もともと存在しなかったのでしょうか？\n\n観察を続けてください。\nまだ始まったばかりです。",
+    "category": "sign",
+    "severity": "high",
+    "status": "open",
+    "createdAt": "2024-02-11T03:33:33Z",
+    "updatedAt": "2024-02-11T03:33:33Z"
+  }
+]

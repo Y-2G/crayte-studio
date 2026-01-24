@@ -1,0 +1,23 @@
+/* 管理画面のbodyに適用するクラス */
+.admin-layout {
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+.admin-layout ::selection {
+  background-color: var(--admin-primary);
+  color: var(--color-white);
+}
+
+.admin-layout :focus-visible {
+  outline-color: var(--admin-primary);
+}
+
+/* WP風のボタンスタイル */
+.admin-layout ::-webkit-scrollbar-track {
+  background: var(--admin-bg);
+}
+
+.admin-layout ::-webkit-scrollbar-thumb {
+  background: var(--admin-border);
+}

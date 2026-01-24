@@ -1,0 +1,30 @@
+.widget {
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.body {
+  padding: var(--spacing-4);
+}

@@ -1,0 +1,125 @@
+.container {
+  overflow-x: auto;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  background-color: var(--color-white);
+}
+
+.table thead {
+  background-color: var(--admin-bg);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.table th {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--admin-text);
+  border-top: 1px solid var(--admin-border);
+}
+
+.table tbody tr:hover {
+  background-color: var(--admin-bg);
+}
+
+.table tbody tr.selected {
+  background-color: rgba(34, 113, 177, 0.1);
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sortable:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sortIcon {
+  margin-left: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  color: var(--admin-primary);
+}
+
+.checkboxCell {
+  width: 40px;
+  text-align: center;
+}
+
+.checkboxCell input[type='checkbox'] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.actionsCell {
+  width: auto;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.actionButton {
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+  color: var(--admin-primary);
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.actionButton:hover {
+  background-color: var(--admin-bg);
+  border-color: var(--admin-primary);
+}
+
+.actionButton.danger {
+  color: var(--admin-error);
+}
+
+.actionButton.danger:hover {
+  border-color: var(--admin-error);
+  background-color: rgba(214, 54, 56, 0.1);
+}
+
+.empty {
+  padding: var(--spacing-8);
+  text-align: center;
+  color: var(--admin-text-muted);
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .table {
+    font-size: var(--font-size-xs);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-2);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

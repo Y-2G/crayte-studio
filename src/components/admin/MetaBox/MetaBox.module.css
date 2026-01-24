@@ -1,0 +1,57 @@
+.metaBox {
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-4);
+  overflow: hidden;
+}
+
+.metaBox.accent {
+  border-color: var(--admin-primary);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--admin-bg-light);
+  border: none;
+  border-bottom: 1px solid var(--admin-border);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.header:hover {
+  background-color: var(--admin-bg);
+}
+
+.accent .header {
+  background-color: var(--admin-primary);
+  color: var(--color-white);
+  border-bottom-color: var(--admin-primary-dark);
+}
+
+.accent .header:hover {
+  background-color: var(--admin-primary-dark);
+}
+
+.title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.toggle {
+  font-size: var(--font-size-sm);
+  opacity: 0.7;
+}
+
+.body {
+  padding: var(--spacing-4);
+}
+
+.accent .body {
+  background-color: var(--admin-bg-light);
+}
