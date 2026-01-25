@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Media — crayte studio Admin',
-  description: 'メディアライブラリ',
+  title: "Media — CRAYTE STUDIO Admin",
+  description: "メディアライブラリ",
 };
 
 export default function AdminMediaPage() {
@@ -11,9 +11,7 @@ export default function AdminMediaPage() {
     <div className={styles.page}>
       <div className={styles.header}>
         <h1 className={styles.title}>メディアライブラリ</h1>
-        <button className={styles.uploadButton}>
-          新規アップロード
-        </button>
+        <button className={styles.uploadButton}>新規アップロード</button>
       </div>
 
       <div className={styles.placeholder}>

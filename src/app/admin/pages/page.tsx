@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getAllPages } from '@/lib/data';
-import { PagesTable } from './PagesTable';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllPages } from "@/lib/data";
+import { PagesTable } from "./PagesTable";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Pages — crayte studio Admin',
-  description: '固定ページ管理',
+  title: "Pages — CRAYTE STUDIO Admin",
+  description: "固定ページ管理",
 };
 
 export default async function AdminPagesPage() {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "会社概要 | crayte studio",
+  title: "会社概要 | CRAYTE STUDIO",
   description:
     "株式会社CRAYTE STUDIOの会社情報、ミッション・ビジョン、沿革をご紹介します。",
 };

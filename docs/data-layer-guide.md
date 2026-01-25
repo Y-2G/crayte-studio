@@ -39,7 +39,7 @@ crayte-studio プロジェクトのデータ層とサンプルデータに関す
 | `filters.ts` | `filterSealedPosts()`, `filterSealedWorks()`, `filterSealedStaff()`, `filterInboxMessages()` など |
 | `index.ts`   | 全関数の re-export                                                                                |
 
-## 会社設定（架空企業 crayte studio）
+## 会社設定（架空企業 CRAYTE STUDIO）
 
 ### 基本情報
 

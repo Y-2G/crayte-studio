@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
-import { ContactForm } from '@/components/public/ContactForm/ContactForm';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/public/ContactForm/ContactForm";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'お問い合わせ | crayte studio',
-  description: 'crayte studioへのお問い合わせ、ご相談はこちらから。プロジェクトに関するご相談、お見積もりなど、お気軽にお問い合わせください。',
+  title: "お問い合わせ | CRAYTE STUDIO",
+  description:
+    "CRAYTE STUDIOへのお問い合わせ、ご相談はこちらから。プロジェクトに関するご相談、お見積もりなど、お気軽にお問い合わせください。",
 };
 
 export default function ContactPage() {
@@ -37,7 +38,8 @@ export default function ContactPage() {
             <div className={styles.infoCard}>
               <h3 className={styles.infoTitle}>お電話でのお問い合わせ</h3>
               <p className={styles.infoText}>
-                平日 10:00 - 18:00<br />
+                平日 10:00 - 18:00
+                <br />
                 （土日祝日を除く）
               </p>
               <p className={styles.infoPhone}>03-XXXX-XXXX</p>
@@ -46,7 +48,8 @@ export default function ContactPage() {
             <div className={styles.infoCard}>
               <h3 className={styles.infoTitle}>メールでのお問い合わせ</h3>
               <p className={styles.infoText}>
-                24時間受付<br />
+                24時間受付
+                <br />
                 2営業日以内に返信いたします
               </p>
               <p className={styles.infoEmail}>info@crayte-studio.co.jp</p>

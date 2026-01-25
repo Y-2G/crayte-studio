@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Comments — crayte studio Admin',
-  description: 'コメント管理',
+  title: "Comments — CRAYTE STUDIO Admin",
+  description: "コメント管理",
 };
 
 export default function AdminCommentsPage() {
@@ -13,9 +13,7 @@ export default function AdminCommentsPage() {
 
       <div className={styles.placeholder}>
         <div className={styles.placeholderIcon}>💬</div>
-        <p className={styles.placeholderText}>
-          コメント管理機能は実装予定です
-        </p>
+        <p className={styles.placeholderText}>コメント管理機能は実装予定です</p>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import styles from './Sidebar.module.css';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import styles from "./Sidebar.module.css";
 
 interface MenuItem {
   label: string;
@@ -12,18 +12,18 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: 'ダッシュボード', href: '/admin', icon: '🏠' },
-  { label: '投稿', href: '/admin/posts', icon: '📝' },
-  { label: '固定ページ', href: '/admin/pages', icon: '📄' },
-  { label: 'メディア', href: '/admin/media', icon: '🖼️' },
-  { label: 'コメント', href: '/admin/comments', icon: '💬' },
-  { label: 'フォーム受信箱', href: '/admin/inbox', icon: '📨' },
-  { label: '実績', href: '/admin/works', icon: '🎯' },
-  { label: 'スタッフ', href: '/admin/staff', icon: '👥' },
-  { label: '外観', href: '/admin/appearance', icon: '🎨' },
-  { label: 'プラグイン', href: '/admin/plugins', icon: '🔌' },
-  { label: 'ツール', href: '/admin/tools', icon: '🔧' },
-  { label: '設定', href: '/admin/settings', icon: '⚙️' },
+  { label: "ダッシュボード", href: "/admin", icon: "🏠" },
+  { label: "投稿", href: "/admin/posts", icon: "📝" },
+  { label: "固定ページ", href: "/admin/pages", icon: "📄" },
+  { label: "メディア", href: "/admin/media", icon: "🖼️" },
+  { label: "コメント", href: "/admin/comments", icon: "💬" },
+  { label: "フォーム受信箱", href: "/admin/inbox", icon: "📨" },
+  { label: "実績", href: "/admin/works", icon: "🎯" },
+  { label: "スタッフ", href: "/admin/staff", icon: "👥" },
+  { label: "外観", href: "/admin/appearance", icon: "🎨" },
+  { label: "プラグイン", href: "/admin/plugins", icon: "🔌" },
+  { label: "ツール", href: "/admin/tools", icon: "🔧" },
+  { label: "設定", href: "/admin/settings", icon: "⚙️" },
 ];
 
 interface SidebarProps {
@@ -35,15 +35,15 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
+    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
       <div className={styles.header}>
-        {!collapsed && <h1 className={styles.logo}>crayte studio</h1>}
+        {!collapsed && <h1 className={styles.logo}>CRAYTE STUDIO</h1>}
         <button
           onClick={onToggle}
           className={styles.toggleButton}
-          aria-label={collapsed ? 'メニューを展開' : 'メニューを折りたたむ'}
+          aria-label={collapsed ? "メニューを展開" : "メニューを折りたたむ"}
         >
-          {collapsed ? '☰' : '✕'}
+          {collapsed ? "☰" : "✕"}
         </button>
       </div>
 
@@ -55,7 +55,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
               <li key={item.href} className={styles.menuItem}>
                 <Link
                   href={item.href}
-                  className={`${styles.menuLink} ${isActive ? styles.active : ''}`}
+                  className={`${styles.menuLink} ${isActive ? styles.active : ""}`}
                   title={collapsed ? item.label : undefined}
                 >
                   <span className={styles.icon}>{item.icon}</span>

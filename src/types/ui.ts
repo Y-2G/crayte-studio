@@ -9,7 +9,7 @@
  * - Modals and dialogs
  */
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 // ============================================================================
 // Navigation
@@ -68,7 +68,7 @@ export interface TableColumn<T = Record<string, unknown>> {
   /** Custom render function for cell content */
   render?: (value: unknown, row: T, index: number) => ReactNode;
   /** Alignment for cell content */
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   /** Whether this column is hidden on mobile */
   hideOnMobile?: boolean;
 }
@@ -80,7 +80,7 @@ export interface TableSort {
   /** Column key to sort by */
   key: string;
   /** Sort direction */
-  direction: 'asc' | 'desc';
+  direction: "asc" | "desc";
 }
 
 /**
@@ -95,7 +95,7 @@ export interface TableAction<T = Record<string, unknown>> {
   /** Optional icon identifier */
   icon?: string;
   /** Visual variant */
-  variant?: 'default' | 'primary' | 'danger' | 'ghost';
+  variant?: "default" | "primary" | "danger" | "ghost";
   /** Whether this action is disabled */
   disabled?: boolean | ((row: T) => boolean);
   /** Confirmation message before executing (for destructive actions) */
@@ -114,7 +114,7 @@ export interface BulkAction<T = Record<string, unknown>> {
   /** Optional icon */
   icon?: string;
   /** Visual variant */
-  variant?: 'default' | 'primary' | 'danger';
+  variant?: "default" | "primary" | "danger";
   /** Confirmation message */
   confirmMessage?: string;
 }
@@ -127,20 +127,20 @@ export interface BulkAction<T = Record<string, unknown>> {
  * Form field type
  */
 export type FormFieldType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'number'
-  | 'url'
-  | 'tel'
-  | 'textarea'
-  | 'select'
-  | 'checkbox'
-  | 'radio'
-  | 'date'
-  | 'datetime'
-  | 'file'
-  | 'hidden';
+  | "text"
+  | "email"
+  | "password"
+  | "number"
+  | "url"
+  | "tel"
+  | "textarea"
+  | "select"
+  | "checkbox"
+  | "radio"
+  | "date"
+  | "datetime"
+  | "file"
+  | "hidden";
 
 /**
  * Option for select/radio fields
@@ -241,7 +241,12 @@ export interface PaginationChangeParams {
 /**
  * Filter type
  */
-export type FilterType = 'select' | 'multiselect' | 'text' | 'daterange' | 'boolean';
+export type FilterType =
+  | "select"
+  | "multiselect"
+  | "text"
+  | "daterange"
+  | "boolean";
 
 /**
  * Filter definition
@@ -280,7 +285,7 @@ export interface ActiveFilter {
 /**
  * Modal size variant
  */
-export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type ModalSize = "sm" | "md" | "lg" | "xl" | "full";
 
 /**
  * Modal props
@@ -317,7 +322,7 @@ export interface ConfirmDialogOptions {
   /** Cancel button text */
   cancelText?: string;
   /** Variant for visual styling */
-  variant?: 'default' | 'danger';
+  variant?: "default" | "danger";
   /** Callback when confirmed */
   onConfirm: () => void | Promise<void>;
   /** Callback when cancelled */
@@ -331,7 +336,7 @@ export interface ConfirmDialogOptions {
 /**
  * Toast notification type
  */
-export type ToastType = 'success' | 'error' | 'warning' | 'info';
+export type ToastType = "success" | "error" | "warning" | "info";
 
 /**
  * Toast notification
@@ -463,20 +468,20 @@ export interface SearchResult<T = unknown> {
  * Type guard for NavItem
  */
 export function isNavItem(obj: unknown): obj is NavItem {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const item = obj as Record<string, unknown>;
-  return typeof item.label === 'string' && typeof item.href === 'string';
+  return typeof item.label === "string" && typeof item.href === "string";
 }
 
 /**
  * Type guard for FormField
  */
 export function isFormField(obj: unknown): obj is FormField {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const field = obj as Record<string, unknown>;
   return (
-    typeof field.name === 'string' &&
-    typeof field.label === 'string' &&
-    typeof field.type === 'string'
+    typeof field.name === "string" &&
+    typeof field.label === "string" &&
+    typeof field.type === "string"
   );
 }

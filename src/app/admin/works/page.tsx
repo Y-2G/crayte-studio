@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getAllWorks } from '@/lib/data';
-import { WorksTable } from './WorksTable';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllWorks } from "@/lib/data";
+import { WorksTable } from "./WorksTable";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Works — crayte studio Admin',
-  description: '実績管理',
+  title: "Works — CRAYTE STUDIO Admin",
+  description: "実績管理",
 };
 
 export default async function AdminWorksPage() {

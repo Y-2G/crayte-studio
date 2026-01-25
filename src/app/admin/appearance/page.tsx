@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Appearance — crayte studio Admin',
-  description: '外観設定',
+  title: "Appearance — CRAYTE STUDIO Admin",
+  description: "外観設定",
 };
 
 export default function AdminAppearancePage() {
@@ -13,9 +13,7 @@ export default function AdminAppearancePage() {
 
       <div className={styles.placeholder}>
         <div className={styles.placeholderIcon}>🎨</div>
-        <p className={styles.placeholderText}>
-          外観設定機能は実装予定です
-        </p>
+        <p className={styles.placeholderText}>外観設定機能は実装予定です</p>
       </div>
     </div>
   );

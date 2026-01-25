@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getActiveStaff, getAllTeams } from '@/lib/data';
-import { Card, CardBody } from '@/components/shared/Card/Card';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getActiveStaff, getAllTeams } from "@/lib/data";
+import { Card, CardBody } from "@/components/shared/Card/Card";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'スタッフ | crayte studio',
-  description: 'CRAYTE STUDIOのスタッフをご紹介します。経営、制作、開発、イベント、企画など、各分野のプロフェッショナルが揃っています。',
+  title: "スタッフ | CRAYTE STUDIO",
+  description:
+    "CRAYTE STUDIOのスタッフをご紹介します。経営、制作、開発、イベント、企画など、各分野のプロフェッショナルが揃っています。",
 };
 
 export default async function StaffPage() {
@@ -15,7 +16,7 @@ export default async function StaffPage() {
 
   // Get teams that have active staff only
   const activeTeams = allTeams.filter((team) =>
-    staff.some((member) => member.team === team)
+    staff.some((member) => member.team === team),
   );
 
   // Group staff by team
@@ -24,7 +25,7 @@ export default async function StaffPage() {
       acc[team] = staff.filter((member) => member.team === team);
       return acc;
     },
-    {} as Record<string, typeof staff>
+    {} as Record<string, typeof staff>,
   );
 
   return (

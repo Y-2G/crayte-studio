@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Plugins — crayte studio Admin',
-  description: 'プラグイン管理',
+  title: "Plugins — CRAYTE STUDIO Admin",
+  description: "プラグイン管理",
 };
 
 export default function AdminPluginsPage() {

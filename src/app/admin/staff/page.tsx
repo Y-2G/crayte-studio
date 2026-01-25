@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getAllStaff } from '@/lib/data';
-import { StaffTable } from './StaffTable';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllStaff } from "@/lib/data";
+import { StaffTable } from "./StaffTable";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: 'Staff — crayte studio Admin',
-  description: 'スタッフ管理',
+  title: "Staff — CRAYTE STUDIO Admin",
+  description: "スタッフ管理",
 };
 
 export default async function AdminStaffPage() {

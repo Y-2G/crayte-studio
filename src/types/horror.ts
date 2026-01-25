@@ -19,7 +19,7 @@
  * - noticeable: Clear anomalies (missing staff, sealed content)
  * - severe: Major reality breaks (leaked documents, rewritten history)
  */
-export type AnomalyLevel = 'none' | 'subtle' | 'noticeable' | 'severe';
+export type AnomalyLevel = "none" | "subtle" | "noticeable" | "severe";
 
 /**
  * Global horror state for the application
@@ -42,7 +42,7 @@ export interface HorrorState {
 /**
  * Type of content that can be sealed
  */
-export type SealableContentType = 'post' | 'work' | 'staff' | 'comment';
+export type SealableContentType = "post" | "work" | "staff" | "comment";
 
 /**
  * Record of sealed/hidden content
@@ -93,13 +93,13 @@ export interface HorrorMeta {
  * Type of anomaly event
  */
 export type AnomalyEventType =
-  | 'glitch' // Text glitches, typos
-  | 'temporal' // Date/time anomalies
-  | 'deletion' // Content disappearance
-  | 'rewrite' // Content alteration
-  | 'appearance' // New content appearing
-  | 'corruption' // Data corruption
-  | 'warning'; // System warnings
+  | "glitch" // Text glitches, typos
+  | "temporal" // Date/time anomalies
+  | "deletion" // Content disappearance
+  | "rewrite" // Content alteration
+  | "appearance" // New content appearing
+  | "corruption" // Data corruption
+  | "warning"; // System warnings
 
 /**
  * Record of an anomaly occurrence
@@ -182,22 +182,27 @@ export interface RewrittenContent {
  * Type guard for HorrorMeta
  */
 export function isHorrorMeta(obj: unknown): obj is HorrorMeta {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const meta = obj as Record<string, unknown>;
 
   // Check that if anomalyLevel exists, it's a valid value
   if (meta.anomalyLevel !== undefined) {
-    const validLevels: AnomalyLevel[] = ['none', 'subtle', 'noticeable', 'severe'];
+    const validLevels: AnomalyLevel[] = [
+      "none",
+      "subtle",
+      "noticeable",
+      "severe",
+    ];
     if (!validLevels.includes(meta.anomalyLevel as AnomalyLevel)) {
       return false;
     }
   }
 
   // Check boolean flags if they exist
-  if (meta.isSealed !== undefined && typeof meta.isSealed !== 'boolean') {
+  if (meta.isSealed !== undefined && typeof meta.isSealed !== "boolean") {
     return false;
   }
-  if (meta.isRewritten !== undefined && typeof meta.isRewritten !== 'boolean') {
+  if (meta.isRewritten !== undefined && typeof meta.isRewritten !== "boolean") {
     return false;
   }
 
@@ -208,14 +213,14 @@ export function isHorrorMeta(obj: unknown): obj is HorrorMeta {
  * Type guard for SealedContent
  */
 export function isSealedContent(obj: unknown): obj is SealedContent {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const s = obj as Record<string, unknown>;
   return (
-    typeof s.id === 'string' &&
-    typeof s.type === 'string' &&
-    typeof s.reason === 'string' &&
-    typeof s.sealedAt === 'string' &&
-    typeof s.sealedBy === 'string'
+    typeof s.id === "string" &&
+    typeof s.type === "string" &&
+    typeof s.reason === "string" &&
+    typeof s.sealedAt === "string" &&
+    typeof s.sealedBy === "string"
   );
 }
 
@@ -223,15 +228,15 @@ export function isSealedContent(obj: unknown): obj is SealedContent {
  * Type guard for AnomalyEvent
  */
 export function isAnomalyEvent(obj: unknown): obj is AnomalyEvent {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const e = obj as Record<string, unknown>;
   return (
-    typeof e.id === 'string' &&
-    typeof e.type === 'string' &&
-    typeof e.level === 'string' &&
-    typeof e.targetId === 'string' &&
-    typeof e.targetType === 'string' &&
-    typeof e.isObserved === 'boolean'
+    typeof e.id === "string" &&
+    typeof e.type === "string" &&
+    typeof e.level === "string" &&
+    typeof e.targetId === "string" &&
+    typeof e.targetType === "string" &&
+    typeof e.isObserved === "boolean"
   );
 }
 
@@ -244,7 +249,7 @@ export function isAnomalyEvent(obj: unknown): obj is AnomalyEvent {
  */
 export function isMoreSevere(
   level: AnomalyLevel,
-  compared: AnomalyLevel
+  compared: AnomalyLevel,
 ): boolean {
   const severity: Record<AnomalyLevel, number> = {
     none: 0,
@@ -258,11 +263,13 @@ export function isMoreSevere(
 /**
  * Get the next anomaly level in progression
  */
-export function getNextAnomalyLevel(current: AnomalyLevel): AnomalyLevel | null {
+export function getNextAnomalyLevel(
+  current: AnomalyLevel,
+): AnomalyLevel | null {
   const progression: Record<AnomalyLevel, AnomalyLevel | null> = {
-    none: 'subtle',
-    subtle: 'noticeable',
-    noticeable: 'severe',
+    none: "subtle",
+    subtle: "noticeable",
+    noticeable: "severe",
     severe: null, // Max level
   };
   return progression[current];

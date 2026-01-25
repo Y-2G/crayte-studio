@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getPublicWorks, getAllWorkTags } from '@/lib/data';
-import { Card, CardBody } from '@/components/shared/Card/Card';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getPublicWorks, getAllWorkTags } from "@/lib/data";
+import { Card, CardBody } from "@/components/shared/Card/Card";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: '実績 | crayte studio',
-  description: 'crayte studioの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。',
+  title: "実績 | CRAYTE STUDIO",
+  description:
+    "CRAYTE STUDIOの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。",
 };
 
 export default async function WorksPage() {
@@ -37,8 +38,16 @@ export default async function WorksPage() {
 
           <div className={styles.worksGrid}>
             {works.map((work) => (
-              <Link key={work.id} href={`/works/${work.slug}`} className={styles.workLink}>
-                <Card variant="bordered" padding="none" className={styles.workCard}>
+              <Link
+                key={work.id}
+                href={`/works/${work.slug}`}
+                className={styles.workLink}
+              >
+                <Card
+                  variant="bordered"
+                  padding="none"
+                  className={styles.workCard}
+                >
                   <div className={styles.workImagePlaceholder}>
                     {work.images.length > 0 ? (
                       <span className={styles.workImageText}>画像</span>
@@ -50,9 +59,9 @@ export default async function WorksPage() {
                     <h2 className={styles.workTitle}>{work.title}</h2>
                     <p className={styles.workClient}>{work.client}</p>
                     <p className={styles.workDate}>
-                      {new Date(work.date).toLocaleDateString('ja-JP', {
-                        year: 'numeric',
-                        month: 'long',
+                      {new Date(work.date).toLocaleDateString("ja-JP", {
+                        year: "numeric",
+                        month: "long",
                       })}
                     </p>
                     <div className={styles.workTags}>

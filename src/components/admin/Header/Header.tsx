@@ -24,7 +24,7 @@ export function Header({ sidebarCollapsed = false }: HeaderProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          crayte studio
+          CRAYTE STUDIO
         </Link>
         <span className={styles.separator}>|</span>
         <Link

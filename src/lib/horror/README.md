@@ -9,7 +9,7 @@ crayte-studio プロジェクトのホラー/異常状態管理システムで�
 
 ## コンセプト
 
-crayte studio のホラー演出は「気づかれないうちに世界が変わっている」という"uncanny"な恐怖を目指しています。
+CRAYTE STUDIO のホラー演出は「気づかれないうちに世界が変わっている」という"uncanny"な恐怖を目指しています。
 
 ### 異常レベルの進行
 
@@ -32,7 +32,7 @@ src/lib/horror/
 ### 状態の初期化
 
 ```typescript
-import { initHorrorState } from '@/lib/horror';
+import { initHorrorState } from "@/lib/horror";
 
 // 新しいセッションの開始時
 const horrorState = initHorrorState();
@@ -47,13 +47,13 @@ const horrorState = initHorrorState();
 ### 異常の公開
 
 ```typescript
-import { exposeAnomaly, getAnomalyLevel } from '@/lib/horror';
+import { exposeAnomaly, getAnomalyLevel } from "@/lib/horror";
 
 // ユーザーが異常要素を閲覧したとき
 let state = initHorrorState();
 
-state = exposeAnomaly(state, 'anomaly-001');
-state = exposeAnomaly(state, 'anomaly-002');
+state = exposeAnomaly(state, "anomaly-001");
+state = exposeAnomaly(state, "anomaly-002");
 
 // 異常レベルが自動的に更新される
 console.log(state.currentLevel); // 'subtle'
@@ -62,8 +62,12 @@ console.log(state.currentLevel); // 'subtle'
 ### コンテンツのフィルタリング
 
 ```typescript
-import { filterSealedPosts, filterSealedWorks, filterSealedStaff } from '@/lib/horror';
-import { getAllPosts, getAllWorks, getAllStaff } from '@/lib/data';
+import {
+  filterSealedPosts,
+  filterSealedWorks,
+  filterSealedStaff,
+} from "@/lib/horror";
+import { getAllPosts, getAllWorks, getAllStaff } from "@/lib/data";
 
 const horrorState = getCurrentHorrorState(); // アプリから取得
 
@@ -95,7 +99,7 @@ if (shouldShowHorrorElement('noticeable', horrorState.currentLevel)) {
 ### 進行状況の取得
 
 ```typescript
-import { getHorrorProgression, getAnomalyLevelDescription } from '@/lib/horror';
+import { getHorrorProgression, getAnomalyLevelDescription } from "@/lib/horror";
 
 const state = getCurrentHorrorState();
 
@@ -114,11 +118,11 @@ console.log(description); // '明確な異常が確認されています。'
 ホラー状態は通常、クライアントサイドで管理されます。
 
 ```typescript
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { initHorrorState } from '@/lib/horror';
-import type { HorrorState } from '@/types';
+import { useState, useEffect } from "react";
+import { initHorrorState } from "@/lib/horror";
+import type { HorrorState } from "@/types";
 
 // カスタムフック例
 export function useHorrorState() {
@@ -126,7 +130,7 @@ export function useHorrorState() {
 
   useEffect(() => {
     // localStorage から復元
-    const saved = localStorage.getItem('horrorState');
+    const saved = localStorage.getItem("horrorState");
     if (saved) {
       setState(JSON.parse(saved));
     }
@@ -134,7 +138,7 @@ export function useHorrorState() {
 
   useEffect(() => {
     // localStorage に保存
-    localStorage.setItem('horrorState', JSON.stringify(state));
+    localStorage.setItem("horrorState", JSON.stringify(state));
   }, [state]);
 
   return [state, setState] as const;
@@ -146,11 +150,11 @@ export function useHorrorState() {
 異常レベルは、公開された異常の数に基づいて自動的に計算されます。
 
 | 公開された異常の数 | 異常レベル |
-|------------------|----------|
-| 0-1              | none     |
-| 2-4              | subtle   |
-| 5-7              | noticeable |
-| 8+               | severe   |
+| ------------------ | ---------- |
+| 0-1                | none       |
+| 2-4                | subtle     |
+| 5-7                | noticeable |
+| 8+                 | severe     |
 
 ## 型定義
 
@@ -161,8 +165,8 @@ import type {
   HorrorState,
   AnomalyLevel,
   SealedContent,
-  AnomalyEvent
-} from '@/types';
+  AnomalyEvent,
+} from "@/types";
 ```
 
 ## 実装のヒント

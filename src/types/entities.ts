@@ -23,14 +23,14 @@
  * - rejected: Review rejected
  * - leak: Content leaked (horror state)
  */
-export type PostStatus = 'draft' | 'pending' | 'publish' | 'rejected' | 'leak';
+export type PostStatus = "draft" | "pending" | "publish" | "rejected" | "leak";
 
 /**
  * Content visibility
  * - public: Visible to all users
  * - private: Visible only to authenticated users
  */
-export type Visibility = 'public' | 'private';
+export type Visibility = "public" | "private";
 
 /**
  * Review comment on a post
@@ -89,7 +89,7 @@ export interface Post {
 /**
  * Page publication status
  */
-export type PageStatus = 'draft' | 'publish';
+export type PageStatus = "draft" | "publish";
 
 /**
  * Static page entity
@@ -125,7 +125,7 @@ export interface Page {
  * - sealed: Sealed/hidden (horror state)
  * - rewritten: Content has been rewritten (horror state)
  */
-export type WorkStatus = 'planned' | 'live' | 'closed' | 'sealed' | 'rewritten';
+export type WorkStatus = "planned" | "live" | "closed" | "sealed" | "rewritten";
 
 /**
  * Work/achievement entity
@@ -167,7 +167,7 @@ export interface Work {
  * - suspended: Temporarily suspended
  * - missing: Missing/disappeared (horror state)
  */
-export type StaffState = 'active' | 'suspended' | 'missing';
+export type StaffState = "active" | "suspended" | "missing";
 
 /**
  * Staff member entity
@@ -211,12 +211,17 @@ export interface Staff {
  * - complaint: Complaint
  * - sign: Anomalous sign/warning (horror state)
  */
-export type InboxCategory = 'general' | 'press' | 'quote' | 'complaint' | 'sign';
+export type InboxCategory =
+  | "general"
+  | "press"
+  | "quote"
+  | "complaint"
+  | "sign";
 
 /**
  * Inbox message severity
  */
-export type InboxSeverity = 'low' | 'medium' | 'high';
+export type InboxSeverity = "low" | "medium" | "high";
 
 /**
  * Inbox message status
@@ -225,7 +230,7 @@ export type InboxSeverity = 'low' | 'medium' | 'high';
  * - resolved: Handled
  * - rewritten: Content has been altered (horror state)
  */
-export type InboxStatus = 'open' | 'pending' | 'resolved' | 'rewritten';
+export type InboxStatus = "open" | "pending" | "resolved" | "rewritten";
 
 /**
  * Contact form submission
@@ -292,7 +297,7 @@ export interface Media {
  * - spam: Marked as spam
  * - trash: Deleted/trashed
  */
-export type CommentStatus = 'pending' | 'approved' | 'spam' | 'trash';
+export type CommentStatus = "pending" | "approved" | "spam" | "trash";
 
 /**
  * User comment on a post
@@ -322,14 +327,14 @@ export interface Comment {
  * Type guard for Post
  */
 export function isPost(obj: unknown): obj is Post {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const p = obj as Record<string, unknown>;
   return (
-    typeof p.id === 'string' &&
-    typeof p.slug === 'string' &&
-    typeof p.title === 'string' &&
-    typeof p.content === 'string' &&
-    typeof p.status === 'string' &&
+    typeof p.id === "string" &&
+    typeof p.slug === "string" &&
+    typeof p.title === "string" &&
+    typeof p.content === "string" &&
+    typeof p.status === "string" &&
     Array.isArray(p.tags) &&
     Array.isArray(p.reviewComments)
   );
@@ -339,13 +344,13 @@ export function isPost(obj: unknown): obj is Post {
  * Type guard for Work
  */
 export function isWork(obj: unknown): obj is Work {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const w = obj as Record<string, unknown>;
   return (
-    typeof w.id === 'string' &&
-    typeof w.slug === 'string' &&
-    typeof w.title === 'string' &&
-    typeof w.status === 'string' &&
+    typeof w.id === "string" &&
+    typeof w.slug === "string" &&
+    typeof w.title === "string" &&
+    typeof w.status === "string" &&
     Array.isArray(w.images) &&
     Array.isArray(w.tags)
   );
@@ -355,14 +360,14 @@ export function isWork(obj: unknown): obj is Work {
  * Type guard for Staff
  */
 export function isStaff(obj: unknown): obj is Staff {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const s = obj as Record<string, unknown>;
   return (
-    typeof s.id === 'string' &&
-    typeof s.slug === 'string' &&
-    typeof s.name === 'string' &&
-    typeof s.role === 'string' &&
-    typeof s.state === 'string'
+    typeof s.id === "string" &&
+    typeof s.slug === "string" &&
+    typeof s.name === "string" &&
+    typeof s.role === "string" &&
+    typeof s.state === "string"
   );
 }
 
@@ -370,13 +375,13 @@ export function isStaff(obj: unknown): obj is Staff {
  * Type guard for InboxMessage
  */
 export function isInboxMessage(obj: unknown): obj is InboxMessage {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== "object" || obj === null) return false;
   const m = obj as Record<string, unknown>;
   return (
-    typeof m.id === 'string' &&
-    typeof m.name === 'string' &&
-    typeof m.email === 'string' &&
-    typeof m.category === 'string' &&
-    typeof m.status === 'string'
+    typeof m.id === "string" &&
+    typeof m.name === "string" &&
+    typeof m.email === "string" &&
+    typeof m.category === "string" &&
+    typeof m.status === "string"
   );
 }
