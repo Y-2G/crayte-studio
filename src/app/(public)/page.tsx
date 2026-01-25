@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "crayte studio | Web制作・イベント企画",
   description:
-    "株式会社crayte studioは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。観察から始まる価値創造で、クライアントのビジネスをサポートします。",
+    "株式会社crayte studioは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。想像から始まる価値創造で、クライアントのビジネスをサポートします。",
 };
 
 export default async function HomePage() {
@@ -43,12 +43,12 @@ export default async function HomePage() {
   return (
     <div className={styles.page}>
       {/* Hero Section */}
-      <HeroVideo videoSrc="/movies/CRAYTE.mp4" loopDelay={2}>
+      <HeroVideo videoSrc="/movies/CRAYTE.mp4" loopDelay={0}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            観察から始まる、
+            創造は加速する。
             <br />
-            価値創造
+            想像は現実へ。
           </h1>
           <p className={styles.heroSubtitle}>
             crayte studioは、Web制作・イベント企画・映像制作を通じて、
