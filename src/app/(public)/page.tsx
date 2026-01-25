@@ -43,7 +43,7 @@ export default async function HomePage() {
   return (
     <div className={styles.page}>
       {/* Hero Section */}
-      <HeroVideo videoSrc="/movies/CRAYTE.mp4">
+      <HeroVideo videoSrc="/movies/CRAYTE.mp4" loopDelay={2}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             観察から始まる、
