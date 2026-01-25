@@ -5,8 +5,8 @@ import { Card, CardBody } from '@/components/shared/Card/Card';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'スタッフ | obserq',
-  description: 'OBSERQのスタッフをご紹介します。経営、制作、開発、イベント、企画など、各分野のプロフェッショナルが揃っています。',
+  title: 'スタッフ | crayte studio',
+  description: 'CRAYTE STUDIOのスタッフをご紹介します。経営、制作、開発、イベント、企画など、各分野のプロフェッショナルが揃っています。',
 };
 
 export default async function StaffPage() {

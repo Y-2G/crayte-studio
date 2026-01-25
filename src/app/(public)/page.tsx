@@ -6,9 +6,9 @@ import { Card, CardBody } from "@/components/shared/Card/Card";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "obserq | Web制作・イベント企画",
+  title: "crayte studio | Web制作・イベント企画",
   description:
-    "株式会社obserqは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。観察から始まる価値創造で、クライアントのビジネスをサポートします。",
+    "株式会社crayte studioは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。観察から始まる価値創造で、クライアントのビジネスをサポートします。",
 };
 
 export default async function HomePage() {
@@ -50,7 +50,7 @@ export default async function HomePage() {
             価値創造
           </h1>
           <p className={styles.heroSubtitle}>
-            obserqは、Web制作・イベント企画・映像制作を通じて、
+            crayte studioは、Web制作・イベント企画・映像制作を通じて、
             <br />
             クライアントの潜在ニーズを引き出し、新しい価値を創造します。
           </p>

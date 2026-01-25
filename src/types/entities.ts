@@ -1,5 +1,5 @@
 /**
- * Core entity type definitions for OBSERQ Studio
+ * Core entity type definitions for CRAYTE STUDIO
  *
  * This file defines the main data structures for the application:
  * - Posts (news articles and blog posts)

@@ -1,6 +1,6 @@
 # データ層実装ガイド
 
-obserq-studio プロジェクトのデータ層とサンプルデータに関するドキュメントです。
+crayte-studio プロジェクトのデータ層とサンプルデータに関するドキュメントです。
 
 ## 作成されたファイル
 
@@ -39,11 +39,11 @@ obserq-studio プロジェクトのデータ層とサンプルデータに関す
 | `filters.ts` | `filterSealedPosts()`, `filterSealedWorks()`, `filterSealedStaff()`, `filterInboxMessages()` など |
 | `index.ts` | 全関数の re-export |
 
-## 会社設定（架空企業 obserq）
+## 会社設定（架空企業 crayte studio）
 
 ### 基本情報
 
-- **社名**: 株式会社obserq（オブザーク）
+- **社名**: 株式会社crayte studio（クレイトスタジオ）
 - **設立**: 2015年1月
 - **代表**: 田中 一郎
 - **所在地**: 〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F
@@ -212,7 +212,7 @@ export async function getAllPosts(): Promise<Post[]> {
 
 ## まとめ
 
-obserq-studio のデータ層は以下の特徴を持ちます:
+crayte-studio のデータ層は以下の特徴を持ちます:
 
 - **型安全**: TypeScript による厳密な型定義
 - **分離**: データとロジックの明確な分離

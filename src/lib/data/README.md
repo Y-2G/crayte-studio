@@ -1,6 +1,6 @@
 # Data Layer
 
-obserq-studio プロジェクトのデータアクセス層です。
+crayte-studio プロジェクトのデータアクセス層です。
 
 ## 概要
 

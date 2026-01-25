@@ -11,8 +11,8 @@ import styles from './page.module.css';
 import horrorStyles from '@/styles/horror.module.css';
 
 export const metadata: Metadata = {
-  title: 'Dashboard — obserq Admin',
-  description: 'obserq管理画面のダッシュボード',
+  title: 'Dashboard — crayte studio Admin',
+  description: 'crayte studio管理画面のダッシュボード',
 };
 
 export default async function AdminDashboard() {

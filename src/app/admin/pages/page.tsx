@@ -5,7 +5,7 @@ import { PagesTable } from './PagesTable';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Pages — obserq Admin',
+  title: 'Pages — crayte studio Admin',
   description: '固定ページ管理',
 };
 

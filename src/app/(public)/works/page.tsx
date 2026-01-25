@@ -5,8 +5,8 @@ import { Card, CardBody } from '@/components/shared/Card/Card';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: '実績 | obserq',
-  description: 'obserqの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。',
+  title: '実績 | crayte studio',
+  description: 'crayte studioの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。',
 };
 
 export default async function WorksPage() {

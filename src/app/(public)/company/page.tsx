@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: '会社概要 | obserq',
-  description: '株式会社obserqの会社情報、ミッション・ビジョン、沿革をご紹介します。',
+  title: '会社概要 | crayte studio',
+  description: '株式会社crayte studioの会社情報、ミッション・ビジョン、沿革をご紹介します。',
 };
 
 export default function CompanyPage() {
   const companyInfo = [
-    { label: '社名', value: '株式会社obserq（オブザーク）' },
+    { label: '社名', value: '株式会社crayte studio（クレイトスタジオ）' },
     { label: '所在地', value: '〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F' },
     { label: '設立', value: '2015年4月1日' },
     { label: '代表取締役', value: '田中 一郎' },
@@ -17,7 +17,7 @@ export default function CompanyPage() {
   ];
 
   const history = [
-    { year: '2015年', event: '株式会社obserq設立。Web制作事業を開始' },
+    { year: '2015年', event: '株式会社crayte studio設立。Web制作事業を開始' },
     { year: '2016年', event: 'イベント企画・運営事業を開始' },
     { year: '2017年', event: '映像制作事業を開始。従業員10名に拡大' },
     { year: '2018年', event: 'オフィスを拡張移転（渋谷区内）' },

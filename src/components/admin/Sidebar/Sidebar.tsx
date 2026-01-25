@@ -37,7 +37,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   return (
     <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
       <div className={styles.header}>
-        {!collapsed && <h1 className={styles.logo}>obserq</h1>}
+        {!collapsed && <h1 className={styles.logo}>crayte studio</h1>}
         <button
           onClick={onToggle}
           className={styles.toggleButton}

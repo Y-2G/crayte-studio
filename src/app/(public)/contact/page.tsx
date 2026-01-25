@@ -3,8 +3,8 @@ import { ContactForm } from '@/components/public/ContactForm/ContactForm';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'お問い合わせ | obserq',
-  description: 'obserqへのお問い合わせ、ご相談はこちらから。プロジェクトに関するご相談、お見積もりなど、お気軽にお問い合わせください。',
+  title: 'お問い合わせ | crayte studio',
+  description: 'crayte studioへのお問い合わせ、ご相談はこちらから。プロジェクトに関するご相談、お見積もりなど、お気軽にお問い合わせください。',
 };
 
 export default function ContactPage() {
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 24時間受付<br />
                 2営業日以内に返信いたします
               </p>
-              <p className={styles.infoEmail}>info@obserq.co.jp</p>
+              <p className={styles.infoEmail}>info@crayte-studio.co.jp</p>
             </div>
           </div>
         </div>

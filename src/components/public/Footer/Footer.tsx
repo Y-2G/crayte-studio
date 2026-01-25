@@ -9,7 +9,7 @@ export function Footer() {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>株式会社obserq</h3>
+            <h3 className={styles.sectionTitle}>株式会社crayte studio</h3>
             <address className={styles.address}>
               〒150-0002
               <br />
@@ -52,7 +52,7 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            &copy; {currentYear} OBSERQ Inc. All rights reserved.
+            &copy; {currentYear} CRAYTE STUDIO Inc. All rights reserved.
           </p>
         </div>
       </div>

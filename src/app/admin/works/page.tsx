@@ -5,7 +5,7 @@ import { WorksTable } from './WorksTable';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Works — obserq Admin',
+  title: 'Works — crayte studio Admin',
   description: '実績管理',
 };
 

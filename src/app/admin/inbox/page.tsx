@@ -4,7 +4,7 @@ import { InboxTable } from './InboxTable';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Inbox — obserq Admin',
+  title: 'Inbox — crayte studio Admin',
   description: 'フォーム受信箱',
 };
 

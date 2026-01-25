@@ -6,7 +6,7 @@ import type { PostStatus } from '@/types';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Posts — obserq Admin',
+  title: 'Posts — crayte studio Admin',
   description: '投稿管理',
 };
 

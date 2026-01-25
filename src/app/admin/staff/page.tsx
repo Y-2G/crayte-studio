@@ -5,7 +5,7 @@ import { StaffTable } from './StaffTable';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Staff — obserq Admin',
+  title: 'Staff — crayte studio Admin',
   description: 'スタッフ管理',
 };
 

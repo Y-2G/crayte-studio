@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Settings — obserq Admin',
+  title: 'Settings — crayte studio Admin',
   description: 'サイト設定',
 };
 

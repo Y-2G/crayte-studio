@@ -24,7 +24,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={closeMenu}>
-          <span className={styles.logoText}>OBSERQ</span>
+          <span className={styles.logoText}>CRAYTE STUDIO</span>
         </Link>
 
         <nav

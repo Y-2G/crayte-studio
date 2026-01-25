@@ -1,5 +1,5 @@
 /**
- * Horror-specific type definitions for OBSERQ Studio ARG
+ * Horror-specific type definitions for CRAYTE STUDIO ARG
  *
  * This file defines types for the "uncanny" horror elements:
  * - Anomaly levels and progression

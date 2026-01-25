@@ -1,5 +1,5 @@
 /**
- * UI component type definitions for OBSERQ Studio
+ * UI component type definitions for CRAYTE STUDIO
  *
  * This file defines types for UI components and layouts:
  * - Navigation and sidebar
