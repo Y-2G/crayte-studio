@@ -1,0 +1,193 @@
+/* ============================================================================
+ * NewsTimeline Component Styles
+ * ============================================================================ */
+
+.newsTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+/* ============================================================================
+ * Featured Card
+ * ============================================================================ */
+
+.featuredCard {
+  display: block;
+  padding: var(--spacing-6);
+  background: var(--public-bg);
+  border: 2px solid var(--public-primary);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.featuredCard:hover {
+  transform: var(--transform-hover-lift);
+  box-shadow: var(--shadow-lg);
+}
+
+.featuredBadge {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  color: var(--public-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-2);
+}
+
+.featuredTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--public-text);
+  margin-bottom: var(--spacing-3);
+  line-height: 1.4;
+}
+
+.featuredMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--public-text-muted);
+}
+
+.date {
+  font-family: var(--font-mono);
+}
+
+.category {
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--public-bg-alt);
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================================================
+ * Timeline
+ * ============================================================================ */
+
+.timeline {
+  position: relative;
+  padding-left: var(--spacing-6);
+  margin-top: var(--spacing-4);
+}
+
+/* Vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--public-border);
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: var(--spacing-3);
+  align-items: center;
+  padding: var(--spacing-3) 0;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color var(--transition-fast);
+  border-radius: var(--border-radius-sm);
+  margin-left: calc(var(--spacing-6) * -1);
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-3);
+}
+
+.timelineItem:hover {
+  background: var(--public-bg-alt);
+}
+
+.timelineDot {
+  position: absolute;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--public-primary);
+  border-radius: 50%;
+  border: 2px solid var(--public-bg);
+}
+
+.timelineDate {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--public-text-muted);
+  white-space: nowrap;
+}
+
+.timelineCategory {
+  font-size: var(--font-size-sm);
+  color: var(--public-text-muted);
+  white-space: nowrap;
+}
+
+.timelineTitle {
+  font-size: var(--font-size-base);
+  color: var(--public-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================================
+ * Responsive Design
+ * ============================================================================ */
+
+@media (max-width: 767px) {
+  .newsTimeline {
+    gap: var(--spacing-6);
+  }
+
+  .featuredCard {
+    padding: var(--spacing-5);
+  }
+
+  .featuredTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .timeline {
+    padding-left: var(--spacing-5);
+  }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timelineItem {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-1);
+    margin-left: calc(var(--spacing-5) * -1);
+    padding-left: var(--spacing-5);
+    padding-right: var(--spacing-2);
+  }
+
+  .timelineDot {
+    left: 2px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .timelineDate,
+  .timelineCategory {
+    display: inline;
+    font-size: var(--font-size-xs);
+  }
+
+  .timelineCategory::before {
+    content: " • ";
+  }
+
+  .timelineTitle {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: var(--font-size-sm);
+  }
+}

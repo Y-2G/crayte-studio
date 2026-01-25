@@ -4,6 +4,7 @@ import { getRecentPosts, getRecentWorks } from "@/lib/data";
 import { Button } from "@/components/shared/Button/Button";
 import { Card, CardBody } from "@/components/shared/Card/Card";
 import { HeroVideo } from "@/components/public/HeroVideo";
+import { NewsTimeline } from "@/components/public/NewsTimeline";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -69,6 +70,22 @@ export default async function HomePage() {
           </div>
         </div>
       </HeroVideo>
+
+      {/* News Section */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>News</h2>
+          <p className={styles.sectionDescription}>最新のお知らせ</p>
+
+          <NewsTimeline posts={recentPosts} />
+
+          <div className={styles.sectionCta}>
+            <Link href="/news">
+              <Button variant="secondary">一覧を見る</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
       <section className={styles.section}>
@@ -157,42 +174,6 @@ export default async function HomePage() {
           <div className={styles.sectionCta}>
             <Link href="/works">
               <Button variant="secondary">実績一覧を見る</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* News Section */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>News</h2>
-          <p className={styles.sectionDescription}>最新のお知らせ</p>
-
-          <div className={styles.newsList}>
-            {recentPosts.map((post) => (
-              <Link
-                key={post.id}
-                href={`/news/${post.slug}`}
-                className={styles.newsItem}
-              >
-                <time className={styles.newsDate}>
-                  {new Date(
-                    post.publishedAt || post.createdAt,
-                  ).toLocaleDateString("ja-JP", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
-                </time>
-                <span className={styles.newsCategory}>{post.category}</span>
-                <h3 className={styles.newsTitle}>{post.title}</h3>
-              </Link>
-            ))}
-          </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/news">
-              <Button variant="secondary">一覧を見る</Button>
             </Link>
           </div>
         </div>

@@ -66,9 +66,9 @@ export default function CompanyPage() {
             <div className={styles.missionCard}>
               <h2 className={styles.missionTitle}>ミッション</h2>
               <p className={styles.missionText}>
-                観察することから始まる、価値創造。
+                想像は現実へ。
                 <br />
-                クライアントの潜在的なニーズを丁寧に観察し、
+                クライアントの潜在的なニーズを丁寧にヒアリングし、
                 <br />
                 本質的な課題を見極め、最適なソリューションを提供します。
               </p>
