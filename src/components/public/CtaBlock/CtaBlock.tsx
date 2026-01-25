@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/shared/Button/Button";
+import { GradientButton } from "@/components/shared/GradientButton";
 import styles from "./CtaBlock.module.css";
 
 interface CtaBlockProps {
@@ -24,9 +24,9 @@ export function CtaBlock({
         {subtitle && <p className={styles.ctaSubtitle}>{subtitle}</p>}
         <div className={styles.ctaButtonWrapper}>
           <Link href={buttonLink}>
-            <Button variant="primary" size="lg">
-              {buttonText} →
-            </Button>
+            <GradientButton variant="dark" size="lg">
+              {buttonText}
+            </GradientButton>
           </Link>
         </div>
       </div>

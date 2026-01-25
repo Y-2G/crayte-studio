@@ -2,7 +2,7 @@ import styles from './Button.module.css';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'outline' | 'outlineLight';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   loading?: boolean;

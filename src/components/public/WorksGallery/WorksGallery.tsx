@@ -8,6 +8,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Work } from "@/types";
+import { GradientButton } from "@/components/shared/GradientButton";
 import styles from "./WorksGallery.module.css";
 
 interface WorksGalleryProps {
@@ -42,9 +43,10 @@ export function WorksGallery({ works, className }: WorksGalleryProps) {
         </div>
 
         <div className={styles.footer}>
-          <Link href="/works" className={styles.viewAllLink}>
-            <span>全ての実績を見る</span>
-            <span className={styles.arrow}>→</span>
+          <Link href="/works">
+            <GradientButton variant="dark" size="lg">
+              全ての実績を見る
+            </GradientButton>
           </Link>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRecentPosts, getRecentWorks } from "@/lib/data";
-import { Button } from "@/components/shared/Button/Button";
+import { GradientButton } from "@/components/shared/GradientButton";
 import { HeroVideo } from "@/components/public/HeroVideo";
 import { NewsTimeline } from "@/components/public/NewsTimeline";
 import { ServiceShowcase } from "@/components/public/ServiceShowcase";
@@ -68,14 +68,14 @@ export default async function HomePage() {
           </p>
           <div className={styles.heroCta}>
             <Link href="/contact">
-              <Button variant="primary" size="lg">
+              <GradientButton variant="dark" size="lg">
                 お問い合わせ
-              </Button>
+              </GradientButton>
             </Link>
             <Link href="/works">
-              <Button variant="ghost" size="lg">
+              <GradientButton variant="dark" size="lg">
                 実績を見る
-              </Button>
+              </GradientButton>
             </Link>
           </div>
         </div>
@@ -96,7 +96,9 @@ export default async function HomePage() {
           <ScrollReveal delay={400}>
             <div className={styles.sectionCta}>
               <Link href="/news">
-                <Button variant="secondary">一覧を見る</Button>
+                <GradientButton variant="light" size="md">
+                  一覧を見る
+                </GradientButton>
               </Link>
             </div>
           </ScrollReveal>

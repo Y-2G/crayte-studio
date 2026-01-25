@@ -121,6 +121,16 @@
   --redesign-text-muted: #6B7280;
   --redesign-text-light: #F5F5F5;
 
+  /* === ブランドグラデーション（logo-brand.png準拠） === */
+  --color-brand-pink: #FF1493;        /* Deep Pink */
+  --color-brand-purple: #9370DB;      /* Medium Purple */
+  --color-brand-cyan: #00BFFF;        /* Deep Sky Blue */
+  --color-brand-orange: #FFA500;      /* Orange accent */
+  --gradient-brand: linear-gradient(135deg, #FF1493 0%, #9370DB 50%, #00BFFF 100%);
+  --gradient-brand-reverse: linear-gradient(135deg, #00BFFF 0%, #9370DB 50%, #FF1493 100%);
+  --gradient-brand-horizontal: linear-gradient(90deg, #FF1493 0%, #9370DB 50%, #00BFFF 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(255, 20, 147, 0.1) 0%, rgba(147, 112, 219, 0.1) 50%, rgba(0, 191, 255, 0.1) 100%);
+
   /* === トランスフォーム（ホバー用） === */
   --transform-hover-lift: translateY(-4px);
   --transform-hover-scale: scale(1.02);
