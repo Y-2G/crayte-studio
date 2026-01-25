@@ -27,7 +27,6 @@
   top: -200px;
   right: -100px;
   pointer-events: none;
-  aria-hidden: true;
 }
 
 /* 装飾的な円形グラデーション（左下） */
@@ -45,7 +44,6 @@
   bottom: -100px;
   left: -50px;
   pointer-events: none;
-  aria-hidden: true;
 }
 
 .ctaContainer {
@@ -71,27 +69,6 @@
   opacity: 0.9;
 }
 
-.ctaButtonWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--spacing-8);
-}
-
-.ctaButtonWrapper a {
-  text-decoration: none;
-  transition: transform var(--transition-normal);
-  display: inline-block;
-}
-
-.ctaButtonWrapper a:hover {
-  transform: var(--transform-hover-lift);
-}
-
-.ctaButtonWrapper a:active {
-  transform: translateY(-2px);
-}
-
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .ctaButtonWrapper a {
     transition: none;
