@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getRecentPosts, getRecentWorks } from "@/lib/data";
 import { Button } from "@/components/shared/Button/Button";
 import { Card, CardBody } from "@/components/shared/Card/Card";
+import { HeroVideo } from "@/components/public/HeroVideo";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default async function HomePage() {
   return (
     <div className={styles.page}>
       {/* Hero Section */}
-      <section className={styles.hero}>
+      <HeroVideo videoSrc="/movies/CRAYTE.mp4">
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             観察から始まる、
@@ -67,7 +68,7 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </HeroVideo>
 
       {/* Services Section */}
       <section className={styles.section}>

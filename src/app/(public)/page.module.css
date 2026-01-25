@@ -3,13 +3,6 @@
 }
 
 /* Hero Section */
-.hero {
-  background: linear-gradient(135deg, var(--public-primary) 0%, var(--public-primary-dark) 100%);
-  color: var(--public-bg);
-  padding: var(--spacing-20) var(--spacing-4);
-  text-align: center;
-}
-
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
