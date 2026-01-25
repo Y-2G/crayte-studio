@@ -1,0 +1,75 @@
+.statsSection {
+  padding: var(--spacing-12) var(--spacing-4);
+  background: var(--redesign-bg-white);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.statItem {
+  text-align: center;
+  min-width: 100px;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--redesign-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--redesign-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+/* Tablet: 3-column layout */
+@media (min-width: 768px) {
+  .statsSection {
+    padding: var(--spacing-16) var(--spacing-5);
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-12);
+  }
+
+  .statValue {
+    font-size: 3rem;
+  }
+
+  .statItem {
+    min-width: 120px;
+  }
+}
+
+/* Desktop: Enhanced spacing */
+@media (min-width: 1024px) {
+  .statsSection {
+    padding: var(--spacing-20) var(--spacing-6);
+  }
+
+  .statsGrid {
+    gap: var(--spacing-16);
+  }
+
+  .statValue {
+    font-size: 3.5rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .statValue {
+    transition: none;
+  }
+}

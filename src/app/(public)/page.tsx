@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getRecentPosts, getRecentWorks } from "@/lib/data";
 import { Button } from "@/components/shared/Button/Button";
-import { Card, CardBody } from "@/components/shared/Card/Card";
 import { HeroVideo } from "@/components/public/HeroVideo";
 import { NewsTimeline } from "@/components/public/NewsTimeline";
+import { ServiceShowcase } from "@/components/public/ServiceShowcase";
+import { WorksGallery } from "@/components/public/WorksGallery";
+import { StatsCounter } from "@/components/public/StatsCounter";
+import { CtaBlock } from "@/components/public/CtaBlock";
+import { ScrollReveal } from "@/components/public/ScrollReveal";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -20,23 +24,29 @@ export default async function HomePage() {
   const services = [
     {
       title: "Web制作",
+      titleEn: "Web Development",
       description:
         "コーポレートサイト、ECサイト、Webアプリケーションなど、目的に合わせた最適なWeb制作を提供します。",
-      icon: "🌐",
+      tags: ["Corporate", "EC", "Web App"],
+      icon: "web" as const,
       link: "/services#web",
     },
     {
       title: "イベント企画・運営",
+      titleEn: "Event Planning",
       description:
         "企画から当日運営まで一貫してサポート。記憶に残る体験を創出します。",
-      icon: "🎪",
+      tags: ["Planning", "Operation", "Hybrid"],
+      icon: "event" as const,
       link: "/services#event",
     },
     {
       title: "映像制作",
+      titleEn: "Video Production",
       description:
         "ブランドストーリーを映像で表現。企業PR、ドキュメンタリー、CM制作など幅広く対応。",
-      icon: "🎬",
+      tags: ["PR", "Documentary", "CM"],
+      icon: "video" as const,
       link: "/services#video",
     },
   ];
@@ -74,129 +84,44 @@ export default async function HomePage() {
       {/* News Section */}
       <section className={styles.section}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>News</h2>
-          <p className={styles.sectionDescription}>最新のお知らせ</p>
+          <ScrollReveal>
+            <h2 className={styles.sectionTitle}>News</h2>
+            <p className={styles.sectionDescription}>最新のお知らせ</p>
+          </ScrollReveal>
 
-          <NewsTimeline posts={recentPosts} />
+          <ScrollReveal delay={200}>
+            <NewsTimeline posts={recentPosts} />
+          </ScrollReveal>
 
-          <div className={styles.sectionCta}>
-            <Link href="/news">
-              <Button variant="secondary">一覧を見る</Button>
-            </Link>
-          </div>
+          <ScrollReveal delay={400}>
+            <div className={styles.sectionCta}>
+              <Link href="/news">
+                <Button variant="secondary">一覧を見る</Button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>サービス</h2>
-          <p className={styles.sectionDescription}>
-            3つのコア領域で、クライアントのビジネスをサポートします
-          </p>
-
-          <div className={styles.servicesGrid}>
-            {services.map((service) => (
-              <Link
-                key={service.title}
-                href={service.link}
-                className={styles.serviceLink}
-              >
-                <Card
-                  variant="bordered"
-                  padding="lg"
-                  className={styles.serviceCard}
-                >
-                  <CardBody>
-                    <div className={styles.serviceIcon}>{service.icon}</div>
-                    <h3 className={styles.serviceTitle}>{service.title}</h3>
-                    <p className={styles.serviceDescription}>
-                      {service.description}
-                    </p>
-                  </CardBody>
-                </Card>
-              </Link>
-            ))}
-          </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/services">
-              <Button variant="secondary">サービス詳細を見る</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ScrollReveal>
+        <ServiceShowcase services={services} />
+      </ScrollReveal>
 
       {/* Works Section */}
-      <section
-        className={styles.section}
-        style={{ backgroundColor: "var(--public-bg-alt)" }}
-      >
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>実績</h2>
-          <p className={styles.sectionDescription}>最近の実績をご紹介します</p>
+      <ScrollReveal>
+        <WorksGallery works={recentWorks} />
+      </ScrollReveal>
 
-          <div className={styles.worksGrid}>
-            {recentWorks.map((work) => (
-              <Link
-                key={work.id}
-                href={`/works/${work.slug}`}
-                className={styles.workLink}
-              >
-                <Card
-                  variant="elevated"
-                  padding="none"
-                  className={styles.workCard}
-                >
-                  <div className={styles.workImagePlaceholder}>
-                    {work.images.length > 0 ? (
-                      <span className={styles.workImageText}>画像</span>
-                    ) : (
-                      <span className={styles.workImageText}>準備中</span>
-                    )}
-                  </div>
-                  <CardBody>
-                    <h3 className={styles.workTitle}>{work.title}</h3>
-                    <p className={styles.workClient}>{work.client}</p>
-                    <div className={styles.workTags}>
-                      {work.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className={styles.workTag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardBody>
-                </Card>
-              </Link>
-            ))}
-          </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/works">
-              <Button variant="secondary">実績一覧を見る</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Stats Section */}
+      <ScrollReveal>
+        <StatsCounter />
+      </ScrollReveal>
 
       {/* CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>お気軽にご相談ください</h2>
-          <p className={styles.ctaDescription}>
-            プロジェクトに関するご相談、お見積もりなど、
-            <br />
-            お気軽にお問い合わせください。
-          </p>
-          <div className={styles.ctaCta}>
-            <Link href="/contact">
-              <Button variant="primary" size="lg">
-                お問い合わせ
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ScrollReveal>
+        <CtaBlock />
+      </ScrollReveal>
     </div>
   );
 }
