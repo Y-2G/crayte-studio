@@ -8,42 +8,42 @@ crayte-studio プロジェクトのデータ層とサンプルデータに関す
 
 **場所**: `/src/data/`
 
-| ファイル | 内容 | 件数 | ホラー要素 |
-|---------|------|------|-----------|
-| `posts.json` | ニュース・記事 | 7件 | post-006 (draft, スタッフ失踪に関する内部文書) |
-| `works.json` | 実績・ポートフォリオ | 7件 | work-006 (sealed, 封印されたプロジェクト) |
-| `staff.json` | スタッフ紹介 | 7名 | staff-007 (missing, 連絡が取れないスタッフ) |
-| `pages.json` | 固定ページ | 5件 | なし |
-| `inbox.json` | お問い合わせ受信 | 5件 | inbox-005 (sign, 観察者からの警告) |
+| ファイル     | 内容                 | 件数 | ホラー要素                                     |
+| ------------ | -------------------- | ---- | ---------------------------------------------- |
+| `posts.json` | ニュース・記事       | 7件  | post-006 (draft, スタッフ失踪に関する内部文書) |
+| `works.json` | 実績・ポートフォリオ | 7件  | work-006 (sealed, 封印されたプロジェクト)      |
+| `staff.json` | スタッフ紹介         | 7名  | staff-007 (missing, 連絡が取れないスタッフ)    |
+| `pages.json` | 固定ページ           | 5件  | なし                                           |
+| `inbox.json` | お問い合わせ受信     | 5件  | inbox-005 (sign, 観察者からの警告)             |
 
 ### 2. データアクセス関数
 
 **場所**: `/src/lib/data/`
 
-| ファイル | 主な関数 |
-|---------|---------|
-| `posts.ts` | `getPublishedPosts()`, `getPostBySlug()`, `getPostsByCategory()` など |
-| `works.ts` | `getPublicWorks()`, `getWorkBySlug()`, `getWorksByTag()` など |
-| `staff.ts` | `getActiveStaff()`, `getStaffBySlug()`, `getStaffByTeam()` など |
-| `pages.ts` | `getPublishedPages()`, `getPageBySlug()`, `getPagesByTemplate()` など |
+| ファイル   | 主な関数                                                                               |
+| ---------- | -------------------------------------------------------------------------------------- |
+| `posts.ts` | `getPublishedPosts()`, `getPostBySlug()`, `getPostsByCategory()` など                  |
+| `works.ts` | `getPublicWorks()`, `getWorkBySlug()`, `getWorksByTag()` など                          |
+| `staff.ts` | `getActiveStaff()`, `getStaffBySlug()`, `getStaffByTeam()` など                        |
+| `pages.ts` | `getPublishedPages()`, `getPageBySlug()`, `getPagesByTemplate()` など                  |
 | `inbox.ts` | `getAllInboxMessages()`, `getOpenInboxMessages()`, `getInboxMessagesByCategory()` など |
-| `index.ts` | 全関数の re-export |
+| `index.ts` | 全関数の re-export                                                                     |
 
 ### 3. ホラー状態管理
 
 **場所**: `/src/lib/horror/`
 
-| ファイル | 主な関数 |
-|---------|---------|
-| `state.ts` | `initHorrorState()`, `getAnomalyLevel()`, `exposeAnomaly()`, `shouldShowHorrorElement()` など |
+| ファイル     | 主な関数                                                                                          |
+| ------------ | ------------------------------------------------------------------------------------------------- |
+| `state.ts`   | `initHorrorState()`, `getAnomalyLevel()`, `exposeAnomaly()`, `shouldShowHorrorElement()` など     |
 | `filters.ts` | `filterSealedPosts()`, `filterSealedWorks()`, `filterSealedStaff()`, `filterInboxMessages()` など |
-| `index.ts` | 全関数の re-export |
+| `index.ts`   | 全関数の re-export                                                                                |
 
 ## 会社設定（架空企業 crayte studio）
 
 ### 基本情報
 
-- **社名**: 株式会社crayte studio（クレイトスタジオ）
+- **社名**: 株式会社CRAYTE STUDIO（クレイトスタジオ）
 - **設立**: 2015年1月
 - **代表**: 田中 一郎
 - **所在地**: 〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F
@@ -78,12 +78,12 @@ crayte-studio プロジェクトのデータ層とサンプルデータに関す
 
 ### 異常レベルの進行
 
-| レベル | 閲覧数 | 演出内容 |
-|-------|--------|---------|
-| **none** | 0-1 | 正常な企業サイト |
-| **subtle** | 2-4 | 微細な違和感（誤字、日付のズレ） |
-| **noticeable** | 5-7 | 明確な異常（スタッフの失踪、封印されたプロジェクト） |
-| **severe** | 8+ | 重大な異常（謎のメッセージ、書き換えられた履歴） |
+| レベル         | 閲覧数 | 演出内容                                             |
+| -------------- | ------ | ---------------------------------------------------- |
+| **none**       | 0-1    | 正常な企業サイト                                     |
+| **subtle**     | 2-4    | 微細な違和感（誤字、日付のズレ）                     |
+| **noticeable** | 5-7    | 明確な異常（スタッフの失踪、封印されたプロジェクト） |
+| **severe**     | 8+     | 重大な異常（謎のメッセージ、書き換えられた履歴）     |
 
 ### ホラー要素を含むデータ
 
@@ -119,7 +119,7 @@ crayte-studio プロジェクトのデータ層とサンプルデータに関す
 ### 公開サイトでの使用
 
 ```typescript
-import { getPublishedPosts, getActiveStaff, getPublicWorks } from '@/lib/data';
+import { getPublishedPosts, getActiveStaff, getPublicWorks } from "@/lib/data";
 
 // ホラー要素は自動的に除外される
 const posts = await getPublishedPosts();
@@ -130,7 +130,7 @@ const works = await getPublicWorks();
 ### 管理画面での使用
 
 ```typescript
-import { getAllPosts, getAllStaff, getAllWorks } from '@/lib/data';
+import { getAllPosts, getAllStaff, getAllWorks } from "@/lib/data";
 
 // 全てのデータ（ホラー要素含む）を取得
 const allPosts = await getAllPosts();
@@ -141,14 +141,18 @@ const allWorks = await getAllWorks();
 ### ホラー状態の管理
 
 ```typescript
-import { initHorrorState, exposeAnomaly, filterSealedStaff } from '@/lib/horror';
-import { getAllStaff } from '@/lib/data';
+import {
+  initHorrorState,
+  exposeAnomaly,
+  filterSealedStaff,
+} from "@/lib/horror";
+import { getAllStaff } from "@/lib/data";
 
 // 初期化
 let horrorState = initHorrorState();
 
 // ユーザーが異常要素を閲覧
-horrorState = exposeAnomaly(horrorState, 'anomaly-001');
+horrorState = exposeAnomaly(horrorState, "anomaly-001");
 
 // フィルタリング
 const staff = await getAllStaff();
@@ -197,7 +201,7 @@ export async function getAllPosts(): Promise<Post[]> {
 
 // After (API)
 export async function getAllPosts(): Promise<Post[]> {
-  const response = await fetch('/api/posts');
+  const response = await fetch("/api/posts");
   return response.json();
 }
 ```

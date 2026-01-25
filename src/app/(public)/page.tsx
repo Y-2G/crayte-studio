@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "crayte studio | Web制作・イベント企画",
   description:
-    "株式会社crayte studioは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。想像から始まる価値創造で、クライアントのビジネスをサポートします。",
+    "株式会社CRAYTE STUDIOは、Webサイト制作、イベント企画・運営、映像制作を手がけるクリエイティブカンパニーです。想像から始まる価値創造で、クライアントのビジネスをサポートします。",
 };
 
 export default async function HomePage() {

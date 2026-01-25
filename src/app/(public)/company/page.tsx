@@ -1,29 +1,33 @@
-import type { Metadata } from 'next';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: '会社概要 | crayte studio',
-  description: '株式会社crayte studioの会社情報、ミッション・ビジョン、沿革をご紹介します。',
+  title: "会社概要 | crayte studio",
+  description:
+    "株式会社CRAYTE STUDIOの会社情報、ミッション・ビジョン、沿革をご紹介します。",
 };
 
 export default function CompanyPage() {
   const companyInfo = [
-    { label: '社名', value: '株式会社crayte studio（クレイトスタジオ）' },
-    { label: '所在地', value: '〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F' },
-    { label: '設立', value: '2015年4月1日' },
-    { label: '代表取締役', value: '田中 一郎' },
-    { label: '資本金', value: '5,000万円' },
-    { label: '事業内容', value: 'Web制作、イベント企画・運営、映像制作' },
+    { label: "社名", value: "株式会社CRAYTE STUDIO（クレイトスタジオ）" },
+    {
+      label: "所在地",
+      value: "〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F",
+    },
+    { label: "設立", value: "2015年4月1日" },
+    { label: "代表取締役", value: "田中 一郎" },
+    { label: "資本金", value: "5,000万円" },
+    { label: "事業内容", value: "Web制作、イベント企画・運営、映像制作" },
   ];
 
   const history = [
-    { year: '2015年', event: '株式会社crayte studio設立。Web制作事業を開始' },
-    { year: '2016年', event: 'イベント企画・運営事業を開始' },
-    { year: '2017年', event: '映像制作事業を開始。従業員10名に拡大' },
-    { year: '2018年', event: 'オフィスを拡張移転（渋谷区内）' },
-    { year: '2020年', event: 'リモートワーク体制を導入' },
-    { year: '2022年', event: '従業員20名に拡大' },
-    { year: '2024年', event: '渋谷ヒカリエに本社移転' },
+    { year: "2015年", event: "株式会社CRAYTE STUDIO設立。Web制作事業を開始" },
+    { year: "2016年", event: "イベント企画・運営事業を開始" },
+    { year: "2017年", event: "映像制作事業を開始。従業員10名に拡大" },
+    { year: "2018年", event: "オフィスを拡張移転（渋谷区内）" },
+    { year: "2020年", event: "リモートワーク体制を導入" },
+    { year: "2022年", event: "従業員20名に拡大" },
+    { year: "2024年", event: "渋谷ヒカリエに本社移転" },
   ];
 
   return (
@@ -53,7 +57,10 @@ export default function CompanyPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className={styles.section} style={{ backgroundColor: 'var(--public-bg-alt)' }}>
+      <section
+        className={styles.section}
+        style={{ backgroundColor: "var(--public-bg-alt)" }}
+      >
         <div className={styles.container}>
           <div className={styles.missionGrid}>
             <div className={styles.missionCard}>
@@ -94,15 +101,20 @@ export default function CompanyPage() {
       </section>
 
       {/* Access */}
-      <section className={styles.section} style={{ backgroundColor: 'var(--public-bg-alt)' }}>
+      <section
+        className={styles.section}
+        style={{ backgroundColor: "var(--public-bg-alt)" }}
+      >
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>アクセス</h2>
           <div className={styles.access}>
             <div className={styles.accessInfo}>
               <h3 className={styles.accessTitle}>所在地</h3>
               <address className={styles.accessAddress}>
-                〒150-0002<br />
-                東京都渋谷区渋谷2-21-1<br />
+                〒150-0002
+                <br />
+                東京都渋谷区渋谷2-21-1
+                <br />
                 渋谷ヒカリエ 15F
               </address>
               <div className={styles.accessTransit}>

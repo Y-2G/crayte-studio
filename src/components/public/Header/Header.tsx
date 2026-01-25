@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -24,7 +25,14 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={closeMenu}>
-          <span className={styles.logoText}>CRAYTE STUDIO</span>
+          <Image
+            src="/images/logo-brand.png"
+            alt="CRAYTE STUDIO"
+            width={845}
+            height={296}
+            className={styles.logoImage}
+            priority
+          />
         </Link>
 
         <nav

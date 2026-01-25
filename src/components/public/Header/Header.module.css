@@ -33,6 +33,13 @@
   display: inline-block;
 }
 
+.logoImage {
+  display: block;
+  height: auto;
+  width: auto;
+  max-height: 40px;
+}
+
 /* Desktop Navigation */
 .nav {
   display: none;
@@ -61,7 +68,7 @@
 }
 
 .navLink::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
