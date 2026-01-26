@@ -120,51 +120,6 @@
   opacity: 1;
 }
 
-.outline:focus-visible {
-  outline: 2px solid var(--color-brand-pink);
-  outline-offset: 4px;
-}
-
-/* outlineLight: 透明背景 + グラデーションボーダー → ホバーでグラデーション背景（明るい背景用） */
-.outlineLight {
-  position: relative;
-  background-color: transparent;
-  color: var(--redesign-text-dark);
-  border: 2px solid transparent;
-  border-radius: var(--border-radius-full);
-  font-weight: var(--font-weight-semibold);
-  z-index: 0;
-  transition:
-    transform var(--transition-normal),
-    color var(--transition-normal);
-}
-
-.outlineLight::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--border-radius-full);
-  padding: 2px;
-  background: var(--gradient-brand);
-  mask-composite: exclude;
-  z-index: -1;
-  transition: opacity var(--transition-normal);
-}
-
-.outlineLight:hover:not(:disabled) {
-  background: var(--gradient-brand);
-  color: var(--color-white);
-}
-
-.outlineLight:hover:not(:disabled)::before {
-  opacity: 0;
-}
-
-.outlineLight:focus-visible {
-  outline: 2px solid var(--color-brand-purple);
-  outline-offset: 4px;
-}
-
 /* Reduced motion support for outline variants */
 @media (prefers-reduced-motion: reduce) {
   .outline,

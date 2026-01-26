@@ -183,55 +183,6 @@
   justify-content: center;
 }
 
-.viewAllLink {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--redesign-text-light);
-  text-decoration: none;
-  padding: var(--spacing-4) var(--spacing-6);
-  border: 2px solid transparent;
-  border-radius: var(--border-radius-full);
-  background-color: transparent;
-  z-index: 0;
-  transition: transform var(--transition-normal);
-}
-
-.viewAllLink::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--border-radius-full);
-  padding: 2px;
-  background: var(--gradient-brand);
-  z-index: -1;
-  transition: background var(--transition-normal);
-}
-
-.viewAllLink:hover {
-  background: var(--gradient-brand);
-}
-
-.viewAllLink:hover::before {
-  opacity: 0;
-}
-
-.arrow {
-  transition: transform var(--transition-fast);
-}
-
-.viewAllLink:hover .arrow {
-  transform: translateX(4px);
-}
-
-.viewAllLink:focus-visible {
-  outline: 2px solid var(--color-brand-pink);
-  outline-offset: 4px;
-}
-
 /* ============================================================================
  * Responsive Design
  * ============================================================================ */
