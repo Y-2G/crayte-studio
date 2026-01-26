@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getRecentPosts, getRecentWorks } from "@/lib/data";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { HeroVideo } from "@/components/public/HeroVideo";
@@ -67,10 +66,20 @@ export default async function HomePage() {
             クライアントの潜在ニーズを引き出し、新しい価値を創造します。
           </p>
           <div className={styles.heroCta}>
-            <GradientButton href="/contact" variant="dark" size="lg">
+            <GradientButton
+              href="/contact"
+              variant="dark"
+              size="lg"
+              className={styles.heroCtaButton}
+            >
               お問い合わせ
             </GradientButton>
-            <GradientButton href="/works" variant="dark" size="lg">
+            <GradientButton
+              href="/works"
+              variant="dark"
+              size="lg"
+              className={styles.heroCtaButton}
+            >
               実績を見る
             </GradientButton>
           </div>

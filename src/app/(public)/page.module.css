@@ -50,6 +50,10 @@
   margin-top: var(--spacing-4);
 }
 
+.heroCtaButton {
+  min-width: 12rem;
+}
+
 /* Section Base */
 .section {
   padding: var(--spacing-20) var(--spacing-4);
