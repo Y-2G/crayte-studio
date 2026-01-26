@@ -18,16 +18,19 @@ export function CtaBlock({
   className,
 }: CtaBlockProps) {
   return (
-    <section className={`${styles.ctaSection} ${className || ""}`} aria-labelledby="cta-heading">
+    <section
+      className={`${styles.ctaSection} ${className || ""}`}
+      aria-labelledby="cta-heading"
+    >
       <div className={styles.ctaContainer}>
-        <h2 id="cta-heading" className={styles.ctaTitle}>{titleEn}</h2>
+        <h2 id="cta-heading" className={styles.ctaTitle}>
+          {titleEn}
+        </h2>
         {subtitle && <p className={styles.ctaSubtitle}>{subtitle}</p>}
         <div className={styles.ctaButtonWrapper}>
-          <Link href={buttonLink}>
-            <GradientButton variant="dark" size="lg">
-              {buttonText}
-            </GradientButton>
-          </Link>
+          <GradientButton href={buttonLink} variant="dark" size="lg">
+            {buttonText}
+          </GradientButton>
         </div>
       </div>
     </section>

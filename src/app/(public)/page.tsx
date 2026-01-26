@@ -67,16 +67,12 @@ export default async function HomePage() {
             クライアントの潜在ニーズを引き出し、新しい価値を創造します。
           </p>
           <div className={styles.heroCta}>
-            <Link href="/contact">
-              <GradientButton variant="dark" size="lg">
-                お問い合わせ
-              </GradientButton>
-            </Link>
-            <Link href="/works">
-              <GradientButton variant="dark" size="lg">
-                実績を見る
-              </GradientButton>
-            </Link>
+            <GradientButton href="/contact" variant="dark" size="lg">
+              お問い合わせ
+            </GradientButton>
+            <GradientButton href="/works" variant="dark" size="lg">
+              実績を見る
+            </GradientButton>
           </div>
         </div>
       </HeroVideo>
@@ -95,11 +91,9 @@ export default async function HomePage() {
 
           <ScrollReveal delay={400}>
             <div className={styles.sectionCta}>
-              <Link href="/news">
-                <GradientButton variant="light" size="md">
-                  一覧を見る
-                </GradientButton>
-              </Link>
+              <GradientButton href="/news" variant="light" size="lg">
+                一覧を見る
+              </GradientButton>
             </div>
           </ScrollReveal>
         </div>

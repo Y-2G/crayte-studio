@@ -4,12 +4,12 @@
 
 /* Hero Section */
 .heroContent {
-  max-width: 900px;
   margin: 0 auto;
   padding: var(--spacing-4);
 }
 
 .heroTitle {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
@@ -17,11 +17,13 @@
   margin: 0 0 var(--spacing-8);
   letter-spacing: -0.02em;
   background: linear-gradient(
-    135deg,
-    #a855f7 0%,
-    #ec4899 30%,
-    #f43f5e 60%,
-    #8b5cf6 100%
+    90deg,
+    #e7060e 0%,
+    #c6356f 20%,
+    #4c6aff 40%,
+    #6edbff 60%,
+    #ff61d2e5 800px,
+    #0f36fc 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -73,7 +75,7 @@
   text-align: center;
   color: var(--redesign-text-muted);
   margin: 0 0 var(--spacing-12);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
   letter-spacing: 0.05em;
 }
@@ -83,8 +85,6 @@
   justify-content: center;
   margin-top: var(--spacing-12);
 }
-
-
 
 /* News */
 .newsList {
@@ -132,7 +132,6 @@
   margin: 0;
   color: var(--public-text);
 }
-
 
 /* Tablet */
 @media (min-width: 768px) {
