@@ -5,7 +5,9 @@
 .newsTimeline {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* ============================================================================
@@ -14,53 +16,84 @@
 
 .featuredCard {
   display: block;
-  padding: var(--spacing-6);
-  background: var(--public-bg);
-  border: 2px solid var(--public-primary);
-  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-8);
+  background: var(--redesign-bg-white);
+  border: none;
+  border-radius: var(--border-radius-xl);
   text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: transform var(--transition-normal),
     box-shadow var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.featuredCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--color-brand-pink) 0%,
+    var(--color-brand-purple) 50%,
+    var(--color-brand-cyan) 100%
+  );
 }
 
 .featuredCard:hover {
-  transform: var(--transform-hover-lift);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 .featuredBadge {
-  display: inline-block;
-  font-size: var(--font-size-sm);
-  color: var(--public-primary);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-brand-pink);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .featuredTitle {
+  font-family: var(--font-display);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--public-text);
-  margin-bottom: var(--spacing-3);
+  color: var(--redesign-text-dark);
+  margin-bottom: var(--spacing-4);
   line-height: 1.4;
 }
 
 .featuredMeta {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
   font-size: var(--font-size-sm);
-  color: var(--public-text-muted);
+  color: var(--redesign-text-muted);
 }
 
 .date {
   font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--redesign-text-muted);
 }
 
 .category {
-  padding: var(--spacing-1) var(--spacing-2);
-  background: var(--public-bg-alt);
-  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-1) var(--spacing-3);
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
+  border-radius: var(--border-radius-full);
   font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  color: var(--color-brand-purple);
 }
 
 /* ============================================================================
@@ -69,70 +102,86 @@
 
 .timeline {
   position: relative;
-  padding-left: var(--spacing-6);
-  margin-top: var(--spacing-4);
+  padding-left: var(--spacing-8);
+  margin-top: var(--spacing-2);
 }
 
 /* Vertical line */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
+  left: 10px;
+  top: 8px;
+  bottom: 8px;
   width: 2px;
-  background: var(--public-border);
+  background: linear-gradient(
+    180deg,
+    var(--public-border) 0%,
+    transparent 100%
+  );
+  border-radius: var(--border-radius-full);
 }
 
 .timelineItem {
   position: relative;
   display: grid;
   grid-template-columns: auto auto 1fr;
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
   align-items: center;
-  padding: var(--spacing-3) 0;
+  padding: var(--spacing-4) var(--spacing-4);
   text-decoration: none;
   color: inherit;
-  transition: background-color var(--transition-fast);
-  border-radius: var(--border-radius-sm);
-  margin-left: calc(var(--spacing-6) * -1);
-  padding-left: var(--spacing-6);
-  padding-right: var(--spacing-3);
+  transition: all var(--transition-fast);
+  border-radius: var(--border-radius-lg);
+  margin-left: calc(var(--spacing-4) * -1);
+  padding-left: var(--spacing-8);
 }
 
 .timelineItem:hover {
-  background: var(--public-bg-alt);
+  background: rgba(168, 85, 247, 0.04);
 }
 
 .timelineDot {
   position: absolute;
-  left: 4px;
+  left: 6px;
   width: 10px;
   height: 10px;
-  background: var(--public-primary);
+  background: var(--redesign-bg-white);
+  border: 2px solid var(--color-brand-purple);
   border-radius: 50%;
-  border: 2px solid var(--public-bg);
+  transition: all var(--transition-fast);
+}
+
+.timelineItem:hover .timelineDot {
+  background: var(--color-brand-purple);
+  transform: scale(1.2);
 }
 
 .timelineDate {
   font-family: var(--font-mono);
-  font-size: var(--font-size-sm);
-  color: var(--public-text-muted);
+  font-size: var(--font-size-xs);
+  color: var(--redesign-text-muted);
   white-space: nowrap;
 }
 
 .timelineCategory {
-  font-size: var(--font-size-sm);
-  color: var(--public-text-muted);
+  font-size: var(--font-size-xs);
+  color: var(--redesign-text-muted);
   white-space: nowrap;
 }
 
 .timelineTitle {
-  font-size: var(--font-size-base);
-  color: var(--public-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--redesign-text-dark);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.timelineItem:hover .timelineTitle {
+  color: var(--color-brand-purple);
 }
 
 /* ============================================================================
@@ -141,11 +190,11 @@
 
 @media (max-width: 767px) {
   .newsTimeline {
-    gap: var(--spacing-6);
+    gap: var(--spacing-4);
   }
 
   .featuredCard {
-    padding: var(--spacing-5);
+    padding: var(--spacing-6);
   }
 
   .featuredTitle {
@@ -153,23 +202,23 @@
   }
 
   .timeline {
-    padding-left: var(--spacing-5);
+    padding-left: var(--spacing-6);
   }
 
   .timeline::before {
-    left: 6px;
+    left: 8px;
   }
 
   .timelineItem {
     grid-template-columns: 1fr;
     gap: var(--spacing-1);
-    margin-left: calc(var(--spacing-5) * -1);
-    padding-left: var(--spacing-5);
+    margin-left: calc(var(--spacing-3) * -1);
+    padding-left: var(--spacing-6);
     padding-right: var(--spacing-2);
   }
 
   .timelineDot {
-    left: 2px;
+    left: 4px;
     width: 8px;
     height: 8px;
   }
@@ -189,5 +238,15 @@
     overflow: visible;
     text-overflow: clip;
     font-size: var(--font-size-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .featuredCard {
+    padding: var(--spacing-10);
+  }
+
+  .featuredTitle {
+    font-size: var(--font-size-2xl);
   }
 }

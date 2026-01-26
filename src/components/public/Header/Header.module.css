@@ -1,19 +1,22 @@
 .header {
-  background-color: var(--public-bg);
-  border-bottom: 1px solid var(--public-border);
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-5);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 72px;
 }
 
 .logo {
@@ -58,28 +61,35 @@
 }
 
 .navLink {
-  color: var(--public-text);
+  color: var(--redesign-text-dark);
   text-decoration: none;
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   transition: color var(--transition-fast);
-  padding: var(--spacing-2) 0;
+  padding: var(--spacing-2) var(--spacing-1);
   position: relative;
+  letter-spacing: 0.01em;
 }
 
 .navLink::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
   width: 0;
   height: 2px;
-  background-color: var(--public-primary);
-  transition: width var(--transition-normal);
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-pink) 0%,
+    var(--color-brand-purple) 100%
+  );
+  transition: all var(--transition-normal);
+  transform: translateX(-50%);
+  border-radius: var(--border-radius-full);
 }
 
 .navLink:hover {
-  color: var(--public-primary);
+  color: var(--color-brand-purple);
 }
 
 .navLink:hover::after {
@@ -144,11 +154,13 @@
 @media (max-width: 767px) {
   .nav {
     position: fixed;
-    top: 64px;
+    top: 72px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--public-bg);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: var(--spacing-6) var(--spacing-4);
     transform: translateX(100%);
     transition: transform var(--transition-normal);
