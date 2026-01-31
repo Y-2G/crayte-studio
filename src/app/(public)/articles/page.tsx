@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { getPublishedPosts } from "@/lib/data";
+import { getAllArticles } from "@/lib/articles";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { ArticleFilter } from "@/components/public/ArticleFilter";
@@ -59,8 +60,39 @@ export default async function ArticlesPage({
   const activeFilter: FilterType =
     filterParam === "news" || filterParam === "blog" ? filterParam : "all";
 
-  const posts = await getPublishedPosts();
-  const sortedPosts = [...posts].sort((a, b) => {
+  const [posts, mdArticles] = await Promise.all([
+    getPublishedPosts(),
+    getAllArticles(),
+  ]);
+
+  // Merge MD articles into the post list (MD articles take priority for detail links)
+  const mdArticleIds = new Set(mdArticles.map((a) => a.id));
+
+  const allPosts: Post[] = [
+    ...posts.filter((p) => !mdArticleIds.has(p.slug)),
+    ...mdArticles.map(
+      (a) =>
+        ({
+          id: a.id,
+          slug: a.id,
+          title: a.title,
+          content: a.htmlContent,
+          excerpt: a.excerpt,
+          status: "publish" as const,
+          visibility: "public" as const,
+          category: a.category,
+          tags: a.tags,
+          author: a.author,
+          reviewComments: [],
+          meta: { fromMd: true },
+          createdAt: a.publishedAt,
+          updatedAt: a.updatedAt,
+          publishedAt: a.publishedAt,
+        } satisfies Post),
+    ),
+  ];
+
+  const sortedPosts = allPosts.sort((a, b) => {
     const dateA = new Date(a.publishedAt || a.createdAt);
     const dateB = new Date(b.publishedAt || b.createdAt);
     return dateB.getTime() - dateA.getTime();
@@ -98,10 +130,15 @@ export default async function ArticlesPage({
               <div className={styles.cardGrid}>
                 {filteredPosts.map((post, index) => {
                   const color = cardColors[index % cardColors.length];
+                  const isMdArticle =
+                    post.meta && "fromMd" in post.meta && post.meta.fromMd;
+                  const detailHref = isMdArticle
+                    ? `/articles/${post.slug}`
+                    : `/articles/${post.slug}`;
                   return (
                     <Link
                       key={post.id}
-                      href={`/news/${post.slug}`}
+                      href={detailHref}
                       className={styles.cardLink}
                     >
                       <article className={styles.card}>

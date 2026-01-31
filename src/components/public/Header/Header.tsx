@@ -17,7 +17,7 @@ export function Header() {
     { label: "会社概要", href: "/company" },
     { label: "サービス", href: "/services" },
     { label: "制作実績", href: "/works" },
-    { label: "ニュース", href: "/news" },
+    { label: "ニュース", href: "/articles?filter=news" },
   ];
 
   return (

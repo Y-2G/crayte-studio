@@ -234,7 +234,7 @@ export function PostEditor({
         />
         <div className={styles.permalink}>
           パーマリンク:{" "}
-          <span className={styles.permalinkValue}>/news/{post.slug}</span>
+          <span className={styles.permalinkValue}>/articles/{post.slug}</span>
         </div>
       </div>
 
@@ -279,7 +279,9 @@ export function PostEditor({
               return (
                 <div
                   key={comment.id}
-                  className={`${styles.comment} ${isHorrorComment ? horrorStyles.horrorReviewComment : ""}`}
+                  className={`${styles.comment} ${
+                    isHorrorComment ? horrorStyles.horrorReviewComment : ""
+                  }`}
                 >
                   <div className={styles.commentHeader}>
                     <strong

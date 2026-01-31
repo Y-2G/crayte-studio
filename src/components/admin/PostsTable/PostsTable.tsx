@@ -49,7 +49,7 @@ export function PostsTable({ posts }: PostsTableProps) {
             </Link>
             <span className={styles.separator}>|</span>
             <Link
-              href={`/news/${post.slug}`}
+              href={`/articles/${post.slug}`}
               className={styles.rowAction}
               target="_blank"
             >
@@ -75,7 +75,9 @@ export function PostsTable({ posts }: PostsTableProps) {
         return (
           <Link
             href={`/admin/posts?category=${post.category}`}
-            className={`${styles.categoryLink} ${isHorrorCategory ? horrorStyles.horrorText : ""}`}
+            className={`${styles.categoryLink} ${
+              isHorrorCategory ? horrorStyles.horrorText : ""
+            }`}
           >
             {post.category}
           </Link>
@@ -135,7 +137,9 @@ export function PostsTable({ posts }: PostsTableProps) {
         );
         return (
           <span
-            className={`${styles.date} ${dateInfo.isAnomalous ? horrorStyles.anomalousDate : ""}`}
+            className={`${styles.date} ${
+              dateInfo.isAnomalous ? horrorStyles.anomalousDate : ""
+            }`}
           >
             {dateInfo.formatted}
           </span>

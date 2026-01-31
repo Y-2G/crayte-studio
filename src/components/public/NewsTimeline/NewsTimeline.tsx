@@ -82,7 +82,7 @@ export function NewsTimeline({ posts, className }: NewsTimelineProps) {
                   aria-hidden="true"
                 />
                 <Link
-                  href={`/news/${post.slug}`}
+                  href={`/articles/${post.slug}`}
                   className={styles.itemContent}
                 >
                   <div className={styles.meta}>

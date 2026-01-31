@@ -33,7 +33,7 @@ src/
 │   │   ├── company/       # 会社概要
 │   │   ├── services/      # サービス
 │   │   ├── works/         # 制作実績
-│   │   ├── news/          # ニュース
+│   │   ├── articles/      # 記事一覧
 │   │   ├── staff/         # スタッフ
 │   │   └── contact/       # お問い合わせ
 │   └── admin/             # 管理画面（裏）

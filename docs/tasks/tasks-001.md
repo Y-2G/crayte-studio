@@ -44,8 +44,8 @@
 | `/services`     | サービス     | 静的         |
 | `/works`        | 制作実績一覧 | 動的（一覧） |
 | `/works/[slug]` | 制作実績詳細 | 動的（詳細） |
-| `/news`         | ニュース一覧 | 動的（一覧） |
-| `/news/[slug]`  | ニュース詳細 | 動的（詳細） |
+| `/articles`     | ニュース一覧 | 動的（一覧） |
+| `/articles`     | ニュース詳細 | 動的（詳細） |
 | `/staff`        | 社員一覧     | 動的（一覧） |
 | `/staff/[slug]` | 社員詳細     | 動的（詳細） |
 | `/contact`      | お問い合わせ | フォーム     |
@@ -78,7 +78,7 @@ src/
 │   │   ├── company/
 │   │   ├── services/
 │   │   ├── works/
-│   │   ├── news/
+│   │   ├── articles/
 │   │   ├── staff/
 │   │   └── contact/
 │   ├── admin/             # 管理画面（裏）
