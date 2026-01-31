@@ -27,9 +27,9 @@
   --admin-text: #3c434a;
   --admin-text-muted: #646970;
   --admin-border: #c3c4c7;
-  --admin-success: #00a32a;
-  --admin-warning: #dba617;
-  --admin-error: #d63638;
+  --admin-success: #007017;
+  --admin-warning: #946800;
+  --admin-error: #b32d2e;
 
   /* === ホラー要素カラー（段階的） === */
   --horror-subtle: rgba(139, 0, 0, 0.05);

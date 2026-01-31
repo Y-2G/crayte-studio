@@ -45,6 +45,6 @@
 
 .info {
   background-color: rgba(37, 99, 235, 0.1);
-  color: var(--public-primary);
+  color: var(--public-primary-dark);
   border: 1px solid var(--public-primary);
 }

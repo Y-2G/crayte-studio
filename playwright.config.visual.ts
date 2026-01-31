@@ -22,7 +22,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'http://localhost:6007',
-    animations: 'disabled',
+    // animations: 'disabled', // Note: animations option not available in current Playwright version
   },
 
   projects: [

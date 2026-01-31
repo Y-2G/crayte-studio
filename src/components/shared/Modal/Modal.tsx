@@ -69,6 +69,7 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
+        aria-label={title ? undefined : 'ダイアログ'}
         tabIndex={-1}
       >
         <div className={styles.header}>

@@ -134,6 +134,16 @@
 }
 
 /* CEO Card */
+.ceoCardLink {
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-normal);
+}
+
+.ceoCardLink:hover {
+  transform: translateY(-4px);
+}
+
 .ceoCard {
   display: flex;
   flex-direction: column;
@@ -186,6 +196,11 @@
   justify-items: center;
 }
 
+.memberCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 .memberCard {
   display: flex;
   flex-direction: column;
@@ -194,7 +209,7 @@
   transition: transform var(--transition-normal);
 }
 
-.memberCard:hover {
+.memberCardLink:hover .memberCard {
   transform: translateY(-4px);
 }
 
@@ -207,7 +222,7 @@
   transition: box-shadow var(--transition-normal);
 }
 
-.memberCard:hover .memberPhoto {
+.memberCardLink:hover .memberPhoto {
   box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
 }
 
@@ -383,7 +398,15 @@
     transition: none;
   }
 
-  .memberCard:hover {
+  .memberCardLink:hover .memberCard {
+    transform: none;
+  }
+
+  .ceoCardLink {
+    transition: none;
+  }
+
+  .ceoCardLink:hover {
     transform: none;
   }
 }

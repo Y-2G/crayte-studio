@@ -33,12 +33,12 @@ export const Default: Story = {
     sidebar: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <div style={{ padding: '16px', border: '1px solid #ddd', borderRadius: '4px' }}>
-          <h3 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>公開設定</h3>
+          <h2 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>公開設定</h2>
           <p style={{ margin: 0, fontSize: '13px' }}>ステータス: 下書き</p>
           <button style={{ marginTop: '8px', padding: '6px 12px' }}>公開する</button>
         </div>
         <div style={{ padding: '16px', border: '1px solid #ddd', borderRadius: '4px' }}>
-          <h3 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>カテゴリ</h3>
+          <h2 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>カテゴリ</h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px' }}>
             <li><label><input type="checkbox" aria-label="ニュース" /> ニュース</label></li>
             <li><label><input type="checkbox" aria-label="ブログ" /> ブログ</label></li>
