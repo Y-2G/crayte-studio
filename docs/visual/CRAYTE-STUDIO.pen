@@ -2665,7 +2665,6 @@
           "id": "ao1YF",
           "name": "Footer",
           "width": "fill_container",
-          "height": 300,
           "fill": {
             "type": "gradient",
             "gradientType": "linear",
@@ -2685,182 +2684,427 @@
               }
             ]
           },
-          "layout": "none",
+          "layout": "vertical",
           "children": [
             {
-              "type": "ellipse",
-              "id": "b2wiC",
-              "x": 420,
-              "y": 100,
-              "name": "footerGlow",
-              "opacity": 0.8,
-              "fill": {
-                "type": "gradient",
-                "gradientType": "radial",
-                "enabled": true,
-                "rotation": 0,
-                "size": {
-                  "width": 1,
-                  "height": 1
-                },
-                "colors": [
-                  {
-                    "color": "#9370DB15",
-                    "position": 0
-                  },
-                  {
-                    "color": "#9370DB00",
-                    "position": 1
-                  }
-                ]
-              },
-              "width": 600,
-              "height": 300
-            },
-            {
               "type": "frame",
-              "id": "JUaBI",
-              "x": 80,
-              "y": 40,
-              "name": "footerContent",
-              "width": 1280,
-              "height": 220,
+              "id": "JwZ8H",
+              "name": "footerMain",
+              "width": "fill_container",
               "layout": "vertical",
-              "gap": 40,
-              "justifyContent": "center",
-              "alignItems": "center",
+              "gap": 48,
+              "padding": [
+                60,
+                80,
+                40,
+                80
+              ],
               "children": [
                 {
                   "type": "frame",
-                  "id": "gj7Bi",
-                  "name": "Frame 1",
-                  "layout": "vertical",
-                  "justifyContent": "end",
+                  "id": "IJN2Z",
+                  "name": "footerTopRow",
+                  "width": "fill_container",
+                  "gap": 80,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KusGO",
+                      "name": "footerBranding",
+                      "width": 400,
+                      "layout": "vertical",
+                      "gap": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ocjuJ",
+                          "name": "footerLogo",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 90,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$brand-pink",
+                                "position": 0
+                              },
+                              {
+                                "color": "$brand-purple",
+                                "position": 0.5
+                              },
+                              {
+                                "color": "$brand-cyan",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "content": "Crayte Studio",
+                          "fontFamily": "Inter",
+                          "fontSize": 28,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "YT5oc",
+                          "name": "footerDesc",
+                          "fill": "#ffffffaa",
+                          "textGrowth": "fixed-width",
+                          "width": 380,
+                          "content": "テクノロジーとクリエイティビティの融合で、ビジネスの可能性を最大化します",
+                          "lineHeight": 1.7,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "L51mw",
+                          "name": "footerContact",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "OKe5n",
+                              "name": "contactEmail",
+                              "gap": 10,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "RAqV2",
+                                  "name": "emailIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "mail",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "#ffffff88"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "mfk19",
+                                  "name": "emailText",
+                                  "fill": "#ffffffaa",
+                                  "content": "info@crayte-studio.com",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "SCJft",
+                              "name": "contactPhone",
+                              "gap": 10,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "m11al",
+                                  "name": "phoneIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "phone",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "#ffffff88"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Upu2E",
+                                  "name": "phoneText",
+                                  "fill": "#ffffffaa",
+                                  "content": "03-1234-5678",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "QgJuM",
+                              "name": "contactAddr",
+                              "gap": 10,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "k0wGE",
+                                  "name": "addrIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "map-pin",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "#ffffff88"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "oz4PF",
+                                  "name": "addrText",
+                                  "fill": "#ffffffaa",
+                                  "content": "東京都渋谷区○○ 1-2-3",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yuq9j",
+                      "name": "footerNavColumns",
+                      "width": "fill_container",
+                      "gap": 80,
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "u0yRW",
+                          "name": "navService",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UUfVh",
+                              "name": "svcTitle",
+                              "fill": "#ffffffee",
+                              "content": "サービス",
+                              "fontFamily": "Inter",
+                              "fontSize": 16,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "2ewMH",
+                              "name": "svcLinks",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "dJCaE",
+                                  "name": "svc1",
+                                  "fill": "#ffffffaa",
+                                  "content": "Web制作",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "qjFtC",
+                                  "name": "svc2",
+                                  "fill": "#ffffffaa",
+                                  "content": "イベント企画",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Z0eyC",
+                                  "name": "svc3",
+                                  "fill": "#ffffffaa",
+                                  "content": "研修プログラム",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "80H95",
+                          "name": "navCompany",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "P3wcO",
+                              "name": "compTitle",
+                              "fill": "#ffffffee",
+                              "content": "会社情報",
+                              "fontFamily": "Inter",
+                              "fontSize": 16,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "riAaz",
+                              "name": "compLinks",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "kQj3A",
+                                  "name": "comp1",
+                                  "fill": "#ffffffaa",
+                                  "content": "会社概要",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "EDjOQ",
+                                  "name": "comp2",
+                                  "fill": "#ffffffaa",
+                                  "content": "採用情報",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "i3qJF",
+                                  "name": "comp3",
+                                  "fill": "#ffffffaa",
+                                  "content": "お問い合わせ",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "71qrI",
+                          "name": "navResource",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ACgVy",
+                              "name": "resTitle",
+                              "fill": "#ffffffee",
+                              "content": "リソース",
+                              "fontFamily": "Inter",
+                              "fontSize": 16,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "1uzvb",
+                              "name": "resLinks",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "JZOQm",
+                                  "name": "res1",
+                                  "fill": "#ffffffaa",
+                                  "content": "ブログ",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "wBUwp",
+                                  "name": "res2",
+                                  "fill": "#ffffffaa",
+                                  "content": "制作実績",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "h2oXZ",
+                                  "name": "res3",
+                                  "fill": "#ffffffaa",
+                                  "content": "よくある質問",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MzSIl",
+                  "name": "footerBottomBar",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "#ffffff15"
+                  },
+                  "padding": [
+                    24,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
                   "alignItems": "center",
                   "children": [
                     {
                       "type": "text",
-                      "id": "G8t6D",
-                      "name": "footerLogo",
-                      "fill": {
-                        "type": "gradient",
-                        "gradientType": "linear",
-                        "enabled": true,
-                        "rotation": 90,
-                        "size": {
-                          "height": 1
-                        },
-                        "colors": [
-                          {
-                            "color": "$brand-pink",
-                            "position": 0
-                          },
-                          {
-                            "color": "$brand-purple",
-                            "position": 0.5
-                          },
-                          {
-                            "color": "$brand-cyan",
-                            "position": 1
-                          }
-                        ]
-                      },
-                      "content": "CRAYTE STUDIO",
+                      "id": "f6wdd",
+                      "name": "footerCopyright",
+                      "fill": "#ffffff66",
+                      "content": "© 2025 Crayte Studio. All rights reserved.",
                       "fontFamily": "Inter",
-                      "fontSize": 28,
-                      "fontWeight": "800"
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "frame",
-                      "id": "XxRrE",
-                      "name": "footerLine",
-                      "width": 200,
-                      "height": 3,
-                      "fill": {
-                        "type": "gradient",
-                        "gradientType": "linear",
-                        "enabled": true,
-                        "rotation": 90,
-                        "size": {
-                          "height": 1
+                      "id": "L2xOA",
+                      "name": "footerLegal",
+                      "gap": 32,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Fgj3z",
+                          "name": "privacy",
+                          "fill": "#ffffff66",
+                          "content": "プライバシーポリシー",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         },
-                        "colors": [
-                          {
-                            "color": "$brand-pink",
-                            "position": 0
-                          },
-                          {
-                            "color": "$brand-purple",
-                            "position": 0.5
-                          },
-                          {
-                            "color": "$brand-cyan",
-                            "position": 1
-                          }
-                        ]
-                      },
-                      "cornerRadius": 2,
-                      "layout": "none"
+                        {
+                          "type": "text",
+                          "id": "VQyTJ",
+                          "name": "terms",
+                          "fill": "#ffffff66",
+                          "content": "利用規約",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
-                },
-                {
-                  "type": "frame",
-                  "id": "8a3Wi",
-                  "name": "footerNav",
-                  "gap": 48,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "AUzQC",
-                      "name": "footerNav1",
-                      "fill": "#ffffffcc",
-                      "content": "サービス",
-                      "fontFamily": "Inter",
-                      "fontSize": 15,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Ba7NF",
-                      "name": "footerNav2",
-                      "fill": "#ffffffcc",
-                      "content": "実績",
-                      "fontFamily": "Inter",
-                      "fontSize": 15,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "6xw7f",
-                      "name": "footerNav3",
-                      "fill": "#ffffffcc",
-                      "content": "会社概要",
-                      "fontFamily": "Inter",
-                      "fontSize": 15,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "text",
-                      "id": "QIEjR",
-                      "name": "footerNav4",
-                      "fill": "#ffffffcc",
-                      "content": "お問い合わせ",
-                      "fontFamily": "Inter",
-                      "fontSize": 15,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "id": "znuR1",
-                  "name": "footerCopy",
-                  "fill": "#ffffff66",
-                  "content": "© 2025 CRAYTE STUDIO. All rights reserved.",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontWeight": "normal"
                 }
               ]
             }
