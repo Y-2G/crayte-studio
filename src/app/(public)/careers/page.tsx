@@ -146,15 +146,13 @@ export default function CareersPage() {
         <div className={styles.heroGlow2} aria-hidden="true" />
         <div className={styles.heroGlow3} aria-hidden="true" />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>想像力を、共に形に。</h1>
+          <span className={styles.heroLabel}>CAREERS</span>
+          <h1 className={styles.heroTitle}>採用情報</h1>
           <p className={styles.heroSubtitle}>
             CRAYTE STUDIOでは、Webの力で世界を変える
             <br />
             情熱を持った仲間を募集しています。
           </p>
-          <GradientButton href="#positions" variant="dark" size="lg" filled>
-            募集を見る
-          </GradientButton>
         </div>
         <div className={styles.heroDecor1} aria-hidden="true" />
         <div className={styles.heroDecor2} aria-hidden="true" />

@@ -89,8 +89,8 @@
     #1a1a2e 70%,
     #16213e 100%
   );
-  padding: var(--spacing-32) var(--spacing-4);
-  min-height: 500px;
+  padding: 0 var(--spacing-4);
+  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,11 +157,20 @@
   max-width: 800px;
 }
 
+.heroLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 4px;
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .heroTitle {
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 800;
   color: var(--color-white);
-  letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 0;
 }

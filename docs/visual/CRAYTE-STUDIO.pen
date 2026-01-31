@@ -3276,7 +3276,7 @@
           "id": "cQ5nZ",
           "name": "Hero Section",
           "width": "fill_container",
-          "height": 700,
+          "height": 420,
           "fill": {
             "type": "gradient",
             "gradientType": "linear",
@@ -3403,7 +3403,7 @@
               "y": 0,
               "name": "heroContent",
               "width": 1440,
-              "height": 700,
+              "height": 420,
               "layout": "vertical",
               "gap": 32,
               "padding": [
@@ -3415,15 +3415,46 @@
               "children": [
                 {
                   "type": "text",
-                  "id": "Ejiqg",
+                  "id": "IrZOu",
+                  "name": "heroLabel",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$brand-pink",
+                        "position": 0
+                      },
+                      {
+                        "color": "$brand-purple",
+                        "position": 0.5
+                      },
+                      {
+                        "color": "$brand-cyan",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "content": "CAREERS",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "text",
+                  "id": "ssqca",
                   "name": "heroTitle",
                   "fill": "$color-white",
-                  "content": "想像力を、共に形に。",
-                  "textAlign": "center",
+                  "content": "採用情報",
                   "fontFamily": "Inter",
                   "fontSize": 56,
-                  "fontWeight": "800",
-                  "letterSpacing": -1
+                  "fontWeight": "800"
                 },
                 {
                   "type": "text",
@@ -3437,18 +3468,6 @@
                   "textAlign": "center",
                   "fontFamily": "Inter",
                   "fontSize": 20
-                },
-                {
-                  "id": "wvdum",
-                  "type": "ref",
-                  "ref": "Q4D12",
-                  "name": "heroApplyBtn",
-                  "descendants": {
-                    "MnpPf": {
-                      "content": "募集を見る",
-                      "fontSize": 16
-                    }
-                  }
                 }
               ]
             },
