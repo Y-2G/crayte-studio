@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import type { ReactNode, InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes } from 'react';
 import styles from './FormField.module.css';
 
@@ -31,13 +32,24 @@ interface CheckboxFieldProps extends Omit<BaseFieldProps, 'label'>, InputHTMLAtt
 /**
  * Input field with label and validation
  */
-export function InputField({ label, help, error, fullWidth = true, ...props }: InputFieldProps) {
+export function InputField({ label, help, error, fullWidth = true, id: propId, ...props }: InputFieldProps) {
+  const generatedId = useId();
+  const fieldId = propId || generatedId;
+  const errorId = error ? `${fieldId}-error` : undefined;
+  const helpId = help ? `${fieldId}-help` : undefined;
+
   return (
     <div className={`${styles.field} ${fullWidth ? styles.fullWidth : ''}`}>
-      {label && <label className={styles.label}>{label}</label>}
-      <input className={`${styles.input} ${error ? styles.error : ''}`} {...props} />
-      {help && <p className={styles.help}>{help}</p>}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {label && <label htmlFor={fieldId} className={styles.label}>{label}</label>}
+      <input
+        id={fieldId}
+        className={`${styles.input} ${error ? styles.error : ''}`}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={[errorId, helpId].filter(Boolean).join(' ') || undefined}
+        {...props}
+      />
+      {help && <p id={helpId} className={styles.help}>{help}</p>}
+      {error && <p id={errorId} className={styles.errorMessage} role="alert">{error}</p>}
     </div>
   );
 }
@@ -45,13 +57,25 @@ export function InputField({ label, help, error, fullWidth = true, ...props }: I
 /**
  * Textarea field with label and validation
  */
-export function TextareaField({ label, help, error, fullWidth = true, rows = 5, ...props }: TextareaFieldProps) {
+export function TextareaField({ label, help, error, fullWidth = true, rows = 5, id: propId, ...props }: TextareaFieldProps) {
+  const generatedId = useId();
+  const fieldId = propId || generatedId;
+  const errorId = error ? `${fieldId}-error` : undefined;
+  const helpId = help ? `${fieldId}-help` : undefined;
+
   return (
     <div className={`${styles.field} ${fullWidth ? styles.fullWidth : ''}`}>
-      {label && <label className={styles.label}>{label}</label>}
-      <textarea className={`${styles.textarea} ${error ? styles.error : ''}`} rows={rows} {...props} />
-      {help && <p className={styles.help}>{help}</p>}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {label && <label htmlFor={fieldId} className={styles.label}>{label}</label>}
+      <textarea
+        id={fieldId}
+        className={`${styles.textarea} ${error ? styles.error : ''}`}
+        rows={rows}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={[errorId, helpId].filter(Boolean).join(' ') || undefined}
+        {...props}
+      />
+      {help && <p id={helpId} className={styles.help}>{help}</p>}
+      {error && <p id={errorId} className={styles.errorMessage} role="alert">{error}</p>}
     </div>
   );
 }
@@ -59,15 +83,26 @@ export function TextareaField({ label, help, error, fullWidth = true, rows = 5, 
 /**
  * Select field with label and validation
  */
-export function SelectField({ label, help, error, fullWidth = true, children, ...props }: SelectFieldProps) {
+export function SelectField({ label, help, error, fullWidth = true, children, id: propId, ...props }: SelectFieldProps) {
+  const generatedId = useId();
+  const fieldId = propId || generatedId;
+  const errorId = error ? `${fieldId}-error` : undefined;
+  const helpId = help ? `${fieldId}-help` : undefined;
+
   return (
     <div className={`${styles.field} ${fullWidth ? styles.fullWidth : ''}`}>
-      {label && <label className={styles.label}>{label}</label>}
-      <select className={`${styles.select} ${error ? styles.error : ''}`} {...props}>
+      {label && <label htmlFor={fieldId} className={styles.label}>{label}</label>}
+      <select
+        id={fieldId}
+        className={`${styles.select} ${error ? styles.error : ''}`}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={[errorId, helpId].filter(Boolean).join(' ') || undefined}
+        {...props}
+      >
         {children}
       </select>
-      {help && <p className={styles.help}>{help}</p>}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {help && <p id={helpId} className={styles.help}>{help}</p>}
+      {error && <p id={errorId} className={styles.errorMessage} role="alert">{error}</p>}
     </div>
   );
 }
@@ -75,15 +110,18 @@ export function SelectField({ label, help, error, fullWidth = true, children, ..
 /**
  * Checkbox field with label
  */
-export function CheckboxField({ label, help, error, ...props }: CheckboxFieldProps) {
+export function CheckboxField({ label, help, error, id: propId, ...props }: CheckboxFieldProps) {
+  const generatedId = useId();
+  const fieldId = propId || generatedId;
+
   return (
     <div className={styles.checkboxField}>
-      <label className={styles.checkboxLabel}>
-        <input type="checkbox" className={styles.checkbox} {...props} />
+      <label htmlFor={fieldId} className={styles.checkboxLabel}>
+        <input id={fieldId} type="checkbox" className={styles.checkbox} {...props} />
         <span>{label}</span>
       </label>
       {help && <p className={styles.help}>{help}</p>}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {error && <p className={styles.errorMessage} role="alert">{error}</p>}
     </div>
   );
 }
@@ -104,26 +142,32 @@ interface RadioFieldProps extends BaseFieldProps {
 }
 
 export function RadioField({ label, help, error, name, options, value, onChange }: RadioFieldProps) {
+  const generatedId = useId();
+
   return (
-    <div className={styles.field}>
-      {label && <label className={styles.label}>{label}</label>}
-      <div className={styles.radioGroup}>
-        {options.map((option) => (
-          <label key={option.value} className={styles.radioLabel}>
-            <input
-              type="radio"
-              name={name}
-              value={option.value}
-              checked={value === option.value}
-              onChange={(e) => onChange?.(e.target.value)}
-              className={styles.radio}
-            />
-            <span>{option.label}</span>
-          </label>
-        ))}
+    <fieldset className={styles.field}>
+      {label && <legend className={styles.label}>{label}</legend>}
+      <div className={styles.radioGroup} role="radiogroup">
+        {options.map((option) => {
+          const optionId = `${generatedId}-${option.value}`;
+          return (
+            <label key={option.value} htmlFor={optionId} className={styles.radioLabel}>
+              <input
+                id={optionId}
+                type="radio"
+                name={name}
+                value={option.value}
+                checked={value === option.value}
+                onChange={(e) => onChange?.(e.target.value)}
+                className={styles.radio}
+              />
+              <span>{option.label}</span>
+            </label>
+          );
+        })}
       </div>
       {help && <p className={styles.help}>{help}</p>}
-      {error && <p className={styles.errorMessage}>{error}</p>}
-    </div>
+      {error && <p className={styles.errorMessage} role="alert">{error}</p>}
+    </fieldset>
   );
 }

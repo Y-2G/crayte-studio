@@ -161,6 +161,7 @@ export function PostsTable({ posts }: PostsTableProps) {
       <div className={styles.bulkActions}>
         <select
           className={styles.bulkSelect}
+          aria-label="一括操作"
           onChange={(e) => {
             if (e.target.value) {
               handleBulkAction(e.target.value);

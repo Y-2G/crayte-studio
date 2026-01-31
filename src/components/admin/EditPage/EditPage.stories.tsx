@@ -40,8 +40,8 @@ export const Default: Story = {
         <div style={{ padding: '16px', border: '1px solid #ddd', borderRadius: '4px' }}>
           <h3 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>カテゴリ</h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px' }}>
-            <li><label><input type="checkbox" /> ニュース</label></li>
-            <li><label><input type="checkbox" /> ブログ</label></li>
+            <li><label><input type="checkbox" aria-label="ニュース" /> ニュース</label></li>
+            <li><label><input type="checkbox" aria-label="ブログ" /> ブログ</label></li>
           </ul>
         </div>
       </div>

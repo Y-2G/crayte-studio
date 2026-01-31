@@ -1,5 +1,7 @@
 .field {
   margin-bottom: var(--spacing-4);
+  border: none;
+  padding: 0;
 }
 
 .field.fullWidth {
