@@ -14,7 +14,8 @@
     "build-storybook": "storybook build",
     "test:visual": "playwright test --config playwright.config.visual.ts",
     "test:visual:update": "playwright test --config playwright.config.visual.ts --update-snapshots",
-    "test:visual:report": "playwright show-report e2e/visual/report"
+    "test:visual:report": "playwright show-report e2e/visual/report",
+    "chromatic": "npx chromatic --project-token=chpt_136b48645144a8f"
   },
   "dependencies": {
     "clsx": "^2.1.1",
