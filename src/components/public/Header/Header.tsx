@@ -23,7 +23,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logo} onClick={closeMenu}>
+        <Link href="/" className={styles.logo} onClick={closeMenu} aria-label="CRAYTE STUDIO ホーム">
           <Image
             src="/images/logo-brand.png"
             alt="CRAYTE STUDIO"
