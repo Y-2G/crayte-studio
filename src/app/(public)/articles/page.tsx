@@ -130,15 +130,10 @@ export default async function ArticlesPage({
               <div className={styles.cardGrid}>
                 {filteredPosts.map((post, index) => {
                   const color = cardColors[index % cardColors.length];
-                  const isMdArticle =
-                    post.meta && "fromMd" in post.meta && post.meta.fromMd;
-                  const detailHref = isMdArticle
-                    ? `/articles/${post.slug}`
-                    : `/articles/${post.slug}`;
                   return (
                     <Link
                       key={post.id}
-                      href={detailHref}
+                      href={`/articles/${post.slug}`}
                       className={styles.cardLink}
                     >
                       <article className={styles.card}>

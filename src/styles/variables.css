@@ -158,6 +158,9 @@
   --transform-hover-lift: translateY(-4px);
   --transform-hover-scale: scale(1.02);
 
+  /* === 公開サイト固有 === */
+  --header-height: 72px;
+
   /* === 管理画面固有 === */
   --admin-sidebar-width: 160px;
   --admin-sidebar-collapsed-width: 36px;
