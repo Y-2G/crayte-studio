@@ -58,7 +58,7 @@ export function ServiceShowcase({ services, className }: ServiceShowcaseProps) {
         {/* Left Column */}
         <div className={styles.left}>
           <h2 id="services-heading" className={styles.heading}>
-            Services
+            Service
           </h2>
           <div className={styles.divider} aria-hidden="true" />
           <p className={styles.description}>

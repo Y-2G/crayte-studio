@@ -35,7 +35,7 @@
   color: var(--public-text);
   margin: 0;
   letter-spacing: -0.02em;
-  line-height: var(--line-height-tight);
+  line-height: var(--line-height-none);
 }
 
 .divider {
