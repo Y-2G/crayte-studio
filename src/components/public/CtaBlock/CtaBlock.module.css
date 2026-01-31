@@ -5,10 +5,10 @@
 .ctaSection {
   background: linear-gradient(
     135deg,
-    #1a1a2e 0%,
-    #16213e 30%,
-    #0f3460 60%,
-    #1a1a2e 100%
+    #0f0f1a 0%,
+    #1a1a2e 30%,
+    #16213e 60%,
+    #0f3460 100%
   );
   color: var(--redesign-text-light);
   padding: var(--spacing-24) var(--spacing-4);
@@ -78,21 +78,22 @@
 
 .ctaTitle {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.2;
-  margin: 0 0 var(--spacing-6) 0;
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 var(--spacing-8) 0;
   letter-spacing: -0.02em;
+  white-space: pre-line;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(200, 200, 255, 0.95) 100%
+    #ffffff 0%,
+    #ffffff 40%,
+    #c8c8ff 70%,
+    #00BFFF 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 30px rgba(168, 85, 247, 0.2);
 }
 
 .ctaSubtitle {
@@ -100,13 +101,18 @@
   font-weight: var(--font-weight-normal);
   line-height: 1.7;
   margin: 0 0 var(--spacing-10) 0;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.02em;
 }
 
 .ctaButtonWrapper {
   display: flex;
   justify-content: center;
+  padding-top: var(--spacing-4);
+}
+
+.ctaButtonWrapper a {
+  box-shadow: 0 8px 30px rgba(255, 20, 147, 0.376);
 }
 
 /* Reduced motion support */

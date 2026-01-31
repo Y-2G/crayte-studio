@@ -1,39 +1,23 @@
 /* ============================================================================
- * StatsCounter Component Styles
+ * StatsCounter Component Styles - Card-based layout matching .pen design
  * ============================================================================ */
 
 .statsSection {
-  padding: var(--spacing-16) var(--spacing-4);
+  padding: var(--spacing-20) var(--spacing-4);
   background: linear-gradient(
     135deg,
-    var(--redesign-bg-warm) 0%,
-    var(--redesign-bg-white) 50%,
-    var(--redesign-bg-warm) 100%
+    #f8fafc 0%,
+    #ffffff 50%,
+    #f0f4ff 100%
   );
   position: relative;
   overflow: hidden;
 }
 
-.statsSection::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(168, 85, 247, 0.03) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
 .statsGrid {
   display: grid;
-  gap: var(--spacing-8);
-  max-width: 1000px;
+  gap: var(--spacing-6);
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -41,21 +25,28 @@
 
 .statItem {
   text-align: center;
-  min-width: 100px;
-  padding: var(--spacing-6);
+  padding: var(--spacing-12);
+  background: var(--color-white);
+  border-radius: var(--border-radius-2xl);
+  border: 1px solid var(--public-border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
   transition: all var(--transition-normal);
+}
+
+.statItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
 .statValue {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 800;
-  background: linear-gradient(
-    135deg,
-    var(--color-brand-pink) 0%,
-    var(--color-brand-purple) 50%,
-    var(--color-brand-cyan) 100%
-  );
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  background: var(--stat-gradient, var(--gradient-brand));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,53 +55,38 @@
 }
 
 .statLabel {
-  margin-top: var(--spacing-3);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-medium);
-  color: var(--redesign-text-muted);
-  letter-spacing: 0.05em;
+  color: var(--public-text-muted);
 }
 
 /* Responsive adjustments */
 /* Tablet: 3-column layout */
 @media (min-width: 768px) {
   .statsSection {
-    padding: var(--spacing-20) var(--spacing-5);
+    padding: var(--spacing-20) var(--spacing-10);
   }
 
   .statsGrid {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-10);
-  }
-
-  .statItem {
-    padding: var(--spacing-8);
-  }
-
-  .statValue {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-  }
-
-  .statLabel {
-    font-size: var(--font-size-base);
+    gap: var(--spacing-8);
   }
 }
 
 /* Desktop: Enhanced spacing */
 @media (min-width: 1024px) {
   .statsSection {
-    padding: var(--spacing-24) var(--spacing-6);
+    padding: var(--spacing-20) var(--spacing-10);
   }
+}
 
-  .statsGrid {
-    gap: var(--spacing-12);
-  }
-
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
   .statItem {
-    padding: var(--spacing-10);
+    transition: none;
   }
 
-  .statValue {
-    font-size: clamp(3.5rem, 4vw, 5rem);
+  .statItem:hover {
+    transform: none;
   }
 }

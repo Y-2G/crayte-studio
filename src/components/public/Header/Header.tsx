@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { GradientButton } from "@/components/shared/GradientButton";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -12,13 +13,11 @@ export function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const navItems = [
-    { label: "トップ", href: "/" },
+    { label: "ホーム", href: "/" },
     { label: "会社概要", href: "/company" },
     { label: "サービス", href: "/services" },
     { label: "実績", href: "/works" },
     { label: "ニュース", href: "/news" },
-    { label: "スタッフ", href: "/staff" },
-    { label: "お問い合わせ", href: "/contact" },
   ];
 
   return (
@@ -51,6 +50,17 @@ export function Header() {
                 </Link>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <GradientButton
+                href="/contact"
+                variant="dark"
+                size="sm"
+                filled
+                className={styles.navContactButton}
+              >
+                お問い合わせ
+              </GradientButton>
+            </li>
           </ul>
         </nav>
 

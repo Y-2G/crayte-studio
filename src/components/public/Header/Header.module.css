@@ -4,12 +4,12 @@
   z-index: var(--z-sticky);
   backdrop-filter: blur(12px);
   background-color: color-mix(in oklab, var(--color-white) 80%, transparent);
+  padding: 0 var(--spacing-10);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 var(--spacing-5);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,6 +55,8 @@
 
 .navItem {
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .navLink {
@@ -91,6 +93,10 @@
 
 .navLink:hover::after {
   width: 100%;
+}
+
+.navContactButton {
+  font-size: var(--font-size-sm);
 }
 
 /* Mobile Menu Button */
@@ -144,6 +150,12 @@
 
   .menuButton {
     display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .header {
+    padding: 0 var(--spacing-4);
   }
 }
 

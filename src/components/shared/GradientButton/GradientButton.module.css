@@ -23,9 +23,7 @@
   border-radius: var(--border-radius-full);
   padding: 2px;
   background: var(--gradient-brand);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   z-index: -1;
   transition: opacity var(--transition-normal);
@@ -101,6 +99,28 @@
 
 .button:hover:not(:disabled) .arrow {
   transform: translateX(4px);
+}
+
+/* === Filled バリアント（常にグラデーション背景） === */
+.filled::after {
+  opacity: 1;
+}
+
+.filled {
+  color: var(--color-white);
+}
+
+.filled:hover:not(:disabled) {
+  color: var(--color-white);
+}
+
+.filled::before {
+  opacity: 0;
+}
+
+.filled.lg {
+  padding: 1.125rem 2rem;
+  font-weight: var(--font-weight-bold);
 }
 
 /* === Reduced motion support === */

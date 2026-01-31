@@ -7,6 +7,7 @@ interface Stat {
   value: number;
   suffix?: string;
   label: string;
+  gradient?: string;
 }
 
 interface StatsCounterProps {
@@ -15,9 +16,24 @@ interface StatsCounterProps {
 }
 
 const defaultStats: Stat[] = [
-  { value: 150, suffix: "+", label: "プロジェクト" },
-  { value: 98, suffix: "%", label: "リピート率" },
-  { value: 10, suffix: "年+", label: "業界経験" },
+  {
+    value: 150,
+    suffix: "+",
+    label: "プロジェクト",
+    gradient: "linear-gradient(135deg, #FF1493 0%, #9370DB 50%, #00BFFF 100%)",
+  },
+  {
+    value: 98,
+    suffix: "%",
+    label: "リピート率",
+    gradient: "linear-gradient(135deg, #9370DB 0%, #00BFFF 50%, #FF1493 100%)",
+  },
+  {
+    value: 10,
+    suffix: "Y+",
+    label: "業界経験",
+    gradient: "linear-gradient(135deg, #00BFFF 0%, #FF1493 50%, #9370DB 100%)",
+  },
 ];
 
 function useCountUp(end: number, duration: number = 1500) {
@@ -78,14 +94,18 @@ function useCountUp(end: number, duration: number = 1500) {
   return { count, ref };
 }
 
-function StatItem({ value, suffix, label }: Stat) {
+function StatItem({ value, suffix, label, gradient }: Stat) {
   const { count, ref } = useCountUp(value);
   const displayValue = `${count}${suffix || ""}`;
   const fullValue = `${value}${suffix || ""}`;
 
   return (
     <div className={styles.statItem} ref={ref}>
-      <div className={styles.statValue} aria-label={`${fullValue} ${label}`}>
+      <div
+        className={styles.statValue}
+        aria-label={`${fullValue} ${label}`}
+        style={gradient ? { "--stat-gradient": gradient } as React.CSSProperties : undefined}
+      >
         {displayValue}
       </div>
       <div className={styles.statLabel}>{label}</div>

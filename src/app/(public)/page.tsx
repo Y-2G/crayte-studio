@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const recentWorks = await getRecentWorks(3);
+  const recentWorks = await getRecentWorks(4);
   const recentPosts = await getRecentPosts(3);
 
   const services = [
@@ -70,6 +70,7 @@ export default async function HomePage() {
               href="/contact"
               variant="dark"
               size="lg"
+              filled
               className={styles.heroCtaButton}
             >
               お問い合わせ
@@ -87,26 +88,9 @@ export default async function HomePage() {
       </HeroVideo>
 
       {/* News Section */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <ScrollReveal>
-            <h2 className={styles.sectionTitle}>News</h2>
-            <p className={styles.sectionDescription}>最新のお知らせ</p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <NewsTimeline posts={recentPosts} />
-          </ScrollReveal>
-
-          <ScrollReveal delay={400}>
-            <div className={styles.sectionCta}>
-              <GradientButton href="/news" variant="light" size="lg">
-                一覧を見る
-              </GradientButton>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <ScrollReveal>
+        <NewsTimeline posts={recentPosts} />
+      </ScrollReveal>
 
       {/* Services Section */}
       <ScrollReveal>

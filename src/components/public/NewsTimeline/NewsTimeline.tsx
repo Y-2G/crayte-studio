@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/types";
+import { GradientButton } from "@/components/shared/GradientButton";
 import styles from "./NewsTimeline.module.css";
 
 interface NewsTimelineProps {
@@ -32,12 +33,14 @@ function formatDate(
     .replace(/\//g, ".");
 }
 
+const dotColors = ["#FF1493", "#9370DB", "#00BFFF"];
+
 /**
  * NewsTimeline Component
  *
- * Displays posts in a featured card + timeline format:
- * - First post is highlighted as a featured card
- * - Remaining posts are displayed in a vertical timeline
+ * Dark section with two-column layout:
+ * - Left: "News" gradient title, description, CTA
+ * - Right: Timeline with colored dots
  */
 export function NewsTimeline({ posts, className }: NewsTimelineProps) {
   if (posts.length === 0) {
@@ -45,26 +48,56 @@ export function NewsTimeline({ posts, className }: NewsTimelineProps) {
   }
 
   return (
-    <div
+    <section
       className={
-        className ? `${styles.newsTimeline} ${className}` : styles.newsTimeline
+        className ? `${styles.newsSection} ${className}` : styles.newsSection
       }
     >
-      {posts.map((post) => (
-        <Link
-          key={post.id}
-          href={`/news/${post.slug}`}
-          className={styles.featuredCard}
-        >
-          <div className={styles.meta}>
-            <time className={styles.date}>
-              {formatDate(post.publishedAt || post.createdAt, "full")}
-            </time>
-            <span className={styles.category}>{post.category}</span>
+      <div className={styles.glow1} aria-hidden="true" />
+      <div className={styles.glow2} aria-hidden="true" />
+      <div className={styles.content}>
+        {/* Left Column */}
+        <div className={styles.left}>
+          <h2 className={styles.title}>News</h2>
+          <div className={styles.divider} aria-hidden="true" />
+          <p className={styles.description}>
+            最新のお知らせやプロジェクト情報をお届けします。
+          </p>
+          <GradientButton href="/news" variant="dark" size="lg">
+            一覧を見る
+          </GradientButton>
+        </div>
+
+        {/* Right Column - Timeline */}
+        <div className={styles.timeline}>
+          <div className={styles.timelineLine} aria-hidden="true" />
+          <div className={styles.timelineItems}>
+            {posts.map((post, index) => (
+              <div key={post.id} className={styles.timelineItem}>
+                <div
+                  className={styles.dot}
+                  style={{
+                    backgroundColor: dotColors[index % dotColors.length],
+                  }}
+                  aria-hidden="true"
+                />
+                <Link
+                  href={`/news/${post.slug}`}
+                  className={styles.itemContent}
+                >
+                  <div className={styles.meta}>
+                    <time className={styles.date}>
+                      {formatDate(post.publishedAt || post.createdAt, "full")}
+                    </time>
+                    <span className={styles.category}>{post.category}</span>
+                  </div>
+                  <h3 className={styles.itemTitle}>{post.title}</h3>
+                </Link>
+              </div>
+            ))}
           </div>
-          <h3 className={styles.featuredTitle}>{post.title}</h3>
-        </Link>
-      ))}
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -11,8 +11,8 @@ interface CtaBlockProps {
 }
 
 export function CtaBlock({
-  titleEn = "Let's Create Something Amazing Together",
-  subtitle = "プロジェクトについてお気軽にご相談ください",
+  titleEn = "Let's Create Something\n Amazing Together",
+  subtitle = "あなたのビジョンを、私たちと一緒に形にしませんか。",
   buttonText = "お問い合わせ",
   buttonLink = "/contact",
   className,
@@ -28,7 +28,7 @@ export function CtaBlock({
         </h2>
         {subtitle && <p className={styles.ctaSubtitle}>{subtitle}</p>}
         <div className={styles.ctaButtonWrapper}>
-          <GradientButton href={buttonLink} variant="dark" size="lg">
+          <GradientButton href={buttonLink} variant="dark" size="lg" filled>
             {buttonText}
           </GradientButton>
         </div>
