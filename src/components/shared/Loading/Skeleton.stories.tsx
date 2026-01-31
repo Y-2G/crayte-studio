@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { Skeleton } from './Skeleton';
 
 const meta = {
@@ -21,6 +22,10 @@ export const Text: Story = {
     variant: 'text',
     width: 200,
   },
+  play: async ({ canvasElement }) => {
+    const element = canvasElement.querySelector('[aria-hidden="true"]');
+    await expect(element).toBeInTheDocument();
+  },
 };
 
 export const Rectangular: Story = {
@@ -29,6 +34,11 @@ export const Rectangular: Story = {
     width: 300,
     height: 200,
   },
+  play: async ({ canvasElement }) => {
+    const element = canvasElement.querySelector('[aria-hidden="true"]');
+    await expect(element).toBeInTheDocument();
+    await expect(element).toHaveStyle({ width: '300px', height: '200px' });
+  },
 };
 
 export const Circular: Story = {
@@ -36,6 +46,11 @@ export const Circular: Story = {
     variant: 'circular',
     width: 60,
     height: 60,
+  },
+  play: async ({ canvasElement }) => {
+    const element = canvasElement.querySelector('[aria-hidden="true"]');
+    await expect(element).toBeInTheDocument();
+    await expect(element).toHaveStyle({ width: '60px', height: '60px' });
   },
 };
 
@@ -48,6 +63,10 @@ export const CardSkeleton: Story = {
       <Skeleton variant="text" width={140} />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const elements = canvasElement.querySelectorAll('[aria-hidden="true"]');
+    await expect(elements.length).toBe(4);
+  },
 };
 
 export const ProfileSkeleton: Story = {
@@ -60,4 +79,8 @@ export const ProfileSkeleton: Story = {
       </div>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const elements = canvasElement.querySelectorAll('[aria-hidden="true"]');
+    await expect(elements.length).toBe(3);
+  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { Widget } from './Widget';
 
 const meta = {
@@ -22,6 +23,11 @@ export const Default: Story = {
     title: 'ダッシュボード',
     children: <p>ウィジェットのコンテンツです。</p>,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('ダッシュボード')).toBeInTheDocument();
+    await expect(canvas.getByText('ウィジェットのコンテンツです。')).toBeInTheDocument();
+  },
 };
 
 export const WithActions: Story = {
@@ -36,6 +42,14 @@ export const WithActions: Story = {
       </ul>
     ),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('最近の投稿')).toBeInTheDocument();
+    await expect(canvas.getByText('すべて表示')).toBeInTheDocument();
+    await expect(canvas.getByText('投稿タイトル1')).toBeInTheDocument();
+    await expect(canvas.getByText('投稿タイトル2')).toBeInTheDocument();
+    await expect(canvas.getByText('投稿タイトル3')).toBeInTheDocument();
+  },
 };
 
 export const StatsWidget: Story = {
@@ -49,5 +63,13 @@ export const StatsWidget: Story = {
         <div><strong>メディア</strong><br />234</div>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('サイト統計')).toBeInTheDocument();
+    await expect(canvas.getByText('投稿数')).toBeInTheDocument();
+    await expect(canvas.getByText('固定ページ')).toBeInTheDocument();
+    await expect(canvas.getByText('コメント')).toBeInTheDocument();
+    await expect(canvas.getByText('メディア')).toBeInTheDocument();
   },
 };

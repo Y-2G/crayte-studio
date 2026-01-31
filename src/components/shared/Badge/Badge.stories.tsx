@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { Badge } from './Badge';
 
 const meta = {
@@ -26,12 +27,20 @@ export const Default: Story = {
     variant: 'default',
     size: 'md',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('デフォルト')).toBeInTheDocument();
+  },
 };
 
 export const Success: Story = {
   args: {
     children: '公開中',
     variant: 'success',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開中')).toBeInTheDocument();
   },
 };
 
@@ -40,12 +49,20 @@ export const Warning: Story = {
     children: '保留中',
     variant: 'warning',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('保留中')).toBeInTheDocument();
+  },
 };
 
 export const Error: Story = {
   args: {
     children: 'エラー',
     variant: 'error',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('エラー')).toBeInTheDocument();
   },
 };
 
@@ -54,12 +71,20 @@ export const Info: Story = {
     children: 'お知らせ',
     variant: 'info',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('お知らせ')).toBeInTheDocument();
+  },
 };
 
 export const Small: Story = {
   args: {
     children: '小',
     size: 'sm',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('小')).toBeInTheDocument();
   },
 };
 
@@ -73,4 +98,12 @@ export const AllVariants: Story = {
       <Badge variant="info">情報</Badge>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('デフォルト')).toBeInTheDocument();
+    await expect(canvas.getByText('成功')).toBeInTheDocument();
+    await expect(canvas.getByText('警告')).toBeInTheDocument();
+    await expect(canvas.getByText('エラー')).toBeInTheDocument();
+    await expect(canvas.getByText('情報')).toBeInTheDocument();
+  },
 };

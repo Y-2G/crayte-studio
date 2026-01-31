@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { EditPage } from './EditPage';
 
 const meta = {
@@ -46,6 +47,20 @@ export const Default: Story = {
       </div>
     ),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify page title
+    await expect(canvas.getByText('新規投稿を追加')).toBeInTheDocument();
+    // Verify main content area
+    await expect(canvas.getByPlaceholderText('タイトルを入力')).toBeInTheDocument();
+    await expect(canvas.getByPlaceholderText('本文を入力')).toBeInTheDocument();
+    // Verify sidebar content
+    await expect(canvas.getByText('公開設定')).toBeInTheDocument();
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    // Verify sidebar aside element exists
+    const aside = canvasElement.querySelector('aside');
+    await expect(aside).toBeInTheDocument();
+  },
 };
 
 export const WithoutSidebar: Story = {
@@ -56,6 +71,14 @@ export const WithoutSidebar: Story = {
         <p>サイドバーなしのレイアウトです。</p>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('シンプルなページ編集')).toBeInTheDocument();
+    await expect(canvas.getByText('サイドバーなしのレイアウトです。')).toBeInTheDocument();
+    // Sidebar aside should not exist
+    const aside = canvasElement.querySelector('aside');
+    await expect(aside).toBeNull();
   },
 };
 
@@ -71,5 +94,13 @@ export const WithoutTitle: Story = {
         <p>サイドバー</p>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('タイトルなしのレイアウトです。')).toBeInTheDocument();
+    await expect(canvas.getByText('サイドバー')).toBeInTheDocument();
+    // No h1 should exist (no title)
+    const h1 = canvasElement.querySelector('h1');
+    await expect(h1).toBeNull();
   },
 };

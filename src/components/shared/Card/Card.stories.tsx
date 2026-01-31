@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { Card, CardHeader, CardBody, CardFooter } from './Card';
 
 const meta = {
@@ -24,6 +25,10 @@ export const Default: Story = {
   args: {
     children: 'カードのコンテンツです。',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('カードのコンテンツです。')).toBeInTheDocument();
+  },
 };
 
 export const Elevated: Story = {
@@ -47,13 +52,19 @@ export const WithSections: Story = {
         <h3 style={{ margin: 0 }}>カードタイトル</h3>
       </CardHeader>
       <CardBody>
-        <p style={{ margin: 0 }}>カードの本文コンテンツがここに入ります。テキストや画像など様々な要素を配置できます。</p>
+        <p style={{ margin: 0 }}>カードの本文コンテンツがここに入ります。</p>
       </CardBody>
       <CardFooter>
         <button>アクション</button>
       </CardFooter>
     </Card>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('カードタイトル')).toBeInTheDocument();
+    await expect(canvas.getByText('カードの本文コンテンツがここに入ります。')).toBeInTheDocument();
+    await expect(canvas.getByRole('button', { name: 'アクション' })).toBeInTheDocument();
+  },
 };
 
 export const NoPadding: Story = {
@@ -78,4 +89,10 @@ export const AllVariants: Story = {
       </Card>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('Default')).toBeInTheDocument();
+    await expect(canvas.getByText('Elevated')).toBeInTheDocument();
+    await expect(canvas.getByText('Bordered')).toBeInTheDocument();
+  },
 };

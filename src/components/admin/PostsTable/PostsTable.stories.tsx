@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import type { Post } from '@/types';
 import { PostsTable } from './PostsTable';
 
@@ -113,11 +114,35 @@ export const Default: Story = {
   args: {
     posts: samplePosts,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify post titles
+    await expect(canvas.getByText('ようこそ CRAYTE STUDIO へ')).toBeInTheDocument();
+    await expect(canvas.getByText('2025年のWebデザイントレンド')).toBeInTheDocument();
+    await expect(canvas.getByText('下書き記事のサンプル')).toBeInTheDocument();
+    await expect(canvas.getByText('レビュー待ち記事')).toBeInTheDocument();
+    // Verify column headers
+    await expect(canvas.getByText('タイトル')).toBeInTheDocument();
+    await expect(canvas.getByText('作成者')).toBeInTheDocument();
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    await expect(canvas.getByText('ステータス')).toBeInTheDocument();
+    // Verify bulk action select
+    const bulkSelect = canvasElement.querySelector('select');
+    await expect(bulkSelect).toBeInTheDocument();
+  },
 };
 
 export const PublishedOnly: Story = {
   args: {
     posts: samplePosts.filter((p) => p.status === 'publish'),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('ようこそ CRAYTE STUDIO へ')).toBeInTheDocument();
+    await expect(canvas.getByText('2025年のWebデザイントレンド')).toBeInTheDocument();
+    // Verify status labels show "公開"
+    const publishLabels = canvas.getAllByText('公開');
+    await expect(publishLabels.length).toBeGreaterThanOrEqual(1);
   },
 };
 
@@ -125,10 +150,21 @@ export const WithHorrorPosts: Story = {
   args: {
     posts: samplePosts.filter((p) => p.category === '内部連絡' || p.status === 'publish'),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify horror post exists
+    await expect(canvas.getByText('██████████ の記録')).toBeInTheDocument();
+    // Verify internal category
+    await expect(canvas.getByText('内部連絡')).toBeInTheDocument();
+  },
 };
 
 export const Empty: Story = {
   args: {
     posts: [],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('投稿がありません')).toBeInTheDocument();
   },
 };

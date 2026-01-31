@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { fn } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Modal } from './Modal';
 
 const meta = {
@@ -26,6 +26,14 @@ export const Default: Story = {
     title: 'モーダルタイトル',
     children: 'モーダルのコンテンツがここに表示されます。',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const dialog = canvas.getByRole('dialog');
+    await expect(dialog).toBeInTheDocument();
+    await expect(dialog).toHaveAttribute('aria-modal', 'true');
+    await expect(canvas.getByText('モーダルタイトル')).toBeInTheDocument();
+    await expect(canvas.getByText('モーダルのコンテンツがここに表示されます。')).toBeInTheDocument();
+  },
 };
 
 export const Small: Story = {
@@ -34,6 +42,11 @@ export const Small: Story = {
     title: '確認',
     size: 'sm',
     children: 'この操作を実行してもよろしいですか？',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole('dialog')).toBeInTheDocument();
+    await expect(canvas.getByText('確認')).toBeInTheDocument();
   },
 };
 
@@ -65,6 +78,26 @@ export const WithoutTitle: Story = {
     isOpen: true,
     children: 'タイトルなしのモーダルです。',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const dialog = canvas.getByRole('dialog');
+    await expect(dialog).not.toHaveAttribute('aria-labelledby');
+  },
+};
+
+export const CloseButton: Story = {
+  args: {
+    isOpen: true,
+    title: '閉じるテスト',
+    children: '閉じるボタンのテストです。',
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const closeButton = canvas.getByRole('button', { name: '閉じる' });
+    await expect(closeButton).toBeInTheDocument();
+    await userEvent.click(closeButton);
+    await expect(args.onClose).toHaveBeenCalledOnce();
+  },
 };
 
 export const NoOverlayClose: Story = {
@@ -81,5 +114,10 @@ export const Closed: Story = {
     isOpen: false,
     title: '非表示',
     children: 'このモーダルは閉じています。',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const dialog = canvas.queryByRole('dialog');
+    await expect(dialog).toBeNull();
   },
 };

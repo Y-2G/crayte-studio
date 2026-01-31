@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within, userEvent } from 'storybook/test';
 import { MetaBox } from './MetaBox';
 
 const meta = {
@@ -28,6 +29,17 @@ export const Default: Story = {
       </div>
     ),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify title
+    await expect(canvas.getByText('公開設定')).toBeInTheDocument();
+    // Verify content visible (not collapsed by default)
+    await expect(canvas.getByText(/下書き/)).toBeInTheDocument();
+    await expect(canvas.getByText(/非公開/)).toBeInTheDocument();
+    // Verify aria-expanded
+    const headerBtn = canvas.getByRole('button', { name: /公開設定/ });
+    await expect(headerBtn).toHaveAttribute('aria-expanded', 'true');
+  },
 };
 
 export const WithAccent: Story = {
@@ -40,6 +52,11 @@ export const WithAccent: Story = {
         <button style={{ padding: '6px 12px', cursor: 'pointer' }}>更新</button>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開')).toBeInTheDocument();
+    await expect(canvas.getByText(/公開済み/)).toBeInTheDocument();
   },
 };
 
@@ -54,6 +71,19 @@ export const Collapsed: Story = {
         <li>お知らせ</li>
       </ul>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    // Content should be hidden when collapsed
+    const headerBtn = canvas.getByRole('button', { name: /カテゴリ/ });
+    await expect(headerBtn).toHaveAttribute('aria-expanded', 'false');
+    // Expand by clicking
+    await userEvent.click(headerBtn);
+    await expect(headerBtn).toHaveAttribute('aria-expanded', 'true');
+    await expect(canvas.getByText('ニュース')).toBeInTheDocument();
+    await expect(canvas.getByText('ブログ')).toBeInTheDocument();
+    await expect(canvas.getByText('お知らせ')).toBeInTheDocument();
   },
 };
 
@@ -77,4 +107,10 @@ export const MultiplePanels: Story = {
       </MetaBox>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開')).toBeInTheDocument();
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    await expect(canvas.getByText('タグ')).toBeInTheDocument();
+  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { WebIcon } from './WebIcon';
 import { EventIcon } from './EventIcon';
 import { VideoIcon } from './VideoIcon';
@@ -21,11 +22,22 @@ export const Default: Story = {
     size: 48,
     color: 'currentColor',
   },
+  play: async ({ canvasElement }) => {
+    const svg = canvasElement.querySelector('svg');
+    await expect(svg).toBeInTheDocument();
+    await expect(svg?.getAttribute('width')).toBe('48');
+    await expect(svg?.getAttribute('height')).toBe('48');
+  },
 };
 
 export const Small: Story = {
   args: {
     size: 24,
+  },
+  play: async ({ canvasElement }) => {
+    const svg = canvasElement.querySelector('svg');
+    await expect(svg).toBeInTheDocument();
+    await expect(svg?.getAttribute('width')).toBe('24');
   },
 };
 
@@ -33,12 +45,21 @@ export const Large: Story = {
   args: {
     size: 72,
   },
+  play: async ({ canvasElement }) => {
+    const svg = canvasElement.querySelector('svg');
+    await expect(svg).toBeInTheDocument();
+    await expect(svg?.getAttribute('width')).toBe('72');
+  },
 };
 
 export const Colored: Story = {
   args: {
     size: 48,
     color: '#FF1493',
+  },
+  play: async ({ canvasElement }) => {
+    const svg = canvasElement.querySelector('svg');
+    await expect(svg).toBeInTheDocument();
   },
 };
 
@@ -59,6 +80,16 @@ export const AllIcons: StoryObj = {
       </div>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify all icon labels
+    await expect(canvas.getByText('WebIcon')).toBeInTheDocument();
+    await expect(canvas.getByText('EventIcon')).toBeInTheDocument();
+    await expect(canvas.getByText('VideoIcon')).toBeInTheDocument();
+    // Verify 3 SVGs rendered
+    const svgs = canvasElement.querySelectorAll('svg');
+    await expect(svgs.length).toBe(3);
+  },
 };
 
 export const AllSizes: StoryObj = {
@@ -72,6 +103,15 @@ export const AllSizes: StoryObj = {
       ))}
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('24px')).toBeInTheDocument();
+    await expect(canvas.getByText('48px')).toBeInTheDocument();
+    await expect(canvas.getByText('96px')).toBeInTheDocument();
+    // Verify 5 SVGs rendered (one per size)
+    const svgs = canvasElement.querySelectorAll('svg');
+    await expect(svgs.length).toBe(5);
+  },
 };
 
 export const WithGradientBackground: StoryObj = {
@@ -99,4 +139,9 @@ export const WithGradientBackground: StoryObj = {
       ))}
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    // Verify 3 SVGs rendered with gradient backgrounds
+    const svgs = canvasElement.querySelectorAll('svg');
+    await expect(svgs.length).toBe(3);
+  },
 };

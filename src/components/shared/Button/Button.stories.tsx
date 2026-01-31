@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { fn } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Button } from './Button';
 
 const meta = {
@@ -29,6 +29,14 @@ export const Primary: Story = {
     children: 'ボタン',
     variant: 'primary',
   },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'ボタン' });
+    await expect(button).toBeInTheDocument();
+    await expect(button).not.toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledOnce();
+  },
 };
 
 export const Secondary: Story = {
@@ -36,12 +44,20 @@ export const Secondary: Story = {
     children: 'セカンダリ',
     variant: 'secondary',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole('button', { name: 'セカンダリ' })).toBeInTheDocument();
+  },
 };
 
 export const Danger: Story = {
   args: {
     children: '削除',
     variant: 'danger',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole('button', { name: '削除' })).toBeInTheDocument();
   },
 };
 
@@ -85,12 +101,28 @@ export const Loading: Story = {
     children: '送信中...',
     loading: true,
   },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('aria-disabled', 'true');
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const Disabled: Story = {
   args: {
     children: '無効',
     disabled: true,
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('aria-disabled', 'true');
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
   },
 };
 
@@ -105,6 +137,11 @@ export const AllVariants: Story = {
       <Button variant="outlineLight">OutlineLight</Button>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons = canvas.getAllByRole('button');
+    await expect(buttons).toHaveLength(6);
+  },
 };
 
 export const AllSizes: Story = {
@@ -115,4 +152,9 @@ export const AllSizes: Story = {
       <Button size="lg">Large</Button>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const buttons = canvas.getAllByRole('button');
+    await expect(buttons).toHaveLength(3);
+  },
 };

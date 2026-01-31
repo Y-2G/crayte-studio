@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { ScrollReveal } from './ScrollReveal';
 
 const meta = {
@@ -19,6 +20,11 @@ export const Default: Story = {
       </div>
     ),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('スクロールで表示されるコンテンツ')).toBeInTheDocument();
+    await expect(canvas.getByText(/このコンテンツは画面に入ると/)).toBeInTheDocument();
+  },
 };
 
 export const WithDelay: Story = {
@@ -30,6 +36,10 @@ export const WithDelay: Story = {
         <p>300msの遅延後にアニメーションが開始されます。</p>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('遅延付きアニメーション')).toBeInTheDocument();
   },
 };
 
@@ -45,4 +55,11 @@ export const Staggered: Story = {
       ))}
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('遅延: 0ms')).toBeInTheDocument();
+    await expect(canvas.getByText('遅延: 100ms')).toBeInTheDocument();
+    await expect(canvas.getByText('遅延: 200ms')).toBeInTheDocument();
+    await expect(canvas.getByText('遅延: 300ms')).toBeInTheDocument();
+  },
 };

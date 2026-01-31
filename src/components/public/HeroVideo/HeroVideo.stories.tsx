@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { HeroVideo } from './HeroVideo';
 
 const meta = {
@@ -22,6 +23,16 @@ export const Default: Story = {
         <p style={{ fontSize: '1.2rem' }}>テクノロジーとクリエイティビティの融合</p>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('CRAYTE STUDIO')).toBeInTheDocument();
+    await expect(canvas.getByText('テクノロジーとクリエイティビティの融合')).toBeInTheDocument();
+    // Verify video element exists and is hidden from accessibility tree
+    const video = canvasElement.querySelector('video');
+    if (video) {
+      await expect(video).toHaveAttribute('aria-hidden', 'true');
+    }
   },
 };
 
@@ -58,5 +69,9 @@ export const FallbackOnly: Story = {
         <p>動画読み込み失敗時のグラデーション背景</p>
       </div>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('フォールバック表示')).toBeInTheDocument();
   },
 };

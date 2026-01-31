@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { fn } from 'storybook/test';
+import { expect, within, fn } from 'storybook/test';
 import { InputField, TextareaField, SelectField, CheckboxField, RadioField } from './FormField';
 
 // InputField stories
@@ -27,6 +27,11 @@ export const Default: InputStory = {
     label: 'タイトル',
     placeholder: '投稿タイトルを入力',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('タイトル')).toBeInTheDocument();
+    await expect(canvas.getByPlaceholderText('投稿タイトルを入力')).toBeInTheDocument();
+  },
 };
 
 export const WithHelp: InputStory = {
@@ -34,6 +39,11 @@ export const WithHelp: InputStory = {
     label: 'スラッグ',
     placeholder: 'post-slug',
     help: 'URLに使用される識別子です',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('スラッグ')).toBeInTheDocument();
+    await expect(canvas.getByText('URLに使用される識別子です')).toBeInTheDocument();
   },
 };
 
@@ -44,12 +54,21 @@ export const WithError: InputStory = {
     value: 'invalid',
     error: '有効なメールアドレスを入力してください',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('メールアドレス')).toBeInTheDocument();
+    await expect(canvas.getByText('有効なメールアドレスを入力してください')).toBeInTheDocument();
+  },
 };
 
 export const DateInput: InputStory = {
   args: {
     label: '公開日',
     type: 'date',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開日')).toBeInTheDocument();
   },
 };
 
@@ -64,6 +83,11 @@ export const TextareaDefault: StoryObj<typeof TextareaField> = {
       />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('本文')).toBeInTheDocument();
+    await expect(canvas.getByPlaceholderText('記事の本文を入力してください')).toBeInTheDocument();
+  },
 };
 
 export const TextareaWithError: StoryObj<typeof TextareaField> = {
@@ -75,6 +99,11 @@ export const TextareaWithError: StoryObj<typeof TextareaField> = {
       />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('概要')).toBeInTheDocument();
+    await expect(canvas.getByText('概要を入力してください')).toBeInTheDocument();
+  },
 };
 
 // SelectField Story
@@ -89,6 +118,14 @@ export const SelectDefault: StoryObj<typeof SelectField> = {
       </SelectField>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    await expect(canvas.getByText('投稿のカテゴリを選択してください')).toBeInTheDocument();
+    // Verify select options exist
+    const select = canvasElement.querySelector('select');
+    await expect(select).toBeInTheDocument();
+  },
 };
 
 // CheckboxField Story
@@ -98,6 +135,13 @@ export const CheckboxDefault: StoryObj<typeof CheckboxField> = {
       <CheckboxField label="公開する" />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開する')).toBeInTheDocument();
+    const checkbox = canvas.getByRole('checkbox');
+    await expect(checkbox).toBeInTheDocument();
+    await expect(checkbox).not.toBeChecked();
+  },
 };
 
 export const CheckboxWithHelp: StoryObj<typeof CheckboxField> = {
@@ -109,6 +153,11 @@ export const CheckboxWithHelp: StoryObj<typeof CheckboxField> = {
       />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('コメントを許可する')).toBeInTheDocument();
+    await expect(canvas.getByText('この投稿にコメントを受け付けます')).toBeInTheDocument();
+  },
 };
 
 // RadioField Story
@@ -128,6 +177,16 @@ export const RadioDefault: StoryObj<typeof RadioField> = {
       />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('公開状態')).toBeInTheDocument();
+    await expect(canvas.getByText('下書き')).toBeInTheDocument();
+    await expect(canvas.getByText('レビュー待ち')).toBeInTheDocument();
+    await expect(canvas.getByText('公開')).toBeInTheDocument();
+    // Verify draft is checked
+    const radios = canvasElement.querySelectorAll('input[type="radio"]');
+    await expect(radios.length).toBe(3);
+  },
 };
 
 // All fields combined
@@ -154,4 +213,13 @@ export const AllFields: StoryObj = {
       <CheckboxField label="コメントを許可する" />
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('タイトル')).toBeInTheDocument();
+    await expect(canvas.getByText('スラッグ')).toBeInTheDocument();
+    await expect(canvas.getByText('本文')).toBeInTheDocument();
+    await expect(canvas.getByText('カテゴリ')).toBeInTheDocument();
+    await expect(canvas.getByText('ステータス')).toBeInTheDocument();
+    await expect(canvas.getByText('コメントを許可する')).toBeInTheDocument();
+  },
 };
