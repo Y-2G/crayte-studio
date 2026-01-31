@@ -48,7 +48,7 @@ function useCountUp(end: number, duration: number = 1500) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     if (ref.current) {
@@ -63,7 +63,7 @@ function useCountUp(end: number, duration: number = 1500) {
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     let startTime: number | null = null;
@@ -74,7 +74,9 @@ function useCountUp(end: number, duration: number = 1500) {
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
       // For reduced motion, jump to end immediately
-      const targetValue = prefersReducedMotion ? end : Math.floor(progress * end);
+      const targetValue = prefersReducedMotion
+        ? end
+        : Math.floor(progress * end);
       setCount(targetValue);
 
       if (progress < 1 && !prefersReducedMotion) {
@@ -104,7 +106,11 @@ function StatItem({ value, suffix, label, gradient }: Stat) {
       <div
         className={styles.statValue}
         aria-label={`${fullValue} ${label}`}
-        style={gradient ? { "--stat-gradient": gradient } as React.CSSProperties : undefined}
+        style={
+          gradient
+            ? ({ "--stat-gradient": gradient } as React.CSSProperties)
+            : undefined
+        }
       >
         {displayValue}
       </div>
@@ -113,9 +119,15 @@ function StatItem({ value, suffix, label, gradient }: Stat) {
   );
 }
 
-export function StatsCounter({ stats = defaultStats, className }: StatsCounterProps) {
+export function StatsCounter({
+  stats = defaultStats,
+  className,
+}: StatsCounterProps) {
   return (
-    <section className={`${styles.statsSection} ${className || ""}`} aria-label="実績統計">
+    <section
+      className={`${styles.statsSection} ${className || ""}`}
+      aria-label="制作実績統計"
+    >
       <div className={styles.statsGrid}>
         {stats.map((stat, index) => (
           <StatItem key={`${stat.label}-${index}`} {...stat} />

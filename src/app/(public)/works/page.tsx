@@ -5,9 +5,9 @@ import { Card, CardBody } from "@/components/shared/Card/Card";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "実績 | CRAYTE STUDIO",
+  title: "制作実績 | CRAYTE STUDIO",
   description:
-    "CRAYTE STUDIOの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。",
+    "CRAYTE STUDIOの制作制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。",
 };
 
 export default async function WorksPage() {
@@ -18,7 +18,7 @@ export default async function WorksPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.container}>
-          <h1 className={styles.pageTitle}>実績</h1>
+          <h1 className={styles.pageTitle}>制作実績</h1>
           <p className={styles.pageSubtitle}>Works</p>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default async function WorksPage() {
 
           {works.length === 0 && (
             <div className={styles.empty}>
-              <p className={styles.emptyText}>実績が見つかりませんでした</p>
+              <p className={styles.emptyText}>制作実績が見つかりませんでした</p>
             </div>
           )}
         </div>

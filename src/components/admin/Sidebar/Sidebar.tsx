@@ -18,7 +18,7 @@ const menuItems: MenuItem[] = [
   { label: "メディア", href: "/admin/media", icon: "🖼️" },
   { label: "コメント", href: "/admin/comments", icon: "💬" },
   { label: "フォーム受信箱", href: "/admin/inbox", icon: "📨" },
-  { label: "実績", href: "/admin/works", icon: "🎯" },
+  { label: "制作実績", href: "/admin/works", icon: "🎯" },
   { label: "スタッフ", href: "/admin/staff", icon: "👥" },
   { label: "外観", href: "/admin/appearance", icon: "🎨" },
   { label: "プラグイン", href: "/admin/plugins", icon: "🔌" },
@@ -55,7 +55,9 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
               <li key={item.href} className={styles.menuItem}>
                 <Link
                   href={item.href}
-                  className={`${styles.menuLink} ${isActive ? styles.active : ""}`}
+                  className={`${styles.menuLink} ${
+                    isActive ? styles.active : ""
+                  }`}
                   title={collapsed ? item.label : undefined}
                 >
                   <span className={styles.icon}>{item.icon}</span>

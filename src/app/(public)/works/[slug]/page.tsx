@@ -1,21 +1,23 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { getWorkBySlug } from '@/lib/data';
-import { Button } from '@/components/shared/Button/Button';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getWorkBySlug } from "@/lib/data";
+import { Button } from "@/components/shared/Button/Button";
+import styles from "./page.module.css";
 
 interface WorkDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: WorkDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: WorkDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   const work = await getWorkBySlug(slug);
 
   if (!work) {
     return {
-      title: '実績が見つかりません',
+      title: "制作実績が見つかりません",
     };
   }
 
@@ -43,9 +45,9 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
               <span className={styles.client}>{work.client}</span>
               <span className={styles.separator}>|</span>
               <time className={styles.date}>
-                {new Date(work.date).toLocaleDateString('ja-JP', {
-                  year: 'numeric',
-                  month: 'long',
+                {new Date(work.date).toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "long",
                 })}
               </time>
             </div>
@@ -87,10 +89,10 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
                 <div className={styles.infoItem}>
                   <dt className={styles.infoLabel}>実施日</dt>
                   <dd className={styles.infoValue}>
-                    {new Date(work.date).toLocaleDateString('ja-JP', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
+                    {new Date(work.date).toLocaleDateString("ja-JP", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </dd>
                 </div>
@@ -102,7 +104,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         <footer className={styles.footer}>
           <div className={styles.container}>
             <Link href="/works">
-              <Button variant="secondary">実績一覧に戻る</Button>
+              <Button variant="secondary">制作実績一覧に戻る</Button>
             </Link>
           </div>
         </footer>

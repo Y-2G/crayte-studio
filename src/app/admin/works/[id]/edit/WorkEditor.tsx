@@ -1,27 +1,34 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import type { Work, WorkStatus } from '@/types';
-import { EditPage } from '@/components/admin/EditPage';
-import { MetaBox } from '@/components/admin/MetaBox';
-import { InputField, TextareaField, RadioField } from '@/components/admin/FormField';
-import styles from './WorkEditor.module.css';
-import horrorStyles from '@/styles/horror.module.css';
+import { useState } from "react";
+import Link from "next/link";
+import type { Work, WorkStatus } from "@/types";
+import { EditPage } from "@/components/admin/EditPage";
+import { MetaBox } from "@/components/admin/MetaBox";
+import {
+  InputField,
+  TextareaField,
+  RadioField,
+} from "@/components/admin/FormField";
+import styles from "./WorkEditor.module.css";
+import horrorStyles from "@/styles/horror.module.css";
 
 interface WorkEditorProps {
   work: Work;
   tags: string[];
 }
 
-export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps) {
+export function WorkEditor({
+  work: initialWork,
+  tags: allTags,
+}: WorkEditorProps) {
   const [work, setWork] = useState(initialWork);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialWork.tags);
-  const [tagInput, setTagInput] = useState('');
+  const [tagInput, setTagInput] = useState("");
 
   const handleSave = () => {
     // TODO: Implement save functionality
-    console.log('Saving work:', work);
+    console.log("Saving work:", work);
   };
 
   const addTag = () => {
@@ -29,7 +36,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
       const newTags = [...selectedTags, tagInput.trim()];
       setSelectedTags(newTags);
       setWork({ ...work, tags: newTags });
-      setTagInput('');
+      setTagInput("");
     }
   };
 
@@ -48,18 +55,24 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
           <RadioField
             name="status"
             value={work.status}
-            onChange={(value) => setWork({ ...work, status: value as WorkStatus })}
+            onChange={(value) =>
+              setWork({ ...work, status: value as WorkStatus })
+            }
             options={[
-              { value: 'planned', label: '予定' },
-              { value: 'live', label: '実施中' },
-              { value: 'closed', label: '完了' },
-              { value: 'sealed', label: '封印' },
-              { value: 'rewritten', label: '改変' },
+              { value: "planned", label: "予定" },
+              { value: "live", label: "実施中" },
+              { value: "closed", label: "完了" },
+              { value: "sealed", label: "封印" },
+              { value: "rewritten", label: "改変" },
             ]}
           />
 
           <div className={styles.saveAction}>
-            <button type="button" onClick={handleSave} className={styles.saveButton}>
+            <button
+              type="button"
+              onClick={handleSave}
+              className={styles.saveButton}
+            >
               更新
             </button>
           </div>
@@ -75,7 +88,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key === "Enter") {
                   e.preventDefault();
                   addTag();
                 }
@@ -83,7 +96,11 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
               placeholder="タグを入力"
               className={styles.input}
             />
-            <button type="button" onClick={addTag} className={styles.addTagButton}>
+            <button
+              type="button"
+              onClick={addTag}
+              className={styles.addTagButton}
+            >
               追加
             </button>
           </div>
@@ -128,7 +145,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
   );
 
   // Horror element: Show warning for sealed works
-  const isSealed = work.status === 'sealed';
+  const isSealed = work.status === "sealed";
 
   return (
     <EditPage sidebar={sidebar}>
@@ -147,7 +164,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
         <Link href="/admin/works" className={styles.breadcrumbLink}>
-          実績一覧
+          制作実績一覧
         </Link>
         <span className={styles.breadcrumbSeparator}>/</span>
         <span>編集</span>
@@ -159,7 +176,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
           label="タイトル"
           value={work.title}
           onChange={(e) => setWork({ ...work, title: e.target.value })}
-          placeholder="実績のタイトルを入力"
+          placeholder="制作実績のタイトルを入力"
           fullWidth
         />
       </div>
@@ -170,7 +187,7 @@ export function WorkEditor({ work: initialWork, tags: allTags }: WorkEditorProps
           label="説明"
           value={work.description}
           onChange={(e) => setWork({ ...work, description: e.target.value })}
-          placeholder="実績の詳細を入力..."
+          placeholder="制作実績の詳細を入力..."
           rows={10}
           fullWidth
         />

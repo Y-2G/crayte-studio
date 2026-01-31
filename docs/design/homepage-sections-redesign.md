@@ -1,16 +1,16 @@
-# TOPページ Newsセクション以降 デザイン改善計画
+# TOP ページ News セクション以降 デザイン改善計画
 
 ## 概要
 
-CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が単調でユーザー離脱につながる恐れがあるため、デザインを刷新する。
+CRAYTE STUDIO の TOP ページにおいて、News セクション以降の構成が単調でユーザー離脱につながる恐れがあるため、デザインを刷新する。
 
 ### 現状の問題点
 
-1. **視覚的単調さ**: 全セクションが同一構成（タイトル→説明→グリッド→ボタン）
+1. **視覚的単調さ**: 全セクションが同一構成（タイトル → 説明 → グリッド → ボタン）
 2. **リズムの欠如**: 背景色の交互切り替えのみで視覚的変化が乏しい
 3. **サービスセクションの弱さ**: 絵文字アイコンが専門性を損なう
-4. **実績セクションの未完成感**: プレースホルダー表示
-5. **CTAセクションの印象の弱さ**: 単純なテキスト+ボタン構成
+4. **制作実績セクションの未完成感**: プレースホルダー表示
+5. **CTA セクションの印象の弱さ**: 単純なテキスト+ボタン構成
 6. **ストーリーテリングの欠如**: 会社の強みが十分に伝わらない
 
 ---
@@ -21,35 +21,35 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 
 ### デザイン原則
 
-| 原則 | 説明 |
-|------|------|
-| **非対称レイアウト** | 予測可能なグリッドを避け、視覚的緊張感を生む |
-| **スケールのコントラスト** | 大胆な要素と繊細な要素の組み合わせ |
-| **タイポグラフィの階層** | 文字自体をデザイン要素として活用 |
-| **戦略的な余白** | 密度の高いゾーンと呼吸のあるスペースの対比 |
-| **スクロール連動アニメーション** | 控えめだが印象的なモーション |
+| 原則                             | 説明                                         |
+| -------------------------------- | -------------------------------------------- |
+| **非対称レイアウト**             | 予測可能なグリッドを避け、視覚的緊張感を生む |
+| **スケールのコントラスト**       | 大胆な要素と繊細な要素の組み合わせ           |
+| **タイポグラフィの階層**         | 文字自体をデザイン要素として活用             |
+| **戦略的な余白**                 | 密度の高いゾーンと呼吸のあるスペースの対比   |
+| **スクロール連動アニメーション** | 控えめだが印象的なモーション                 |
 
 ### カラーパレット
 
 ```css
 :root {
   /* Primary */
-  --redesign-primary: #2E3A8C;        /* Deep Indigo */
-  --redesign-primary-light: #4A5BB8;
+  --redesign-primary: #2e3a8c; /* Deep Indigo */
+  --redesign-primary-light: #4a5bb8;
 
   /* Accent */
-  --redesign-accent: #FF6B4A;         /* Electric Coral */
-  --redesign-accent-soft: #FFB4A2;
+  --redesign-accent: #ff6b4a; /* Electric Coral */
+  --redesign-accent-soft: #ffb4a2;
 
   /* Neutrals */
-  --redesign-bg-white: #FFFFFF;
-  --redesign-bg-warm: #FAF9F7;        /* Warm Grey */
-  --redesign-bg-dark: #1A1A2E;        /* Dark Section */
+  --redesign-bg-white: #ffffff;
+  --redesign-bg-warm: #faf9f7; /* Warm Grey */
+  --redesign-bg-dark: #1a1a2e; /* Dark Section */
 
   /* Text */
-  --redesign-text-dark: #1A1A2E;
-  --redesign-text-muted: #6B7280;
-  --redesign-text-light: #F5F5F5;
+  --redesign-text-dark: #1a1a2e;
+  --redesign-text-muted: #6b7280;
+  --redesign-text-light: #f5f5f5;
 }
 ```
 
@@ -68,9 +68,10 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 **コンセプト**: 現在のデザインを基本的に維持しつつ、より洗練された表現に
 
 **変更点**:
-- ✅ 現行のFeatured Card + Timeline構造を維持
+
+- ✅ 現行の Featured Card + Timeline 構造を維持
 - 🔄 タイムラインのドット装飾を洗練化
-- 🔄 Featured Cardにサブタイトル（記事の冒頭抜粋）を追加
+- 🔄 Featured Card にサブタイトル（記事の冒頭抜粋）を追加
 - 🔄 背景に微細なグリッドパターンを追加
 
 ```
@@ -102,8 +103,9 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 **コンセプト**: 各サービスを大胆なビジュアルカードで表現
 
 **変更点**:
+
 - ❌ 絵文字アイコンを廃止
-- ✅ カスタムSVGアイコン（モノクロ・ジオメトリック）
+- ✅ カスタム SVG アイコン（モノクロ・ジオメトリック）
 - ✅ カードを大型化し、ホバー時にインタラクティブな変化
 - ✅ 各サービスにキーワードタグを追加
 - ✅ スタッガードレイアウト（非対称配置）
@@ -141,7 +143,8 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 └──────────────────────────────────────────────────────────────┘
 ```
 
-**CSS実装ポイント**:
+**CSS 実装ポイント**:
+
 ```css
 .servicesSection {
   background: var(--redesign-bg-warm);
@@ -156,7 +159,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 }
 
 .serviceCard:nth-child(1) {
-  grid-row: 1 / 3;  /* Web制作を大きく */
+  grid-row: 1 / 3; /* Web制作を大きく */
 }
 
 .serviceCard:nth-child(2) {
@@ -174,9 +177,10 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 
 ### 3. Works Section - "Immersive Gallery"
 
-**コンセプト**: 実績を印象的なギャラリー形式で表現
+**コンセプト**: 制作実績を印象的なギャラリー形式で表現
 
 **変更点**:
+
 - ✅ フィーチャード作品（大）+ サブ作品（小）のレイアウト
 - ✅ 画像プレースホルダーをジェネレーティブパターンに置換
 - ✅ ホバー時にオーバーレイ+詳細情報
@@ -188,7 +192,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 │                                                              │
 │  Works                                                       │
 │  ─────                                                       │
-│  私たちの実績をご紹介します                                   │
+│  私たちの制作実績をご紹介します                                   │
 │                                                              │
 │  ┌────────────────────────────────┐  ┌──────────────────┐  │
 │  │                                │  │                  │  │
@@ -206,18 +210,20 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 │                                      │ 2024             │  │
 │                                      └──────────────────┘  │
 │                                                              │
-│              [ 全ての実績を見る → ]                         │
+│              [ 全ての制作実績を見る → ]                         │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 **ジェネレーティブパターン（画像がない場合）**:
+
 ```css
 .workImagePlaceholder {
-  background:
-    linear-gradient(135deg,
-      var(--redesign-primary) 0%,
-      var(--redesign-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--redesign-primary) 0%,
+    var(--redesign-accent) 100%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -226,13 +232,12 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 80%,
-      rgba(255,255,255,0.1) 0%,
-      transparent 50%),
-    radial-gradient(circle at 80% 20%,
-      rgba(255,255,255,0.15) 0%,
-      transparent 40%);
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent
+        40%);
 }
 ```
 
@@ -242,7 +247,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 
 ### 4. 新セクション: Numbers / Stats
 
-**コンセプト**: 信頼感を高める実績数字の追加
+**コンセプト**: 信頼感を高める制作実績数字の追加
 
 **配置**: Works と CTA の間
 
@@ -257,6 +262,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 ```
 
 **アニメーション**:
+
 - スクロールでビューポートに入ったときにカウントアップ
 - `Intersection Observer` + CSS `@property` を使用
 
@@ -269,6 +275,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 **コンセプト**: 大胆なタイポグラフィと色彩で印象的な締めくくり
 
 **変更点**:
+
 - ✅ フルブリード（画面幅いっぱい）のグラデーション背景
 - ✅ 大きな見出しタイポグラフィ
 - ✅ ボタンを目立たせるホバーエフェクト
@@ -293,12 +300,13 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 ```
 
 **グラデーション背景**:
+
 ```css
 .ctaSection {
   background: linear-gradient(
     135deg,
     var(--redesign-primary) 0%,
-    #1E2761 50%,
+    #1e2761 50%,
     var(--redesign-bg-dark) 100%
   );
   color: var(--redesign-text-light);
@@ -333,29 +341,29 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 
 ### Phase 1: 基盤整備
 
-| ID | タスク | 規模 | 状態 |
-|----|--------|------|------|
-| T1-1 | デザイントークン（CSS変数）の追加 | S | [ ] |
-| T1-2 | Google Fonts (Syne) の設定 | S | [ ] |
-| T1-3 | SVGアイコンコンポーネント作成 | M | [ ] |
+| ID   | タスク                             | 規模 | 状態 |
+| ---- | ---------------------------------- | ---- | ---- |
+| T1-1 | デザイントークン（CSS 変数）の追加 | S    | [ ]  |
+| T1-2 | Google Fonts (Syne) の設定         | S    | [ ]  |
+| T1-3 | SVG アイコンコンポーネント作成     | M    | [ ]  |
 
 ### Phase 2: セクション実装
 
-| ID | タスク | 規模 | 依存 | 状態 |
-|----|--------|------|------|------|
-| T2-1 | Services Section リニューアル | L | T1-1, T1-3 | [ ] |
-| T2-2 | Works Section リニューアル | L | T1-1 | [ ] |
-| T2-3 | CTA Section リニューアル | M | T1-1 | [ ] |
-| T2-4 | Stats Section 新規作成 | M | T1-1 | [ ] |
+| ID   | タスク                        | 規模 | 依存       | 状態 |
+| ---- | ----------------------------- | ---- | ---------- | ---- |
+| T2-1 | Services Section リニューアル | L    | T1-1, T1-3 | [ ]  |
+| T2-2 | Works Section リニューアル    | L    | T1-1       | [ ]  |
+| T2-3 | CTA Section リニューアル      | M    | T1-1       | [ ]  |
+| T2-4 | Stats Section 新規作成        | M    | T1-1       | [ ]  |
 
 ### Phase 3: アニメーション・仕上げ
 
-| ID | タスク | 規模 | 依存 | 状態 |
-|----|--------|------|------|------|
-| T3-1 | スクロールアニメーション実装 | M | T2-* | [ ] |
-| T3-2 | ホバーエフェクト追加 | S | T2-* | [ ] |
-| T3-3 | レスポンシブ調整 | M | T2-* | [ ] |
-| T3-4 | アクセシビリティ確認 | S | T3-* | [ ] |
+| ID   | タスク                       | 規模 | 依存  | 状態 |
+| ---- | ---------------------------- | ---- | ----- | ---- |
+| T3-1 | スクロールアニメーション実装 | M    | T2-\* | [ ]  |
+| T3-2 | ホバーエフェクト追加         | S    | T2-\* | [ ]  |
+| T3-3 | レスポンシブ調整             | M    | T2-\* | [ ]  |
+| T3-4 | アクセシビリティ確認         | S    | T3-\* | [ ]  |
 
 ---
 
@@ -366,7 +374,7 @@ CRAYTE STUDIOのTOPページにおいて、Newsセクション以降の構成が
 - **Framework**: Next.js App Router (既存)
 - **Styling**: CSS Modules (既存パターンを踏襲)
 - **Animation**: CSS Transitions + Intersection Observer API
-- **Icons**: カスタムSVG (Reactコンポーネント化)
+- **Icons**: カスタム SVG (React コンポーネント化)
 
 ### ファイル構成（新規・変更）
 
@@ -411,11 +419,11 @@ src/
 
 ## レスポンシブブレークポイント
 
-| ブレークポイント | 対応 |
-|------------------|------|
-| ~767px | モバイル（1カラム、縦積み） |
-| 768px~1023px | タブレット（2カラム） |
-| 1024px~ | デスクトップ（フルレイアウト） |
+| ブレークポイント | 対応                           |
+| ---------------- | ------------------------------ |
+| ~767px           | モバイル（1 カラム、縦積み）   |
+| 768px~1023px     | タブレット（2 カラム）         |
+| 1024px~          | デスクトップ（フルレイアウト） |
 
 ---
 
@@ -431,9 +439,9 @@ src/
 
 1. このデザイン計画のレビュー・承認
 2. `/execute-plan docs/design/homepage-sections-redesign.md` で実装開始
-3. 各Phase完了時にブラウザで確認・フィードバック
+3. 各 Phase 完了時にブラウザで確認・フィードバック
 
 ---
 
-*作成日: 2026-01-26*
-*担当: frontend-design skill*
+_作成日: 2026-01-26_
+_担当: frontend-design skill_

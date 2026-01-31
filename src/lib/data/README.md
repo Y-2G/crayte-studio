@@ -13,7 +13,7 @@ crayte-studio プロジェクトのデータアクセス層です。
 src/lib/data/
 ├── index.ts          # 全ての関数をエクスポート
 ├── posts.ts          # ニュース・記事データ
-├── works.ts          # 実績データ
+├── works.ts          # 制作実績データ
 ├── staff.ts          # スタッフデータ
 ├── pages.ts          # 固定ページデータ
 └── inbox.ts          # お問い合わせ受信データ
@@ -24,11 +24,7 @@ src/lib/data/
 ### 基本的な使用例
 
 ```typescript
-import {
-  getPublishedPosts,
-  getActiveStaff,
-  getPublicWorks
-} from '@/lib/data';
+import { getPublishedPosts, getActiveStaff, getPublicWorks } from "@/lib/data";
 
 // 公開済みの記事を取得
 const posts = await getPublishedPosts();
@@ -36,57 +32,49 @@ const posts = await getPublishedPosts();
 // アクティブなスタッフを取得
 const staff = await getActiveStaff();
 
-// 公開可能な実績を取得
+// 公開可能な制作実績を取得
 const works = await getPublicWorks();
 ```
 
 ### フィルタリング
 
 ```typescript
-import {
-  getPostsByCategory,
-  getWorksByTag,
-  getStaffByTeam
-} from '@/lib/data';
+import { getPostsByCategory, getWorksByTag, getStaffByTeam } from "@/lib/data";
 
 // カテゴリでフィルタ
-const news = await getPostsByCategory('お知らせ');
+const news = await getPostsByCategory("お知らせ");
 
 // タグでフィルタ
-const eventWorks = await getWorksByTag('イベント');
+const eventWorks = await getWorksByTag("イベント");
 
 // チームでフィルタ
-const productionTeam = await getStaffByTeam('制作');
+const productionTeam = await getStaffByTeam("制作");
 ```
 
 ### 単一アイテムの取得
 
 ```typescript
-import {
-  getPostBySlug,
-  getWorkBySlug,
-  getStaffBySlug
-} from '@/lib/data';
+import { getPostBySlug, getWorkBySlug, getStaffBySlug } from "@/lib/data";
 
 // slug で特定の記事を取得
-const post = await getPostBySlug('new-office-announcement');
+const post = await getPostBySlug("new-office-announcement");
 
-// slug で特定の実績を取得
-const work = await getWorkBySlug('summer-festival-2023');
+// slug で特定の制作実績を取得
+const work = await getWorkBySlug("summer-festival-2023");
 
 // slug で特定のスタッフを取得
-const staff = await getStaffBySlug('tanaka-ichiro');
+const staff = await getStaffBySlug("tanaka-ichiro");
 ```
 
 ## データソース
 
 現在、データは以下の JSON ファイルから読み込まれます。
 
-- `/src/data/posts.json` - ニュース・記事 (7件)
-- `/src/data/works.json` - 実績 (7件)
-- `/src/data/staff.json` - スタッフ (7名)
-- `/src/data/pages.json` - 固定ページ (5件)
-- `/src/data/inbox.json` - お問い合わせ (5件)
+- `/src/data/posts.json` - ニュース・記事 (7 件)
+- `/src/data/works.json` - 制作実績 (7 件)
+- `/src/data/staff.json` - スタッフ (7 名)
+- `/src/data/pages.json` - 固定ページ (5 件)
+- `/src/data/inbox.json` - お問い合わせ (5 件)
 
 ## 注意事項
 
@@ -104,6 +92,7 @@ const staff = await getStaffBySlug('tanaka-ichiro');
 ### 公開用 vs 管理用
 
 - **公開用関数**: `getPublishedPosts()`, `getActiveStaff()`, `getPublicWorks()`
+
   - 公開サイトで表示すべきデータのみを返す
   - ホラー要素は除外される
 
@@ -116,5 +105,5 @@ const staff = await getStaffBySlug('tanaka-ichiro');
 全てのデータ型は `/src/types/` で定義されています。
 
 ```typescript
-import type { Post, Work, Staff, Page, InboxMessage } from '@/types';
+import type { Post, Work, Staff, Page, InboxMessage } from "@/types";
 ```

@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { getStaffBySlug, getPublicWorks } from '@/lib/data';
-import { Button } from '@/components/shared/Button/Button';
-import { Card, CardBody } from '@/components/shared/Card/Card';
-import styles from './page.module.css';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getStaffBySlug, getPublicWorks } from "@/lib/data";
+import { Button } from "@/components/shared/Button/Button";
+import { Card, CardBody } from "@/components/shared/Card/Card";
+import styles from "./page.module.css";
 
 interface StaffDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -18,7 +18,7 @@ export async function generateMetadata({
 
   if (!staff) {
     return {
-      title: 'スタッフが見つかりません',
+      title: "スタッフが見つかりません",
     };
   }
 
@@ -34,7 +34,7 @@ export default async function StaffDetailPage({
   const { slug } = await params;
   const staff = await getStaffBySlug(slug);
 
-  if (!staff || staff.state !== 'active' || staff.visibility !== 'public') {
+  if (!staff || staff.state !== "active" || staff.visibility !== "public") {
     notFound();
   }
 
@@ -50,9 +50,7 @@ export default async function StaffDetailPage({
           <div className={styles.container}>
             <div className={styles.headerContent}>
               <div className={styles.photoLarge}>
-                <span className={styles.photoText}>
-                  {staff.name.charAt(0)}
-                </span>
+                <span className={styles.photoText}>{staff.name.charAt(0)}</span>
               </div>
               <div className={styles.headerInfo}>
                 <h1 className={styles.name}>{staff.name}</h1>
@@ -72,7 +70,7 @@ export default async function StaffDetailPage({
 
             {relatedWorks.length > 0 && (
               <section className={styles.worksSection}>
-                <h2 className={styles.sectionTitle}>関連実績</h2>
+                <h2 className={styles.sectionTitle}>関連制作実績</h2>
                 <div className={styles.worksList}>
                   {relatedWorks.map((work) => (
                     <Link
@@ -85,9 +83,9 @@ export default async function StaffDetailPage({
                           <h3 className={styles.workTitle}>{work.title}</h3>
                           <p className={styles.workClient}>{work.client}</p>
                           <p className={styles.workDate}>
-                            {new Date(work.date).toLocaleDateString('ja-JP', {
-                              year: 'numeric',
-                              month: 'long',
+                            {new Date(work.date).toLocaleDateString("ja-JP", {
+                              year: "numeric",
+                              month: "long",
                             })}
                           </p>
                         </CardBody>

@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "news | CRAYTE STUDIO",
   description:
-    "CRAYTE STUDIOのニュースや記事をご紹介します。お知らせ、実績紹介、サービス情報など、最新情報をお届けします。",
+    "CRAYTE STUDIOのニュースや記事をご紹介します。お知らせ、制作実績紹介、サービス情報など、最新情報をお届けします。",
 };
 
 export default async function NewsPage() {

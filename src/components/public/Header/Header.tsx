@@ -16,7 +16,7 @@ export function Header() {
     { label: "ホーム", href: "/" },
     { label: "会社概要", href: "/company" },
     { label: "サービス", href: "/services" },
-    { label: "実績", href: "/works" },
+    { label: "制作実績", href: "/works" },
     { label: "ニュース", href: "/news" },
   ];
 
@@ -72,7 +72,9 @@ export function Header() {
           aria-label="メニューを開く"
         >
           <span
-            className={`${styles.menuIcon} ${isMenuOpen ? styles.menuIconOpen : ""}`}
+            className={`${styles.menuIcon} ${
+              isMenuOpen ? styles.menuIconOpen : ""
+            }`}
           >
             <span></span>
             <span></span>

@@ -61,7 +61,12 @@ export default async function AdminDashboard() {
       icon: "📄",
       href: "/admin/pages",
     },
-    { label: "実績", count: works.length, icon: "🎯", href: "/admin/works" },
+    {
+      label: "制作実績",
+      count: works.length,
+      icon: "🎯",
+      href: "/admin/works",
+    },
     {
       label: "スタッフ",
       count: staff.length,

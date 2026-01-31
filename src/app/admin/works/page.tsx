@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Works — CRAYTE STUDIO Admin",
-  description: "実績管理",
+  description: "制作実績管理",
 };
 
 export default async function AdminWorksPage() {
@@ -15,7 +15,7 @@ export default async function AdminWorksPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>実績</h1>
+        <h1 className={styles.title}>制作実績</h1>
         <Link href="/admin/works/new" className={styles.addButton}>
           新規追加
         </Link>

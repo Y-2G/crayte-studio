@@ -358,7 +358,7 @@
                       "id": "nGo0C",
                       "name": "btnGradOutLabel",
                       "fill": "$public-text",
-                      "content": "実績を見る",
+                      "content": "制作実績を見る",
                       "fontFamily": "Inter",
                       "fontSize": 16,
                       "fontWeight": "600"
@@ -548,7 +548,7 @@
                   "id": "jqlU0",
                   "name": "navWorks",
                   "fill": "$public-text",
-                  "content": "実績",
+                  "content": "制作実績",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -680,7 +680,7 @@
                       "y": 0,
                       "descendants": {
                         "nGo0C": {
-                          "content": "実績を見る",
+                          "content": "制作実績を見る",
                           "fill": "$color-white",
                           "fontSize": 18,
                           "fontStyle": "normal",
@@ -1714,7 +1714,7 @@
                       "id": "0Nk9Z",
                       "name": "worksDesc",
                       "fill": "#ffffffaa",
-                      "content": "クライアントの課題を解決し、\n成長を支援してきた\n実績の一部をご紹介します。",
+                      "content": "クライアントの課題を解決し、\n成長を支援してきた\n制作実績の一部をご紹介します。",
                       "lineHeight": 1.8,
                       "fontFamily": "Inter",
                       "fontSize": 18,
@@ -1727,7 +1727,7 @@
                       "name": "worksCta",
                       "descendants": {
                         "MnpPf": {
-                          "content": "全ての実績を見る"
+                          "content": "全ての制作実績を見る"
                         }
                       }
                     }
@@ -3021,7 +3021,7 @@
                                   "id": "wBUwp",
                                   "name": "res2",
                                   "fill": "#ffffffaa",
-                                  "content": "制作実績",
+                                  "content": "制作制作実績",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontWeight": "normal"

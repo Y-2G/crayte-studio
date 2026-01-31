@@ -59,7 +59,7 @@ if (isPost(data)) {
 }
 ```
 
-### Work（実績・ポートフォリオ）
+### Work（制作実績・ポートフォリオ）
 
 ```typescript
 import type { Work, WorkStatus } from "@/types";
@@ -262,26 +262,24 @@ const sealContent = (state: HorrorState, contentId: string): HorrorState => {
 ### TableColumn（テーブル列定義）
 
 ```typescript
-import type { TableColumn, Post } from '@/types';
+import type { TableColumn, Post } from "@/types";
 
 const postColumns: TableColumn<Post>[] = [
   {
-    key: 'title',
-    label: 'タイトル',
+    key: "title",
+    label: "タイトル",
     sortable: true,
-    width: '40%',
+    width: "40%",
   },
   {
-    key: 'status',
-    label: 'ステータス',
+    key: "status",
+    label: "ステータス",
     sortable: true,
-    render: (value, row) => (
-      <StatusBadge status={value as PostStatus} />
-    ),
+    render: (value, row) => <StatusBadge status={value as PostStatus} />,
   },
   {
-    key: 'createdAt',
-    label: '作成日',
+    key: "createdAt",
+    label: "作成日",
     sortable: true,
     render: (value) => formatDate(value as string),
   },
@@ -347,7 +345,7 @@ const publicNavigation: NavItem[] = [
     icon: "home",
   },
   {
-    label: "実績",
+    label: "制作実績",
     href: "/works",
     icon: "portfolio",
   },
@@ -446,7 +444,7 @@ export async function updatePostStatus(
 ## React コンポーネントでの使用例
 
 ```typescript
-import type { Post, TableColumn, TableAction } from '@/types';
+import type { Post, TableColumn, TableAction } from "@/types";
 
 interface PostTableProps {
   posts: Post[];
@@ -454,23 +452,23 @@ interface PostTableProps {
 
 export default function PostTable({ posts }: PostTableProps) {
   const columns: TableColumn<Post>[] = [
-    { key: 'title', label: 'タイトル', sortable: true },
-    { key: 'status', label: 'ステータス', sortable: true },
+    { key: "title", label: "タイトル", sortable: true },
+    { key: "status", label: "ステータス", sortable: true },
   ];
 
   const actions: TableAction<Post>[] = [
     {
-      label: '編集',
+      label: "編集",
       onClick: (post) => router.push(`/admin/posts/${post.id}`),
-      icon: 'edit',
-      variant: 'default',
+      icon: "edit",
+      variant: "default",
     },
     {
-      label: '削除',
+      label: "削除",
       onClick: (post) => handleDelete(post.id),
-      icon: 'trash',
-      variant: 'danger',
-      confirmMessage: '本当に削除しますか？',
+      icon: "trash",
+      variant: "danger",
+      confirmMessage: "本当に削除しますか？",
     },
   ];
 

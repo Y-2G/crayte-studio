@@ -45,10 +45,10 @@ export function WorksGallery({ works, className }: WorksGalleryProps) {
             <br />
             成長を支援してきた
             <br />
-            実績の一部をご紹介します。
+            制作実績の一部をご紹介します。
           </p>
           <GradientButton href="/works" variant="dark" size="lg" filled>
-            全ての実績を見る
+            全ての制作実績を見る
           </GradientButton>
         </div>
 

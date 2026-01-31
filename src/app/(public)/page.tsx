@@ -81,7 +81,7 @@ export default async function HomePage() {
               size="lg"
               className={styles.heroCtaButton}
             >
-              実績を見る
+              制作実績を見る
             </GradientButton>
           </div>
         </div>
