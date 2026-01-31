@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "制作実績 | CRAYTE STUDIO",
   description:
-    "CRAYTE STUDIOの制作制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。",
+    "CRAYTE STUDIOの制作実績をご紹介します。Web制作、イベント企画、映像制作など、幅広いプロジェクトを手がけています。",
 };
 
 export default async function WorksPage() {
