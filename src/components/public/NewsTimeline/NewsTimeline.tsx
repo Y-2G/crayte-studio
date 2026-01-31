@@ -63,7 +63,7 @@ export function NewsTimeline({ posts, className }: NewsTimelineProps) {
           <p className={styles.description}>
             最新のお知らせやプロジェクト情報をお届けします。
           </p>
-          <GradientButton href="/news" variant="dark" size="lg">
+          <GradientButton href="/articles?filter=news" variant="dark" size="lg">
             一覧を見る
           </GradientButton>
         </div>

@@ -1,0 +1,389 @@
+/* ============================================================================
+ * Members Page Styles
+ * ============================================================================ */
+
+.page {
+  width: 100%;
+}
+
+/* ============================================================================
+ * Hero Section
+ * ============================================================================ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    #0a0a0f 0%,
+    #0f0f1a 40%,
+    #1a1a2e 70%,
+    #16213e 100%
+  );
+  padding: var(--spacing-32) var(--spacing-4);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroGlow1,
+.heroGlow2,
+.heroGlow3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.heroGlow1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 20, 147, 0.25) 0%,
+    transparent 70%
+  );
+  top: -100px;
+  left: -200px;
+  opacity: 0.7;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.heroGlow2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(147, 112, 219, 0.2) 0%,
+    transparent 70%
+  );
+  top: 50px;
+  right: -100px;
+  opacity: 0.6;
+  animation: pulse 8s ease-in-out infinite 3s;
+}
+
+.heroGlow3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 191, 255, 0.15) 0%,
+    transparent 70%
+  );
+  bottom: -50px;
+  left: 40%;
+  opacity: 0.5;
+  animation: pulse 8s ease-in-out infinite 5s;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  max-width: 700px;
+}
+
+.heroLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 4px;
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.heroDesc {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.67);
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ============================================================================
+ * Members Section
+ * ============================================================================ */
+
+.membersSection {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f0f4ff 100%);
+  padding: var(--spacing-24) var(--spacing-4);
+}
+
+.membersContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+/* CEO Card */
+.ceoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-5);
+}
+
+.ceoPhoto {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+}
+
+.ceoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.ceoName {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--public-text);
+  margin: 0;
+}
+
+.ceoRole {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-pink),
+    var(--color-brand-cyan)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Member Grid */
+.memberGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-10);
+  width: 100%;
+  justify-items: center;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  transition: transform var(--transition-normal);
+}
+
+.memberCard:hover {
+  transform: translateY(-4px);
+}
+
+.memberPhoto {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+  transition: box-shadow var(--transition-normal);
+}
+
+.memberCard:hover .memberPhoto {
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.memberName {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--public-text);
+  margin: 0;
+  text-align: center;
+}
+
+.memberRole {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--public-text-muted);
+  text-align: center;
+}
+
+/* ============================================================================
+ * CTA Section
+ * ============================================================================ */
+
+.ctaSection {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #0f0f1a 0%,
+    #1a1a2e 30%,
+    #16213e 60%,
+    #0f3460 100%
+  );
+  padding: var(--spacing-24) var(--spacing-4);
+}
+
+.ctaGlow1,
+.ctaGlow2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ctaGlow1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 20, 147, 0.25) 0%,
+    transparent 70%
+  );
+  top: -100px;
+  left: -150px;
+  opacity: 0.8;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.ctaGlow2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 191, 255, 0.22) 0%,
+    transparent 70%
+  );
+  top: -50px;
+  right: -100px;
+  opacity: 0.7;
+  animation: pulse 8s ease-in-out infinite 3s;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.ctaTitle {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.ctaDesc {
+  font-size: clamp(1rem, 2vw, 1rem);
+  color: rgba(255, 255, 255, 0.67);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================================================
+ * Animations
+ * ============================================================================ */
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================================================
+ * Responsive: Tablet (768px+)
+ * ============================================================================ */
+
+@media (min-width: 768px) {
+  .hero {
+    padding: var(--spacing-32) var(--spacing-8);
+  }
+
+  .memberGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .membersSection {
+    padding: var(--spacing-24) var(--spacing-8);
+  }
+}
+
+/* ============================================================================
+ * Responsive: Desktop (1024px+)
+ * ============================================================================ */
+
+@media (min-width: 1024px) {
+  .memberGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .membersSection,
+  .ctaSection {
+    padding: var(--spacing-24) var(--spacing-10);
+  }
+
+  .ctaSection {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* ============================================================================
+ * Reduced Motion
+ * ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroGlow1,
+  .heroGlow2,
+  .heroGlow3,
+  .ctaGlow1,
+  .ctaGlow2 {
+    animation: none;
+  }
+
+  .memberCard {
+    transition: none;
+  }
+
+  .memberCard:hover {
+    transform: none;
+  }
+}

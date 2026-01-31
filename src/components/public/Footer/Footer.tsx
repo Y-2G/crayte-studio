@@ -9,12 +9,12 @@ const serviceLinks = [
 
 const companyLinks = [
   { label: "会社概要", href: "/company" },
-  { label: "採用情報", href: "/company#careers" },
+  { label: "採用情報", href: "/careers" },
   { label: "お問い合わせ", href: "/contact" },
 ];
 
 const resourceLinks = [
-  { label: "ブログ", href: "/news" },
+  { label: "ブログ", href: "/articles?filter=blog" },
   { label: "制作実績", href: "/works" },
   { label: "よくある質問", href: "/faq" },
 ];

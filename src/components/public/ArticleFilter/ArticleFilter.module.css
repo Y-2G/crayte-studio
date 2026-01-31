@@ -1,0 +1,29 @@
+.filterRow {
+  display: flex;
+  gap: var(--spacing-2);
+  justify-content: center;
+}
+
+.filterButton {
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 1px solid var(--public-border);
+  background: transparent;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--public-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterButton:hover {
+  border-color: var(--color-brand-pink);
+  color: var(--public-text);
+}
+
+.filterButton.active {
+  background: var(--gradient-brand);
+  color: var(--color-white);
+  border-color: transparent;
+  font-weight: var(--font-weight-semibold);
+}
