@@ -1,6 +1,7 @@
 .fallback {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   overflow: hidden;
   background-color: var(--public-bg-alt);

@@ -263,41 +263,29 @@ export default function CareersPage() {
             </p>
           </div>
           <div className={styles.employeeGrid}>
-            {employees.map((emp) => {
-              const style =
-                emp.name === employees[2].name
-                  ? { fontFamily: "var(--font-404)" }
-                  : undefined;
-              return (
-                <div
-                  key={emp.name}
-                  className={styles.employeeCard}
-                  style={style}
-                >
-                  <div className={styles.employeePhoto}>
-                    <OptimizedImage
-                      src={emp.image}
-                      alt={emp.name}
-                      width={600}
-                      height={400}
-                      className={styles.employeeImage}
-                    />
-                  </div>
-                  <div className={styles.employeeContent}>
-                    <span
-                      className={`${styles.employeeRole} ${
-                        styles[emp.gradient]
-                      }`}
-                    >
-                      {emp.role}
-                    </span>
-                    <h3 className={styles.employeeName}>{emp.name}</h3>
-                    <span className={styles.employeeYear}>{emp.year}</span>
-                    <p className={styles.employeeQuote}>{emp.quote}</p>
-                  </div>
+            {employees.map((emp) => (
+              <div key={emp.name} className={styles.employeeCard}>
+                <div className={styles.employeePhoto}>
+                  <OptimizedImage
+                    src={emp.image}
+                    alt={emp.name}
+                    width={600}
+                    height={400}
+                    className={styles.employeeImage}
+                  />
                 </div>
-              );
-            })}
+                <div className={styles.employeeContent}>
+                  <span
+                    className={`${styles.employeeRole} ${styles[emp.gradient]}`}
+                  >
+                    {emp.role}
+                  </span>
+                  <h3 className={styles.employeeName}>{emp.name}</h3>
+                  <span className={styles.employeeYear}>{emp.year}</span>
+                  <p className={styles.employeeQuote}>{emp.quote}</p>
+                </div>
+              </div>
+            ))}
           </div>
           <GradientButton href="/members" variant="light" size="md">
             メンバー紹介をもっと見る
