@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist_Mono, Syne } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 
 const notoSansJP = localFont({
@@ -9,15 +9,15 @@ const notoSansJP = localFont({
   display: "swap",
 });
 
+const teko = localFont({
+  src: "../../public/fonts/Teko-VariableFont_wght.ttf",
+  variable: "--font-teko",
+  display: "swap",
+});
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSansJP.variable} ${geistMono.variable} ${syne.variable}`}>
+      <body className={`${notoSansJP.variable} ${teko.variable} ${geistMono.variable}`}>
         {children}
       </body>
     </html>
