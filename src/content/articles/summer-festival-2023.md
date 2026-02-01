@@ -12,6 +12,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2023-08-15"
 updatedAt: "2023-09-01"
 heroImage: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80"
+client: "渋谷区観光協会"
+venue: "代々木公園"
+workStatus: "closed"
+workId: "work-001"
 ---
 
 地域の伝統的な夏祭りイベントのトータルプロデュースを担当しました。特設Webサイトの制作、SNSプロモーション、当日の映像撮影・ライブ配信まで一貫してサポート。3万人以上の来場者を記録し、大成功を収めました。

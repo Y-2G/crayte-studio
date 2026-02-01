@@ -11,6 +11,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2024-05-10"
 updatedAt: "2024-05-15"
 heroImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+client: "株式会社ファッションフロンティア"
+venue: "オンライン"
+workStatus: "live"
+workId: "work-004"
 ---
 
 新興アパレルブランドのECサイトを新規構築。ブランドの世界観を表現するビジュアルデザインと、使いやすいショッピング体験を両立。公開後3ヶ月で目標売上の120%を達成しました。

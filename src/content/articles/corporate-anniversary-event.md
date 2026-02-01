@@ -12,6 +12,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2024-06-15"
 updatedAt: "2024-06-15"
 heroImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
+client: "株式会社テックイノベーション"
+venue: "グランドハイアット東京"
+workStatus: "planned"
+workId: "work-007"
 ---
 
 IT企業の創業30周年記念パーティーの企画・運営を担当。会場演出、記念映像制作、特設サイト制作を手がけました。社員・関係者200名が参加し、企業の歴史と未来を祝う心温まるイベントとなりました。

@@ -29,6 +29,12 @@ export interface Article {
   heroImage?: string;
   content: string;
   htmlContent: string;
+  // Work固有（オプショナル）
+  client?: string;
+  venue?: string;
+  workStatus?: string;
+  workId?: string;
+  images?: string[];
 }
 
 function parseArticleFile(fileName: string): Article {
@@ -50,6 +56,11 @@ function parseArticleFile(fileName: string): Article {
     heroImage: data.heroImage || undefined,
     content,
     htmlContent,
+    client: data.client || undefined,
+    venue: data.venue || undefined,
+    workStatus: data.workStatus || undefined,
+    workId: data.workId || undefined,
+    images: data.images || undefined,
   };
 }
 

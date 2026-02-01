@@ -11,6 +11,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2023-11-20"
 updatedAt: "2023-12-01"
 heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
+client: "株式会社エクセレントマニュファクチャリング"
+venue: "オンライン"
+workStatus: "closed"
+workId: "work-002"
 ---
 
 創業50周年を迎える製造業のお客様のコーポレートサイトを全面リニューアル。企業の歴史と技術力を伝えるストーリー性のあるデザインと、最新のレスポンシブ対応で、ブランド価値の向上に貢献しました。

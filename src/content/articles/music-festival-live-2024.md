@@ -12,6 +12,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2024-03-20"
 updatedAt: "2024-04-01"
 heroImage: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&q=80"
+client: "一般社団法人 音楽文化振興会"
+venue: "恵比寿ガーデンホール"
+workStatus: "closed"
+workId: "work-003"
 ---
 
 春の音楽フェスティバルにおいて、Webサイト制作、チケット販売システム構築、当日のライブ配信を担当。5組のアーティストが出演し、会場・配信合わせて1万人以上の視聴を記録しました。

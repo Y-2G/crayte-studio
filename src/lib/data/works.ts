@@ -1,17 +1,45 @@
 /**
  * Work data access functions
  *
- * Provides functions to retrieve and filter work/portfolio data from JSON source.
+ * Provides functions to retrieve and filter work/portfolio data
+ * from Markdown articles with category "制作実績" and a workId.
  */
 
 import type { Work, WorkStatus } from '@/types';
-import worksData from '@/data/works.json';
+import { getAllArticles, type Article } from '@/lib/articles';
+
+function articleToWork(article: Article): Work {
+  const images: string[] = [];
+  if (article.heroImage) images.push(article.heroImage);
+  if (article.images) images.push(...article.images);
+
+  return {
+    id: article.workId!,
+    slug: article.id,
+    title: article.title,
+    description: article.excerpt,
+    client: article.client || '',
+    venue: article.venue || '',
+    date: article.publishedAt,
+    status: (article.workStatus as WorkStatus) || 'closed',
+    images,
+    tags: article.tags,
+    createdAt: new Date(article.publishedAt).toISOString(),
+    updatedAt: new Date(article.updatedAt).toISOString(),
+  };
+}
+
+async function getWorkArticles(): Promise<Article[]> {
+  const articles = await getAllArticles();
+  return articles.filter((a) => a.category === '制作実績' && a.workId);
+}
 
 /**
  * Get all works (including sealed and rewritten works)
  */
 export async function getAllWorks(): Promise<Work[]> {
-  return worksData as Work[];
+  const articles = await getWorkArticles();
+  return articles.map(articleToWork);
 }
 
 /**

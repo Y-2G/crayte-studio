@@ -12,6 +12,10 @@ author: "CRAYTE STUDIO"
 publishedAt: "2023-10-15"
 updatedAt: "2023-11-01"
 heroImage: "https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=1200&q=80"
+client: "渋谷区文化振興財団"
+venue: "渋谷区文化総合センター大和田"
+workStatus: "closed"
+workId: "work-005"
 ---
 
 現代アーティスト10名による合同展覧会のトータルプロデュース。会場設営、Webサイト制作、プロモーション映像制作を担当。会期中2000名以上の来場者があり、地域のアート文化振興に貢献しました。
