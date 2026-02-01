@@ -201,127 +201,133 @@ export default async function ArticleDetailPage({
           <div className={styles.divider} />
 
           {/* Author Section */}
-          <div className={styles.authorSection}>
-            <div className={styles.authorAvatar}>
-              <span className={styles.authorAvatarText}>
-                {getAuthorInitials(article.author)}
-              </span>
-            </div>
-            <div className={styles.authorInfo}>
-              <p className={styles.authorName}>{article.author}</p>
-              <p className={styles.authorDesc}>
-                CRAYTE STUDIOの最新情報をお届けします。
-              </p>
-            </div>
-          </div>
-
-          {/* Share Row */}
-          <div className={styles.shareRow}>
-            <span className={styles.shareLabel}>この記事をシェア:</span>
-            <button
-              className={styles.shareButton}
-              aria-label="Xでシェア"
-              type="button"
-            >
-              <svg
-                className={styles.shareIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-              </svg>
-            </button>
-            <button
-              className={styles.shareButton}
-              aria-label="Facebookでシェア"
-              type="button"
-            >
-              <svg
-                className={styles.shareIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-              </svg>
-            </button>
-            <button
-              className={styles.shareButton}
-              aria-label="リンクをコピー"
-              type="button"
-            >
-              <svg
-                className={styles.shareIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-              </svg>
-            </button>
-          </div>
-        </main>
-
-        {/* Side Column */}
-        <aside className={styles.sideColumn}>
-          {/* Table of Contents */}
-          {headings.length > 0 && (
-            <div className={styles.tocCard}>
-              <h2 className={styles.tocTitle}>目次</h2>
-              <div className={styles.tocDivider} />
-              <ol className={styles.tocList}>
-                {headings.map((heading, i) => (
-                  <li key={heading.id} className={styles.tocItem}>
-                    <span className={styles.tocNumber}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <a href={`#${heading.id}`} className={styles.tocLink}>
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-
-          {/* Related Articles */}
-          {relatedArticles.length > 0 && (
-            <div className={styles.relatedCard}>
-              <h2 className={styles.relatedTitle}>関連記事</h2>
-              <div className={styles.tocDivider} />
-              <div className={styles.relatedList}>
-                {relatedArticles.map((related, i) => (
-                  <div key={related.id}>
-                    {i > 0 && <div className={styles.relatedSep} />}
-                    <Link
-                      href={`/articles/${related.id}`}
-                      className={styles.relatedItem}
-                    >
-                      <span className={styles.relatedItemDate}>
-                        {formatDate(related.publishedAt)}
-                      </span>
-                      <h3 className={styles.relatedItemTitle}>
-                        {related.title}
-                      </h3>
-                    </Link>
-                  </div>
-                ))}
+          {!isError && (
+            <div className={styles.authorSection}>
+              <div className={styles.authorAvatar}>
+                <span className={styles.authorAvatarText}>
+                  {getAuthorInitials(article.author)}
+                </span>
+              </div>
+              <div className={styles.authorInfo}>
+                <p className={styles.authorName}>{article.author}</p>
+                <p className={styles.authorDesc}>
+                  CRAYTE STUDIOの最新情報をお届けします。
+                </p>
               </div>
             </div>
           )}
-        </aside>
+
+          {/* Share Row */}
+          {!isError && (
+            <div className={styles.shareRow}>
+              <span className={styles.shareLabel}>この記事をシェア:</span>
+              <button
+                className={styles.shareButton}
+                aria-label="Xでシェア"
+                type="button"
+              >
+                <svg
+                  className={styles.shareIcon}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                  <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                </svg>
+              </button>
+              <button
+                className={styles.shareButton}
+                aria-label="Facebookでシェア"
+                type="button"
+              >
+                <svg
+                  className={styles.shareIcon}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </button>
+              <button
+                className={styles.shareButton}
+                aria-label="リンクをコピー"
+                type="button"
+              >
+                <svg
+                  className={styles.shareIcon}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </main>
+
+        {/* Side Column */}
+        {!isError && (
+          <aside className={styles.sideColumn}>
+            {/* Table of Contents */}
+            {headings.length > 0 && (
+              <div className={styles.tocCard}>
+                <h2 className={styles.tocTitle}>目次</h2>
+                <div className={styles.tocDivider} />
+                <ol className={styles.tocList}>
+                  {headings.map((heading, i) => (
+                    <li key={heading.id} className={styles.tocItem}>
+                      <span className={styles.tocNumber}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <a href={`#${heading.id}`} className={styles.tocLink}>
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            {/* Related Articles */}
+            {relatedArticles.length > 0 && (
+              <div className={styles.relatedCard}>
+                <h2 className={styles.relatedTitle}>関連記事</h2>
+                <div className={styles.tocDivider} />
+                <div className={styles.relatedList}>
+                  {relatedArticles.map((related, i) => (
+                    <div key={related.id}>
+                      {i > 0 && <div className={styles.relatedSep} />}
+                      <Link
+                        href={`/articles/${related.id}`}
+                        className={styles.relatedItem}
+                      >
+                        <span className={styles.relatedItemDate}>
+                          {formatDate(related.publishedAt)}
+                        </span>
+                        <h3 className={styles.relatedItemTitle}>
+                          {related.title}
+                        </h3>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </aside>
+        )}
       </div>
 
       {/* Back to Articles */}
