@@ -1,24 +1,44 @@
 /**
  * Post data access functions
  *
- * Provides functions to retrieve and filter post data from JSON source.
+ * Adapter layer: converts Article data (from MD files) into Post entities.
+ * All functions maintain the same API signatures as the original JSON-based implementation.
  */
 
-import type { Post, PostStatus } from '@/types';
-import postsData from '@/data/posts.json';
+import type { Post, PostStatus, ReviewComment } from '@/types';
+import { getAllArticlesRaw, getArticleById } from '@/lib/articles';
+import type { Article } from '@/lib/articles';
+
+function articleToPost(article: Article): Post {
+  return {
+    id: article.id,
+    slug: article.slug,
+    title: article.title,
+    content: article.htmlContent,
+    excerpt: article.excerpt,
+    status: article.status as PostStatus,
+    visibility: article.visibility as Post['visibility'],
+    category: article.category,
+    tags: article.tags,
+    author: article.author,
+    reviewComments: article.reviewComments as ReviewComment[],
+    meta: article.meta,
+    createdAt: article.createdAt,
+    updatedAt: article.updatedAt,
+    publishedAt: article.publishedAt || undefined,
+  };
+}
 
 /**
  * Get all posts (including drafts and private posts)
  */
 export async function getAllPosts(): Promise<Post[]> {
-  return postsData as Post[];
+  const articles = await getAllArticlesRaw();
+  return articles.map(articleToPost);
 }
 
 /**
  * Get a single post by slug
- *
- * @param slug - URL-friendly identifier
- * @returns Post if found, null otherwise
  */
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const posts = await getAllPosts();
@@ -27,18 +47,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 /**
  * Get a single post by ID
- *
- * @param id - Unique identifier
- * @returns Post if found, null otherwise
  */
 export async function getPostById(id: string): Promise<Post | null> {
-  const posts = await getAllPosts();
-  return posts.find((post) => post.id === id) || null;
+  const article = await getArticleById(id);
+  return article ? articleToPost(article) : null;
 }
 
 /**
  * Get only published posts (status: 'publish', visibility: 'public')
- * This is what should be displayed on the public website
  */
 export async function getPublishedPosts(): Promise<Post[]> {
   const posts = await getAllPosts();
@@ -49,8 +65,6 @@ export async function getPublishedPosts(): Promise<Post[]> {
 
 /**
  * Get posts by specific status
- *
- * @param status - Post status to filter by
  */
 export async function getPostsByStatus(status: PostStatus): Promise<Post[]> {
   const posts = await getAllPosts();
@@ -59,8 +73,6 @@ export async function getPostsByStatus(status: PostStatus): Promise<Post[]> {
 
 /**
  * Get posts by category
- *
- * @param category - Category name to filter by
  */
 export async function getPostsByCategory(category: string): Promise<Post[]> {
   const posts = await getAllPosts();
@@ -69,8 +81,6 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
 
 /**
  * Get posts by tag
- *
- * @param tag - Tag name to filter by
  */
 export async function getPostsByTag(tag: string): Promise<Post[]> {
   const posts = await getAllPosts();
@@ -79,8 +89,6 @@ export async function getPostsByTag(tag: string): Promise<Post[]> {
 
 /**
  * Get posts by author
- *
- * @param author - Author name to filter by
  */
 export async function getPostsByAuthor(author: string): Promise<Post[]> {
   const posts = await getAllPosts();
@@ -107,8 +115,6 @@ export async function getAllTags(): Promise<string[]> {
 
 /**
  * Get recent posts (published only)
- *
- * @param limit - Number of posts to return (default: 5)
  */
 export async function getRecentPosts(limit: number = 5): Promise<Post[]> {
   const posts = await getPublishedPosts();
