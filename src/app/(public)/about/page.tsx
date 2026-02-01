@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const companyInfo = [
   { label: "会社名", value: "株式会社CRAYTE STUDIO" },
   { label: "設立", value: "2024年4月" },
-  { label: "代表者", value: "代表取締役 辻 善史" },
+  { label: "代表者", value: "代表取締役 田中 一郎" },
   {
     label: "所在地",
     value: "〒530-0001\n大阪府大阪市北区梅田1-1-3 大阪駅前第3ビル 29F",
@@ -232,7 +232,9 @@ export default function AboutPage() {
           {companyInfo.map((item, i) => (
             <div
               key={item.label}
-              className={`${styles.infoRow} ${i === companyInfo.length - 1 ? styles.infoRowLast : ""}`}
+              className={`${styles.infoRow} ${
+                i === companyInfo.length - 1 ? styles.infoRowLast : ""
+              }`}
             >
               <div className={styles.infoLabel}>{item.label}</div>
               <div className={styles.infoValue}>
@@ -261,9 +263,7 @@ export default function AboutPage() {
         <div className={styles.mvContent}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>MISSION & VISION</span>
-            <h2
-              className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}
-            >
+            <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
               ミッション・ビジョン
             </h2>
           </div>
@@ -318,7 +318,9 @@ export default function AboutPage() {
           {history.map((item) => (
             <div key={item.date} className={styles.timelineItem}>
               <span
-                className={`${styles.timelineDot} ${dotColorMap[item.dotColor]}`}
+                className={`${styles.timelineDot} ${
+                  dotColorMap[item.dotColor]
+                }`}
               />
               <div className={styles.timelineDate}>{item.date}</div>
               <h3 className={styles.timelineTitle}>{item.title}</h3>
@@ -334,9 +336,7 @@ export default function AboutPage() {
         <div className={styles.accessContent}>
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>ACCESS</span>
-            <h2
-              className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}
-            >
+            <h2 className={`${styles.sectionTitle} ${styles.sectionTitleDark}`}>
               アクセス
             </h2>
           </div>
@@ -357,7 +357,9 @@ export default function AboutPage() {
                 <TrainIcon className={styles.accessIcon} />
                 <span className={styles.accessBlockLabel}>最寄り駅</span>
                 <p className={styles.accessBlockValue}>
-                  {"JR大阪駅 徒歩5分\n地下鉄御堂筋線 梅田駅 徒歩3分\n阪急 大阪梅田駅 徒歩5分"}
+                  {
+                    "JR大阪駅 徒歩5分\n地下鉄御堂筋線 梅田駅 徒歩3分\n阪急 大阪梅田駅 徒歩5分"
+                  }
                 </p>
               </div>
               <div className={styles.accessBlock}>

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { GradientButton } from "@/components/shared/GradientButton";
 import styles from "./CtaBlock.module.css";
 
