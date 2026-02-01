@@ -81,6 +81,7 @@ export const Large: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {} as Story['args'],
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
       <GradientButton href="#" variant="dark">Dark</GradientButton>

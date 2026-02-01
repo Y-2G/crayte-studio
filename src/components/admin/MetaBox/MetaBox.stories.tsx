@@ -88,6 +88,7 @@ export const Collapsed: Story = {
 };
 
 export const MultiplePanels: Story = {
+  args: {} as Story['args'],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '300px' }}>
       <MetaBox title="公開" accent>

@@ -44,6 +44,7 @@ export const WithDelay: Story = {
 };
 
 export const Staggered: Story = {
+  args: {} as Story['args'],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {[0, 100, 200, 300].map((delay) => (

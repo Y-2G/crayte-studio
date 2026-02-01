@@ -46,6 +46,7 @@ export const Bordered: Story = {
 };
 
 export const WithSections: Story = {
+  args: {} as Story['args'],
   render: () => (
     <Card variant="bordered">
       <CardHeader>
@@ -76,6 +77,7 @@ export const NoPadding: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {} as Story['args'],
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
       <Card variant="default" padding="md">

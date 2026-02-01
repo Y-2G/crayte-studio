@@ -89,6 +89,7 @@ export const Small: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {} as Story['args'],
   render: () => (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
       <Badge variant="default">デフォルト</Badge>
