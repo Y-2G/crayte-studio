@@ -7,9 +7,9 @@
  */
 
 import Link from "next/link";
-import Image from "next/image";
 import type { Work } from "@/types";
 import { GradientButton } from "@/components/shared/GradientButton";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import styles from "./WorksGallery.module.css";
 
 interface WorksGalleryProps {
@@ -68,8 +68,6 @@ interface WorkCardProps {
 }
 
 function WorkCard({ work }: WorkCardProps) {
-  const hasImage = work.images && work.images.length > 0;
-
   return (
     <Link
       href={`/articles/${work.slug}`}
@@ -77,17 +75,13 @@ function WorkCard({ work }: WorkCardProps) {
       aria-label={`${work.title}${work.client ? ` - ${work.client}` : ""}`}
     >
       <div className={styles.workImageWrapper}>
-        {hasImage ? (
-          <Image
-            src={work.images[0]}
-            alt={work.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 25vw"
-            className={styles.workImage}
-          />
-        ) : (
-          <div className={styles.workImagePlaceholder} aria-hidden="true" />
-        )}
+        <OptimizedImage
+          src={work.images?.[0]}
+          alt={work.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 25vw"
+          className={styles.workImage}
+        />
       </div>
 
       <div className={styles.workContent}>

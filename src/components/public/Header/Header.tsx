@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { GradientButton } from "@/components/shared/GradientButton";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -24,7 +24,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={closeMenu} aria-label="CRAYTE STUDIO ホーム">
-          <Image
+          <OptimizedImage
             src="/images/logo-brand.png"
             alt="CRAYTE STUDIO"
             width={845}

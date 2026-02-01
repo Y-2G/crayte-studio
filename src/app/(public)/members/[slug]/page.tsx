@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import {
   getAllMemberSlugs,
   getMemberBySlug,
@@ -99,7 +99,7 @@ export default async function MemberDetailPage({
 
           {/* Member Photo */}
           <div className={styles.heroPhotoWrapper}>
-            <Image
+            <OptimizedImage
               src={member.photo}
               alt={member.name}
               width={200}
@@ -256,7 +256,7 @@ export default async function MemberDetailPage({
                       className={styles.relatedMemberCard}
                     >
                       <div className={styles.relatedMemberPhoto}>
-                        <Image
+                        <OptimizedImage
                           src={related.photo}
                           alt={related.name}
                           width={48}

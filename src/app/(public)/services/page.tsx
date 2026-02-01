@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { WebIcon, EventIcon, VideoIcon } from "@/components/icons";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { CtaBlock } from "@/components/public/CtaBlock/CtaBlock";
 import styles from "./page.module.css";
 
@@ -192,7 +192,7 @@ export default function ServicesPage() {
           </div>
           <div className={styles.contentRow}>
             <div className={styles.imageWrap}>
-              <Image
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1746289271913-12e4d839c045?w=1080&q=80"
                 alt="Web制作のイメージ"
                 fill
@@ -230,7 +230,7 @@ export default function ServicesPage() {
               ))}
             </div>
             <div className={styles.imageWrap}>
-              <Image
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1571917687771-094c2a557ed4?w=1080&q=80"
                 alt="イベント企画のイメージ"
                 fill
@@ -258,7 +258,7 @@ export default function ServicesPage() {
           </div>
           <div className={styles.contentRow}>
             <div className={styles.imageWrap}>
-              <Image
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1707825982640-61e75a225630?w=1080&q=80"
                 alt="映像制作のイメージ"
                 fill

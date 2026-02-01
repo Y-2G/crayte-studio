@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { GradientButton } from "@/components/shared/GradientButton";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { getAllMembers } from "@/lib/members";
 import styles from "./page.module.css";
@@ -45,7 +45,7 @@ export default async function MembersPage() {
               >
                 <div className={styles.ceoCard}>
                   <div className={styles.ceoPhoto}>
-                    <Image
+                    <OptimizedImage
                       src={ceo.photo}
                       alt={ceo.name}
                       width={200}
@@ -69,7 +69,7 @@ export default async function MembersPage() {
                 >
                   <div className={styles.memberCard}>
                     <div className={styles.memberPhoto}>
-                      <Image
+                      <OptimizedImage
                         src={member.photo}
                         alt={member.name}
                         width={160}

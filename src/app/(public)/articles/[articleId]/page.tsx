@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import {
   getAllArticles,
   getArticleById,
@@ -93,17 +93,13 @@ export default async function ArticleDetailPage({
     <div className={styles.page}>
       {/* Hero Section */}
       <section className={styles.hero}>
-        {article.heroImage ? (
-          <Image
-            src={article.heroImage}
-            alt={article.title}
-            fill
-            priority
-            className={styles.heroImage}
-          />
-        ) : (
-          <div className={styles.heroImageFallback} />
-        )}
+        <OptimizedImage
+          src={article.heroImage}
+          alt={article.title}
+          fill
+          priority
+          className={styles.heroImage}
+        />
         <div className={styles.heroOverlay} />
 
         <div className={styles.heroContent}>
