@@ -15,7 +15,7 @@ const companyLinks = [
 
 const resourceLinks = [
   { label: "ブログ", href: "/articles?filter=blog" },
-  { label: "制作実績", href: "/works" },
+  { label: "制作実績", href: "/articles?filter=works" },
   { label: "よくある質問", href: "/faq" },
 ];
 

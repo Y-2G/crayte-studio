@@ -47,7 +47,7 @@ export function WorksGallery({ works, className }: WorksGalleryProps) {
             <br />
             制作実績の一部をご紹介します。
           </p>
-          <GradientButton href="/works" variant="dark" size="lg" filled>
+          <GradientButton href="/articles?filter=works" variant="dark" size="lg" filled>
             全ての制作実績を見る
           </GradientButton>
         </div>
@@ -72,7 +72,7 @@ function WorkCard({ work }: WorkCardProps) {
 
   return (
     <Link
-      href={`/works/${work.slug}`}
+      href={`/articles/${work.slug}`}
       className={styles.workCard}
       aria-label={`${work.title}${work.client ? ` - ${work.client}` : ""}`}
     >

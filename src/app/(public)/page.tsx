@@ -76,7 +76,7 @@ export default async function HomePage() {
               お問い合わせ
             </GradientButton>
             <GradientButton
-              href="/works"
+              href="/articles?filter=works"
               variant="dark"
               size="lg"
               className={styles.heroCtaButton}

@@ -3,7 +3,7 @@
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import styles from "./ArticleFilter.module.css";
 
-type FilterType = "all" | "news" | "blog";
+type FilterType = "all" | "news" | "blog" | "works";
 
 interface ArticleFilterProps {
   activeFilter: FilterType;
@@ -13,6 +13,7 @@ const filters: { key: FilterType; label: string }[] = [
   { key: "all", label: "すべて" },
   { key: "news", label: "ニュース" },
   { key: "blog", label: "ブログ" },
+  { key: "works", label: "制作実績" },
 ];
 
 export function ArticleFilter({ activeFilter }: ArticleFilterProps) {

@@ -21,7 +21,10 @@ const NEWS_CATEGORIES = ["お知らせ", "サービス"];
 /** ブログ系カテゴリ */
 const BLOG_CATEGORIES = ["制作実績紹介"];
 
-type FilterType = "all" | "news" | "blog";
+/** 制作実績カテゴリ */
+const WORKS_CATEGORIES = ["制作実績"];
+
+type FilterType = "all" | "news" | "blog" | "works";
 
 function filterPosts(posts: Post[], filter: FilterType): Post[] {
   switch (filter) {
@@ -29,6 +32,8 @@ function filterPosts(posts: Post[], filter: FilterType): Post[] {
       return posts.filter((p) => NEWS_CATEGORIES.includes(p.category));
     case "blog":
       return posts.filter((p) => BLOG_CATEGORIES.includes(p.category));
+    case "works":
+      return posts.filter((p) => WORKS_CATEGORIES.includes(p.category));
     default:
       return posts;
   }
@@ -58,7 +63,9 @@ export default async function ArticlesPage({
 }) {
   const { filter: filterParam } = await searchParams;
   const activeFilter: FilterType =
-    filterParam === "news" || filterParam === "blog" ? filterParam : "all";
+    filterParam === "news" || filterParam === "blog" || filterParam === "works"
+      ? filterParam
+      : "all";
 
   const [posts, mdArticles] = await Promise.all([
     getPublishedPosts(),
@@ -149,10 +156,15 @@ export default async function ArticlesPage({
                           >
                             {post.category === "お知らせ" && "📢"}
                             {post.category === "サービス" && "🚀"}
-                            {post.category === "制作実績紹介" && "🎨"}
-                            {!["お知らせ", "サービス", "制作実績紹介"].includes(
-                              post.category,
-                            ) && "📝"}
+                            {(post.category === "制作実績紹介" ||
+                              post.category === "制作実績") &&
+                              "🎨"}
+                            {![
+                              "お知らせ",
+                              "サービス",
+                              "制作実績紹介",
+                              "制作実績",
+                            ].includes(post.category) && "📝"}
                           </span>
                         </div>
                         <div className={styles.cardBody}>
