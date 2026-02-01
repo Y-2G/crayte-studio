@@ -109,34 +109,6 @@ const jobs = [
   },
 ];
 
-const processSteps = [
-  {
-    step: "01",
-    title: "エントリー",
-    description: "Webフォームからご応募ください",
-  },
-  {
-    step: "02",
-    title: "書類選考",
-    description: "履歴書・ポートフォリオを拝見します",
-  },
-  {
-    step: "03",
-    title: "1次面接",
-    description: "オンラインでカジュアルに対話",
-  },
-  {
-    step: "04",
-    title: "最終面接",
-    description: "代表との面接でビジョンを共有",
-  },
-  {
-    step: "05",
-    title: "内定",
-    description: "おめでとうございます！一緒に働きましょう",
-  },
-];
-
 export default function CareersPage() {
   return (
     <div className={styles.page}>
