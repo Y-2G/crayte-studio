@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getPublishedPosts } from "@/lib/data";
 import { getAllArticles } from "@/lib/articles";
 import { getAllMembers } from "@/lib/members";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { ArticleFilter } from "@/components/public/ArticleFilter";
-import type { Post } from "@/types";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -15,6 +13,17 @@ export const metadata: Metadata = {
   description:
     "CRAYTE STUDIOの最新ニュース、技術ブログ、プロジェクト情報をお届けします。",
 };
+
+interface DisplayPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedAt: string;
+  href: string;
+  isMember: boolean;
+}
 
 /** ニュース系カテゴリ */
 const NEWS_CATEGORIES = ["お知らせ", "サービス"];
@@ -27,7 +36,7 @@ const WORKS_CATEGORIES = ["制作実績"];
 
 type FilterType = "all" | "news" | "blog" | "works";
 
-function filterPosts(posts: Post[], filter: FilterType): Post[] {
+function filterPosts(posts: DisplayPost[], filter: FilterType): DisplayPost[] {
   switch (filter) {
     case "news":
       return posts.filter((p) => NEWS_CATEGORIES.includes(p.category));
@@ -68,62 +77,37 @@ export default async function ArticlesPage({
       ? filterParam
       : "all";
 
-  const [posts, mdArticles, members] = await Promise.all([
-    getPublishedPosts(),
+  const [mdArticles, members] = await Promise.all([
     getAllArticles(),
     getAllMembers(),
   ]);
 
-  // Merge MD articles into the post list (MD articles take priority for detail links)
-  const mdArticleIds = new Set(mdArticles.map((a) => a.id));
-
-  const allPosts: Post[] = [
-    ...posts.filter((p) => !mdArticleIds.has(p.slug)),
-    ...mdArticles.map(
-      (a) =>
-        ({
-          id: a.id,
-          slug: a.id,
-          title: a.title,
-          content: a.htmlContent,
-          excerpt: a.excerpt,
-          status: "publish" as const,
-          visibility: "public" as const,
-          category: a.category,
-          tags: a.tags,
-          author: a.author,
-          reviewComments: [],
-          meta: { fromMd: true },
-          createdAt: a.publishedAt,
-          updatedAt: a.updatedAt,
-          publishedAt: a.publishedAt,
-        } satisfies Post),
-    ),
-    ...members.map(
-      (m) =>
-        ({
-          id: `member-${m.slug}`,
-          slug: m.slug,
-          title: `${m.name} - ${m.role}`,
-          content: m.htmlContent,
-          excerpt: m.motto,
-          status: "publish" as const,
-          visibility: "public" as const,
-          category: "ブログ",
-          tags: m.skills,
-          author: m.name,
-          reviewComments: [],
-          meta: { fromMd: true, fromMember: true, memberSlug: m.slug },
-          createdAt: `${m.joinedAt}-01`,
-          updatedAt: `${m.joinedAt}-01`,
-          publishedAt: `${m.joinedAt}-01`,
-        } satisfies Post),
-    ),
+  const allPosts: DisplayPost[] = [
+    ...mdArticles.map((a) => ({
+      id: a.id,
+      slug: a.id,
+      title: a.title,
+      excerpt: a.excerpt,
+      category: a.category,
+      publishedAt: a.publishedAt,
+      href: `/articles/${a.id}`,
+      isMember: false,
+    })),
+    ...members.map((m) => ({
+      id: `member-${m.slug}`,
+      slug: m.slug,
+      title: `${m.name} - ${m.role}`,
+      excerpt: m.motto,
+      category: "ブログ",
+      publishedAt: `${m.joinedAt}-01`,
+      href: `/members/${m.slug}`,
+      isMember: true,
+    })),
   ];
 
   const sortedPosts = allPosts.sort((a, b) => {
-    const dateA = new Date(a.publishedAt || a.createdAt);
-    const dateB = new Date(b.publishedAt || b.createdAt);
+    const dateA = new Date(a.publishedAt);
+    const dateB = new Date(b.publishedAt);
     return dateB.getTime() - dateA.getTime();
   });
 
@@ -159,15 +143,10 @@ export default async function ArticlesPage({
               <div className={styles.cardGrid}>
                 {filteredPosts.map((post, index) => {
                   const color = cardColors[index % cardColors.length];
-                  const isMember = !!(post.meta as Record<string, unknown>)
-                    ?.fromMember;
-                  const href = isMember
-                    ? `/members/${post.slug}`
-                    : `/articles/${post.slug}`;
                   return (
                     <Link
                       key={post.id}
-                      href={href}
+                      href={post.href}
                       className={styles.cardLink}
                     >
                       <article className={styles.card}>
@@ -181,13 +160,13 @@ export default async function ArticlesPage({
                             className={styles.cardImageIcon}
                             style={{ color: color.accent }}
                           >
-                            {isMember && "👤"}
-                            {!isMember && post.category === "お知らせ" && "📢"}
-                            {!isMember && post.category === "サービス" && "🚀"}
-                            {!isMember &&
+                            {post.isMember && "👤"}
+                            {!post.isMember && post.category === "お知らせ" && "📢"}
+                            {!post.isMember && post.category === "サービス" && "🚀"}
+                            {!post.isMember &&
                               post.category === "制作実績" &&
                               "🎨"}
-                            {!isMember &&
+                            {!post.isMember &&
                               !["お知らせ", "サービス", "制作実績"].includes(
                                 post.category,
                               ) &&
@@ -205,7 +184,7 @@ export default async function ArticlesPage({
                               </span>
                             </span>
                             <time className={styles.cardDate}>
-                              {formatDate(post.publishedAt || post.createdAt)}
+                              {formatDate(post.publishedAt)}
                             </time>
                           </div>
                           <h2 className={styles.cardTitle}>{post.title}</h2>
