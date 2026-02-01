@@ -11,9 +11,9 @@ interface ArticleFilterProps {
 
 const filters: { key: FilterType; label: string }[] = [
   { key: "all", label: "すべて" },
+  { key: "works", label: "制作実績" },
   { key: "news", label: "ニュース" },
   { key: "blog", label: "ブログ" },
-  { key: "works", label: "制作実績" },
 ];
 
 export function ArticleFilter({ activeFilter }: ArticleFilterProps) {
@@ -38,7 +38,9 @@ export function ArticleFilter({ activeFilter }: ArticleFilterProps) {
         <button
           key={key}
           type="button"
-          className={`${styles.filterButton} ${activeFilter === key ? styles.active : ""}`}
+          className={`${styles.filterButton} ${
+            activeFilter === key ? styles.active : ""
+          }`}
           onClick={() => handleFilter(key)}
           aria-pressed={activeFilter === key}
         >
