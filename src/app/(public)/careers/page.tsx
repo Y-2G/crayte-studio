@@ -49,33 +49,31 @@ const benefits = [
 
 const employees = [
   {
-    name: "田中 美咲",
-    role: "フロントエンドエンジニア",
+    name: "中村あかり",
+    role: "ディレクター",
+    year: "2023年入社",
+    quote:
+      "メンバー同士の活発な意見交換により、非常にスピーディな制作環境ですまさに弊社の掲げるミッションを体現しています。",
+    gradient: "cyan-pink",
+    image: "/images/members/nakamura-akari.png",
+  },
+  {
+    name: "山田 花子",
+    role: "デザイナー",
     year: "2022年入社",
     quote:
-      "自分のアイデアを形にできる環境が最高です。新しい技術にもどんどん挑戦できるのが魅力ですね。",
+      "デザインとエンジニアの距離が近く、ユーザーに本当に届くプロダクトを作れている実感があります。",
     gradient: "pink-purple",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    image: "/images/members/yamada-hanako.png",
   },
   {
     name: "佐藤 健太",
-    role: "バックエンドエンジニア",
+    role: "エンジニア",
     year: "2025年入社",
     quote:
       "チーム全体で技術を共有し合う文化があり、日々成長を実感しています。風通しの良さが自慢です。",
     gradient: "purple-cyan",
     image: "/images/members/find-404.png",
-  },
-  {
-    name: "山田 花子",
-    role: "UIデザイナー",
-    year: "2023年入社",
-    quote:
-      "デザインとエンジニアの距離が近く、ユーザーに本当に届くプロダクトを作れている実感があります。",
-    gradient: "cyan-pink",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80",
   },
 ];
 
@@ -265,31 +263,41 @@ export default function CareersPage() {
             </p>
           </div>
           <div className={styles.employeeGrid}>
-            {employees.map((emp) => (
-              <div key={emp.name} className={styles.employeeCard}>
-                <div className={styles.employeePhoto}>
-                  <OptimizedImage
-                    src={emp.image}
-                    alt={emp.name}
-                    width={600}
-                    height={400}
-                    className={styles.employeeImage}
-                  />
+            {employees.map((emp) => {
+              const style =
+                emp.name === employees[2].name
+                  ? { fontFamily: "var(--font-404)" }
+                  : undefined;
+              return (
+                <div
+                  key={emp.name}
+                  className={styles.employeeCard}
+                  style={style}
+                >
+                  <div className={styles.employeePhoto}>
+                    <OptimizedImage
+                      src={emp.image}
+                      alt={emp.name}
+                      width={600}
+                      height={400}
+                      className={styles.employeeImage}
+                    />
+                  </div>
+                  <div className={styles.employeeContent}>
+                    <span
+                      className={`${styles.employeeRole} ${
+                        styles[emp.gradient]
+                      }`}
+                    >
+                      {emp.role}
+                    </span>
+                    <h3 className={styles.employeeName}>{emp.name}</h3>
+                    <span className={styles.employeeYear}>{emp.year}</span>
+                    <p className={styles.employeeQuote}>{emp.quote}</p>
+                  </div>
                 </div>
-                <div className={styles.employeeContent}>
-                  <span
-                    className={`${styles.employeeRole} ${styles[emp.gradient]}`}
-                  >
-                    {emp.role}
-                  </span>
-                  <h3 className={styles.employeeName}>{emp.name}</h3>
-                  <span className={styles.employeeYear}>{emp.year}</span>
-                  <p className={styles.employeeQuote}>
-                    &ldquo;{emp.quote}&rdquo;
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <GradientButton href="/members" variant="light" size="md">
             メンバー紹介をもっと見る
