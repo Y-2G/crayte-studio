@@ -13,6 +13,11 @@ skills:
   - "モバイルUI設計"
   - "アプリストア最適化"
 motto: "静寂が最高の作業環境"
+id: "staff-028"
+visibility: "public"
+state: "active"
+createdAt: "2023-04-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

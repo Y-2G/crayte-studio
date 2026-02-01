@@ -1,17 +1,39 @@
 /**
  * Staff data access functions
  *
- * Provides functions to retrieve and filter staff member data from JSON source.
+ * Provides functions to retrieve and filter staff member data.
+ * Data source: Markdown files in src/content/members/ via getAllMembers().
  */
 
 import type { Staff, StaffState } from '@/types';
-import staffData from '@/data/staff.json';
+import { getAllMembers, type Member } from '@/lib/members';
+
+/**
+ * Convert a Member to a Staff entity
+ */
+function memberToStaff(member: Member): Staff {
+  return {
+    id: member.id || `staff-auto-${member.slug}`,
+    slug: member.slug,
+    name: member.name,
+    role: member.role,
+    team: member.team,
+    bio: member.content.trim(),
+    photo: member.photo,
+    visibility: (member.visibility || 'public') as Staff['visibility'],
+    state: (member.state || 'active') as StaffState,
+    removedReason: member.removedReason,
+    createdAt: member.createdAt || `${member.joinedAt}-01T00:00:00Z`,
+    updatedAt: member.updatedAt || `${member.joinedAt}-01T00:00:00Z`,
+  };
+}
 
 /**
  * Get all staff members (including suspended and missing)
  */
 export async function getAllStaff(): Promise<Staff[]> {
-  return staffData as Staff[];
+  const members = await getAllMembers();
+  return members.map(memberToStaff);
 }
 
 /**

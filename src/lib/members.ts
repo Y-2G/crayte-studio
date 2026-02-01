@@ -29,6 +29,13 @@ export interface Member {
   motto: string;
   content: string;
   htmlContent: string;
+  // 管理画面用フィールド（オプショナル）
+  id?: string;
+  visibility?: "public" | "private";
+  state?: "active" | "suspended" | "missing";
+  removedReason?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 function parseMemberFile(fileName: string): Member {
@@ -50,6 +57,13 @@ function parseMemberFile(fileName: string): Member {
     motto: data.motto || "",
     content,
     htmlContent,
+    // 管理画面用フィールド
+    id: data.id,
+    visibility: data.visibility,
+    state: data.state,
+    removedReason: data.removedReason,
+    createdAt: data.createdAt,
+    updatedAt: data.updatedAt,
   };
 }
 
@@ -108,9 +122,30 @@ export async function getRelatedMembers(
 }
 
 /**
+ * Get public members (visibility=public and state!=missing)
+ * This is what should be displayed on the public website
+ */
+export async function getPublicMembers(): Promise<Member[]> {
+  const members = await getAllMembers();
+  return members.filter(
+    (m) =>
+      (m.visibility || "public") === "public" &&
+      (m.state || "active") !== "missing"
+  );
+}
+
+/**
  * Get all member slugs (for static generation)
  */
 export async function getAllMemberSlugs(): Promise<string[]> {
   const members = await getAllMembers();
+  return members.map((m) => m.slug);
+}
+
+/**
+ * Get public member slugs (for static generation of public pages)
+ */
+export async function getPublicMemberSlugs(): Promise<string[]> {
+  const members = await getPublicMembers();
   return members.map((m) => m.slug);
 }

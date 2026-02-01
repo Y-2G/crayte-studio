@@ -13,6 +13,11 @@ skills:
   - "サーバーサイド開発"
   - "セキュリティ"
 motto: "障害は未然に防ぐもの"
+id: "staff-011"
+visibility: "public"
+state: "active"
+createdAt: "2019-09-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

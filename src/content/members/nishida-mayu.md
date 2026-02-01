@@ -13,6 +13,11 @@ skills:
   - "ブランドビジュアル"
   - "デジタルペインティング"
 motto: "感情が形を生む"
+id: "staff-019"
+visibility: "public"
+state: "active"
+createdAt: "2021-05-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

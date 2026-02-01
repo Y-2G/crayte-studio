@@ -13,6 +13,11 @@ skills:
   - "リサーチ"
   - "インタビュー"
 motto: "物語は人を動かす"
+id: "staff-014"
+visibility: "public"
+state: "active"
+createdAt: "2020-03-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

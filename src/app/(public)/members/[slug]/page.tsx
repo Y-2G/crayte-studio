@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import {
-  getAllMemberSlugs,
+  getPublicMemberSlugs,
   getMemberBySlug,
   getRelatedMembers,
 } from "@/lib/members";
@@ -14,7 +14,7 @@ interface MemberDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllMemberSlugs();
+  const slugs = await getPublicMemberSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 

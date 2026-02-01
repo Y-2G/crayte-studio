@@ -13,6 +13,11 @@ skills:
   - "コードレビュー"
   - "要件定義"
 motto: "技術は手段、目的は価値創造"
+id: "staff-017"
+visibility: "public"
+state: "active"
+createdAt: "2020-08-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

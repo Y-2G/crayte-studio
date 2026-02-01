@@ -13,6 +13,11 @@ skills:
   - "プロトタイピング"
   - "アクセシビリティ"
 motto: "一貫性が信頼を生む"
+id: "staff-025"
+visibility: "public"
+state: "active"
+createdAt: "2022-04-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

@@ -13,6 +13,11 @@ skills:
   - "開発環境構築"
   - "CSS-in-JS"
 motto: "環境が生産性を決める"
+id: "staff-027"
+visibility: "public"
+state: "active"
+createdAt: "2022-08-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

@@ -13,6 +13,11 @@ skills:
   - "データ分析"
   - "プレゼンテーション"
 motto: "創造は秩序の中から生まれる"
+id: "staff-008"
+visibility: "public"
+state: "active"
+createdAt: "2018-04-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

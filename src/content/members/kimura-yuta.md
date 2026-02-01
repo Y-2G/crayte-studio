@@ -13,6 +13,11 @@ skills:
   - "抽象表現"
   - "空間設計"
 motto: "引き算こそが洗練"
+id: "staff-013"
+visibility: "public"
+state: "active"
+createdAt: "2020-01-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

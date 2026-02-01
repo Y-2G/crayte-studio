@@ -13,6 +13,11 @@ skills:
   - "API設計"
   - "データベース設計"
 motto: "Done is better than perfect"
+id: "staff-015"
+visibility: "public"
+state: "active"
+createdAt: "2020-05-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

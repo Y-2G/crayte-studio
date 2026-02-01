@@ -13,6 +13,11 @@ skills:
   - "進捗管理"
   - "ツール活用"
 motto: "段取り八分、仕事二分"
+id: "staff-012"
+visibility: "public"
+state: "active"
+createdAt: "2019-10-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

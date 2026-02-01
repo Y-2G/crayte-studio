@@ -12,6 +12,11 @@ skills:
   - "スケジュール調整"
   - "提案営業"
 motto: "スピードが信頼を生む"
+id: "staff-020"
+visibility: "public"
+state: "active"
+createdAt: "2021-06-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { getAllArticles } from "@/lib/articles";
-import { getAllMembers } from "@/lib/members";
+import { getPublicMembers } from "@/lib/members";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { ArticleFilter } from "@/components/public/ArticleFilter";
@@ -79,7 +79,7 @@ export default async function ArticlesPage({
 
   const [mdArticles, members] = await Promise.all([
     getAllArticles(),
-    getAllMembers(),
+    getPublicMembers(),
   ]);
 
   const allPosts: DisplayPost[] = [

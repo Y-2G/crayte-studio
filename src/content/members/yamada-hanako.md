@@ -13,6 +13,11 @@ skills:
   - "タイポグラフィ"
   - "手描き表現"
 motto: "美は細部に宿る"
+id: "staff-009"
+visibility: "public"
+state: "active"
+createdAt: "2019-05-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

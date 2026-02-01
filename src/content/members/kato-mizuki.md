@@ -13,6 +13,11 @@ skills:
   - "品質管理"
   - "バグトラッキング"
 motto: "品質は全員の責任"
+id: "staff-018"
+visibility: "public"
+state: "active"
+createdAt: "2020-11-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

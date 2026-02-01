@@ -12,6 +12,11 @@ skills:
   - "プレゼンテーション"
   - "UI/UX設計"
 motto: "形は思想を映す鏡である"
+id: "staff-010"
+visibility: "public"
+state: "active"
+createdAt: "2019-07-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール

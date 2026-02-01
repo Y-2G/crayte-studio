@@ -13,6 +13,11 @@ skills:
   - "ユーザビリティテスト"
   - "ワークショップ設計"
 motto: "ユーザーの声が最良の羅針盤"
+id: "staff-023"
+visibility: "public"
+state: "active"
+createdAt: "2021-09-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ## プロフィール
