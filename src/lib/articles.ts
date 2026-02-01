@@ -29,6 +29,17 @@ export interface Article {
   heroImage?: string;
   content: string;
   htmlContent: string;
+  slug: string;
+  status: string;
+  visibility: string;
+  createdAt: string;
+  reviewComments: Array<{
+    id: string;
+    author: string;
+    content: string;
+    createdAt: string;
+  }>;
+  meta: Record<string, unknown>;
   // Work固有（オプショナル）
   client?: string;
   venue?: string;
@@ -44,18 +55,29 @@ function parseArticleFile(fileName: string): Article {
 
   const htmlContent = marked.parse(content, { async: false }) as string;
 
+  const id = data.id || fileName.replace(/\.md$/, "");
+  const publishedAt = data.publishedAt ? String(data.publishedAt) : "";
+  const updatedAt = data.updatedAt ? String(data.updatedAt) : "";
+  const createdAt = data.createdAt ? String(data.createdAt) : publishedAt;
+
   return {
-    id: data.id || fileName.replace(/\.md$/, ""),
+    id,
     title: data.title || "",
     excerpt: data.excerpt || "",
     category: data.category || "",
     tags: data.tags || [],
     author: data.author || "",
-    publishedAt: data.publishedAt || "",
-    updatedAt: data.updatedAt || "",
+    publishedAt,
+    updatedAt,
     heroImage: data.heroImage || undefined,
     content,
     htmlContent,
+    slug: id,
+    status: data.status || "publish",
+    visibility: data.visibility || "public",
+    createdAt,
+    reviewComments: data.reviewComments || [],
+    meta: data.meta || {},
     client: data.client || undefined,
     venue: data.venue || undefined,
     workStatus: data.workStatus || undefined,
@@ -65,9 +87,10 @@ function parseArticleFile(fileName: string): Article {
 }
 
 /**
- * Get all articles sorted by publishedAt (newest first)
+ * Get all articles (no filter, includes draft/private)
+ * Sorted by publishedAt or createdAt (newest first)
  */
-export async function getAllArticles(): Promise<Article[]> {
+export async function getAllArticlesRaw(): Promise<Article[]> {
   const fileNames = fs
     .readdirSync(articlesDirectory)
     .filter((name) => name.endsWith(".md"));
@@ -75,22 +98,32 @@ export async function getAllArticles(): Promise<Article[]> {
   const articles = fileNames.map(parseArticleFile);
 
   return articles.sort((a, b) => {
-    const dateA = new Date(a.publishedAt);
-    const dateB = new Date(b.publishedAt);
+    const dateA = new Date(a.publishedAt || a.createdAt);
+    const dateB = new Date(b.publishedAt || b.createdAt);
     return dateB.getTime() - dateA.getTime();
   });
 }
 
 /**
- * Get a single article by ID
+ * Get published & public articles sorted by publishedAt (newest first)
+ */
+export async function getAllArticles(): Promise<Article[]> {
+  const articles = await getAllArticlesRaw();
+  return articles.filter(
+    (a) => a.status === "publish" && a.visibility === "public"
+  );
+}
+
+/**
+ * Get a single article by ID (no filter)
  */
 export async function getArticleById(id: string): Promise<Article | null> {
-  const articles = await getAllArticles();
+  const articles = await getAllArticlesRaw();
   return articles.find((article) => article.id === id) || null;
 }
 
 /**
- * Get articles by category
+ * Get articles by category (published & public only)
  */
 export async function getArticlesByCategory(
   category: string
@@ -100,7 +133,7 @@ export async function getArticlesByCategory(
 }
 
 /**
- * Get related articles (same category, excluding current)
+ * Get related articles (same category, excluding current, published & public only)
  */
 export async function getRelatedArticles(
   articleId: string,
@@ -116,7 +149,7 @@ export async function getRelatedArticles(
 }
 
 /**
- * Get all article IDs (for static generation)
+ * Get all article IDs (for static generation, published & public only)
  */
 export async function getAllArticleIds(): Promise<string[]> {
   const articles = await getAllArticles();

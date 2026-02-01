@@ -8,8 +8,9 @@ tags:
   - "移転"
   - "会社情報"
 author: "広報部"
-publishedAt: "2024-03-01"
-updatedAt: "2024-03-01"
+publishedAt: "2024-03-01T12:00:00Z"
+updatedAt: "2024-03-01T10:00:00Z"
+createdAt: "2024-02-30T10:00:00Z"
 heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
 ---
 
