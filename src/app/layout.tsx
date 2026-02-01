@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne } from "next/font/google";
+import localFont from "next/font/local";
+import { Geist_Mono, Syne } from "next/font/google";
 import "@/styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const notoSansJP = localFont({
+  src: "../../public/fonts/NotoSansJP-VariableFont_wght.ttf",
+  variable: "--font-noto-sans-jp",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable}`}>
+      <body className={`${notoSansJP.variable} ${geistMono.variable} ${syne.variable}`}>
         {children}
       </body>
     </html>

@@ -1,11 +1,13 @@
-@import './reset.css';
-@import './variables.css';
+@import "./reset.css";
+@import "./variables.css";
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  --font-sans: var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--public-bg);
   color: var(--public-text);
 }

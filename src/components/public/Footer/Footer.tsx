@@ -82,7 +82,7 @@ export function Footer() {
         <div className={styles.topRow}>
           {/* Branding Column */}
           <div className={styles.branding}>
-            <span className={styles.logoText}>Crayte Studio</span>
+            <span className={styles.logoText}>CRAYTE STUDIO</span>
             <p className={styles.description}>
               テクノロジーとクリエイティビティの融合で、ビジネスの可能性を最大化します
             </p>
