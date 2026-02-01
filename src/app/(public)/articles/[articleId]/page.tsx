@@ -70,7 +70,10 @@ function getAuthorInitials(author: string): string {
   if (author.includes("CRAYTE")) return "CS";
   const parts = author.split(/\s+/);
   if (parts.length >= 2) {
-    return parts.map((p) => p.charAt(0)).join("").slice(0, 2);
+    return parts
+      .map((p) => p.charAt(0))
+      .join("")
+      .slice(0, 2);
   }
   return author.slice(0, 2);
 }
@@ -89,8 +92,11 @@ export default async function ArticleDetailPage({
   const headings = extractHeadings(article.htmlContent);
   const bodyHtml = addHeadingIds(article.htmlContent);
 
+  const isError = article.category === "ERROR";
+  const style = isError ? { fontFamily: "var(--font-404)" } : undefined;
+
   return (
-    <div className={styles.page}>
+    <div className={styles.page} style={style}>
       {/* Hero Section */}
       <section className={styles.hero}>
         <OptimizedImage
@@ -186,6 +192,11 @@ export default async function ArticleDetailPage({
             className={styles.articleBody}
             dangerouslySetInnerHTML={{ __html: bodyHtml }}
           />
+          {isError && (
+            <Link className={styles.hidden} href="/admin">
+              {process.env.NEXT_PUBLIC_HOME_URL}/admin
+            </Link>
+          )}
 
           <div className={styles.divider} />
 

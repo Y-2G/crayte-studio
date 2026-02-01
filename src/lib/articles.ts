@@ -149,6 +149,17 @@ export async function getRelatedArticles(
 }
 
 /**
+ * Get hidden articles (visibility: "hidden", published only)
+ * These are only shown when users search for them.
+ */
+export async function getHiddenArticles(): Promise<Article[]> {
+  const articles = await getAllArticlesRaw();
+  return articles.filter(
+    (a) => a.status === "publish" && a.visibility === "hidden"
+  );
+}
+
+/**
  * Get all article IDs (for static generation, published & public only)
  */
 export async function getAllArticleIds(): Promise<string[]> {

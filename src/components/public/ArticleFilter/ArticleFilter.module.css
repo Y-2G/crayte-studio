@@ -1,11 +1,24 @@
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
 .filterRow {
   display: flex;
   gap: var(--spacing-2);
-  justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filterRow::-webkit-scrollbar {
+  display: none;
 }
 
 .filterButton {
-  padding: 10px 24px;
+  padding: 8px 18px;
   border-radius: 9999px;
   border: 1px solid var(--public-border);
   background: transparent;
@@ -14,6 +27,8 @@
   color: var(--public-text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .filterButton:hover {
@@ -26,4 +41,60 @@
   color: var(--color-white);
   border-color: transparent;
   font-weight: var(--font-weight-semibold);
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--public-border);
+  background: var(--color-white);
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: var(--public-text-muted);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--public-text);
+}
+
+.searchInput::placeholder {
+  color: var(--public-text-muted);
+}
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .filterBar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+  }
+
+  .filterButton {
+    padding: 10px 24px;
+  }
+
+  .searchForm {
+    width: 280px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .searchForm {
+    width: 320px;
+  }
 }

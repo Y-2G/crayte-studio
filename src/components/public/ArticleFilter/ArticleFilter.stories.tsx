@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { expect, userEvent, within } from 'storybook/test';
+import { fn } from 'storybook/test';
 import { ArticleFilter } from './ArticleFilter';
 
 const meta = {
@@ -15,10 +16,16 @@ const meta = {
       },
     },
   },
+  args: {
+    onSearchChange: fn(),
+  },
   argTypes: {
     activeFilter: {
       control: 'select',
-      options: ['all', 'news', 'blog'],
+      options: ['all', 'news', 'blog', 'works'],
+    },
+    searchQuery: {
+      control: 'text',
     },
   },
 } satisfies Meta<typeof ArticleFilter>;
@@ -29,15 +36,18 @@ type Story = StoryObj<typeof meta>;
 export const All: Story = {
   args: {
     activeFilter: 'all',
+    searchQuery: '',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const allButton = canvas.getByRole('button', { name: 'すべて' });
     const newsButton = canvas.getByRole('button', { name: 'ニュース' });
     const blogButton = canvas.getByRole('button', { name: 'ブログ' });
+    const searchInput = canvas.getByPlaceholderText('記事を検索...');
     await expect(allButton).toBeInTheDocument();
     await expect(newsButton).toBeInTheDocument();
     await expect(blogButton).toBeInTheDocument();
+    await expect(searchInput).toBeInTheDocument();
     // Verify active state
     await expect(allButton).toHaveAttribute('aria-pressed', 'true');
     await expect(newsButton).toHaveAttribute('aria-pressed', 'false');
@@ -48,6 +58,7 @@ export const All: Story = {
 export const News: Story = {
   args: {
     activeFilter: 'news',
+    searchQuery: '',
   },
   parameters: {
     nextjs: {
@@ -67,6 +78,7 @@ export const News: Story = {
 export const Blog: Story = {
   args: {
     activeFilter: 'blog',
+    searchQuery: '',
   },
   parameters: {
     nextjs: {
@@ -86,6 +98,7 @@ export const Blog: Story = {
 export const FilterInteraction: Story = {
   args: {
     activeFilter: 'all',
+    searchQuery: '',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
