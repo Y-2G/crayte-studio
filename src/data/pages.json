@@ -11,7 +11,7 @@
   },
   {
     "id": "page-002",
-    "slug": "company",
+    "slug": "about",
     "title": "会社概要",
     "content": "<section><h2>会社情報</h2><dl><dt>社名</dt><dd>株式会社CRAYTE STUDIO（クレイトスタジオ）</dd><dt>設立</dt><dd>2015年1月</dd><dt>代表取締役</dt><dd>田中 一郎</dd><dt>所在地</dt><dd>〒150-0002 東京都渋谷区渋谷2-21-1 渋谷ヒカリエ 15F</dd><dt>TEL</dt><dd>03-XXXX-XXXX</dd><dt>事業内容</dt><dd>Webサイト企画・制作<br>イベント企画・運営<br>映像制作<br>デジタルマーケティング支援</dd><dt>従業員数</dt><dd>20名</dd></dl></section><section><h2>沿革</h2><dl><dt>2015年1月</dt><dd>東京都渋谷区にて創業</dd><dt>2017年</dt><dd>イベント事業部を設立</dd><dt>2019年</dt><dd>映像制作事業を本格展開</dd><dt>2024年4月</dt><dd>新オフィスへ移転（渋谷ヒカリエ）</dd></dl></section>",
     "template": "company",

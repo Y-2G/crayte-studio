@@ -14,7 +14,7 @@ export function Header() {
 
   const navItems = [
     { label: "ホーム", href: "/" },
-    { label: "会社概要", href: "/company" },
+    { label: "会社概要", href: "/about" },
     { label: "サービス", href: "/services" },
     { label: "制作実績", href: "/works" },
     { label: "ニュース", href: "/articles?filter=news" },
