@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 
 const notoSansJP = localFont({
@@ -15,9 +14,10 @@ const teko = localFont({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const font404 = localFont({
+  src: "../../public/fonts/404.woff2",
+  variable: "--font-404",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSansJP.variable} ${teko.variable} ${geistMono.variable}`}>
+      <body
+        className={`${notoSansJP.variable} ${teko.variable} ${font404.variable}`}
+      >
         {children}
       </body>
     </html>

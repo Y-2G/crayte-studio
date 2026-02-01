@@ -130,7 +130,15 @@ export function Footer() {
               <ul className={styles.navList}>
                 {companyLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className={styles.navLink}>
+                    <Link
+                      href={item.href}
+                      className={styles.navLink}
+                      style={
+                        item.label === companyLinks[1].label
+                          ? { fontFamily: "var(--font-404)" }
+                          : undefined
+                      }
+                    >
                       {item.label}
                     </Link>
                   </li>
