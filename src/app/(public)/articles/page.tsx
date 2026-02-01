@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getPublishedPosts } from "@/lib/data";
 import { getAllArticles } from "@/lib/articles";
+import { getAllMembers } from "@/lib/members";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { ArticleFilter } from "@/components/public/ArticleFilter";
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 const NEWS_CATEGORIES = ["お知らせ", "サービス"];
 
 /** ブログ系カテゴリ */
-const BLOG_CATEGORIES = ["制作実績紹介"];
+const BLOG_CATEGORIES = ["ブログ"];
 
 /** 制作実績カテゴリ */
 const WORKS_CATEGORIES = ["制作実績"];
@@ -67,9 +68,10 @@ export default async function ArticlesPage({
       ? filterParam
       : "all";
 
-  const [posts, mdArticles] = await Promise.all([
+  const [posts, mdArticles, members] = await Promise.all([
     getPublishedPosts(),
     getAllArticles(),
+    getAllMembers(),
   ]);
 
   // Merge MD articles into the post list (MD articles take priority for detail links)
@@ -95,6 +97,26 @@ export default async function ArticlesPage({
           createdAt: a.publishedAt,
           updatedAt: a.updatedAt,
           publishedAt: a.publishedAt,
+        } satisfies Post),
+    ),
+    ...members.map(
+      (m) =>
+        ({
+          id: `member-${m.slug}`,
+          slug: m.slug,
+          title: `${m.name} - ${m.role}`,
+          content: m.htmlContent,
+          excerpt: m.motto,
+          status: "publish" as const,
+          visibility: "public" as const,
+          category: "ブログ",
+          tags: m.skills,
+          author: m.name,
+          reviewComments: [],
+          meta: { fromMd: true, fromMember: true, memberSlug: m.slug },
+          createdAt: `${m.joinedAt}-01`,
+          updatedAt: `${m.joinedAt}-01`,
+          publishedAt: `${m.joinedAt}-01`,
         } satisfies Post),
     ),
   ];
@@ -137,10 +159,15 @@ export default async function ArticlesPage({
               <div className={styles.cardGrid}>
                 {filteredPosts.map((post, index) => {
                   const color = cardColors[index % cardColors.length];
+                  const isMember = !!(post.meta as Record<string, unknown>)
+                    ?.fromMember;
+                  const href = isMember
+                    ? `/members/${post.slug}`
+                    : `/articles/${post.slug}`;
                   return (
                     <Link
                       key={post.id}
-                      href={`/articles/${post.slug}`}
+                      href={href}
                       className={styles.cardLink}
                     >
                       <article className={styles.card}>
@@ -154,17 +181,17 @@ export default async function ArticlesPage({
                             className={styles.cardImageIcon}
                             style={{ color: color.accent }}
                           >
-                            {post.category === "お知らせ" && "📢"}
-                            {post.category === "サービス" && "🚀"}
-                            {(post.category === "制作実績紹介" ||
-                              post.category === "制作実績") &&
+                            {isMember && "👤"}
+                            {!isMember && post.category === "お知らせ" && "📢"}
+                            {!isMember && post.category === "サービス" && "🚀"}
+                            {!isMember &&
+                              post.category === "制作実績" &&
                               "🎨"}
-                            {![
-                              "お知らせ",
-                              "サービス",
-                              "制作実績紹介",
-                              "制作実績",
-                            ].includes(post.category) && "📝"}
+                            {!isMember &&
+                              !["お知らせ", "サービス", "制作実績"].includes(
+                                post.category,
+                              ) &&
+                              "📝"}
                           </span>
                         </div>
                         <div className={styles.cardBody}>
