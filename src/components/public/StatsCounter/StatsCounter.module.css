@@ -4,12 +4,7 @@
 
 .statsSection {
   padding: var(--spacing-20) var(--spacing-4);
-  background: linear-gradient(
-    135deg,
-    #f8fafc 0%,
-    #ffffff 50%,
-    #f0f4ff 100%
-  );
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f4ff 100%);
   position: relative;
   overflow: hidden;
 }
@@ -43,7 +38,6 @@
 }
 
 .statValue {
-  font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   background: var(--stat-gradient, var(--gradient-brand));

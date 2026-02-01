@@ -13,16 +13,6 @@ body {
   color: var(--public-text);
 }
 
-/* 見出しフォント */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-}
-
 /* Focus visible */
 :focus-visible {
   outline: 2px solid var(--public-primary);
