@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GradientButton } from "@/components/shared/GradientButton";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
 import styles from "./page.module.css";
 
@@ -54,14 +55,17 @@ const employees = [
     quote:
       "自分のアイデアを形にできる環境が最高です。新しい技術にもどんどん挑戦できるのが魅力ですね。",
     gradient: "pink-purple",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
   },
   {
     name: "佐藤 健太",
     role: "バックエンドエンジニア",
-    year: "2021年入社",
+    year: "2025年入社",
     quote:
       "チーム全体で技術を共有し合う文化があり、日々成長を実感しています。風通しの良さが自慢です。",
     gradient: "purple-cyan",
+    image: "/images/members/find-404.png",
   },
   {
     name: "山田 花子",
@@ -70,6 +74,8 @@ const employees = [
     quote:
       "デザインとエンジニアの距離が近く、ユーザーに本当に届くプロダクトを作れている実感があります。",
     gradient: "cyan-pink",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80",
   },
 ];
 
@@ -261,9 +267,15 @@ export default function CareersPage() {
           <div className={styles.employeeGrid}>
             {employees.map((emp) => (
               <div key={emp.name} className={styles.employeeCard}>
-                <div
-                  className={`${styles.employeePhoto} ${styles[emp.gradient]}`}
-                />
+                <div className={styles.employeePhoto}>
+                  <OptimizedImage
+                    src={emp.image}
+                    alt={emp.name}
+                    width={600}
+                    height={400}
+                    className={styles.employeeImage}
+                  />
+                </div>
                 <div className={styles.employeeContent}>
                   <span
                     className={`${styles.employeeRole} ${styles[emp.gradient]}`}

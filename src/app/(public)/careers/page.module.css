@@ -429,30 +429,13 @@
 .employeePhoto {
   width: 100%;
   height: 200px;
+  overflow: hidden;
 }
 
-.employeePhoto.pink-purple {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 20, 147, 0.15) 0%,
-    rgba(147, 112, 219, 0.25) 100%
-  );
-}
-
-.employeePhoto.purple-cyan {
-  background: linear-gradient(
-    135deg,
-    rgba(147, 112, 219, 0.15) 0%,
-    rgba(0, 191, 255, 0.25) 100%
-  );
-}
-
-.employeePhoto.cyan-pink {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 191, 255, 0.15) 0%,
-    rgba(255, 20, 147, 0.25) 100%
-  );
+.employeeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .employeeContent {

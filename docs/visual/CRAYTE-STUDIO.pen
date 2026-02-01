@@ -3467,7 +3467,8 @@
                   "lineHeight": 1.7,
                   "textAlign": "center",
                   "fontFamily": "Inter",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -3634,7 +3635,8 @@
                   "lineHeight": 1.8,
                   "textAlign": "center",
                   "fontFamily": "Inter",
-                  "fontSize": 16
+                  "fontSize": 16,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -3732,7 +3734,8 @@
                       "content": "コーポレートサイト、EC、LP等の企画・設計からデザイン・開発まで。ユーザー体験を重視した高品質なWebサイトを制作します。",
                       "lineHeight": 1.8,
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -3823,7 +3826,8 @@
                       "content": "展示会、セミナー、カンファレンスなど多様なイベントの企画から運営までをトータルでサポートします。",
                       "lineHeight": 1.8,
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -3914,7 +3918,8 @@
                       "content": "プロモーション映像、企業VP、SNS動画など、目的に応じた高品質な映像コンテンツを制作します。",
                       "lineHeight": 1.8,
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -4086,7 +4091,8 @@
                       "lineHeight": 1.8,
                       "textAlign": "center",
                       "fontFamily": "Inter",
-                      "fontSize": 16
+                      "fontSize": 16,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -4181,7 +4187,8 @@
                               "content": "フルリモート勤務OK。場所を選ばず、自分のベストな環境で働けます。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -4261,7 +4268,8 @@
                               "content": "コアタイムなしのフレックス制。ライフスタイルに合わせた柔軟な勤務が可能です。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -4341,7 +4349,8 @@
                               "content": "書籍購入、カンファレンス参加費、オンライン学習サービスを全額会社負担。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -4430,7 +4439,8 @@
                               "content": "社会保険完備に加え、健康診断やメンタルヘルスケアを充実。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -4510,7 +4520,8 @@
                               "content": "年間休日125日以上。有給取得を推奨し、しっかり休んでリフレッシュ。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -4590,7 +4601,8 @@
                               "content": "定期的なチームビルディング、勉強会、懇親会でメンバー間の交流を促進。",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 14
+                              "fontSize": 14,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -4700,7 +4712,8 @@
                   "lineHeight": 1.8,
                   "textAlign": "center",
                   "fontFamily": "Inter",
-                  "fontSize": 16
+                  "fontSize": 16,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -4821,7 +4834,8 @@
                           "content": "「自分のアイデアを形にできる環境が最高です。新しい技術にもどんどん挑戦できるのが魅力ですね。」",
                           "lineHeight": 1.8,
                           "fontFamily": "Inter",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -4937,7 +4951,8 @@
                           "content": "「チーム全体で技術を共有し合う文化があり、日々成長を実感しています。風通しの良さが自慢です。」",
                           "lineHeight": 1.8,
                           "fontFamily": "Inter",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -5053,7 +5068,8 @@
                           "content": "「デザインとエンジニアの距離が近く、ユーザーに本当に届くプロダクトを作れている実感があります。」",
                           "lineHeight": 1.8,
                           "fontFamily": "Inter",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -5287,7 +5303,8 @@
                       "lineHeight": 1.8,
                       "textAlign": "center",
                       "fontFamily": "Inter",
-                      "fontSize": 16
+                      "fontSize": 16,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -5405,7 +5422,8 @@
                                       "fill": "#ffffff88",
                                       "content": "フルリモート",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 },
@@ -5433,7 +5451,8 @@
                                       "fill": "#ffffff88",
                                       "content": "500万〜800万円",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 }
@@ -5561,7 +5580,8 @@
                                       "fill": "#ffffff88",
                                       "content": "東京 / リモート可",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 },
@@ -5589,7 +5609,8 @@
                                       "fill": "#ffffff88",
                                       "content": "600万〜900万円",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 }
@@ -5717,7 +5738,8 @@
                                       "fill": "#ffffff88",
                                       "content": "フルリモート",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 },
@@ -5745,7 +5767,8 @@
                                       "fill": "#ffffff88",
                                       "content": "450万〜700万円",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 }
@@ -5873,7 +5896,8 @@
                                       "fill": "#ffffff88",
                                       "content": "東京 / リモート可",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 },
@@ -5901,7 +5925,8 @@
                                       "fill": "#ffffff88",
                                       "content": "600万〜1000万円",
                                       "fontFamily": "Inter",
-                                      "fontSize": 13
+                                      "fontSize": 13,
+                                      "fontWeight": "normal"
                                     }
                                   ]
                                 }
@@ -13734,7 +13759,8 @@
                       "width": "fill_container",
                       "content": "株式会社CRAYTE STUDIO",
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13776,7 +13802,8 @@
                       "width": "fill_container",
                       "content": "2024年4月",
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13818,7 +13845,8 @@
                       "width": "fill_container",
                       "content": "代表取締役 辻 善史",
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13861,7 +13889,8 @@
                       "content": "〒530-0001\n大阪府大阪市北区梅田1-1-3 大阪駅前第3ビル 29F",
                       "lineHeight": 1.7,
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13904,7 +13933,8 @@
                       "content": "Web制作・Webマーケティング\nイベント企画・運営\n映像制作・動画マーケティング\nブランディング・クリエイティブ制作",
                       "lineHeight": 1.8,
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -13939,7 +13969,8 @@
                       "width": "fill_container",
                       "content": "https://crayte-studio.com",
                       "fontFamily": "Inter",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -14212,7 +14243,8 @@
                           "content": "私たちは、Web制作・イベント企画・映像制作を融合させ、クライアントの潜在ニーズを引き出し、まだ世の中にない新しい価値を創造します。テクノロジーとクリエイティビティの力で、想像を超える体験を実現します。",
                           "lineHeight": 1.8,
                           "fontFamily": "Inter",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -14313,7 +14345,8 @@
                           "content": "すべての企業・個人が、最高品質のクリエイティブを手にできる世界を目指します。デジタルとリアルの境界を超え、人々の心を動かすコンテンツで、社会に新しい感動と可能性を届けます。",
                           "lineHeight": 1.8,
                           "fontFamily": "Inter",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -14417,7 +14450,8 @@
                   "fill": "$public-text-muted",
                   "content": "CRAYTE STUDIOの歩みをご紹介します。",
                   "fontFamily": "Inter",
-                  "fontSize": 16
+                  "fontSize": 16,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14936,47 +14970,62 @@
                           "type": "frame",
                           "id": "bu5aG",
                           "name": "addressBlock",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
                           "layout": "vertical",
                           "gap": 12,
                           "children": [
                             {
-                              "type": "icon_font",
-                              "id": "sJPBp",
-                              "name": "infoIcon1",
-                              "width": 24,
-                              "height": 24,
-                              "iconFontName": "map-pin",
-                              "iconFontFamily": "lucide",
-                              "fill": {
-                                "type": "gradient",
-                                "gradientType": "linear",
-                                "enabled": true,
-                                "rotation": 135,
-                                "size": {
-                                  "height": 1
-                                },
-                                "colors": [
-                                  {
-                                    "color": "$brand-pink",
-                                    "position": 0
-                                  },
-                                  {
-                                    "color": "$brand-cyan",
-                                    "position": 1
+                              "type": "frame",
+                              "id": "FXkpV",
+                              "name": "Frame 1",
+                              "gap": 10,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "sJPBp",
+                                  "name": "infoIcon1",
+                                  "width": 24,
+                                  "height": 24,
+                                  "iconFontName": "map-pin",
+                                  "iconFontFamily": "lucide",
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "rotation": 135,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "$brand-pink",
+                                        "position": 0
+                                      },
+                                      {
+                                        "color": "$brand-cyan",
+                                        "position": 1
+                                      }
+                                    ]
                                   }
-                                ]
-                              }
-                            },
-                            {
-                              "type": "text",
-                              "id": "N2BsK",
-                              "name": "infoLabel1",
-                              "fill": "#ffffffaa",
-                              "content": "所在地",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "600",
-                              "letterSpacing": 2
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "N2BsK",
+                                  "name": "infoLabel1",
+                                  "fill": "#ffffffaa",
+                                  "content": "所在地",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600",
+                                  "letterSpacing": 2
+                                }
+                              ]
                             },
                             {
                               "type": "text",
@@ -14984,11 +15033,12 @@
                               "name": "infoVal1",
                               "fill": "$color-white",
                               "textGrowth": "fixed-width",
-                              "width": 350,
-                              "content": "〒530-0001\n大阪府大阪市北区梅田1-1-3\n大阪駅前第3ビル 29F",
+                              "width": 400,
+                              "content": "〒530-0001 大阪府大阪市北区梅田1-1-3 大阪駅前3ビル 29F",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 15
+                              "fontSize": 15,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -14996,47 +15046,58 @@
                           "type": "frame",
                           "id": "5bHTL",
                           "name": "trainBlock",
+                          "width": "fill_container",
                           "layout": "vertical",
                           "gap": 12,
                           "children": [
                             {
-                              "type": "icon_font",
-                              "id": "OZwNT",
-                              "name": "infoIcon2",
-                              "width": 24,
-                              "height": 24,
-                              "iconFontName": "train-front",
-                              "iconFontFamily": "lucide",
-                              "fill": {
-                                "type": "gradient",
-                                "gradientType": "linear",
-                                "enabled": true,
-                                "rotation": 135,
-                                "size": {
-                                  "height": 1
-                                },
-                                "colors": [
-                                  {
-                                    "color": "$brand-purple",
-                                    "position": 0
-                                  },
-                                  {
-                                    "color": "$brand-cyan",
-                                    "position": 1
+                              "type": "frame",
+                              "id": "vM4Gd",
+                              "name": "Frame 2",
+                              "gap": 10,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "OZwNT",
+                                  "name": "infoIcon2",
+                                  "width": 24,
+                                  "height": 24,
+                                  "iconFontName": "train-front",
+                                  "iconFontFamily": "lucide",
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "rotation": 135,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "$brand-purple",
+                                        "position": 0
+                                      },
+                                      {
+                                        "color": "$brand-cyan",
+                                        "position": 1
+                                      }
+                                    ]
                                   }
-                                ]
-                              }
-                            },
-                            {
-                              "type": "text",
-                              "id": "fmXsV",
-                              "name": "infoLabel2",
-                              "fill": "#ffffffaa",
-                              "content": "最寄り駅",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "600",
-                              "letterSpacing": 2
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fmXsV",
+                                  "name": "infoLabel2",
+                                  "fill": "#ffffffaa",
+                                  "content": "最寄り駅",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600",
+                                  "letterSpacing": 2
+                                }
+                              ]
                             },
                             {
                               "type": "text",
@@ -15044,11 +15105,12 @@
                               "name": "infoVal2",
                               "fill": "$color-white",
                               "textGrowth": "fixed-width",
-                              "width": 350,
+                              "width": 400,
                               "content": "JR大阪駅 徒歩5分\n地下鉄御堂筋線 梅田駅 徒歩3分\n阪急 大阪梅田駅 徒歩5分",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 15
+                              "fontSize": 15,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -15056,47 +15118,65 @@
                           "type": "frame",
                           "id": "W149M",
                           "name": "hoursBlock",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": {
+                              "right": 1,
+                              "bottom": 1
+                            }
+                          },
                           "layout": "vertical",
                           "gap": 12,
                           "children": [
                             {
-                              "type": "icon_font",
-                              "id": "jzqbh",
-                              "name": "infoIcon3",
-                              "width": 24,
-                              "height": 24,
-                              "iconFontName": "clock-3",
-                              "iconFontFamily": "lucide",
-                              "fill": {
-                                "type": "gradient",
-                                "gradientType": "linear",
-                                "enabled": true,
-                                "rotation": 135,
-                                "size": {
-                                  "height": 1
-                                },
-                                "colors": [
-                                  {
-                                    "color": "$brand-pink",
-                                    "position": 0
-                                  },
-                                  {
-                                    "color": "$brand-purple",
-                                    "position": 1
+                              "type": "frame",
+                              "id": "gvhf2",
+                              "name": "Frame 3",
+                              "gap": 10,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "jzqbh",
+                                  "name": "infoIcon3",
+                                  "width": 24,
+                                  "height": 24,
+                                  "iconFontName": "clock-3",
+                                  "iconFontFamily": "lucide",
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "rotation": 135,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "$brand-pink",
+                                        "position": 0
+                                      },
+                                      {
+                                        "color": "$brand-purple",
+                                        "position": 1
+                                      }
+                                    ]
                                   }
-                                ]
-                              }
-                            },
-                            {
-                              "type": "text",
-                              "id": "y8PsI",
-                              "name": "infoLabel3",
-                              "fill": "#ffffffaa",
-                              "content": "営業時間",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "600",
-                              "letterSpacing": 2
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "y8PsI",
+                                  "name": "infoLabel3",
+                                  "fill": "#ffffffaa",
+                                  "content": "営業時間",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600",
+                                  "letterSpacing": 2
+                                }
+                              ]
                             },
                             {
                               "type": "text",
@@ -15104,11 +15184,12 @@
                               "name": "infoVal3",
                               "fill": "$color-white",
                               "textGrowth": "fixed-width",
-                              "width": 350,
+                              "width": 400,
                               "content": "平日 10:00 - 19:00\n土日祝 休業",
                               "lineHeight": 1.8,
                               "fontFamily": "Inter",
-                              "fontSize": 15
+                              "fontSize": 15,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
