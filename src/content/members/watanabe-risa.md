@@ -2,7 +2,7 @@
 slug: "nakamura-akari"
 name: "中村 あかり"
 nameEn: "Akari Nakamura"
-role: "シニアディレクター"
+role: "ディレクター"
 team: "ディレクション"
 photo: "/images/members/nakamura-akari.png"
 joinedAt: "2019-07"
