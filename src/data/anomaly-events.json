@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ae-002",
+    "type": "warning",
+    "level": "subtle",
+    "targetId": "staff-kobayashi",
+    "targetType": "staff",
+    "description": "【警告】社員紹介 - ",
+    "metadata": {
+      "staffName": "佐藤 健二",
+      "deletedFields": ["avatar"],
+      "lastSeen": "2024-01-28T15:22:00Z"
+    },
+    "occurredAt": "2024-04-28T15:22:05Z",
+    "isObserved": false
+  },
+  {
+    "id": "ae-004",
+    "type": "warning",
+    "level": "subtle",
+    "targetId": "post-003",
+    "targetType": "post",
+    "description": "【警告】採用情報 - 不明な文字列",
+    "metadata": {
+      "affectedParagraph": 3,
+      "originalFragment": "佐藤 健二",
+      "corruptedFragment": "新̷̢し̶̧い̵̡オ̸͜フ̷̢ィ̶̧ス̵̡へ̸͜の̷̢移̶̧転̵̡が̸͜"
+    },
+    "occurredAt": "2024-04-28T15:22:00Z",
+    "isObserved": false
+  },
+  {
+    "id": "ae-005",
+    "type": "warning",
+    "level": "severe",
+    "targetId": "system",
+    "targetType": "post",
+    "description": "【警告】不正アクセス検知",
+    "metadata": {
+      "sourceIP": "0.0.0.0",
+      "logLevel": "CRITICAL",
+      "rawMessage": "不正なアクセス試行"
+    },
+    "occurredAt": "2024-05-25T03:33:33Z",
+    "isObserved": false
+  }
+]

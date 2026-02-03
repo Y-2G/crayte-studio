@@ -77,3 +77,17 @@ export {
   getInboxMessageCountByStatus,
   getInboxMessageCountByCategory,
 } from './inbox';
+
+// Anomaly event data access
+export {
+  getAllAnomalyEvents,
+  getAnomalyEventById,
+  getAnomalyEventsByType,
+  getAnomalyEventsByLevel,
+  getUnobservedAnomalyEvents,
+  getRecentAnomalyEvents,
+  getAnomalyEventCountByLevel,
+} from './anomalyEvents';
+
+// Activity data access
+export { getRecentActivity } from './activity';

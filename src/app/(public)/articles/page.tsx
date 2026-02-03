@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllArticles, getHiddenArticles } from "@/lib/articles";
+import { getAllArticles } from "@/lib/articles";
 import { getPublicMembers } from "@/lib/members";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
@@ -48,10 +48,9 @@ export default async function ArticlesPage({
       ? filterParam
       : "all";
 
-  const [mdArticles, members, hiddenArticles] = await Promise.all([
+  const [mdArticles, members] = await Promise.all([
     getAllArticles(),
     getPublicMembers(),
-    getHiddenArticles(),
   ]);
 
   const allPosts: DisplayPost[] = [
@@ -85,17 +84,6 @@ export default async function ArticlesPage({
 
   const filteredPosts = filterPosts(sortedPosts, activeFilter);
 
-  const hiddenPosts: DisplayPost[] = hiddenArticles.map((a) => ({
-    id: a.id,
-    slug: a.id,
-    title: a.title,
-    excerpt: a.excerpt,
-    category: a.category,
-    publishedAt: a.publishedAt,
-    href: `/articles/${a.id}`,
-    isMember: false,
-  }));
-
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -119,7 +107,6 @@ export default async function ArticlesPage({
             <Suspense fallback={null}>
               <ArticleContent
                 posts={filteredPosts}
-                hiddenPosts={hiddenPosts}
                 activeFilter={activeFilter}
               />
             </Suspense>

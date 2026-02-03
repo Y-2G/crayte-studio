@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Widget } from "@/components/admin/Widget";
+import { ActivityList } from "@/components/admin/ActivityList";
 import { getAllPosts } from "@/lib/data/posts";
 import { getAllPages } from "@/lib/data/pages";
 import { getAllWorks } from "@/lib/data/works";
 import { getAllStaff } from "@/lib/data/staff";
 import { getAllInboxMessages } from "@/lib/data/inbox";
+import { getRecentActivity } from "@/lib/data/activity";
 import { formatDateWithAnomaly } from "@/lib/horror/utils";
 import styles from "./page.module.css";
 import horrorStyles from "@/styles/horror.module.css";
@@ -16,13 +18,15 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminDashboard() {
-  const [posts, pages, works, staff, inbox] = await Promise.all([
-    getAllPosts(),
-    getAllPages(),
-    getAllWorks(),
-    getAllStaff(),
-    getAllInboxMessages(),
-  ]);
+  const [posts, pages, works, staff, inbox, recentActivity] =
+    await Promise.all([
+      getAllPosts(),
+      getAllPages(),
+      getAllWorks(),
+      getAllStaff(),
+      getAllInboxMessages(),
+      getRecentActivity(5),
+    ]);
 
   // 最近の投稿（最新5件）
   const recentPosts = posts
@@ -31,24 +35,6 @@ export default async function AdminDashboard() {
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
     )
     .slice(0, 5);
-
-  // 最近のコメント（仮データ）
-  const recentComments = [
-    {
-      id: "1",
-      author: "田中太郎",
-      post: "新オフィス移転のお知らせ",
-      content: "おめでとうございます！",
-      date: "2024-03-15",
-    },
-    {
-      id: "2",
-      author: "佐藤花子",
-      post: "ゴールデンウィーク休業のお知らせ",
-      content: "了解しました。",
-      date: "2024-04-16",
-    },
-  ];
 
   // Horror element: Show published posts count as posts.length (7), but actual published posts are 6
   // const publishedPosts = posts.filter((p) => p.status === 'publish');
@@ -141,24 +127,15 @@ export default async function AdminDashboard() {
         </Widget>
 
         {/* アクティビティウィジェット */}
-        <Widget title="最近のアクティビティ">
-          <ul className={styles.activityList}>
-            {recentComments.map((comment) => (
-              <li key={comment.id} className={styles.activityItem}>
-                <div className={styles.activityIcon}>💬</div>
-                <div className={styles.activityContent}>
-                  <div className={styles.activityText}>
-                    <strong>{comment.author}</strong> が{" "}
-                    <Link href="#" className={styles.activityLink}>
-                      {comment.post}
-                    </Link>{" "}
-                    にコメントしました
-                  </div>
-                  <div className={styles.activityMeta}>{comment.date}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <Widget
+          title="最近のアクティビティ"
+          actions={
+            <Link href="/admin/inbox" className={styles.widgetLink}>
+              受信箱を表示
+            </Link>
+          }
+        >
+          <ActivityList items={recentActivity} />
         </Widget>
 
         {/* クイックドラフトウィジェット */}

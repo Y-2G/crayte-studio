@@ -461,6 +461,41 @@ export interface SearchResult<T = unknown> {
 }
 
 // ============================================================================
+// Activity
+// ============================================================================
+
+/**
+ * Activity item type
+ */
+export type ActivityItemType = 'inbox' | 'anomaly';
+
+/**
+ * Unified activity item for dashboard display
+ */
+export interface ActivityItem {
+  /** Unique identifier */
+  id: string;
+  /** Activity source type */
+  type: ActivityItemType;
+  /** Display emoji icon */
+  icon: string;
+  /** Primary text */
+  title: string;
+  /** Secondary text */
+  description: string;
+  /** ISO 8601 timestamp (used for sorting) */
+  timestamp: string;
+  /** Link destination (inbox only) */
+  href?: string;
+  /** Visual severity level */
+  severity: 'low' | 'medium' | 'high';
+  /** Whether this item has horror elements */
+  isHorror: boolean;
+  /** Additional metadata */
+  meta: Record<string, unknown>;
+}
+
+// ============================================================================
 // Type Guards
 // ============================================================================
 

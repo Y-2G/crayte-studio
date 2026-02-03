@@ -21,8 +21,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: var(--admin-header-height);
+  padding: var(--spacing-0) var(--spacing-3);
+  line-height: 1;
 }
 
 .logo {

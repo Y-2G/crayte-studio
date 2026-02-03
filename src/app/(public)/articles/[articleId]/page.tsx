@@ -92,11 +92,8 @@ export default async function ArticleDetailPage({
   const headings = extractHeadings(article.htmlContent);
   const bodyHtml = addHeadingIds(article.htmlContent);
 
-  const isError = article.category === "ERROR";
-  const style = isError ? { fontFamily: "var(--font-404)" } : undefined;
-
   return (
-    <div className={styles.page} style={style}>
+    <div className={styles.page}>
       {/* Hero Section */}
       <section className={styles.hero}>
         <OptimizedImage
@@ -192,34 +189,25 @@ export default async function ArticleDetailPage({
             className={styles.articleBody}
             dangerouslySetInnerHTML={{ __html: bodyHtml }}
           />
-          {isError && (
-            <Link className={styles.hidden} href="/admin">
-              {process.env.NEXT_PUBLIC_HOME_URL}/admin
-            </Link>
-          )}
-
           <div className={styles.divider} />
 
           {/* Author Section */}
-          {!isError && (
-            <div className={styles.authorSection}>
-              <div className={styles.authorAvatar}>
-                <span className={styles.authorAvatarText}>
-                  {getAuthorInitials(article.author)}
-                </span>
-              </div>
-              <div className={styles.authorInfo}>
-                <p className={styles.authorName}>{article.author}</p>
-                <p className={styles.authorDesc}>
-                  CRAYTE STUDIOの最新情報をお届けします。
-                </p>
-              </div>
+          <div className={styles.authorSection}>
+            <div className={styles.authorAvatar}>
+              <span className={styles.authorAvatarText}>
+                {getAuthorInitials(article.author)}
+              </span>
             </div>
-          )}
+            <div className={styles.authorInfo}>
+              <p className={styles.authorName}>{article.author}</p>
+              <p className={styles.authorDesc}>
+                CRAYTE STUDIOの最新情報をお届けします。
+              </p>
+            </div>
+          </div>
 
           {/* Share Row */}
-          {!isError && (
-            <div className={styles.shareRow}>
+          <div className={styles.shareRow}>
               <span className={styles.shareLabel}>この記事をシェア:</span>
               <button
                 className={styles.shareButton}
@@ -275,12 +263,10 @@ export default async function ArticleDetailPage({
                 </svg>
               </button>
             </div>
-          )}
         </main>
 
         {/* Side Column */}
-        {!isError && (
-          <aside className={styles.sideColumn}>
+        <aside className={styles.sideColumn}>
             {/* Table of Contents */}
             {headings.length > 0 && (
               <div className={styles.tocCard}>
@@ -326,8 +312,7 @@ export default async function ArticleDetailPage({
                 </div>
               </div>
             )}
-          </aside>
-        )}
+        </aside>
       </div>
 
       {/* Back to Articles */}

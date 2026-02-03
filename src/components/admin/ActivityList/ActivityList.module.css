@@ -1,0 +1,114 @@
+/* ActivityList styles */
+
+.activityList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.activityItem {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+/* Anomaly background (subtle/noticeable) */
+.anomalyItem {
+  background-color: var(--horror-subtle);
+}
+
+/* Horror item: severe anomaly or sign inbox */
+.horrorItem {
+  border-left: 3px solid var(--horror-text);
+}
+
+.activityIcon {
+  font-size: var(--font-size-xl);
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.activityBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.activityHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+}
+
+.activityTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--admin-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activityTitleLink {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--admin-primary);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activityTitleLink:hover {
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeInbox {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--admin-primary);
+}
+
+.badgeAnomaly {
+  background-color: var(--horror-subtle);
+  color: var(--horror-text);
+}
+
+.activityDescription {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+  margin-bottom: var(--spacing-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activityTimestamp {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--spacing-6);
+  color: var(--admin-text-muted);
+  font-size: var(--font-size-sm);
+}

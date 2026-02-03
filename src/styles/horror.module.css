@@ -51,27 +51,6 @@
   position: relative;
 }
 
-.anomalousDate::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--horror-text);
-  animation: flicker 3s ease-in-out infinite;
-}
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
 /* === Sealed content === */
 
 .sealedBadge {
@@ -94,7 +73,7 @@
 }
 
 .sealedRow::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -130,7 +109,7 @@
 }
 
 .rewrittenText::before {
-  content: '[改変済] ';
+  content: "[改変済] ";
   font-weight: 600;
   font-style: normal;
 }
@@ -167,7 +146,7 @@
 }
 
 .observationNote::before {
-  content: '⚠ 観察メモ: ';
+  content: "⚠ 観察メモ: ";
   font-weight: 600;
   display: block;
   margin-bottom: 0.25rem;
@@ -228,7 +207,7 @@
 }
 
 .warningBox .title::before {
-  content: '⚠';
+  content: "⚠";
   font-size: var(--font-size-lg);
 }
 
@@ -279,7 +258,7 @@
 }
 
 .discrepantCount::after {
-  content: '?';
+  content: "?";
   font-size: var(--font-size-xs);
   vertical-align: super;
   margin-left: 1px;

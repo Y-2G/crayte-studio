@@ -125,53 +125,6 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* アクティビティリスト */
-.activityList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.activityItem {
-  display: flex;
-  gap: var(--spacing-3);
-  padding: var(--spacing-3) 0;
-  border-bottom: 1px solid var(--admin-border);
-}
-
-.activityItem:last-child {
-  border-bottom: none;
-}
-
-.activityIcon {
-  font-size: var(--font-size-xl);
-  line-height: 1;
-}
-
-.activityContent {
-  flex: 1;
-}
-
-.activityText {
-  font-size: var(--font-size-sm);
-  color: var(--admin-text);
-  margin-bottom: var(--spacing-1);
-}
-
-.activityLink {
-  color: var(--admin-primary);
-  text-decoration: none;
-}
-
-.activityLink:hover {
-  text-decoration: underline;
-}
-
-.activityMeta {
-  font-size: var(--font-size-xs);
-  color: var(--admin-text-muted);
-}
-
 /* クイックドラフト */
 .quickDraft {
   display: flex;
