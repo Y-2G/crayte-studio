@@ -59,12 +59,14 @@ export function ActivityList({ items }: ActivityListProps) {
                 <span
                   className={clsx(
                     styles.badge,
-                    item.type === 'inbox'
-                      ? styles.badgeInbox
-                      : styles.badgeAnomaly,
+                    item.type === 'inbox' && styles.badgeInbox,
+                    item.type === 'anomaly' && styles.badgeAnomaly,
+                    item.type === 'comment' && styles.badgeComment,
                   )}
                 >
-                  {item.type === 'inbox' ? '受信箱' : 'アノマリー'}
+                  {item.type === 'inbox' && '受信箱'}
+                  {item.type === 'anomaly' && 'アノマリー'}
+                  {item.type === 'comment' && 'コメント'}
                 </span>
               </div>
               <div className={styles.activityDescription}>

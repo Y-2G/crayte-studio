@@ -10,6 +10,22 @@ author: "Web制作部"
 publishedAt: "2024-02-01"
 updatedAt: "2024-02-01"
 heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
+reviewComments:
+  - id: "review-007"
+    author: "代表取締役"
+    content: "新しいサイトデザインは素晴らしいです。ブランドイメージの向上に貢献すると思います。公開を承認します。"
+    createdAt: "2024-01-30T16:00:00Z"
+  - id: "review-008"
+    author: "営業部長"
+    content: "制作実績ページのフィルタリング機能が便利ですね。クライアントへの提案時に活用できそうです。"
+    createdAt: "2024-01-31T10:30:00Z"
+comments:
+  - id: "comment-003"
+    author: "佐藤健太"
+    email: "kenta.s@example.com"
+    content: "このアプローチは非常に参考になりました。実際のプロジェクトで活用させていただきます。"
+    status: "approved"
+    createdAt: "2024-06-20T18:45:00Z"
 ---
 
 このたび、CRAYTE STUDIOのコーポレートサイトを全面リニューアルいたしました。今回のリニューアルでは、お客様により分かりやすく、使いやすいサイトを目指して多くの改善を行いました。

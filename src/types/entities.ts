@@ -385,3 +385,20 @@ export function isInboxMessage(obj: unknown): obj is InboxMessage {
     typeof m.status === "string"
   );
 }
+
+/**
+ * Type guard for Comment
+ */
+export function isComment(obj: unknown): obj is Comment {
+  if (typeof obj !== "object" || obj === null) return false;
+  const c = obj as Record<string, unknown>;
+  return (
+    typeof c.id === "string" &&
+    typeof c.postId === "string" &&
+    typeof c.author === "string" &&
+    typeof c.email === "string" &&
+    typeof c.content === "string" &&
+    typeof c.status === "string" &&
+    typeof c.createdAt === "string"
+  );
+}

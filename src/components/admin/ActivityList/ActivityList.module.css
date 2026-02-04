@@ -92,6 +92,11 @@
   color: var(--horror-text);
 }
 
+.badgeComment {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--admin-primary);
+}
+
 .activityDescription {
   font-size: var(--font-size-xs);
   color: var(--admin-text-muted);

@@ -5,11 +5,11 @@
  * All functions maintain the same API signatures as the original JSON-based implementation.
  */
 
-import type { Post, PostStatus, ReviewComment } from '@/types';
+import type { Post, PostStatus, ReviewComment, Comment } from '@/types';
 import { getAllArticlesRaw, getArticleById } from '@/lib/articles';
 import type { Article } from '@/lib/articles';
 
-function articleToPost(article: Article): Post {
+function articleToPost(article: Article): Post & { comments: Comment[] } {
   return {
     id: article.id,
     slug: article.slug,
@@ -22,6 +22,11 @@ function articleToPost(article: Article): Post {
     tags: article.tags,
     author: article.author,
     reviewComments: article.reviewComments as ReviewComment[],
+    comments: article.comments.map(c => ({
+      ...c,
+      postId: article.id,
+      status: c.status as Comment['status'],
+    })),
     meta: article.meta,
     createdAt: article.createdAt,
     updatedAt: article.updatedAt,

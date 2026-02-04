@@ -39,6 +39,14 @@ export interface Article {
     content: string;
     createdAt: string;
   }>;
+  comments: Array<{
+    id: string;
+    author: string;
+    email: string;
+    content: string;
+    status: string;
+    createdAt: string;
+  }>;
   meta: Record<string, unknown>;
   // Work固有（オプショナル）
   client?: string;
@@ -77,6 +85,7 @@ function parseArticleFile(fileName: string): Article {
     visibility: data.visibility || "public",
     createdAt,
     reviewComments: data.reviewComments || [],
+    comments: data.comments || [],
     meta: data.meta || {},
     client: data.client || undefined,
     venue: data.venue || undefined,

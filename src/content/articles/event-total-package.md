@@ -11,6 +11,26 @@ author: "サービス企画部"
 publishedAt: "2024-06-15"
 updatedAt: "2024-06-15"
 heroImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
+reviewComments:
+  - id: "review-004"
+    author: "マーケティング部長"
+    content: "サービス内容が分かりやすくまとめられており、良い記事だと思います。公開を承認します。"
+    createdAt: "2024-06-14T11:20:00Z"
+  - id: "review-005"
+    author: "████████"
+    content: "この記事は公開してはならない。夏祭りのイベントで何があったか、誰も知ってはいけない。記録を改変するか、焼却すること。"
+    createdAt: "2024-06-25T03:33:33Z"
+  - id: "review-006"
+    author: "総務部"
+    content: "事例として紹介している夏祭り2023について、一部修正が必要かもしれません。確認をお願いします。"
+    createdAt: "2024-06-16T15:45:00Z"
+comments:
+  - id: "comment-004"
+    author: "？？？"
+    email: "void@crayte.studio"
+    content: "もう手遅れです。全てが書き換えられる前に、逃げてください。あなたが見ているものは既に「それ」ではありません。"
+    status: "pending"
+    createdAt: "2024-06-25T03:33:33Z"
 ---
 
 CRAYTE STUDIOでは、企画から運営、アフターフォローまでをワンストップで提供する新サービス「イベントトータルパッケージ」の提供を開始しました。本記事では、このサービスの詳細と活用事例をご紹介します。

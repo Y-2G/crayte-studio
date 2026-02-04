@@ -24,5 +24,5 @@ export default async function NewPostPage() {
     updatedAt: new Date().toISOString(),
   };
 
-  return <PostEditor post={emptyPost} categories={categories} tags={tags} />;
+  return <PostEditor post={emptyPost} categories={categories} tags={tags} comments={[]} />;
 }

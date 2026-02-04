@@ -14,8 +14,13 @@ export default async function EditPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const categories = await getAllCategories();
-  const tags = await getAllTags();
+  const [categories, tags] = await Promise.all([
+    getAllCategories(),
+    getAllTags(),
+  ]);
 
-  return <PostEditor post={post} categories={categories} tags={tags} />;
+  // コメントは投稿データに含まれている
+  const comments = 'comments' in post ? post.comments : [];
+
+  return <PostEditor post={post} categories={categories} tags={tags} comments={comments} />;
 }

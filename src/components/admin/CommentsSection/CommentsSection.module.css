@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* === Comment list === */
+
+.commentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.comment {
+  padding: var(--spacing-3);
+  background-color: var(--admin-bg-light);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.comment:hover {
+  border-color: var(--admin-primary);
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-2);
+  gap: var(--spacing-2);
+}
+
+.commentMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.author {
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  font-size: var(--font-size-sm);
+}
+
+.email {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+  font-family: var(--font-mono);
+}
+
+.commentContent {
+  margin: var(--spacing-2) 0;
+  color: var(--admin-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.commentDate {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+  display: block;
+}
+
+/* === Empty state === */
+
+.empty {
+  padding: var(--spacing-4);
+  text-align: center;
+  color: var(--admin-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* === Form === */
+
+.form {
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.formTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.textareaLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--admin-text);
+}
+
+.textarea {
+  width: 100%;
+  padding: var(--spacing-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--admin-text);
+  background-color: var(--color-white);
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.textarea:hover {
+  border-color: var(--admin-primary);
+}

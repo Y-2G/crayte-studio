@@ -467,7 +467,7 @@ export interface SearchResult<T = unknown> {
 /**
  * Activity item type
  */
-export type ActivityItemType = 'inbox' | 'anomaly';
+export type ActivityItemType = 'inbox' | 'anomaly' | 'comment';
 
 /**
  * Unified activity item for dashboard display

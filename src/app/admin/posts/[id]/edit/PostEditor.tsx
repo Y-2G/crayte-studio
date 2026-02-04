@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Post, PostStatus, Visibility } from "@/types";
+import type { Post, PostStatus, Visibility, Comment } from "@/types";
 import { EditPage } from "@/components/admin/EditPage";
 import { MetaBox } from "@/components/admin/MetaBox";
 import {
@@ -18,12 +18,14 @@ interface PostEditorProps {
   post: Post;
   categories: string[];
   tags: string[];
+  comments: Comment[];
 }
 
 export function PostEditor({
   post: initialPost,
   categories,
   tags: allTags,
+  comments,
 }: PostEditorProps) {
   const [post, setPost] = useState(initialPost);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialPost.tags);
@@ -261,42 +263,64 @@ export function PostEditor({
         />
       </MetaBox>
 
-      {/* Review Comments */}
-      <MetaBox title="内部レビューコメント" defaultCollapsed>
+      {/* Comments Section */}
+      <MetaBox title="コメント">
         <div className={styles.reviewComments}>
-          {post.reviewComments.length === 0 ? (
-            <p className={styles.noComments}>
-              レビューコメントはまだありません
-            </p>
+          {post.reviewComments.length === 0 && comments.length === 0 ? (
+            <p className={styles.noComments}>コメントはまだありません</p>
           ) : (
-            post.reviewComments.map((comment) => {
-              // Horror element: Show threatening/ominous review comments
-              const isHorrorComment =
-                comment.content.includes("公開してはならない") ||
-                comment.content.includes("記録を改変") ||
-                comment.content.includes("焼却");
+            // 内部レビューコメントとユーザーコメントを統合して、タイムスタンプでソート
+            [...post.reviewComments.map(c => ({ ...c, type: 'review' as const })),
+             ...comments.map(c => ({ ...c, type: 'user' as const }))]
+              .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+              .map((comment) => {
+                // Horror element: Show threatening/ominous comments
+                const isHorrorComment =
+                  comment.content.includes("公開してはならない") ||
+                  comment.content.includes("記録を改変") ||
+                  comment.content.includes("焼却") ||
+                  comment.content.includes("見てはいけない") ||
+                  comment.content.includes("消去");
 
-              return (
-                <div
-                  key={comment.id}
-                  className={`${styles.comment} ${
-                    isHorrorComment ? horrorStyles.horrorReviewComment : ""
-                  }`}
-                >
-                  <div className={styles.commentHeader}>
-                    <strong
-                      className={isHorrorComment ? horrorStyles.horrorText : ""}
-                    >
-                      {comment.author}
-                    </strong>
-                    <time>
-                      {new Date(comment.createdAt).toLocaleString("ja-JP")}
-                    </time>
+                return (
+                  <div
+                    key={`${comment.type}-${comment.id}`}
+                    className={`${styles.comment} ${
+                      isHorrorComment ? horrorStyles.horrorReviewComment : ""
+                    }`}
+                  >
+                    <div className={styles.commentHeader}>
+                      <div className={styles.commentAuthorLine}>
+                        <strong
+                          className={isHorrorComment ? horrorStyles.horrorText : ""}
+                        >
+                          {comment.author}
+                        </strong>
+                        <span className={styles.commentType}>
+                          {comment.type === 'review' ? '内部レビュー' : '公開コメント'}
+                        </span>
+                        {comment.type === 'user' && (
+                          <span className={`${styles.commentBadge} ${styles[`status-${comment.status}`]}`}>
+                            {comment.status === 'approved' && '承認済み'}
+                            {comment.status === 'pending' && '保留中'}
+                            {comment.status === 'spam' && 'スパム'}
+                            {comment.status === 'trash' && 'ゴミ箱'}
+                          </span>
+                        )}
+                      </div>
+                      <time>
+                        {new Date(comment.createdAt).toLocaleString("ja-JP")}
+                      </time>
+                    </div>
+                    <p className={styles.commentContent}>{comment.content}</p>
+                    {comment.type === 'user' && 'email' in comment && (
+                      <div className={styles.commentMeta}>
+                        Email: {comment.email}
+                      </div>
+                    )}
                   </div>
-                  <p className={styles.commentContent}>{comment.content}</p>
-                </div>
-              );
-            })
+                );
+              })
           )}
           <TextareaField
             placeholder="新しいコメントを追加..."
