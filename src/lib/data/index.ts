@@ -91,3 +91,14 @@ export {
 
 // Activity data access
 export { getRecentActivity } from './activity';
+
+// Media data access
+export {
+  getAllMedia,
+  getPaginatedMedia,
+  getMediaStats,
+  getMediaType,
+  type MediaType,
+  type PaginatedMedia,
+  type MediaStats,
+} from './media';

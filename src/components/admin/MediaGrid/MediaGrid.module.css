@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--spacing-6);
+  justify-items: center;
+}
+
+.empty {
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-16);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  opacity: 0.3;
+  display: block;
+  margin-bottom: var(--spacing-4);
+}
+
+.emptyText {
+  color: var(--admin-text-muted);
+  font-size: var(--font-size-base);
+  margin: 0;
+}

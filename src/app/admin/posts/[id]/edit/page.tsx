@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPostById, getAllCategories, getAllTags } from '@/lib/data';
+import type { Comment } from '@/types/entities';
 import { PostEditor } from './PostEditor';
 
 interface PageProps {
@@ -20,7 +21,7 @@ export default async function EditPostPage({ params }: PageProps) {
   ]);
 
   // コメントは投稿データに含まれている
-  const comments = 'comments' in post ? post.comments : [];
+  const comments: Comment[] = 'comments' in post && Array.isArray(post.comments) ? post.comments : [];
 
   return <PostEditor post={post} categories={categories} tags={tags} comments={comments} />;
 }

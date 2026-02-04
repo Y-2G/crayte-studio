@@ -7,6 +7,7 @@ export { Modal } from './Modal';
 export { Spinner, Skeleton } from './Loading';
 export { Badge } from './Badge';
 export { OptimizedImage } from './OptimizedImage';
+export { Pagination } from './Pagination';
 
 // Types
 export type { TableColumn, TableAction } from './Table';
