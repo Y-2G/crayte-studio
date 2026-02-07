@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts, getAllCategories } from "@/lib/data";
+import { getAllPosts, getAllCategories, getPaginatedPosts } from "@/lib/data";
 import { PostsTable } from "@/components/admin/PostsTable";
+import { Pagination } from "@/components/shared/Pagination";
 import type { PostStatus } from "@/types";
 import styles from "./page.module.css";
 
@@ -14,6 +15,7 @@ interface SearchParams {
   status?: PostStatus;
   category?: string;
   search?: string;
+  page?: string;
 }
 
 export default async function AdminPostsPage({
@@ -22,32 +24,17 @@ export default async function AdminPostsPage({
   searchParams: Promise<SearchParams>;
 }) {
   const params = await searchParams;
-  const allPosts = await getAllPosts();
-  const categories = await getAllCategories();
+  const currentPage = Math.max(1, Number(params.page) || 1);
 
-  // フィルタリング
-  let filteredPosts = allPosts;
-
-  if (params.status) {
-    filteredPosts = filteredPosts.filter(
-      (post) => post.status === params.status,
-    );
-  }
-
-  if (params.category) {
-    filteredPosts = filteredPosts.filter(
-      (post) => post.category === params.category,
-    );
-  }
-
-  if (params.search) {
-    const searchLower = params.search.toLowerCase();
-    filteredPosts = filteredPosts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchLower) ||
-        post.content.toLowerCase().includes(searchLower),
-    );
-  }
+  const [allPosts, categories, paginated] = await Promise.all([
+    getAllPosts(),
+    getAllCategories(),
+    getPaginatedPosts(currentPage, 20, {
+      status: params.status,
+      category: params.category,
+      search: params.search,
+    }),
+  ]);
 
   // ステータス別の件数を計算
   const statusCounts = {
@@ -56,6 +43,16 @@ export default async function AdminPostsPage({
     draft: allPosts.filter((p) => p.status === "draft").length,
     pending: allPosts.filter((p) => p.status === "pending").length,
   };
+
+  // 表示範囲の計算
+  const startItem = paginated.total === 0 ? 0 : (currentPage - 1) * 20 + 1;
+  const endItem = Math.min(currentPage * 20, paginated.total);
+
+  // ページネーション用のクエリパラメータ
+  const queryParams: Record<string, string> = {};
+  if (params.status) queryParams.status = params.status;
+  if (params.category) queryParams.category = params.category;
+  if (params.search) queryParams.search = params.search;
 
   return (
     <div className={styles.page}>
@@ -115,8 +112,21 @@ export default async function AdminPostsPage({
         </Link>
       </div>
 
+      {/* 件数表示 */}
+      <div className={styles.info}>
+        {paginated.total}件中 {startItem}〜{endItem}件を表示
+      </div>
+
       {/* 投稿テーブル */}
-      <PostsTable posts={filteredPosts} />
+      <PostsTable posts={paginated.items} />
+
+      {/* ページネーション */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={paginated.totalPages}
+        basePath="/admin/posts"
+        queryParams={queryParams}
+      />
     </div>
   );
 }

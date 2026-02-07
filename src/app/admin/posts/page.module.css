@@ -89,6 +89,13 @@
   border-bottom-color: var(--admin-primary);
 }
 
+/* 件数表示 */
+.info {
+  font-size: var(--font-size-sm);
+  color: var(--admin-text-secondary);
+  margin-bottom: var(--spacing-3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header {

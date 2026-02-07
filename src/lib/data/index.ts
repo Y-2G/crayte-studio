@@ -22,6 +22,8 @@ export {
   getAllCategories,
   getAllTags,
   getRecentPosts,
+  getPaginatedPosts,
+  type PaginatedPosts,
 } from './posts';
 
 // Work data access

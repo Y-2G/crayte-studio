@@ -14,6 +14,7 @@ const membersDirectory = path.join(
   process.cwd(),
   "src",
   "content",
+  "articles",
   "members"
 );
 

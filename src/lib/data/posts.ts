@@ -8,6 +8,8 @@
 import type { Post, PostStatus, ReviewComment, Comment } from '@/types';
 import { getAllArticlesRaw, getArticleById } from '@/lib/articles';
 import type { Article } from '@/lib/articles';
+import { getAllMembers } from '@/lib/members';
+import type { Member } from '@/lib/members';
 
 function articleToPost(article: Article): Post & { comments: Comment[] } {
   return {
@@ -34,12 +36,45 @@ function articleToPost(article: Article): Post & { comments: Comment[] } {
   };
 }
 
+function memberToPost(member: Member): Post {
+  const publishedAt = `${member.joinedAt}-01`;
+  return {
+    id: `member-${member.slug}`,
+    slug: member.slug,
+    title: `${member.name} - ${member.role}`,
+    content: member.htmlContent,
+    excerpt: member.motto,
+    status: 'publish' as PostStatus,
+    visibility: 'public' as Post['visibility'],
+    category: 'ブログ',
+    tags: member.skills,
+    author: member.name,
+    reviewComments: [],
+    meta: {},
+    createdAt: publishedAt,
+    updatedAt: publishedAt,
+    publishedAt,
+  };
+}
+
 /**
  * Get all posts (including drafts and private posts)
+ * Includes both articles and member blog posts.
  */
 export async function getAllPosts(): Promise<Post[]> {
-  const articles = await getAllArticlesRaw();
-  return articles.map(articleToPost);
+  const [articles, members] = await Promise.all([
+    getAllArticlesRaw(),
+    getAllMembers(),
+  ]);
+
+  const articlePosts = articles.map(articleToPost);
+  const memberPosts = members.map(memberToPost);
+
+  return [...articlePosts, ...memberPosts].sort((a, b) => {
+    const dateA = new Date(a.publishedAt || a.createdAt);
+    const dateB = new Date(b.publishedAt || b.createdAt);
+    return dateB.getTime() - dateA.getTime();
+  });
 }
 
 /**
@@ -130,4 +165,56 @@ export async function getRecentPosts(limit: number = 5): Promise<Post[]> {
       return dateB.getTime() - dateA.getTime();
     })
     .slice(0, limit);
+}
+
+/**
+ * Paginated posts response
+ */
+export interface PaginatedPosts {
+  items: Post[];
+  total: number;
+  page: number;
+  perPage: number;
+  totalPages: number;
+}
+
+/**
+ * Get paginated posts with optional filters
+ */
+export async function getPaginatedPosts(
+  page: number = 1,
+  perPage: number = 20,
+  filters?: { status?: PostStatus; category?: string; search?: string }
+): Promise<PaginatedPosts> {
+  let posts = await getAllPosts();
+
+  if (filters?.status) {
+    posts = posts.filter((post) => post.status === filters.status);
+  }
+
+  if (filters?.category) {
+    posts = posts.filter((post) => post.category === filters.category);
+  }
+
+  if (filters?.search) {
+    const searchLower = filters.search.toLowerCase();
+    posts = posts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchLower) ||
+        post.content.toLowerCase().includes(searchLower)
+    );
+  }
+
+  const total = posts.length;
+  const totalPages = Math.ceil(total / perPage);
+  const startIndex = (page - 1) * perPage;
+  const items = posts.slice(startIndex, startIndex + perPage);
+
+  return {
+    items,
+    total,
+    page,
+    perPage,
+    totalPages,
+  };
 }

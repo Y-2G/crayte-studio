@@ -1,0 +1,20 @@
+---
+slug: "watanabe-risa"
+name: "渡邉 梨沙"
+nameEn: "Risa Watanabe"
+role: "ディレクター"
+team: "ディレクション"
+photo: "/images/members/watanabe-risa.png"
+joinedAt: "2019-07"
+skills:
+  - "ブランド戦略"
+  - "クリエイティブディレクション"
+  - "プレゼンテーション"
+  - "UI/UX設計"
+motto: "形は思想を映す鏡である"
+id: "staff-010"
+visibility: "public"
+state: "active"
+createdAt: "2019-07-01T00:00:00Z"
+updatedAt: "2024-01-01T00:00:00Z"
+---

@@ -49,7 +49,7 @@ export function PostsTable({ posts }: PostsTableProps) {
             </Link>
             <span className={styles.separator}>|</span>
             <Link
-              href={`/articles/${post.slug}`}
+              href={post.id.startsWith("member-") ? `/members/${post.slug}` : `/articles/${post.slug}`}
               className={styles.rowAction}
               target="_blank"
             >
