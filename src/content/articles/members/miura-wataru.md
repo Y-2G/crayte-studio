@@ -15,7 +15,7 @@ skills:
 motto: "自動化できるものは全て自動化せよ"
 id: "staff-024"
 visibility: "private"
-state: "suspended"
+status: "draft"
 createdAt: "2021-10-01T00:00:00Z"
 updatedAt: "2024-01-01T00:00:00Z"
 ---

@@ -49,7 +49,11 @@ export function PostsTable({ posts }: PostsTableProps) {
             </Link>
             <span className={styles.separator}>|</span>
             <Link
-              href={post.id.startsWith("member-") ? `/members/${post.slug}` : `/articles/${post.slug}`}
+              href={
+                post.id.startsWith("member-")
+                  ? `/members/${post.slug}`
+                  : `/articles/${post.slug}`
+              }
               className={styles.rowAction}
               target="_blank"
             >
@@ -105,7 +109,7 @@ export function PostsTable({ posts }: PostsTableProps) {
       label: "ステータス",
       sortable: true,
       render: (post: Post) => {
-        // Horror element: Add "観察中" status for horror posts
+        // Horror element: Add "非公開" status for horror posts
         const horrorMeta = hasHorrorMeta(post.meta)
           ? getHorrorMeta(post.meta)
           : null;
@@ -114,7 +118,7 @@ export function PostsTable({ posts }: PostsTableProps) {
         const statusMap = {
           publish: { label: "公開", className: styles.statusPublish },
           draft: {
-            label: isHorrorPost ? "観察中" : "下書き",
+            label: isHorrorPost ? "非公開" : "下書き",
             className: isHorrorPost
               ? horrorStyles.horrorText
               : styles.statusDraft,
@@ -133,7 +137,7 @@ export function PostsTable({ posts }: PostsTableProps) {
       sortable: true,
       render: (post: Post) => {
         const dateInfo = formatDateWithAnomaly(
-          post.publishedAt || post.createdAt,
+          post.publishedAt || post.createdAt
         );
         return (
           <span
@@ -178,7 +182,7 @@ export function PostsTable({ posts }: PostsTableProps) {
           className={styles.applyButton}
           onClick={() => {
             const select = document.querySelector<HTMLSelectElement>(
-              `.${styles.bulkSelect}`,
+              `.${styles.bulkSelect}`
             );
             if (select?.value) {
               handleBulkAction(select.value);
