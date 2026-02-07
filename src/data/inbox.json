@@ -1,17 +1,5 @@
 [
   {
-    "id": "inbox-001",
-    "name": "山田 太郎",
-    "email": "yamada@example.com",
-    "subject": "Webサイト制作についてのお問い合わせ",
-    "message": "弊社のコーポレートサイトリニューアルを検討しております。制作実績を拝見し、ぜひ御社にお願いしたいと考えております。一度お打ち合わせの機会をいただけますでしょうか。",
-    "category": "general",
-    "severity": "low",
-    "status": "resolved",
-    "createdAt": "2024-02-15T14:30:00Z",
-    "updatedAt": "2024-02-16T10:00:00Z"
-  },
-  {
     "id": "inbox-002",
     "name": "佐々木 美咲",
     "email": "sasaki@press-media.jp",
@@ -21,7 +9,37 @@
     "severity": "medium",
     "status": "resolved",
     "createdAt": "2024-03-01T10:15:00Z",
-    "updatedAt": "2024-03-02T14:00:00Z"
+    "updatedAt": "2024-03-02T14:00:00Z",
+    "replies": [
+      {
+        "id": "reply-002-1",
+        "messageId": "inbox-002",
+        "respondent": "山田 太郎（広報担当）",
+        "content": "お問い合わせありがとうございます。代表の田中にスケジュールを確認し、改めてご連絡いたします。ご希望の取材日程がございましたら、お知らせください。",
+        "createdAt": "2024-03-01T14:30:00Z"
+      },
+      {
+        "id": "reply-002-2",
+        "messageId": "inbox-002",
+        "respondent": "佐々木 美咲",
+        "content": "ご返信ありがとうございます。3月中旬以降でしたらいつでも調整可能です。取材時間は1時間程度を予定しております。",
+        "createdAt": "2024-03-01T16:45:00Z"
+      },
+      {
+        "id": "reply-002-3",
+        "messageId": "inbox-002",
+        "respondent": "山田 太郎（広報担当）",
+        "content": "3月15日（金）14:00〜15:00 で代表の田中が対応可能です。場所は弊社オフィスでよろしいでしょうか？ご確認をお願いいたします。",
+        "createdAt": "2024-03-02T10:00:00Z"
+      },
+      {
+        "id": "reply-002-4",
+        "messageId": "inbox-002",
+        "respondent": "佐々木 美咲",
+        "content": "日程のご調整ありがとうございます。3月15日14:00〜、御社オフィスにてお願いいたします。当日を楽しみにしております。",
+        "createdAt": "2024-03-02T14:00:00Z"
+      }
+    ]
   },
   {
     "id": "inbox-003",
@@ -33,7 +51,16 @@
     "severity": "medium",
     "status": "pending",
     "createdAt": "2024-04-10T09:00:00Z",
-    "updatedAt": "2024-04-10T15:30:00Z"
+    "updatedAt": "2024-04-10T15:30:00Z",
+    "replies": [
+      {
+        "id": "reply-003-1",
+        "messageId": "inbox-003",
+        "respondent": "鈴木 健一（営業担当）",
+        "content": "お見積りのご依頼ありがとうございます。詳細な要件をヒアリングさせていただきたく、一度お打ち合わせのお時間をいただけますでしょうか。オンライン・対面どちらでも対応可能です。",
+        "createdAt": "2024-04-10T15:30:00Z"
+      }
+    ]
   },
   {
     "id": "inbox-004",
@@ -57,6 +84,22 @@
     "severity": "high",
     "status": "open",
     "createdAt": "2024-02-11T03:33:33Z",
-    "updatedAt": "2024-02-11T03:33:33Z"
+    "updatedAt": "2024-02-11T03:33:33Z",
+    "replies": [
+      {
+        "id": "reply-005-1",
+        "messageId": "inbox-005",
+        "respondent": "???",
+        "content": "返信ありがとうございます。\n\nしかし、誰が返信したのですか？\nこのメールは誰にも転送されていないはずです。\n\n確認してください。\n送信履歴を。\n\n...ありませんね？",
+        "createdAt": "2024-02-11T03:33:34Z"
+      },
+      {
+        "id": "reply-005-2",
+        "messageId": "inbox-005",
+        "respondent": "[削除済み]",
+        "content": "小林さんのデスクを見てください。\n今すぐ。\n\n\n\n\n\n誰もいないはずです。\nでも、コーヒーは温かいままです。",
+        "createdAt": "2024-02-11T03:33:35Z"
+      }
+    ]
   }
 ]

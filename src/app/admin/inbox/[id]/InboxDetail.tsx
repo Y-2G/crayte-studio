@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import type { InboxMessage } from '@/types';
+import type { InboxMessage, InboxReply } from '@/types';
 import { EditPage } from '@/components/admin/EditPage';
 import { MetaBox } from '@/components/admin/MetaBox';
 import { isAnomalousTime } from '@/lib/horror/utils';
@@ -192,6 +192,47 @@ export function InboxDetail({
           {message.message}
         </p>
       </div>
+
+      {/* Replies Section */}
+      {message.replies && message.replies.length > 0 && (
+        <div className={styles.repliesSection}>
+          <h3 className={styles.repliesTitle}>返信履歴</h3>
+          <div className={styles.replyList}>
+            {message.replies.map((reply: InboxReply) => {
+              const isFromSender = reply.respondent === message.name;
+              const isHorrorReply =
+                isSign ||
+                reply.respondent === '???' ||
+                reply.respondent.includes('削除');
+
+              return (
+                <div
+                  key={reply.id}
+                  className={`${styles.replyItem} ${isFromSender ? styles.replyFromSender : ''} ${isHorrorReply ? styles.replyHorror : ''}`}
+                >
+                  <div className={styles.replyHeader}>
+                    <span
+                      className={`${styles.replyRespondent} ${isHorrorReply ? horrorStyles.horrorText : ''}`}
+                    >
+                      {reply.respondent}
+                    </span>
+                    <span
+                      className={`${styles.replyDate} ${isAnomalousTime(reply.createdAt) ? horrorStyles.anomalousDate : ''}`}
+                    >
+                      {formatDateTime(reply.createdAt)}
+                    </span>
+                  </div>
+                  <p
+                    className={`${styles.replyContent} ${isHorrorReply ? styles.horrorContent : ''}`}
+                  >
+                    {reply.content}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <div className={styles.navigation}>

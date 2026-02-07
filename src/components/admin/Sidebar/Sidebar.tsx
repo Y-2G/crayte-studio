@@ -17,7 +17,7 @@ const menuItems: MenuItem[] = [
   { label: "固定ページ", href: "/admin/pages", icon: "📄" },
   { label: "メディア", href: "/admin/media", icon: "🖼️" },
   { label: "コメント", href: "/admin/comments", icon: "💬" },
-  { label: "フォーム受信箱", href: "/admin/inbox", icon: "📨" },
+  { label: "受信箱", href: "/admin/inbox", icon: "📨" },
   { label: "制作実績", href: "/admin/works", icon: "🎯" },
   { label: "スタッフ", href: "/admin/staff", icon: "👥" },
   { label: "外観", href: "/admin/appearance", icon: "🎨" },

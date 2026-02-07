@@ -141,3 +141,67 @@
   opacity: 0.5;
   cursor: default;
 }
+
+/* Replies Section */
+.repliesSection {
+  margin-bottom: var(--spacing-6);
+}
+
+.repliesTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  margin: 0 0 var(--spacing-4);
+}
+
+.replyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.replyItem {
+  padding: var(--spacing-4);
+  background-color: var(--color-white);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+  border-left: 3px solid var(--admin-primary);
+}
+
+.replyFromSender {
+  border-left-color: var(--admin-success);
+  background-color: color-mix(in srgb, var(--admin-success) 5%, var(--color-white));
+}
+
+.replyHorror {
+  border-left-color: var(--horror-text);
+  background-color: var(--horror-subtle);
+}
+
+.replyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-2);
+  gap: var(--spacing-2);
+}
+
+.replyRespondent {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+}
+
+.replyDate {
+  font-size: var(--font-size-xs);
+  color: var(--admin-text-muted);
+  flex-shrink: 0;
+}
+
+.replyContent {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: var(--font-size-sm);
+  color: var(--admin-text);
+}

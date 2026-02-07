@@ -42,7 +42,7 @@ ARG（代替現実ゲーム）として、表（公開サイト）は普通の�
   - 状態が「不明」（ホラーカラー）
   - 削除理由: 「2024 年 2 月より連絡が取れない状況が続いています。」
 
-#### フォーム受信箱（`src/app/admin/inbox/page.tsx` + `InboxTable.tsx`）
+#### 受信箱（`src/app/admin/inbox/page.tsx` + `InboxTable.tsx`）
 
 - **謎のカテゴリ**: `inbox-005` が category: "sign"（兆候）
 - **異常な時刻**: 受信時刻が `03:33:33` （不吉な時刻パターン）

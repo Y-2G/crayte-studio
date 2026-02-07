@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Inbox — CRAYTE STUDIO Admin",
-  description: "フォーム受信箱",
+  description: "受信箱",
 };
 
 export default async function AdminInboxPage() {
@@ -14,7 +14,7 @@ export default async function AdminInboxPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>フォーム受信箱</h1>
+        <h1 className={styles.title}>受信箱</h1>
         <div className={styles.stats}>
           <span className={styles.statItem}>
             新規:{" "}

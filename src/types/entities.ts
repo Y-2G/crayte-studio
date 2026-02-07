@@ -200,7 +200,7 @@ export interface Staff {
 }
 
 // ============================================================================
-// Inbox (フォーム受信箱)
+// Inbox (受信箱)
 // ============================================================================
 
 /**
@@ -233,6 +233,24 @@ export type InboxSeverity = "low" | "medium" | "high";
 export type InboxStatus = "open" | "pending" | "resolved" | "rewritten";
 
 /**
+ * Reply to an inbox message
+ */
+export interface InboxReply {
+  /** Unique identifier */
+  id: string;
+  /** Parent message ID */
+  messageId: string;
+  /** Respondent name */
+  respondent: string;
+  /** Reply content */
+  content: string;
+  /** ISO 8601 timestamp */
+  createdAt: string;
+  /** Internal memo flag (for future use) */
+  isInternal?: boolean;
+}
+
+/**
  * Contact form submission
  */
 export interface InboxMessage {
@@ -256,6 +274,8 @@ export interface InboxMessage {
   createdAt: string;
   /** ISO 8601 timestamp */
   updatedAt: string;
+  /** Replies to this message */
+  replies?: InboxReply[];
 }
 
 // ============================================================================
