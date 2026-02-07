@@ -143,8 +143,7 @@
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(255, 20, 147, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 20, 147, 0.2);
 }
 
 /* Hero Title & Meta */
@@ -523,6 +522,7 @@
 .relatedSep {
   width: 100%;
   height: 1px;
+  margin-bottom: var(--spacing-4);
   background: var(--public-border);
 }
 

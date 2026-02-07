@@ -34,9 +34,9 @@ export default async function MembersPage() {
       </section>
 
       {/* Members Section */}
-      <ScrollReveal>
-        <section className={styles.membersSection} aria-label="メンバー一覧">
-          <div className={styles.membersContent}>
+      <section className={styles.membersSection} aria-label="メンバー一覧">
+        <div className={styles.membersContent}>
+          <ScrollReveal>
             {/* CEO Card */}
             {ceo && (
               <Link
@@ -58,12 +58,13 @@ export default async function MembersPage() {
                 </div>
               </Link>
             )}
+          </ScrollReveal>
 
-            {/* Member Grid */}
-            <div className={styles.memberGrid}>
-              {members.map((member) => (
+          {/* Member Grid */}
+          <div className={styles.memberGrid}>
+            {members.map((member) => (
+              <ScrollReveal key={member.slug}>
                 <Link
-                  key={member.slug}
                   href={`/members/${member.slug}`}
                   className={styles.memberCardLink}
                 >
@@ -81,11 +82,11 @@ export default async function MembersPage() {
                     <span className={styles.memberRole}>{member.role}</span>
                   </div>
                 </Link>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
-        </section>
-      </ScrollReveal>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <ScrollReveal>
