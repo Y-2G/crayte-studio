@@ -68,8 +68,16 @@ function parseMemberFile(fileName: string): Member {
   };
 }
 
+const teamOrder: Record<string, number> = {
+  ディレクション: 0,
+  デザイン: 1,
+  制作: 1,
+  エンジニアリング: 2,
+};
+
 /**
- * Get all members sorted by joinedAt (oldest first)
+ * Get all members sorted by team order (ディレクション → デザイン/制作 → エンジニアリング),
+ * then by joinedAt (oldest first) within the same team group
  */
 export async function getAllMembers(): Promise<Member[]> {
   if (!fs.existsSync(membersDirectory)) {
@@ -83,6 +91,10 @@ export async function getAllMembers(): Promise<Member[]> {
   const members = fileNames.map(parseMemberFile);
 
   return members.sort((a, b) => {
+    const orderA = teamOrder[a.team] ?? 3;
+    const orderB = teamOrder[b.team] ?? 3;
+    if (orderA !== orderB) return orderA - orderB;
+
     // joinedAt format is "YYYY-MM", convert to date for comparison
     const dateA = new Date(a.joinedAt + "-01");
     const dateB = new Date(b.joinedAt + "-01");

@@ -1,6 +1,6 @@
 ---
 slug: "watanabe-risa"
-name: "渡邉 梨沙"
+name: "渡辺 梨沙"
 nameEn: "Risa Watanabe"
 role: "ディレクター"
 team: "ディレクション"
