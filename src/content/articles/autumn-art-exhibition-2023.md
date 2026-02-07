@@ -14,6 +14,7 @@ updatedAt: "2023-11-01"
 heroImage: "https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=1200&q=80"
 client: "渋谷区文化振興財団"
 venue: "渋谷区文化総合センター大和田"
+status: "publish"
 workStatus: "closed"
 workId: "work-005"
 ---

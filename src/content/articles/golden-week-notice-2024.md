@@ -7,6 +7,7 @@ tags:
   - "休業日"
   - "GW"
 author: "広報部"
+status: "publish"
 publishedAt: "2024-04-15"
 updatedAt: "2024-04-15"
 ---

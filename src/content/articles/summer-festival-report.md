@@ -8,6 +8,7 @@ tags:
   - "Web制作"
   - "レポート"
 author: "田中 一郎"
+status: "publish"
 publishedAt: "2023-08-20"
 updatedAt: "2023-08-20"
 heroImage: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80"

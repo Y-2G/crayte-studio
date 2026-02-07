@@ -13,6 +13,7 @@ skills:
   - "CSS設計"
   - "パフォーマンス最適化"
 motto: "コードは詩である"
+status: "publish"
 id: "staff-021"
 visibility: "public"
 state: "active"

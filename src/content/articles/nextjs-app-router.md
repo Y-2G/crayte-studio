@@ -8,6 +8,7 @@ tags:
   - "React"
   - "Web開発"
 author: "CRAYTE STUDIO 編集部"
+status: "pending"
 publishedAt: "2025-01-20"
 updatedAt: "2025-01-25"
 heroImage: "https://images.unsplash.com/photo-1621111848501-8d3634f82336?w=1200&q=80"

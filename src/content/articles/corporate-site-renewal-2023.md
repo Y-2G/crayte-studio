@@ -13,6 +13,7 @@ updatedAt: "2023-12-01"
 heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
 client: "株式会社エクセレントマニュファクチャリング"
 venue: "オンライン"
+status: "publish"
 workStatus: "closed"
 workId: "work-002"
 ---

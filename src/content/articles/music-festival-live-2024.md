@@ -14,6 +14,7 @@ updatedAt: "2024-04-01"
 heroImage: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&q=80"
 client: "一般社団法人 音楽文化振興会"
 venue: "恵比寿ガーデンホール"
+status: "publish"
 workStatus: "closed"
 workId: "work-003"
 ---

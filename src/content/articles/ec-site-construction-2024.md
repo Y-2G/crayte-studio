@@ -13,6 +13,7 @@ updatedAt: "2024-05-15"
 heroImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
 client: "株式会社ファッションフロンティア"
 venue: "オンライン"
+status: "publish"
 workStatus: "live"
 workId: "work-004"
 ---

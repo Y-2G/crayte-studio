@@ -7,7 +7,7 @@ tags:
   - "緊急"
   - "スタッフ"
 author: "管理部"
-status: "draft"
+status: "unpublished"
 visibility: "private"
 createdAt: "2024-02-10T15:00:00Z"
 updatedAt: "2024-02-10T16:35:00Z"

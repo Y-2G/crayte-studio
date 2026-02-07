@@ -7,6 +7,7 @@ tags:
   - "年末年始"
   - "ご挨拶"
 author: "広報部"
+status: "publish"
 publishedAt: "2023-12-20"
 updatedAt: "2023-12-20"
 ---

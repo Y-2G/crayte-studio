@@ -13,6 +13,7 @@ skills:
   - "モーショングラフィックス"
   - "トレンド分析"
 motto: "目立ってナンボ"
+status: "publish"
 id: "staff-026"
 visibility: "public"
 state: "active"

@@ -13,6 +13,7 @@ skills:
   - "データ分析"
   - "プロトタイピング"
 motto: "デザインは問題解決である"
+status: "publish"
 id: "staff-016"
 visibility: "public"
 state: "active"

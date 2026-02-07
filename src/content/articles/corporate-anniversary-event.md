@@ -14,6 +14,7 @@ updatedAt: "2024-06-15"
 heroImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
 client: "株式会社テックイノベーション"
 venue: "グランドハイアット東京"
+status: "draft"
 workStatus: "planned"
 workId: "work-007"
 ---

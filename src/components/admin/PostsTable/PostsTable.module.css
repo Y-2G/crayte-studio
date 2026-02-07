@@ -123,6 +123,11 @@
   font-weight: var(--font-weight-medium);
 }
 
+.statusUnpublished {
+  color: var(--admin-error);
+  font-weight: var(--font-weight-medium);
+}
+
 .statusDraft {
   color: var(--admin-text-muted);
 }

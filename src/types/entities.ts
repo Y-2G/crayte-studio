@@ -170,6 +170,13 @@ export interface Work {
 export type StaffState = "active" | "suspended" | "missing";
 
 /**
+ * Staff member publication status
+ * - publish: Published and visible
+ * - draft: Work in progress
+ */
+export type StaffStatus = "publish" | "draft";
+
+/**
  * Staff member entity
  */
 export interface Staff {
@@ -191,6 +198,8 @@ export interface Staff {
   visibility: Visibility;
   /** Current state */
   state: StaffState;
+  /** Publication status */
+  status: StaffStatus;
   /** Reason for removal/suspension (optional) */
   removedReason?: string;
   /** ISO 8601 timestamp */

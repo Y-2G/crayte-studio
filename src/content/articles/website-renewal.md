@@ -7,6 +7,7 @@ tags:
   - "Webサイト"
   - "リニューアル"
 author: "Web制作部"
+status: "publish"
 publishedAt: "2024-02-01"
 updatedAt: "2024-02-01"
 heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"

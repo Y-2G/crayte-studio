@@ -13,6 +13,7 @@ skills:
   - "サーバーサイド開発"
   - "セキュリティ"
 motto: "障害は未然に防ぐもの"
+status: "publish"
 id: "staff-03"
 visibility: "public"
 state: "active"

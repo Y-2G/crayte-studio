@@ -7,6 +7,7 @@ tags:
   - "イベント"
   - "イルミネーション"
 author: "CRAYTE STUDIO"
+status: "draft"
 publishedAt: "2023-12-01"
 updatedAt: "2024-01-20"
 client: "███████ショッピングモール"

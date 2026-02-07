@@ -32,6 +32,7 @@ export interface Member {
   htmlContent: string;
   // 管理画面用フィールド（オプショナル）
   id?: string;
+  status?: string;
   visibility?: "public" | "private";
   state?: "active" | "suspended" | "missing";
   removedReason?: string;
@@ -60,6 +61,7 @@ function parseMemberFile(fileName: string): Member {
     htmlContent,
     // 管理画面用フィールド
     id: data.id,
+    status: data.status || "publish",
     visibility: data.visibility,
     state: data.state,
     removedReason: data.removedReason,

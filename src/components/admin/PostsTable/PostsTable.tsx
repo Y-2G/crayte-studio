@@ -109,20 +109,10 @@ export function PostsTable({ posts }: PostsTableProps) {
       label: "ステータス",
       sortable: true,
       render: (post: Post) => {
-        // Horror element: Add "非公開" status for horror posts
-        const horrorMeta = hasHorrorMeta(post.meta)
-          ? getHorrorMeta(post.meta)
-          : null;
-        const isHorrorPost = horrorMeta !== null;
-
         const statusMap = {
           publish: { label: "公開", className: styles.statusPublish },
-          draft: {
-            label: isHorrorPost ? "非公開" : "下書き",
-            className: isHorrorPost
-              ? horrorStyles.horrorText
-              : styles.statusDraft,
-          },
+          unpublished: { label: "非公開", className: styles.statusUnpublished },
+          draft: { label: "下書き", className: styles.statusDraft },
           pending: { label: "保留", className: styles.statusPending },
           rejected: { label: "却下", className: styles.statusRejected },
           leak: { label: "リーク", className: styles.statusLeak },

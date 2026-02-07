@@ -11,6 +11,7 @@ skills:
   - "事業開発"
   - "プロジェクト設計"
 motto: "観察することから始まる価値創造"
+status: "publish"
 id: "staff-001"
 visibility: "public"
 state: "active"

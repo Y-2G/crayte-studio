@@ -14,6 +14,7 @@ updatedAt: "2023-09-01"
 heroImage: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80"
 client: "渋谷区観光協会"
 venue: "代々木公園"
+status: "publish"
 workStatus: "closed"
 workId: "work-001"
 ---

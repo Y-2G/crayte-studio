@@ -94,19 +94,25 @@ export default async function AdminPostsPage({
         </Link>
         <Link
           href="/admin/posts?status=publish"
-          className={`${styles.tab} ${params.status === "publish" ? styles.active : ""}`}
+          className={`${styles.tab} ${
+            params.status === "publish" ? styles.active : ""
+          }`}
         >
           公開 ({statusCounts.publish})
         </Link>
         <Link
           href="/admin/posts?status=draft"
-          className={`${styles.tab} ${params.status === "draft" ? styles.active : ""}`}
+          className={`${styles.tab} ${
+            params.status === "draft" ? styles.active : ""
+          }`}
         >
           下書き ({statusCounts.draft})
         </Link>
         <Link
           href="/admin/posts?status=pending"
-          className={`${styles.tab} ${params.status === "pending" ? styles.active : ""}`}
+          className={`${styles.tab} ${
+            params.status === "pending" ? styles.active : ""
+          }`}
         >
           保留 ({statusCounts.pending})
         </Link>

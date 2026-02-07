@@ -11,6 +11,7 @@ skills:
   - "保守"
   - "運用"
 motto: "FIND '404 NOT FOUND'"
+status: "publish"
 id: "staff-015"
 visibility: "public"
 state: "active"

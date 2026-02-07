@@ -12,6 +12,7 @@ skills:
   - "ユーザビリティ"
 motto: "ユーザビリティとビジュアルの両立"
 id: "staff-002"
+status: "unpublished"
 visibility: "private"
 state: "missing"
 removedReason: "2024年2月より連絡が取れない状況が続いています。"
