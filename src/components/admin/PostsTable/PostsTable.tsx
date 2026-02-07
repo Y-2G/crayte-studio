@@ -4,11 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Table } from "@/components/shared/Table";
 import type { Post } from "@/types";
-import {
-  formatDateWithAnomaly,
-  hasHorrorMeta,
-  getHorrorMeta,
-} from "@/lib/horror/utils";
+import { formatDateWithAnomaly } from "@/lib/horror/utils";
 import styles from "./PostsTable.module.css";
 import horrorStyles from "@/styles/horror.module.css";
 
