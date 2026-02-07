@@ -5,7 +5,7 @@ nameEn: "Hanako Yamada"
 role: "デザイナー"
 team: "デザイン"
 photo: "/images/members/yamada-hanako.png"
-joinedAt: "2019-05"
+joinedAt: "2023-05"
 skills:
   - "グラフィックデザイン"
   - "イラストレーション"
@@ -16,7 +16,7 @@ motto: "美は細部に宿る"
 id: "staff-009"
 visibility: "public"
 state: "active"
-createdAt: "2019-05-01T00:00:00Z"
+createdAt: "2023-05-01T00:00:00Z"
 updatedAt: "2024-01-01T00:00:00Z"
 ---
 

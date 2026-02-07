@@ -5,7 +5,7 @@ nameEn: "Akari Nakamura"
 role: "ディレクター"
 team: "ディレクション"
 photo: "/images/members/nakamura-akari.png"
-joinedAt: "2019-07"
+joinedAt: "2022-07"
 skills:
   - "ブランド戦略"
   - "クリエイティブディレクション"
@@ -15,7 +15,7 @@ motto: "形は思想を映す鏡である"
 id: "staff-010"
 visibility: "public"
 state: "active"
-createdAt: "2019-07-01T00:00:00Z"
+createdAt: "2022-07-01T00:00:00Z"
 updatedAt: "2024-01-01T00:00:00Z"
 ---
 

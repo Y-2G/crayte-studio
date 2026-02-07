@@ -5,7 +5,7 @@ nameEn: "Misaki Tanaka"
 role: "エンジニア"
 team: "エンジニアリング"
 photo: "/images/members/tanaka-misaki.png"
-joinedAt: "2021-07"
+joinedAt: "2024-07"
 skills:
   - "React"
   - "TypeScript"
@@ -16,7 +16,7 @@ motto: "コードは詩である"
 id: "staff-021"
 visibility: "public"
 state: "active"
-createdAt: "2021-07-01T00:00:00Z"
+createdAt: "2024-07-01T00:00:00Z"
 updatedAt: "2024-01-01T00:00:00Z"
 ---
 
