@@ -330,6 +330,36 @@ export interface Media {
 }
 
 // ============================================================================
+// Trash (ゴミ箱)
+// ============================================================================
+
+/**
+ * Trashed content item
+ */
+export interface TrashItem {
+  /** Unique identifier */
+  id: string;
+  /** Item title */
+  title: string;
+  /** Short summary */
+  excerpt: string;
+  /** Author identifier */
+  author: string;
+  /** Raw markdown content */
+  content: string;
+  /** Rendered HTML content */
+  htmlContent: string;
+  /** ISO 8601 timestamp of deletion */
+  deletedAt: string;
+  /** Status before deletion */
+  originalStatus: string;
+  /** ISO 8601 timestamp */
+  createdAt: string;
+  /** Additional metadata */
+  meta: Record<string, unknown>;
+}
+
+// ============================================================================
 // Comments (コメント)
 // ============================================================================
 

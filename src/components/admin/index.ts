@@ -4,3 +4,4 @@ export { Widget } from './Widget';
 export { PostsTable } from './PostsTable';
 export { ActivityList } from './ActivityList';
 export { MediaGrid } from './MediaGrid';
+export { TrashGrid } from './TrashGrid';

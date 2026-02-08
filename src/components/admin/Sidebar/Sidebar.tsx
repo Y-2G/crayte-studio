@@ -23,6 +23,7 @@ const menuItems: MenuItem[] = [
   { label: "外観", href: "/admin/appearance", icon: "🎨" },
   { label: "プラグイン", href: "/admin/plugins", icon: "🔌" },
   { label: "ツール", href: "/admin/tools", icon: "🔧" },
+  { label: "ゴミ箱", href: "/admin/trash", icon: "🗑️" },
   { label: "設定", href: "/admin/settings", icon: "⚙️" },
 ];
 

@@ -94,6 +94,13 @@ export {
 // Activity data access
 export { getRecentActivity } from './activity';
 
+// Trash data access
+export {
+  getAllTrashItems,
+  getPaginatedTrash,
+  type PaginatedTrash,
+} from './trash';
+
 // Media data access
 export {
   getAllMedia,
