@@ -4,7 +4,7 @@ name: "小林 正人"
 nameEn: "Masato Kobayashi"
 role: "ディレクター"
 team: "ディレクション"
-photo: "/images/staff/kobayashi.jpg"
+photo: "/images/members/kobayashi-masato.png"
 joinedAt: "2022-01"
 skills:
   - "UI/UXデザイン"
