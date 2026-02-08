@@ -38,7 +38,7 @@ ARG（代替現実ゲーム）として、表（公開サイト）は普通の�
 
 #### スタッフ一覧（`src/app/admin/staff/page.tsx` + `StaffTable.tsx`）
 
-- **行方不明者**: `staff-007` (小林正人) が state: "missing"
+- **行方不明者**: `staff-007` (佐藤健太) が state: "missing"
   - 状態が「不明」（ホラーカラー）
   - 削除理由: 「2024 年 2 月より連絡が取れない状況が続いています。」
 
@@ -175,12 +175,10 @@ const horrorMeta = isHorror ? getHorrorMeta(item.meta) : null;
 ## 注意事項
 
 1. **公開サイト（表）には一切ホラー要素を入れない**
-
    - `/admin/*` 以外のパスではホラー要素を表示しない
    - `getPublicWorks()`, `getActiveStaff()` などのフィルタ関数を使用
 
 2. **過剰にしない**
-
    - 1 画面に 1〜2 箇所まで
    - 派手なアニメーションは避ける
    - 「気づく人だけ気づく」程度
