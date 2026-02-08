@@ -136,17 +136,19 @@
 /* === Observation notes === */
 
 .observationNote {
-  margin-top: 0.5rem;
   padding: 0.75rem;
   background-color: var(--horror-subtle);
   border-left: 3px solid var(--horror-text);
   font-size: var(--font-size-sm);
   color: var(--horror-text);
   font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .observationNote::before {
-  content: "⚠ 観察メモ: ";
+  content: "⚠";
   font-weight: 600;
   display: block;
   margin-bottom: 0.25rem;

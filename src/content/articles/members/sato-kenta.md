@@ -17,6 +17,7 @@ status: "publish"
 id: "staff-015"
 visibility: "public"
 state: "active"
+removedReason: "2025年10月より連絡が取れない状況が続いています。"
 createdAt: "2020-05-01T00:00:00Z"
 updatedAt: "2024-01-01T00:00:00Z"
 ---
