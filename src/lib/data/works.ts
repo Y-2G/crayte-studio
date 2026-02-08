@@ -6,7 +6,7 @@
  */
 
 import type { Work, WorkStatus } from '@/types';
-import { getAllArticles, type Article } from '@/lib/articles';
+import { getAllArticlesRaw, type Article } from '@/lib/articles';
 
 function articleToWork(article: Article): Work {
   const images: string[] = [];
@@ -30,7 +30,7 @@ function articleToWork(article: Article): Work {
 }
 
 async function getWorkArticles(): Promise<Article[]> {
-  const articles = await getAllArticles();
+  const articles = await getAllArticlesRaw();
   return articles.filter((a) => a.category === '制作実績' && a.workId);
 }
 
@@ -65,11 +65,19 @@ export async function getWorkById(id: string): Promise<Work | null> {
 }
 
 /**
- * Get public works (excludes sealed and rewritten works)
+ * Get public works (published & public articles, excludes sealed and rewritten works)
  * This is what should be displayed on the public website
  */
 export async function getPublicWorks(): Promise<Work[]> {
-  const works = await getAllWorks();
+  const articles = await getAllArticlesRaw();
+  const publicArticles = articles.filter(
+    (a) =>
+      a.category === '制作実績' &&
+      a.workId &&
+      a.status === 'publish' &&
+      a.visibility === 'public'
+  );
+  const works = publicArticles.map(articleToWork);
   return works.filter(
     (work) => work.status !== 'sealed' && work.status !== 'rewritten'
   );

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import type { InboxMessage, InboxReply } from '@/types';
-import { EditPage } from '@/components/admin/EditPage';
-import { MetaBox } from '@/components/admin/MetaBox';
-import { isAnomalousTime } from '@/lib/horror/utils';
-import styles from './InboxDetail.module.css';
-import horrorStyles from '@/styles/horror.module.css';
+import Link from "next/link";
+import type { InboxMessage, InboxReply } from "@/types";
+import { EditPage } from "@/components/admin/EditPage";
+import { MetaBox } from "@/components/admin/MetaBox";
+import { isAnomalousTime } from "@/lib/horror/utils";
+import styles from "./InboxDetail.module.css";
+import horrorStyles from "@/styles/horror.module.css";
 
 interface InboxDetailProps {
   message: InboxMessage;
@@ -15,30 +15,30 @@ interface InboxDetailProps {
 }
 
 const categoryMap: Record<string, { label: string; color: string }> = {
-  general: { label: '一般', color: 'var(--admin-text)' },
-  press: { label: '取材', color: 'var(--admin-primary)' },
-  quote: { label: '見積', color: 'var(--admin-success)' },
-  complaint: { label: '苦情', color: 'var(--admin-error)' },
-  sign: { label: '兆候', color: 'var(--horror-text)' },
-  request: { label: '要求', color: 'var(--admin-warning)' },
-  analysis: { label: '分析', color: 'var(--admin-primary)' },
-  directive: { label: '指令', color: 'var(--admin-error)' },
-  admin: { label: '管理', color: 'var(--admin-text-muted)' },
+  general: { label: "一般", color: "var(--admin-text)" },
+  press: { label: "取材", color: "var(--admin-primary)" },
+  quote: { label: "見積", color: "var(--admin-success)" },
+  complaint: { label: "苦情", color: "var(--admin-error)" },
+  sign: { label: "兆候", color: "var(--horror-text)" },
+  request: { label: "要求", color: "var(--admin-warning)" },
+  analysis: { label: "分析", color: "var(--admin-primary)" },
+  directive: { label: "指令", color: "var(--admin-error)" },
+  admin: { label: "管理", color: "var(--admin-text-muted)" },
 };
 
 const severityMap: Record<string, { label: string; color: string }> = {
-  low: { label: '低', color: 'var(--admin-text-muted)' },
-  medium: { label: '中', color: 'var(--admin-warning)' },
-  high: { label: '高', color: 'var(--admin-error)' },
-  critical: { label: '緊急', color: 'var(--horror-text)' },
+  low: { label: "低", color: "var(--admin-text-muted)" },
+  medium: { label: "中", color: "var(--admin-warning)" },
+  high: { label: "高", color: "var(--admin-error)" },
+  critical: { label: "緊急", color: "var(--horror-text)" },
 };
 
 const statusMap: Record<string, { label: string; color: string }> = {
-  open: { label: '新規', color: 'var(--admin-error)' },
-  pending: { label: '保留', color: 'var(--admin-warning)' },
-  resolved: { label: '解決', color: 'var(--admin-success)' },
-  rewritten: { label: '改変', color: 'var(--horror-text)' },
-  closed: { label: '完了', color: 'var(--admin-text-muted)' },
+  open: { label: "新規", color: "var(--admin-error)" },
+  pending: { label: "保留", color: "var(--admin-warning)" },
+  resolved: { label: "解決", color: "var(--admin-success)" },
+  rewritten: { label: "改変", color: "var(--horror-text)" },
+  closed: { label: "完了", color: "var(--admin-text-muted)" },
 };
 
 export function InboxDetail({
@@ -46,23 +46,31 @@ export function InboxDetail({
   prevMessageId,
   nextMessageId,
 }: InboxDetailProps) {
-  const isSign = message.category === 'sign';
+  const isSign = message.category === "sign";
   const createdAtAnomalous = isAnomalousTime(message.createdAt);
-  const updatedAtAnomalous = isAnomalousTime(message.updatedAt);
 
-  const category = categoryMap[message.category] ?? { label: message.category, color: 'var(--admin-text)' };
-  const severity = severityMap[message.severity] ?? { label: message.severity, color: 'var(--admin-text)' };
-  const status = statusMap[message.status] ?? { label: message.status, color: 'var(--admin-text)' };
+  const category = categoryMap[message.category] ?? {
+    label: message.category,
+    color: "var(--admin-text)",
+  };
+  const severity = severityMap[message.severity] ?? {
+    label: message.severity,
+    color: "var(--admin-text)",
+  };
+  const status = statusMap[message.status] ?? {
+    label: message.status,
+    color: "var(--admin-text)",
+  };
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
+    return date.toLocaleString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
     });
   };
 
@@ -103,17 +111,9 @@ export function InboxDetail({
           <div className={styles.infoRow}>
             <span className={styles.infoLabel}>受信日時</span>
             <span
-              className={`${styles.infoValue} ${createdAtAnomalous ? horrorStyles.anomalousDate : ''}`}
+              className={`${styles.infoValue} ${createdAtAnomalous ? horrorStyles.anomalousDate : ""}`}
             >
               {formatDateTime(message.createdAt)}
-            </span>
-          </div>
-          <div className={styles.infoRow}>
-            <span className={styles.infoLabel}>更新日時</span>
-            <span
-              className={`${styles.infoValue} ${updatedAtAnomalous ? horrorStyles.anomalousDate : ''}`}
-            >
-              {formatDateTime(message.updatedAt)}
             </span>
           </div>
         </div>
@@ -124,17 +124,14 @@ export function InboxDetail({
           <div className={styles.infoRow}>
             <span className={styles.infoLabel}>名前</span>
             <span
-              className={`${styles.infoValue} ${isSign ? horrorStyles.horrorText : ''}`}
+              className={`${styles.infoValue} ${isSign ? horrorStyles.horrorText : ""}`}
             >
               {message.name}
             </span>
           </div>
           <div className={styles.infoRow}>
             <span className={styles.infoLabel}>メール</span>
-            <a
-              href={`mailto:${message.email}`}
-              className={styles.emailLink}
-            >
+            <a href={`mailto:${message.email}`} className={styles.emailLink}>
               {message.email}
             </a>
           </div>
@@ -164,7 +161,7 @@ export function InboxDetail({
 
       {/* Subject */}
       <h2
-        className={`${styles.subject} ${isSign ? `${horrorStyles.horrorTextGlow} ${horrorStyles.glitch}` : ''}`}
+        className={`${styles.subject} ${isSign ? `${horrorStyles.horrorTextGlow} ${horrorStyles.glitch}` : ""}`}
       >
         {message.subject}
       </h2>
@@ -181,10 +178,10 @@ export function InboxDetail({
 
       {/* Message body */}
       <div
-        className={`${styles.messagePanel} ${isSign ? styles.horrorPanel : ''}`}
+        className={`${styles.messagePanel} ${isSign ? styles.horrorPanel : ""}`}
       >
         <p
-          className={`${styles.messageContent} ${isSign ? styles.horrorContent : ''}`}
+          className={`${styles.messageContent} ${isSign ? styles.horrorContent : ""}`}
         >
           {message.message}
         </p>
@@ -198,30 +195,31 @@ export function InboxDetail({
             {message.replies.map((reply: InboxReply) => {
               const isFromSender = reply.name === message.name;
               const isHorrorReply =
-                isSign ||
-                reply.name === '???' ||
-                reply.name.includes('削除');
+                isSign || reply.name === "???" || reply.name.includes("削除");
 
               return (
                 <div
                   key={reply.id}
-                  className={`${styles.replyItem} ${isFromSender ? styles.replyFromSender : ''} ${isHorrorReply ? styles.replyHorror : ''}`}
+                  className={`${styles.replyItem} ${isFromSender ? styles.replyFromSender : ""} ${isHorrorReply ? styles.replyHorror : ""}`}
                 >
                   <div className={styles.replyHeader}>
                     <div className={styles.replyMeta}>
                       <span
-                        className={`${styles.replyRespondent} ${isHorrorReply ? horrorStyles.horrorText : ''}`}
+                        className={`${styles.replyRespondent} ${isHorrorReply ? horrorStyles.horrorText : ""}`}
                       >
                         {reply.name}
                       </span>
                       {reply.email && (
-                        <a href={`mailto:${reply.email}`} className={styles.replyEmail}>
+                        <a
+                          href={`mailto:${reply.email}`}
+                          className={styles.replyEmail}
+                        >
                           {reply.email}
                         </a>
                       )}
                     </div>
                     <span
-                      className={`${styles.replyDate} ${isAnomalousTime(reply.createdAt) ? horrorStyles.anomalousDate : ''}`}
+                      className={`${styles.replyDate} ${isAnomalousTime(reply.createdAt) ? horrorStyles.anomalousDate : ""}`}
                     >
                       {formatDateTime(reply.createdAt)}
                     </span>
@@ -230,7 +228,7 @@ export function InboxDetail({
                     <div className={styles.replySubject}>{reply.subject}</div>
                   )}
                   <p
-                    className={`${styles.replyContent} ${isHorrorReply ? styles.horrorContent : ''}`}
+                    className={`${styles.replyContent} ${isHorrorReply ? styles.horrorContent : ""}`}
                   >
                     {reply.message}
                   </p>

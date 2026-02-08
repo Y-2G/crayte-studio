@@ -239,18 +239,6 @@ export function PostEditor({
           <span className={styles.permalinkValue}>/articles/{post.slug}</span>
         </div>
       </div>
-
-      {/* Content Editor */}
-      <div className={styles.editorSection}>
-        <TextareaField
-          value={post.content}
-          onChange={(e) => setPost({ ...post, content: e.target.value })}
-          placeholder="本文を入力..."
-          rows={20}
-          fullWidth
-        />
-      </div>
-
       {/* Excerpt */}
       <MetaBox title="抜粋">
         <TextareaField
@@ -263,6 +251,17 @@ export function PostEditor({
         />
       </MetaBox>
 
+      {/* Content Editor */}
+      <MetaBox title="本文">
+        <TextareaField
+          value={post.content}
+          onChange={(e) => setPost({ ...post, content: e.target.value })}
+          placeholder="本文を入力..."
+          rows={20}
+          fullWidth
+        />
+      </MetaBox>
+
       {/* Comments Section */}
       <MetaBox title="コメント">
         <div className={styles.reviewComments}>
@@ -270,41 +269,40 @@ export function PostEditor({
             <p className={styles.noComments}>コメントはまだありません</p>
           ) : (
             // 内部レビューコメントとユーザーコメントを統合して、タイムスタンプでソート
-            [...post.reviewComments.map(c => ({ ...c, type: 'review' as const })),
-             ...comments.map(c => ({ ...c, type: 'user' as const }))]
-              .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+            [
+              ...post.reviewComments.map((c) => ({
+                ...c,
+                type: "review" as const,
+              })),
+              ...comments.map((c) => ({ ...c, type: "user" as const })),
+            ]
+              .sort(
+                (a, b) =>
+                  new Date(a.createdAt).getTime() -
+                  new Date(b.createdAt).getTime(),
+              )
               .map((comment) => {
-                // Horror element: Show threatening/ominous comments
-                const isHorrorComment =
-                  comment.content.includes("公開してはならない") ||
-                  comment.content.includes("記録を改変") ||
-                  comment.content.includes("焼却") ||
-                  comment.content.includes("見てはいけない") ||
-                  comment.content.includes("消去");
-
                 return (
                   <div
                     key={`${comment.type}-${comment.id}`}
-                    className={`${styles.comment} ${
-                      isHorrorComment ? horrorStyles.horrorReviewComment : ""
-                    }`}
+                    className={styles.comment}
                   >
                     <div className={styles.commentHeader}>
                       <div className={styles.commentAuthorLine}>
-                        <strong
-                          className={isHorrorComment ? horrorStyles.horrorText : ""}
-                        >
-                          {comment.author}
-                        </strong>
+                        <strong>{comment.author}</strong>
                         <span className={styles.commentType}>
-                          {comment.type === 'review' ? '内部レビュー' : '公開コメント'}
+                          {comment.type === "review"
+                            ? "内部レビュー"
+                            : "公開コメント"}
                         </span>
-                        {comment.type === 'user' && (
-                          <span className={`${styles.commentBadge} ${styles[`status-${comment.status}`]}`}>
-                            {comment.status === 'approved' && '承認済み'}
-                            {comment.status === 'pending' && '保留中'}
-                            {comment.status === 'spam' && 'スパム'}
-                            {comment.status === 'trash' && 'ゴミ箱'}
+                        {comment.type === "user" && (
+                          <span
+                            className={`${styles.commentBadge} ${styles[`status-${comment.status}`]}`}
+                          >
+                            {comment.status === "approved" && "承認済み"}
+                            {comment.status === "pending" && "保留中"}
+                            {comment.status === "spam" && "スパム"}
+                            {comment.status === "trash" && "ゴミ箱"}
                           </span>
                         )}
                       </div>
@@ -313,7 +311,7 @@ export function PostEditor({
                       </time>
                     </div>
                     <p className={styles.commentContent}>{comment.content}</p>
-                    {comment.type === 'user' && 'email' in comment && (
+                    {comment.type === "user" && "email" in comment && (
                       <div className={styles.commentMeta}>
                         Email: {comment.email}
                       </div>
