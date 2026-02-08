@@ -128,6 +128,7 @@ export async function getInboxMessageCountByStatus(): Promise<
     pending: messages.filter((m) => m.status === 'pending').length,
     resolved: messages.filter((m) => m.status === 'resolved').length,
     rewritten: messages.filter((m) => m.status === 'rewritten').length,
+    closed: messages.filter((m) => m.status === 'closed').length,
   };
 }
 
@@ -146,5 +147,9 @@ export async function getInboxMessageCountByCategory(): Promise<
     quote: messages.filter((m) => m.category === 'quote').length,
     complaint: messages.filter((m) => m.category === 'complaint').length,
     sign: messages.filter((m) => m.category === 'sign').length,
+    request: messages.filter((m) => m.category === 'request').length,
+    analysis: messages.filter((m) => m.category === 'analysis').length,
+    directive: messages.filter((m) => m.category === 'directive').length,
+    admin: messages.filter((m) => m.category === 'admin').length,
   };
 }

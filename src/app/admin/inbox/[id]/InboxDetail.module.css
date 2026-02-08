@@ -186,10 +186,37 @@
   gap: var(--spacing-2);
 }
 
+.replyMeta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
 .replyRespondent {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--admin-text);
+}
+
+.replyEmail {
+  font-size: var(--font-size-xs);
+  color: var(--admin-primary);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.replyEmail:hover {
+  text-decoration: underline;
+}
+
+.replySubject {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--admin-text);
+  margin-bottom: var(--spacing-2);
 }
 
 .replyDate {

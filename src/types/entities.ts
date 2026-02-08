@@ -225,12 +225,16 @@ export type InboxCategory =
   | "press"
   | "quote"
   | "complaint"
-  | "sign";
+  | "sign"
+  | "request"
+  | "analysis"
+  | "directive"
+  | "admin";
 
 /**
  * Inbox message severity
  */
-export type InboxSeverity = "low" | "medium" | "high";
+export type InboxSeverity = "low" | "medium" | "high" | "critical";
 
 /**
  * Inbox message status
@@ -239,7 +243,7 @@ export type InboxSeverity = "low" | "medium" | "high";
  * - resolved: Handled
  * - rewritten: Content has been altered (horror state)
  */
-export type InboxStatus = "open" | "pending" | "resolved" | "rewritten";
+export type InboxStatus = "open" | "pending" | "resolved" | "rewritten" | "closed";
 
 /**
  * Reply to an inbox message
@@ -250,9 +254,13 @@ export interface InboxReply {
   /** Parent message ID */
   messageId: string;
   /** Respondent name */
-  respondent: string;
+  name: string;
+  /** Respondent email */
+  email: string;
+  /** Reply subject */
+  subject: string;
   /** Reply content */
-  content: string;
+  message: string;
   /** ISO 8601 timestamp */
   createdAt: string;
   /** Internal memo flag (for future use) */

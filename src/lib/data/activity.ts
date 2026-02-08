@@ -39,7 +39,7 @@ function inboxToActivity(msg: InboxMessage): ActivityItem {
     description: `${msg.name} からのメッセージ`,
     timestamp: msg.createdAt,
     href: `/admin/inbox/${msg.id}`,
-    severity: msg.severity,
+    severity: msg.severity === 'critical' ? 'high' : msg.severity,
     isHorror: isSign,
     meta: {
       category: msg.category,

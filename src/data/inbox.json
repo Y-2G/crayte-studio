@@ -1,104 +1,109 @@
 [
   {
     "id": "inbox-002",
-    "name": "佐々木 美咲",
-    "email": "sasaki@press-media.jp",
-    "subject": "取材のお願い",
-    "message": "Web業界専門誌の記者をしております。貴社の事業展開について取材させていただきたく、ご連絡いたしました。代表の田中様にお話を伺えれば幸いです。",
-    "category": "press",
-    "severity": "medium",
-    "status": "resolved",
-    "createdAt": "2024-03-01T10:15:00Z",
-    "updatedAt": "2024-03-02T14:00:00Z",
+    "name": "OBSERQ本部 加藤",
+    "email": "k.soma@obserq.com",
+    "subject": "CDNA4001：呼称の確定と識別子更新",
+    "message": "進行中のKAI-CON/ESC-S4-DAT-NET-OBSについては以降、呼称を「CDNA4001」で統一。関連事案は同一系統として束ねます。識別子の末尾は CRA に更新してください。",
+    "category": "directive",
+    "severity": "high",
+    "status": "closed",
+    "createdAt": "2024-02-10T07:00:00Z",
     "replies": [
       {
-        "id": "reply-002-1",
+        "id": "reply-002-01",
         "messageId": "inbox-002",
-        "respondent": "山田 太郎（広報担当）",
-        "content": "お問い合わせありがとうございます。代表の田中にスケジュールを確認し、改めてご連絡いたします。ご希望の取材日程がございましたら、お知らせください。",
-        "createdAt": "2024-03-01T14:30:00Z"
-      },
-      {
-        "id": "reply-002-2",
-        "messageId": "inbox-002",
-        "respondent": "佐々木 美咲",
-        "content": "ご返信ありがとうございます。3月中旬以降でしたらいつでも調整可能です。取材時間は1時間程度を予定しております。",
-        "createdAt": "2024-03-01T16:45:00Z"
-      },
-      {
-        "id": "reply-002-3",
-        "messageId": "inbox-002",
-        "respondent": "山田 太郎（広報担当）",
-        "content": "3月15日（金）14:00〜15:00 で代表の田中が対応可能です。場所は弊社オフィスでよろしいでしょうか？ご確認をお願いいたします。",
-        "createdAt": "2024-03-02T10:00:00Z"
-      },
-      {
-        "id": "reply-002-4",
-        "messageId": "inbox-002",
-        "respondent": "佐々木 美咲",
-        "content": "日程のご調整ありがとうございます。3月15日14:00〜、御社オフィスにてお願いいたします。当日を楽しみにしております。",
-        "createdAt": "2024-03-02T14:00:00Z"
+        "name": "小林 正人",
+        "email": "k.masato@crayte.com",
+        "subject": "Re: CDNA4001：呼称の確定と識別子更新",
+        "message": "承知しました。\n以後のラベルは CRA を使用します。",
+        "createdAt": "2024-02-10T07:06:11Z"
       }
     ]
-  },
-  {
-    "id": "inbox-003",
-    "name": "株式会社サンプル商事 総務部",
-    "email": "soumu@sample-trading.co.jp",
-    "subject": "周年イベントのお見積りについて",
-    "message": "来年の創業50周年記念イベントの企画・運営をお願いしたく存じます。参加予定人数は300名程度です。概算のお見積りをいただけますでしょうか。",
-    "category": "quote",
-    "severity": "medium",
-    "status": "pending",
-    "createdAt": "2024-04-10T09:00:00Z",
-    "updatedAt": "2024-04-10T15:30:00Z",
-    "replies": [
-      {
-        "id": "reply-003-1",
-        "messageId": "inbox-003",
-        "respondent": "鈴木 健一（営業担当）",
-        "content": "お見積りのご依頼ありがとうございます。詳細な要件をヒアリングさせていただきたく、一度お打ち合わせのお時間をいただけますでしょうか。オンライン・対面どちらでも対応可能です。",
-        "createdAt": "2024-04-10T15:30:00Z"
-      }
-    ]
-  },
-  {
-    "id": "inbox-004",
-    "name": "田中 花子",
-    "email": "hanako.t@webmail.ne.jp",
-    "subject": "サービス内容について",
-    "message": "SNSマーケティングのサポートをお願いできますか？小規模な事業者でも対応していただけるのでしょうか。料金体系について教えてください。",
-    "category": "general",
-    "severity": "low",
-    "status": "open",
-    "createdAt": "2024-05-20T16:45:00Z",
-    "updatedAt": "2024-05-20T16:45:00Z"
   },
   {
     "id": "inbox-005",
-    "name": "観察者",
-    "email": "observer@void.local",
-    "subject": "警告",
-    "message": "気づいていますか？\n\n小林さんは最後にいつ出勤しましたか？\n誰も覚えていないのではないですか？\n\nそれとも、もともと存在しなかったのでしょうか？\n\n観察を続けてください。\nまだ始まったばかりです。",
-    "category": "sign",
+    "name": "OBSERQ本部 加藤",
+    "email": "k.soma@obserq.com",
+    "subject": "CDNA4001：調査進捗の報告依頼",
+    "message": "CDNA4001調査の現在の状況を報告してください",
+    "category": "directive",
     "severity": "high",
-    "status": "open",
+    "status": "closed",
     "createdAt": "2024-02-11T03:33:33Z",
-    "updatedAt": "2024-02-11T03:33:33Z",
     "replies": [
       {
-        "id": "reply-005-1",
+        "id": "reply-005-01",
         "messageId": "inbox-005",
-        "respondent": "???",
-        "content": "返信ありがとうございます。\n\nしかし、誰が返信したのですか？\nこのメールは誰にも転送されていないはずです。\n\n確認してください。\n送信履歴を。\n\n...ありませんね？",
-        "createdAt": "2024-02-11T03:33:34Z"
+        "name": "小林 正人",
+        "email": "k.masato@crayte.com",
+        "subject": "Re: CDNA4001：調査進捗の報告依頼",
+        "message": "依然調査中です。\n好奇心旺盛で観測者の行動データを学習する性質が見られます。さらに学習されたデータはまるで捕食されたかのように欠損します。\n現在は沈静化しており、調査初期に見られた活発な活動が見られなくなりました。これまでの傾向からの、データの新規性や多様性が重要という仮説を立てています。\nさらに多くの行動データを必要としており、この収集が急務であると考えています。",
+        "createdAt": "2024-02-11T03:33:35Z"
       },
       {
-        "id": "reply-005-2",
+        "id": "reply-005-02",
         "messageId": "inbox-005",
-        "respondent": "[削除済み]",
-        "content": "小林さんのデスクを見てください。\n今すぐ。\n\n\n\n\n\n誰もいないはずです。\nでも、コーヒーは温かいままです。",
-        "createdAt": "2024-02-11T03:33:35Z"
+        "name": "OBSERQ本部 加藤",
+        "email": "k.soma@obserq.com",
+        "subject": "Re:Re: CDNA4001：調査進捗の報告依頼",
+        "message": "「沈静化」の根拠と、沈静化を維持する条件を報告してください。観測・記録・収集の各手段ごとに、欠損の発生条件を整理してください。",
+        "createdAt": "2024-02-11T04:10:00Z"
+      },
+      {
+        "id": "reply-005-03",
+        "messageId": "inbox-005",
+        "name": "小林 正人",
+        "email": "k.masato@crayte.com",
+        "subject": "Re:Re:Re: CDNA4001：調査進捗の報告依頼",
+        "message": "沈静化の根拠：直近72時間、社内ログ（WEB/端末/入退室）における欠損率が、初期の約1/8まで低下。\nただし「欠損が減った」だけで、存在が消えたわけではありません。\n\n維持条件（暫定）：\n1) 観測データの“単調化”が続くと欠損が減る傾向。\n2) 逆に新規性が増えると欠損が増える。\n3) ただし新規性が“同一人物の反復”だと、欠損は増えません（学習済みとして扱われる可能性）。\n\n発生条件（手段別）：\n- 視覚（画像/動画）：顔・文字・規則性が高い構図ほど欠損が発生。\n- 文字（報告/チャット）：固有名詞、数値、URL等の参照記号が優先的に欠損。\n- 行動（クリック/導線）：迷い・戻り・探索が増えるほど活性化。\n\n 記録データはまとめた上、別途クラウドにて送信致します。",
+        "createdAt": "2024-02-11T04:12:12Z"
+      },
+      {
+        "id": "reply-005-04",
+        "messageId": "inbox-005",
+        "name": "OBSERQ本部 加藤",
+        "email": "k.soma@obserq.com",
+        "subject": "Re:Re:Re:Re: CDNA4001：調査進捗の報告依頼",
+        "message": "あなたの報告文と、CRAYTE側のデータを照合しました。欠損パターンが一致しています。\n別途要請されていた収集プロトコルについて審議します。審議結果をお待ちください。",
+        "category": "analysis",
+        "severity": "high",
+        "status": "open",
+        "createdAt": "2024-02-11T05:00:00Z"
+      },
+      {
+        "id": "reply-005-06",
+        "messageId": "inbox-005",
+        "name": "小林 正人",
+        "email": "k.masato@crayte.com",
+        "subject": "Re:Re:Re:Re:Re: CDNA4001：調査進捗の報告依頼",
+        "message": "ご検討いただきありがとうございます。何卒よろしくお願いいたします。",
+        "category": "analysis",
+        "severity": "high",
+        "status": "open",
+        "createdAt": "2024-02-11T05:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "inbox-008",
+    "name": "OBSERQ本部 加藤",
+    "email": "k.soma@obserq.com",
+    "subject": "CDNA4001：収集プロトコルの承認（暫定）",
+    "message": "仮説は採用します。『新規性』を制御しつつ餌を与える形で、活性化の再現を試みてください。\nなおCRAYTE社内の人的被害は回避すること。失敗時は、あなたの権限で封鎖へ移行してください。",
+    "category": "directive",
+    "severity": "high",
+    "status": "closed",
+    "createdAt": "2024-02-12T06:22:22Z",
+    "replies": [
+      {
+        "id": "reply-008-01",
+        "messageId": "inbox-008",
+        "name": "小林 正人",
+        "email": "k.masato@crayte.com",
+        "subject": "Re: CDNA4001：収集プロトコルの承認（暫定）",
+        "message": "承知いたしました。\nただし一点だけ。\n\n『新規性』は数値で制御できません。\n人間の“探索”が混ざると、同じ導線でも別物になります。\n観測者が「意味を探す」瞬間に、CDNA4001は反応します。\n\n従って、収集は“データ”ではなく“迷い”を集める行為になります。\n社内被害回避のため、対象は外部観測者に限定するのが安全です。\n\n封鎖条件：欠損が人物情報（氏名・顔・連絡先）に波及した時点。\nその場合、私は即時にログ系統を切り離します。",
+        "createdAt": "2024-02-12T06:22:22Z"
       }
     ]
   }

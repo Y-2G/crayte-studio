@@ -14,34 +14,31 @@ interface InboxDetailProps {
   nextMessageId: string | null;
 }
 
-const categoryMap: Record<
-  InboxMessage['category'],
-  { label: string; color: string }
-> = {
+const categoryMap: Record<string, { label: string; color: string }> = {
   general: { label: '一般', color: 'var(--admin-text)' },
   press: { label: '取材', color: 'var(--admin-primary)' },
   quote: { label: '見積', color: 'var(--admin-success)' },
   complaint: { label: '苦情', color: 'var(--admin-error)' },
   sign: { label: '兆候', color: 'var(--horror-text)' },
+  request: { label: '要求', color: 'var(--admin-warning)' },
+  analysis: { label: '分析', color: 'var(--admin-primary)' },
+  directive: { label: '指令', color: 'var(--admin-error)' },
+  admin: { label: '管理', color: 'var(--admin-text-muted)' },
 };
 
-const severityMap: Record<
-  InboxMessage['severity'],
-  { label: string; color: string }
-> = {
+const severityMap: Record<string, { label: string; color: string }> = {
   low: { label: '低', color: 'var(--admin-text-muted)' },
   medium: { label: '中', color: 'var(--admin-warning)' },
   high: { label: '高', color: 'var(--admin-error)' },
+  critical: { label: '緊急', color: 'var(--horror-text)' },
 };
 
-const statusMap: Record<
-  InboxMessage['status'],
-  { label: string; color: string }
-> = {
+const statusMap: Record<string, { label: string; color: string }> = {
   open: { label: '新規', color: 'var(--admin-error)' },
   pending: { label: '保留', color: 'var(--admin-warning)' },
   resolved: { label: '解決', color: 'var(--admin-success)' },
   rewritten: { label: '改変', color: 'var(--horror-text)' },
+  closed: { label: '完了', color: 'var(--admin-text-muted)' },
 };
 
 export function InboxDetail({
@@ -53,9 +50,9 @@ export function InboxDetail({
   const createdAtAnomalous = isAnomalousTime(message.createdAt);
   const updatedAtAnomalous = isAnomalousTime(message.updatedAt);
 
-  const category = categoryMap[message.category];
-  const severity = severityMap[message.severity];
-  const status = statusMap[message.status];
+  const category = categoryMap[message.category] ?? { label: message.category, color: 'var(--admin-text)' };
+  const severity = severityMap[message.severity] ?? { label: message.severity, color: 'var(--admin-text)' };
+  const status = statusMap[message.status] ?? { label: message.status, color: 'var(--admin-text)' };
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
@@ -199,11 +196,11 @@ export function InboxDetail({
           <h3 className={styles.repliesTitle}>返信履歴</h3>
           <div className={styles.replyList}>
             {message.replies.map((reply: InboxReply) => {
-              const isFromSender = reply.respondent === message.name;
+              const isFromSender = reply.name === message.name;
               const isHorrorReply =
                 isSign ||
-                reply.respondent === '???' ||
-                reply.respondent.includes('削除');
+                reply.name === '???' ||
+                reply.name.includes('削除');
 
               return (
                 <div
@@ -211,21 +208,31 @@ export function InboxDetail({
                   className={`${styles.replyItem} ${isFromSender ? styles.replyFromSender : ''} ${isHorrorReply ? styles.replyHorror : ''}`}
                 >
                   <div className={styles.replyHeader}>
-                    <span
-                      className={`${styles.replyRespondent} ${isHorrorReply ? horrorStyles.horrorText : ''}`}
-                    >
-                      {reply.respondent}
-                    </span>
+                    <div className={styles.replyMeta}>
+                      <span
+                        className={`${styles.replyRespondent} ${isHorrorReply ? horrorStyles.horrorText : ''}`}
+                      >
+                        {reply.name}
+                      </span>
+                      {reply.email && (
+                        <a href={`mailto:${reply.email}`} className={styles.replyEmail}>
+                          {reply.email}
+                        </a>
+                      )}
+                    </div>
                     <span
                       className={`${styles.replyDate} ${isAnomalousTime(reply.createdAt) ? horrorStyles.anomalousDate : ''}`}
                     >
                       {formatDateTime(reply.createdAt)}
                     </span>
                   </div>
+                  {reply.subject && (
+                    <div className={styles.replySubject}>{reply.subject}</div>
+                  )}
                   <p
                     className={`${styles.replyContent} ${isHorrorReply ? styles.horrorContent : ''}`}
                   >
-                    {reply.content}
+                    {reply.message}
                   </p>
                 </div>
               );

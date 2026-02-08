@@ -34,14 +34,18 @@ export function InboxTable({ messages }: InboxTableProps) {
       label: 'カテゴリ',
       sortable: true,
       render: (msg: InboxMessage) => {
-        const categoryMap = {
+        const categoryMap: Record<string, { label: string; color: string }> = {
           general: { label: '一般', color: 'var(--admin-text)' },
           press: { label: '取材', color: 'var(--admin-primary)' },
           quote: { label: '見積', color: 'var(--admin-success)' },
           complaint: { label: '苦情', color: 'var(--admin-error)' },
           sign: { label: '兆候', color: 'var(--horror-text)' },
+          request: { label: '要求', color: 'var(--admin-warning)' },
+          analysis: { label: '分析', color: 'var(--admin-primary)' },
+          directive: { label: '指令', color: 'var(--admin-error)' },
+          admin: { label: '管理', color: 'var(--admin-text-muted)' },
         };
-        const category = categoryMap[msg.category];
+        const category = categoryMap[msg.category] ?? { label: msg.category, color: 'var(--admin-text)' };
         return <span style={{ color: category.color }}>{category.label}</span>;
       },
     },
@@ -50,12 +54,13 @@ export function InboxTable({ messages }: InboxTableProps) {
       label: '重要度',
       sortable: true,
       render: (msg: InboxMessage) => {
-        const severityMap = {
+        const severityMap: Record<string, { label: string; color: string }> = {
           low: { label: '低', color: 'var(--admin-text-muted)' },
           medium: { label: '中', color: 'var(--admin-warning)' },
           high: { label: '高', color: 'var(--admin-error)' },
+          critical: { label: '緊急', color: 'var(--horror-text)' },
         };
-        const severity = severityMap[msg.severity];
+        const severity = severityMap[msg.severity] ?? { label: msg.severity, color: 'var(--admin-text)' };
         return <span style={{ color: severity.color, fontWeight: 500 }}>{severity.label}</span>;
       },
     },
@@ -64,13 +69,14 @@ export function InboxTable({ messages }: InboxTableProps) {
       label: 'ステータス',
       sortable: true,
       render: (msg: InboxMessage) => {
-        const statusMap = {
+        const statusMap: Record<string, { label: string; color: string }> = {
           open: { label: '新規', color: 'var(--admin-error)' },
           pending: { label: '保留', color: 'var(--admin-warning)' },
           resolved: { label: '解決', color: 'var(--admin-success)' },
           rewritten: { label: '改変', color: 'var(--horror-text)' },
+          closed: { label: '完了', color: 'var(--admin-text-muted)' },
         };
-        const status = statusMap[msg.status];
+        const status = statusMap[msg.status] ?? { label: msg.status, color: 'var(--admin-text)' };
         return <span style={{ color: status.color, fontWeight: 500 }}>{status.label}</span>;
       },
     },
