@@ -137,8 +137,10 @@ export interface Work {
   slug: string;
   /** Work title */
   title: string;
-  /** Work description */
+  /** Work description (short summary) */
   description: string;
+  /** Work body content (markdown) */
+  content: string;
   /** Client name */
   client: string;
   /** Venue or location */
@@ -151,6 +153,10 @@ export interface Work {
   images: string[];
   /** Array of tag identifiers */
   tags: string[];
+  /** Internal review comments */
+  reviewComments: ReviewComment[];
+  /** Additional metadata (flexible key-value pairs) */
+  meta: Record<string, unknown>;
   /** ISO 8601 timestamp */
   createdAt: string;
   /** ISO 8601 timestamp */
@@ -387,9 +393,11 @@ export function isWork(obj: unknown): obj is Work {
     typeof w.id === "string" &&
     typeof w.slug === "string" &&
     typeof w.title === "string" &&
+    typeof w.content === "string" &&
     typeof w.status === "string" &&
     Array.isArray(w.images) &&
-    Array.isArray(w.tags)
+    Array.isArray(w.tags) &&
+    Array.isArray(w.reviewComments)
   );
 }
 

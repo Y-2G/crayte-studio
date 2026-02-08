@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getWorkById, getAllWorkTags } from '@/lib/data';
+import type { Comment } from '@/types/entities';
 import { WorkEditor } from './WorkEditor';
 
 interface PageProps {
@@ -16,5 +17,8 @@ export default async function EditWorkPage({ params }: PageProps) {
 
   const tags = await getAllWorkTags();
 
-  return <WorkEditor work={work} tags={tags} />;
+  // コメントはワークデータに含まれている
+  const comments: Comment[] = 'comments' in work && Array.isArray(work.comments) ? work.comments : [];
+
+  return <WorkEditor work={work} tags={tags} comments={comments} />;
 }

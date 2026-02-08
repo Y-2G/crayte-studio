@@ -11,15 +11,18 @@ export default async function NewWorkPage() {
     slug: '',
     title: '',
     description: '',
+    content: '',
     client: '',
     venue: '',
     date: new Date().toISOString().split('T')[0], // YYYY-MM-DD
     status: 'planned',
     images: [],
     tags: [],
+    reviewComments: [],
+    meta: {},
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
 
-  return <WorkEditor work={emptyWork} tags={tags} />;
+  return <WorkEditor work={emptyWork} tags={tags} comments={[]} />;
 }

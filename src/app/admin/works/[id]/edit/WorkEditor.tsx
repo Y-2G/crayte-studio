@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Work, WorkStatus } from "@/types";
+import type { Work, WorkStatus, Comment } from "@/types";
 import { EditPage } from "@/components/admin/EditPage";
 import { MetaBox } from "@/components/admin/MetaBox";
 import {
@@ -10,17 +10,28 @@ import {
   TextareaField,
   RadioField,
 } from "@/components/admin/FormField";
+import { hasHorrorMeta, getObservationNotes } from "@/lib/horror/utils";
 import styles from "./WorkEditor.module.css";
 import horrorStyles from "@/styles/horror.module.css";
 
 interface WorkEditorProps {
   work: Work;
   tags: string[];
+  comments: Comment[];
 }
+
+const statusLabels: Record<WorkStatus, string> = {
+  planned: "予定",
+  live: "実施中",
+  closed: "完了",
+  sealed: "封印",
+  rewritten: "改変",
+};
 
 export function WorkEditor({
   work: initialWork,
   tags: allTags,
+  comments,
 }: WorkEditorProps) {
   const [work, setWork] = useState(initialWork);
   const [selectedTags, setSelectedTags] = useState<string[]>(initialWork.tags);
@@ -29,6 +40,11 @@ export function WorkEditor({
   const handleSave = () => {
     // TODO: Implement save functionality
     console.log("Saving work:", work);
+  };
+
+  const handleSaveDraft = () => {
+    // TODO: Implement draft save functionality
+    console.log("Saving draft:", { ...work, status: "planned" });
   };
 
   const addTag = () => {
@@ -49,10 +65,29 @@ export function WorkEditor({
   // Sidebar content
   const sidebar = (
     <>
-      {/* Status Panel */}
-      <MetaBox title="ステータス" accent>
-        <div className={styles.statusPanel}>
+      {/* Publish Panel */}
+      <MetaBox title="公開" accent>
+        <div className={styles.publishPanel}>
+          <div className={styles.publishInfo}>
+            <span className={styles.infoLabel}>ステータス:</span>
+            <span className={styles.infoValue}>
+              {statusLabels[work.status] ?? work.status}
+            </span>
+          </div>
+
+          {work.date && (
+            <div className={styles.publishInfo}>
+              <span className={styles.infoLabel}>実施日:</span>
+              <span className={styles.infoValue}>
+                {new Date(work.date).toLocaleDateString("ja-JP")}
+              </span>
+            </div>
+          )}
+
+          <hr className={styles.divider} />
+
           <RadioField
+            label="ステータス"
             name="status"
             value={work.status}
             onChange={(value) =>
@@ -67,13 +102,22 @@ export function WorkEditor({
             ]}
           />
 
-          <div className={styles.saveAction}>
+          <div className={styles.publishActions}>
+            <button
+              type="button"
+              onClick={handleSaveDraft}
+              className={styles.draftButton}
+            >
+              下書き保存
+            </button>
             <button
               type="button"
               onClick={handleSave}
-              className={styles.saveButton}
+              className={styles.publishButton}
             >
-              更新
+              {work.status === "closed" || work.status === "live"
+                ? "更新"
+                : "公開"}
             </button>
           </div>
         </div>
@@ -144,23 +188,8 @@ export function WorkEditor({
     </>
   );
 
-  // Horror element: Show warning for sealed works
-  const isSealed = work.status === "sealed";
-
   return (
     <EditPage sidebar={sidebar}>
-      {/* Horror element: Warning for sealed content */}
-      {isSealed && (
-        <div className={horrorStyles.warningBox}>
-          <div className={horrorStyles.title}>封印されたプロジェクト</div>
-          <div className={horrorStyles.message}>
-            このプロジェクトは封印されています。閲覧記録が残ります。
-            <br />
-            編集や公開を行う場合は、管理者の承認が必要です。
-          </div>
-        </div>
-      )}
-
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
         <Link href="/admin/works" className={styles.breadcrumbLink}>
@@ -172,53 +201,149 @@ export function WorkEditor({
 
       {/* Title */}
       <div className={styles.titleSection}>
-        <InputField
-          label="タイトル"
+        <input
+          type="text"
           value={work.title}
           onChange={(e) => setWork({ ...work, title: e.target.value })}
-          placeholder="制作実績のタイトルを入力"
-          fullWidth
+          placeholder="タイトルを追加"
+          className={styles.titleInput}
         />
+        <div className={styles.permalink}>
+          パーマリンク:{" "}
+          <span className={styles.permalinkValue}>/works/{work.slug}</span>
+        </div>
       </div>
 
       {/* Description */}
-      <div className={styles.section}>
+      <MetaBox title="説明">
         <TextareaField
-          label="説明"
           value={work.description}
           onChange={(e) => setWork({ ...work, description: e.target.value })}
-          placeholder="制作実績の詳細を入力..."
-          rows={10}
+          placeholder="制作実績の概要を入力（省略可）"
+          rows={3}
+          help="制作実績の簡単な説明。一覧ページに表示されます。"
           fullWidth
         />
-      </div>
+      </MetaBox>
 
-      {/* Client Info */}
-      <div className={styles.infoGrid}>
-        <InputField
-          label="クライアント"
-          value={work.client}
-          onChange={(e) => setWork({ ...work, client: e.target.value })}
-          placeholder="クライアント名"
+      {/* Content Editor */}
+      <MetaBox title="本文">
+        <TextareaField
+          value={work.content}
+          onChange={(e) => setWork({ ...work, content: e.target.value })}
+          placeholder="本文を入力..."
+          rows={20}
+          fullWidth
         />
-        <InputField
-          label="会場"
-          value={work.venue}
-          onChange={(e) => setWork({ ...work, venue: e.target.value })}
-          placeholder="会場・場所"
-        />
-      </div>
+      </MetaBox>
 
-      {/* Date */}
-      <div className={styles.section}>
-        <InputField
-          label="実施日"
-          type="date"
-          value={work.date}
-          onChange={(e) => setWork({ ...work, date: e.target.value })}
-          help="実施日または公開日"
-        />
-      </div>
+      {/* Project Details */}
+      <MetaBox title="プロジェクト詳細">
+        <div className={styles.detailFields}>
+          <InputField
+            label="クライアント"
+            value={work.client}
+            onChange={(e) => setWork({ ...work, client: e.target.value })}
+            placeholder="クライアント名"
+            fullWidth
+          />
+          <InputField
+            label="会場"
+            value={work.venue}
+            onChange={(e) => setWork({ ...work, venue: e.target.value })}
+            placeholder="会場・場所"
+            fullWidth
+          />
+          <InputField
+            label="実施日"
+            type="date"
+            value={work.date}
+            onChange={(e) => setWork({ ...work, date: e.target.value })}
+            help="実施日または公開日"
+            fullWidth
+          />
+        </div>
+      </MetaBox>
+
+      {/* Comments Section */}
+      <MetaBox title="コメント">
+        <div className={styles.reviewComments}>
+          {work.reviewComments.length === 0 && comments.length === 0 ? (
+            <p className={styles.noComments}>コメントはまだありません</p>
+          ) : (
+            [
+              ...work.reviewComments.map((c) => ({
+                ...c,
+                type: "review" as const,
+              })),
+              ...comments.map((c) => ({ ...c, type: "user" as const })),
+            ]
+              .sort(
+                (a, b) =>
+                  new Date(a.createdAt).getTime() -
+                  new Date(b.createdAt).getTime(),
+              )
+              .map((comment) => {
+                return (
+                  <div
+                    key={`${comment.type}-${comment.id}`}
+                    className={styles.comment}
+                  >
+                    <div className={styles.commentHeader}>
+                      <div className={styles.commentAuthorLine}>
+                        <strong>{comment.author}</strong>
+                        <span className={styles.commentType}>
+                          {comment.type === "review"
+                            ? "内部レビュー"
+                            : "公開コメント"}
+                        </span>
+                        {comment.type === "user" && (
+                          <span
+                            className={`${styles.commentBadge} ${styles[`status-${comment.status}`]}`}
+                          >
+                            {comment.status === "approved" && "承認済み"}
+                            {comment.status === "pending" && "保留中"}
+                            {comment.status === "spam" && "スパム"}
+                            {comment.status === "trash" && "ゴミ箱"}
+                          </span>
+                        )}
+                      </div>
+                      <time>
+                        {new Date(comment.createdAt).toLocaleString("ja-JP")}
+                      </time>
+                    </div>
+                    <p className={styles.commentContent}>{comment.content}</p>
+                    {comment.type === "user" && "email" in comment && (
+                      <div className={styles.commentMeta}>
+                        Email: {comment.email}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+          )}
+          <TextareaField
+            placeholder="新しいコメントを追加..."
+            rows={3}
+            help="このコメントは管理者のみ閲覧できます"
+            fullWidth
+          />
+        </div>
+      </MetaBox>
+
+      {/* Horror element: Observation notes */}
+      {hasHorrorMeta(work.meta) && (
+        <MetaBox title="⚠ 観察記録" defaultCollapsed>
+          <div className={horrorStyles.warningBox}>
+            <div className={horrorStyles.title}>異常検出</div>
+            <div className={horrorStyles.message}>
+              {getObservationNotes(work.meta).map((note, i) => (
+                <div key={i}>{note}</div>
+              ))}
+            </div>
+          </div>
+        </MetaBox>
+      )}
     </EditPage>
   );
 }
