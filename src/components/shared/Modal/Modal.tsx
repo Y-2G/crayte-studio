@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import styles from './Modal.module.css';
+import { useEffect, useRef } from "react";
+import styles from "./Modal.module.css";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: "sm" | "md" | "lg" | "xl" | "fullscreen";
   closeOnOverlay?: boolean;
   closeOnEsc?: boolean;
 }
@@ -18,7 +18,7 @@ export function Modal({
   onClose,
   title,
   children,
-  size = 'md',
+  size = "md",
   closeOnOverlay = true,
   closeOnEsc = true,
 }: ModalProps) {
@@ -26,17 +26,13 @@ export function Modal({
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      previousActiveElement.current = document.activeElement as HTMLElement;
-      modalRef.current?.focus();
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      previousActiveElement.current?.focus();
-    }
+    previousActiveElement.current = document.activeElement as HTMLElement;
+    modalRef.current?.focus();
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
+      previousActiveElement.current?.focus();
     };
   }, [isOpen]);
 
@@ -44,13 +40,13 @@ export function Modal({
     if (!isOpen || !closeOnEsc) return;
 
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, closeOnEsc, onClose]);
 
   if (!isOpen) return null;
@@ -68,8 +64,8 @@ export function Modal({
         className={`${styles.modal} ${styles[size]}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={title ? 'modal-title' : undefined}
-        aria-label={title ? undefined : 'ダイアログ'}
+        aria-labelledby={title ? "modal-title" : undefined}
+        aria-label={title ? undefined : "ダイアログ"}
         tabIndex={-1}
       >
         <div className={styles.header}>

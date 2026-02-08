@@ -1,0 +1,1 @@
+export { TrashDetailModal } from "./TrashDetailModal";

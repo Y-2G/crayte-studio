@@ -43,3 +43,13 @@
   font-size: var(--font-size-xs);
   color: var(--admin-text-muted);
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--admin-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}

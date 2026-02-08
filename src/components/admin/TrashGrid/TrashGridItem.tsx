@@ -3,6 +3,7 @@ import styles from "./TrashGridItem.module.css";
 
 interface TrashGridItemProps {
   item: TrashItem;
+  onClick?: () => void;
 }
 
 const STATUS_ICONS: Record<string, string> = {
@@ -23,11 +24,27 @@ function formatDate(dateString: string): string {
   });
 }
 
-export function TrashGridItem({ item }: TrashGridItemProps) {
+export function TrashGridItem({ item, onClick }: TrashGridItemProps) {
   const statusIcon = STATUS_ICONS[item.originalStatus] || "📄";
+  const isClickable = !!onClick;
 
   return (
-    <div className={styles.item}>
+    <div
+      className={`${styles.item} ${isClickable ? styles.clickable : ""}`}
+      onClick={onClick}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={
+        isClickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick?.();
+              }
+            }
+          : undefined
+      }
+    >
       <div className={styles.preview}>
         <span className={styles.placeholder}>{statusIcon}</span>
       </div>

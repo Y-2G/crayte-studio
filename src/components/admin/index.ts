@@ -5,3 +5,5 @@ export { PostsTable } from './PostsTable';
 export { ActivityList } from './ActivityList';
 export { MediaGrid } from './MediaGrid';
 export { TrashGrid } from './TrashGrid';
+export { TrashDetailModal } from './TrashDetailModal';
+export { RestoreModal } from './RestoreModal';
