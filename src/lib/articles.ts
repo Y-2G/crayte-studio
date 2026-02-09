@@ -56,9 +56,9 @@ export interface Article {
   images?: string[];
 }
 
-function parseArticleFile(fileName: string): Article {
-  const fullPath = path.join(articlesDirectory, fileName);
+function parseArticleFile(fullPath: string): Article {
   const fileContents = fs.readFileSync(fullPath, "utf-8");
+  const fileName = path.basename(fullPath);
   const { data, content } = matter(fileContents);
 
   const htmlContent = marked.parse(content, { async: false }) as string;
@@ -95,16 +95,29 @@ function parseArticleFile(fileName: string): Article {
   };
 }
 
+/** Subdirectories under articles/ to scan (members has its own reader) */
+const articleSubDirs = ["news", "works"];
+
 /**
  * Get all articles (no filter, includes draft/private)
+ * Scans news/ and works/ subdirectories.
  * Sorted by publishedAt or createdAt (newest first)
  */
 export async function getAllArticlesRaw(): Promise<Article[]> {
-  const fileNames = fs
-    .readdirSync(articlesDirectory)
-    .filter((name) => name.endsWith(".md"));
+  const articles: Article[] = [];
 
-  const articles = fileNames.map(parseArticleFile);
+  for (const subDir of articleSubDirs) {
+    const dirPath = path.join(articlesDirectory, subDir);
+    if (!fs.existsSync(dirPath)) continue;
+
+    const fileNames = fs
+      .readdirSync(dirPath)
+      .filter((name) => name.endsWith(".md"));
+
+    articles.push(
+      ...fileNames.map((fn) => parseArticleFile(path.join(dirPath, fn)))
+    );
+  }
 
   return articles.sort((a, b) => {
     const dateA = new Date(a.publishedAt || a.createdAt);
