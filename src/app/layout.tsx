@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { PhaseGate } from "@/components/shared/PhaseGate";
 import "@/styles/globals.css";
 
 const notoSansJP = localFont({
@@ -35,7 +36,7 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${teko.variable} ${font404.variable}`}
       >
-        {children}
+        <PhaseGate>{children}</PhaseGate>
       </body>
     </html>
   );

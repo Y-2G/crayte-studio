@@ -31,10 +31,105 @@
   color: #f0f0f0;
 }
 
+.logLearning {
+  color: #4ade80;
+}
+
 .actions {
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-3);
   padding-top: var(--spacing-4);
   border-top: 1px solid var(--admin-border);
+}
+
+/* === Crash Modal === */
+.crashModal {
+  position: fixed;
+  z-index: 99999;
+  width: 340px;
+  background: #f0f0f0;
+  border: 2px solid #888;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  font-family: "Segoe UI", "MS UI Gothic", sans-serif;
+  font-size: 13px;
+  animation: crashAppear 0.15s ease-out;
+  user-select: none;
+}
+
+@keyframes crashAppear {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.crashHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: linear-gradient(to right, #0054e3, #2490eb);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.crashTitle {
+  letter-spacing: 0.5px;
+}
+
+.crashCloseIcon {
+  font-size: 11px;
+  line-height: 1;
+  padding: 1px 4px;
+  background: #c0392b;
+  border: 1px solid #922;
+  cursor: default;
+}
+
+.crashBody {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 16px 12px;
+}
+
+.crashIcon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+  color: #e74c3c;
+}
+
+.crashText {
+  margin: 0;
+  padding-top: 6px;
+  font-size: 13px;
+  color: #000;
+  line-height: 1.5;
+}
+
+.crashActions {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 16px;
+}
+
+.crashButton {
+  min-width: 80px;
+  padding: 4px 16px;
+  background: #e0e0e0;
+  border: 2px solid #aaa;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  font-size: 12px;
+  cursor: default;
+  color: #000;
 }
