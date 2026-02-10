@@ -70,7 +70,7 @@ export function ArticleContent({
       {filteredPosts.length > 0 || showHiddenCard ? (
         <div className={styles.cardGrid}>
           {showHiddenCard && (
-            <Link href="/key" className={styles.cardLink}>
+            <Link href="/lead" className={styles.cardLink}>
               <article className={styles.card}>
                 <div className={styles.cardImage}>
                   <OptimizedImage

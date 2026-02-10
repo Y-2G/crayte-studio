@@ -26,6 +26,8 @@ export function Modal({
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    if (!isOpen) return;
+
     previousActiveElement.current = document.activeElement as HTMLElement;
     modalRef.current?.focus();
     document.body.style.overflow = "hidden";

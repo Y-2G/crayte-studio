@@ -139,10 +139,7 @@
 /* Success Message */
 .successMessage {
   text-align: center;
-  padding: var(--spacing-12);
-  background: var(--color-white);
-  border: 1px solid var(--public-border);
-  border-radius: 16px;
+  padding: var(--spacing-6) 0;
 }
 
 .successIcon {
@@ -171,6 +168,23 @@
   line-height: var(--line-height-relaxed);
   color: var(--public-text-muted);
   margin: 0;
+}
+
+.cdnaInfo {
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--public-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.cdnaItem {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-geist-mono);
+  color: var(--public-text-muted);
+  margin: 0;
+  word-break: break-all;
 }
 
 /* Responsive */
