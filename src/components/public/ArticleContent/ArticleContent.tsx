@@ -45,7 +45,8 @@ function matchesQuery(post: DisplayPost, query: string): boolean {
   return post.title.toLowerCase().includes(query);
 }
 
-const HIDDEN_QUERIES = ["404", "４０４", "not found"];
+const HIDDEN_QUERY = "CDNA4001";
+const HIDDEN_TITLE = `通称『CDNA4001』に関する調査記録`;
 
 export function ArticleContent({
   posts,
@@ -58,27 +59,23 @@ export function ArticleContent({
     return posts.filter((p) => matchesQuery(p, query));
   }, [posts, searchQuery]);
 
-  const show404Card = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-    return HIDDEN_QUERIES.some((hq) => query.includes(hq));
+  const showHiddenCard = useMemo(() => {
+    return searchQuery.trim() === HIDDEN_QUERY;
   }, [searchQuery]);
 
   return (
     <>
-      <ArticleFilter
-        activeFilter={activeFilter}
-        searchQuery={searchQuery}
-      />
+      <ArticleFilter activeFilter={activeFilter} searchQuery={searchQuery} />
 
-      {filteredPosts.length > 0 || show404Card ? (
+      {filteredPosts.length > 0 || showHiddenCard ? (
         <div className={styles.cardGrid}>
-          {show404Card && (
+          {showHiddenCard && (
             <Link href="/key" className={styles.cardLink}>
               <article className={styles.card}>
                 <div className={styles.cardImage}>
                   <OptimizedImage
                     src="/images/404.png"
-                    alt="404 Not Found"
+                    alt={HIDDEN_TITLE}
                     width={400}
                     height={200}
                     className={styles.cardImageFill}
@@ -93,7 +90,7 @@ export function ArticleContent({
                       <span style={{ color: "#ff0000" }}>ERROR</span>
                     </span>
                   </div>
-                  <h2 className={styles.cardTitle}>404 Not Found</h2>
+                  <h2 className={styles.cardTitle}>{HIDDEN_TITLE}</h2>
                   <p className={styles.cardDesc}>ERROR</p>
                   <div className={styles.cardLinkRow}>
                     <span className={styles.readMore}>続きを読む</span>
@@ -137,7 +134,7 @@ export function ArticleContent({
                       {!post.isMember && post.category === "制作実績" && "🎨"}
                       {!post.isMember &&
                         !["お知らせ", "サービス", "制作実績"].includes(
-                          post.category
+                          post.category,
                         ) &&
                         "📝"}
                     </span>
