@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import { fn } from 'storybook/test';
 import { ArticleFilter } from './ArticleFilter';
 
 const meta = {
@@ -15,9 +14,6 @@ const meta = {
         query: {},
       },
     },
-  },
-  args: {
-    onSearchChange: fn(),
   },
   argTypes: {
     activeFilter: {

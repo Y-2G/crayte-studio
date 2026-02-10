@@ -74,6 +74,25 @@
   color: var(--public-text-muted);
 }
 
+.searchButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.searchButton:hover {
+  opacity: 0.8;
+}
+
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   .filterBar {

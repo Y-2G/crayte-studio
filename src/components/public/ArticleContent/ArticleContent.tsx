@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { ArticleFilter } from "@/components/public/ArticleFilter";
@@ -21,6 +21,7 @@ export interface DisplayPost {
 interface ArticleContentProps {
   posts: DisplayPost[];
   activeFilter: FilterType;
+  searchQuery: string;
 }
 
 const cardColors = [
@@ -46,9 +47,11 @@ function matchesQuery(post: DisplayPost, query: string): boolean {
 
 const HIDDEN_QUERIES = ["404", "４０４", "not found"];
 
-export function ArticleContent({ posts, activeFilter }: ArticleContentProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-
+export function ArticleContent({
+  posts,
+  activeFilter,
+  searchQuery,
+}: ArticleContentProps) {
   const filteredPosts = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     if (!query) return posts;
@@ -65,7 +68,6 @@ export function ArticleContent({ posts, activeFilter }: ArticleContentProps) {
       <ArticleFilter
         activeFilter={activeFilter}
         searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
       />
 
       {filteredPosts.length > 0 || show404Card ? (

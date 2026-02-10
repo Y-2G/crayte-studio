@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import styles from "./ArticleFilter.module.css";
 
@@ -8,7 +9,6 @@ export type FilterType = "all" | "news" | "blog" | "works";
 interface ArticleFilterProps {
   activeFilter: FilterType;
   searchQuery: string;
-  onSearchChange: (query: string) => void;
 }
 
 const filters: { key: FilterType; label: string }[] = [
@@ -21,11 +21,11 @@ const filters: { key: FilterType; label: string }[] = [
 export function ArticleFilter({
   activeFilter,
   searchQuery,
-  onSearchChange,
 }: ArticleFilterProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [inputValue, setInputValue] = useState(searchQuery);
 
   function handleFilter(filter: FilterType) {
     const params = new URLSearchParams(searchParams.toString());
@@ -36,6 +36,25 @@ export function ArticleFilter({
     }
     const qs = params.toString();
     router.push(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  }
+
+  function handleSearch() {
+    const params = new URLSearchParams(searchParams.toString());
+    const trimmed = inputValue.trim();
+    if (trimmed) {
+      params.set("q", trimmed);
+    } else {
+      params.delete("q");
+    }
+    const qs = params.toString();
+    router.push(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+    }
   }
 
   return (
@@ -75,9 +94,31 @@ export function ArticleFilter({
           type="search"
           className={styles.searchInput}
           placeholder="記事を検索..."
-          value={searchQuery}
-          onChange={(e) => onSearchChange(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
+        <button
+          type="button"
+          className={styles.searchButton}
+          onClick={handleSearch}
+          aria-label="検索"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
   );

@@ -40,9 +40,9 @@ function filterPosts(posts: DisplayPost[], filter: FilterType): DisplayPost[] {
 export default async function ArticlesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ filter?: string }>;
+  searchParams: Promise<{ filter?: string; q?: string }>;
 }) {
-  const { filter: filterParam } = await searchParams;
+  const { filter: filterParam, q: queryParam } = await searchParams;
   const activeFilter: FilterType =
     filterParam === "news" || filterParam === "blog" || filterParam === "works"
       ? filterParam
@@ -108,6 +108,7 @@ export default async function ArticlesPage({
               <ArticleContent
                 posts={filteredPosts}
                 activeFilter={activeFilter}
+                searchQuery={queryParam ?? ""}
               />
             </Suspense>
           </div>
