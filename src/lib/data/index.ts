@@ -97,6 +97,7 @@ export { getRecentActivity } from './activity';
 // Trash data access
 export {
   getAllTrashItems,
+  getTrashItemById,
   getPaginatedTrash,
   type PaginatedTrash,
 } from './trash';

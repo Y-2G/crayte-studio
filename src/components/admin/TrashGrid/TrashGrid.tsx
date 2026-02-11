@@ -36,6 +36,11 @@ export function TrashGrid({ items }: TrashGridProps) {
                 ? () => setSelectedItem(item)
                 : undefined
             }
+            href={
+              item.id !== CLICKABLE_ITEM_ID
+                ? `/admin/trash/${item.id}/edit`
+                : undefined
+            }
           />
         ))}
       </div>

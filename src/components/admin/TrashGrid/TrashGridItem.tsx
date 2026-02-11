@@ -1,8 +1,10 @@
+import Link from "next/link";
 import type { TrashItem } from "@/types/entities";
 import styles from "./TrashGridItem.module.css";
 
 interface TrashGridItemProps {
   item: TrashItem;
+  href?: string;
   onClick?: () => void;
 }
 
@@ -24,9 +26,31 @@ function formatDate(dateString: string): string {
   });
 }
 
-export function TrashGridItem({ item, onClick }: TrashGridItemProps) {
+export function TrashGridItem({ item, href, onClick }: TrashGridItemProps) {
   const statusIcon = STATUS_ICONS[item.originalStatus] || "📄";
-  const isClickable = !!onClick;
+  const isClickable = !!onClick || !!href;
+
+  const content = (
+    <>
+      <div className={styles.preview}>
+        <span className={styles.placeholder}>{statusIcon}</span>
+      </div>
+      <span className={styles.title} title={item.title}>
+        {item.title}
+      </span>
+      <span className={styles.date}>
+        {formatDate(item.deletedAt)}
+      </span>
+    </>
+  );
+
+  if (href && !onClick) {
+    return (
+      <Link href={href} className={`${styles.item} ${styles.clickable}`}>
+        {content}
+      </Link>
+    );
+  }
 
   return (
     <div
@@ -45,15 +69,7 @@ export function TrashGridItem({ item, onClick }: TrashGridItemProps) {
           : undefined
       }
     >
-      <div className={styles.preview}>
-        <span className={styles.placeholder}>{statusIcon}</span>
-      </div>
-      <span className={styles.title} title={item.title}>
-        {item.title}
-      </span>
-      <span className={styles.date}>
-        {formatDate(item.deletedAt)}
-      </span>
+      {content}
     </div>
   );
 }

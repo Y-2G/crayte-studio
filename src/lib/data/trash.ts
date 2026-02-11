@@ -42,6 +42,27 @@ function parseTrashFile(fileName: string): TrashItem {
 }
 
 /**
+ * Get a single trash item by ID
+ */
+export function getTrashItemById(id: string): TrashItem | null {
+  try {
+    const fileNames = fs
+      .readdirSync(trashDirectory)
+      .filter((name) => name.endsWith(".md"));
+
+    for (const fileName of fileNames) {
+      const item = parseTrashFile(fileName);
+      if (item.id === id) {
+        return item;
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Get all trashed items sorted by deletedAt (newest first)
  */
 export function getAllTrashItems(): TrashItem[] {

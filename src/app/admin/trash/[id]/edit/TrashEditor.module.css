@@ -1,0 +1,160 @@
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-sm);
+  color: var(--admin-text-muted);
+}
+
+.breadcrumbLink {
+  color: var(--admin-primary);
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  opacity: 0.5;
+}
+
+/* Title Section */
+.titleSection {
+  margin-bottom: var(--spacing-6);
+}
+
+.titleInput {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+  background-color: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+.titleInput:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 1px var(--admin-primary);
+}
+
+.titleInput::placeholder {
+  color: var(--admin-text-muted);
+  opacity: 0.5;
+}
+
+.permalink {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--admin-text-muted);
+}
+
+.permalinkValue {
+  color: var(--admin-primary);
+  font-family: var(--font-mono);
+}
+
+/* Trash Info Panel */
+.trashPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.trashInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+}
+
+.infoLabel {
+  color: var(--admin-text-muted);
+}
+
+.infoValue {
+  font-weight: var(--font-weight-semibold);
+  color: var(--admin-text);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--admin-border);
+  margin: var(--spacing-2) 0;
+}
+
+.trashActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+}
+
+.restoreButton {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--admin-primary);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--admin-primary);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.restoreButton:hover {
+  background-color: var(--admin-primary-dark);
+}
+
+.deleteButton {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--color-error);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.deleteButton:hover {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+/* Meta Panel */
+.metaPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.metaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: var(--font-size-sm);
+  gap: var(--spacing-2);
+}
+
+.metaKey {
+  color: var(--admin-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  flex-shrink: 0;
+}
+
+.metaValue {
+  color: var(--admin-text);
+  text-align: right;
+  word-break: break-all;
+}
