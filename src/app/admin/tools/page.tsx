@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolsClient } from "./ToolsClient";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -10,11 +11,7 @@ export default function AdminToolsPage() {
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>ツール</h1>
-
-      <div className={styles.placeholder}>
-        <div className={styles.placeholderIcon}>🔧</div>
-        <p className={styles.placeholderText}>ツール機能は実装予定です</p>
-      </div>
+      <ToolsClient />
     </div>
   );
 }
