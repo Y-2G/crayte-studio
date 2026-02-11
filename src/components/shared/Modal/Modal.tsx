@@ -11,6 +11,12 @@ interface ModalProps {
   size?: "sm" | "md" | "lg" | "xl" | "fullscreen";
   closeOnOverlay?: boolean;
   closeOnEsc?: boolean;
+  classNames?: {
+    header?: string;
+    title?: string;
+    closeButton?: string;
+    content?: string;
+  };
 }
 
 export function Modal({
@@ -21,6 +27,7 @@ export function Modal({
   size = "md",
   closeOnOverlay = true,
   closeOnEsc = true,
+  classNames,
 }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
@@ -70,15 +77,18 @@ export function Modal({
         aria-label={title ? undefined : "ダイアログ"}
         tabIndex={-1}
       >
-        <div className={styles.header}>
+        <div className={`${styles.header} ${classNames?.header}`}>
           {title && (
-            <h2 id="modal-title" className={styles.title}>
+            <h2
+              id="modal-title"
+              className={`${styles.title} ${classNames?.title}`}
+            >
               {title}
             </h2>
           )}
           <button
             onClick={onClose}
-            className={styles.closeButton}
+            className={`${styles.closeButton} ${classNames?.closeButton}`}
             aria-label="閉じる"
             type="button"
           >
@@ -98,7 +108,9 @@ export function Modal({
             </svg>
           </button>
         </div>
-        <div className={styles.content}>{children}</div>
+        <div className={`${styles.content} ${classNames?.content}`}>
+          {children}
+        </div>
       </div>
     </div>
   );

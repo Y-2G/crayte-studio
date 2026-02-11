@@ -61,14 +61,14 @@ export function ToolsClient() {
     timestampRef.current = formatTimestamp(new Date());
 
     const interval = setInterval(() => {
-      setLearningPercent((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setPhase("crash"), 1000);
-          return 100;
-        }
-        return prev + 1;
-      });
+      // setLearningPercent((prev) => {
+      //   if (prev >= 100) {
+      //     clearInterval(interval);
+      //     setTimeout(() => setPhase("crash"), 1000);
+      //     return 100;
+      //   }
+      //   return prev + 1;
+      // });
     }, 150);
 
     return () => clearInterval(interval);
@@ -156,7 +156,7 @@ export function ToolsClient() {
         </div>
       </Modal>
 
-      {/* 削除実行モーダル（TrashDetailModal の機能を移植） */}
+      {/* 削除実行モーダル */}
       <Modal
         isOpen={isDeletionOpen}
         onClose={() => {}}
@@ -164,6 +164,12 @@ export function ToolsClient() {
         size="fullscreen"
         closeOnOverlay={false}
         closeOnEsc={false}
+        classNames={{
+          header: styles.deletionHeader,
+          title: styles.deletionTitle,
+          closeButton: styles.deletionCloseButton,
+          content: styles.deletionContent,
+        }}
       >
         <div className={styles.deletionBody}>
           <div className={styles.logArea} ref={logAreaRef}>

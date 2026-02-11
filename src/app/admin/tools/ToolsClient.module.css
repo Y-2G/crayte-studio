@@ -15,7 +15,9 @@
   border: 1px solid var(--admin-border);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .toolCard:hover {
@@ -55,12 +57,31 @@
 }
 
 /* === Deletion Modal === */
+.deletionHeader {
+  background-color: #0a0a0a;
+  border: 0;
+  height: 80px;
+}
+
+.deletionTitle {
+  color: #fefefe;
+}
+
+.deletionCloseButton {
+  display: none;
+}
+
+.deletionContent {
+  padding: 0;
+}
+
 .deletionBody {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-6);
   overflow: hidden;
+  height: calc(100dvh - 80px);
+  background-color: #0a0a0a;
 }
 
 .logArea {
