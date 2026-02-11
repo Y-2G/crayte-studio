@@ -46,7 +46,7 @@ function matchesQuery(post: DisplayPost, query: string): boolean {
 }
 
 const HIDDEN_QUERY = "CDNA4001";
-const HIDDEN_TITLE = `通称『CDNA4001』に関する調査記録`;
+const HIDDEN_TITLE = `【極秘】通称『CDNA4001』に関する調査記録`;
 
 export function ArticleContent({
   posts,
