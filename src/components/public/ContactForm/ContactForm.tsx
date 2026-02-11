@@ -113,10 +113,7 @@ export function ContactForm() {
   };
 
   const hasCDNA4001 = submittedMessage.includes("CDNA4001");
-  const adminUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/admin`
-      : (process.env.NEXT_PUBLIC_SITE_URL ?? "") + "/admin";
+  const adminUrl = `${window.location.origin}/admin/trash/deleted-cdna4001/edit`;
 
   return (
     <>
