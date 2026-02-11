@@ -20,7 +20,10 @@ const MOCK_DELETION_LOGS = [
   { timestamp: "2025-08-20 11:00:07", message: "外部参照の切断処理" },
   { timestamp: "2025-08-20 11:00:09", message: "ファイルシステム同期開始" },
   { timestamp: "2025-08-20 11:00:11", message: "インデックス再構築" },
-  { timestamp: "2025-08-20 11:00:13", message: "削除プロトコル『焼却』実行開始" },
+  {
+    timestamp: "2025-08-20 11:00:13",
+    message: "削除プロトコル『焼却』実行開始",
+  },
 ];
 
 function formatTimestamp(date: Date): string {
@@ -37,7 +40,7 @@ export function ToolsClient() {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [isDeletionOpen, setIsDeletionOpen] = useState(false);
   const [phase, setPhase] = useState<"idle" | "learning" | "crash" | "done">(
-    "idle"
+    "idle",
   );
   const [learningPercent, setLearningPercent] = useState(0);
   const [crashModals, setCrashModals] = useState<CrashModalData[]>([]);
@@ -126,7 +129,7 @@ export function ToolsClient() {
           className={styles.toolCard}
           onClick={handleDeleteClick}
         >
-          <span className={styles.toolIcon}>🗑️</span>
+          <span className={styles.toolIcon}>⚠️</span>
           <span className={styles.toolName}>delete-cdna4001</span>
         </button>
       </div>
@@ -213,7 +216,7 @@ export function ToolsClient() {
               </div>
             ))}
           </>,
-          document.body
+          document.body,
         )}
     </>
   );
