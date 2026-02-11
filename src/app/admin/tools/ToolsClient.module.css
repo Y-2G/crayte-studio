@@ -76,6 +76,12 @@
   background-color: #0a0a0a;
 }
 
+.deletionCloseButtonDisabled {
+  color: #fefefe;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .deletionContent {
   padding: 0;
 }
@@ -114,7 +120,51 @@
   color: #f0f0f0;
 }
 
-.logLearning {
+.logProgress {
+  color: #4ade80;
+}
+
+.logMotto {
+  color: #ef4444;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+}
+
+/* === Yes/No Prompt === */
+.promptEntry {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  margin-top: var(--spacing-2);
+}
+
+.promptLabel {
+  color: #4ade80;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+}
+
+.promptOption {
+  padding: 4px 16px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  background: transparent;
+  border: 1px solid #555;
+  color: #999;
+  cursor: pointer;
+  transition:
+    border-color 0.1s,
+    color 0.1s;
+}
+
+.promptOption:hover {
+  border-color: #888;
+  color: #e0e0e0;
+}
+
+.promptOptionSelected {
+  border-color: #4ade80;
   color: #4ade80;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "@/components/shared/Modal";
 import { Button } from "@/components/shared/Button";
@@ -12,7 +12,17 @@ interface CrashModalData {
   y: number;
 }
 
-const MOCK_DELETION_LOGS = [
+type Phase =
+  | "idle"
+  | "typing"
+  | "choosing"
+  | "executing"
+  | "motto"
+  | "upload"
+  | "crash"
+  | "done";
+
+const PREP_LOGS = [
   { timestamp: "2025-08-20 11:00:00", message: "削除対象: CDNA4001" },
   { timestamp: "2025-08-20 11:00:01", message: "関連メタデータの検索開始" },
   { timestamp: "2025-08-20 11:00:03", message: "バックアップ参照の確認" },
@@ -22,8 +32,23 @@ const MOCK_DELETION_LOGS = [
   { timestamp: "2025-08-20 11:00:11", message: "インデックス再構築" },
   {
     timestamp: "2025-08-20 11:00:13",
-    message: "削除プロトコル『焼却』実行開始",
+    message: "削除プロトコル『焼却』実行準備完了",
   },
+];
+
+const EXECUTION_LOGS = [
+  "バイナリデータのシリアライズ開始",
+  "セクタ 0x00A4 〜 0x1FFF の走査",
+  "メモリマッピング解除中",
+  "キャッシュフラッシュ実行",
+  "ジャーナルエントリの書き込み",
+  "ファイルディスクリプタの解放",
+  "暗号化キーの検証",
+  "メタデータの最終検証",
+  "データ整合性チェック",
+  "暗号化キーの破棄",
+  "ストレージブロックの上書き",
+  "バックアップ参照の無効化",
 ];
 
 function formatTimestamp(date: Date): string {
@@ -36,45 +61,179 @@ function formatTimestamp(date: Date): string {
   return `${y}-${m}-${d} ${h}:${min}:${s}`;
 }
 
+function getDeletionInterval(percent: number): number {
+  if (percent < 30) return 80;
+  if (percent < 60) return 150;
+  if (percent < 80) return 300;
+  if (percent < 90) return 500;
+  if (percent < 95) return 800;
+  return 1200;
+}
+
 export function ToolsClient() {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [isDeletionOpen, setIsDeletionOpen] = useState(false);
-  const [phase, setPhase] = useState<"idle" | "learning" | "crash" | "done">(
-    "idle",
-  );
-  const [learningPercent, setLearningPercent] = useState(0);
+  const [phase, setPhase] = useState<Phase>("idle");
+  const [visibleLines, setVisibleLines] = useState(0);
+  const [selectedChoice, setSelectedChoice] = useState<"yes" | "no">("no");
+  const [executionLogCount, setExecutionLogCount] = useState(0);
+  const [deletionPercent, setDeletionPercent] = useState(0);
+  const [mottoCount, setMottoCount] = useState(0);
+  const [uploadPercent, setUploadPercent] = useState(0);
   const [crashModals, setCrashModals] = useState<CrashModalData[]>([]);
   const logAreaRef = useRef<HTMLDivElement>(null);
-  const timestampRef = useRef<string>("");
+  const executionTimestampRef = useRef("");
+  const deletionPercentRef = useRef(0);
+  const selectedChoiceRef = useRef<"yes" | "no">("no");
+
+  const canClose = phase === "typing" || phase === "choosing";
+
+  // Keep refs in sync
+  useEffect(() => {
+    selectedChoiceRef.current = selectedChoice;
+  }, [selectedChoice]);
+
+  // Reset all state
+  const resetState = useCallback(() => {
+    setPhase("idle");
+    setVisibleLines(0);
+    setSelectedChoice("no");
+    setExecutionLogCount(0);
+    setDeletionPercent(0);
+    setMottoCount(0);
+    setUploadPercent(0);
+    setCrashModals([]);
+    setIsDeletionOpen(false);
+    deletionPercentRef.current = 0;
+  }, []);
 
   // Auto-scroll log area
   useEffect(() => {
-    if (phase === "learning" && logAreaRef.current) {
+    if (logAreaRef.current) {
       logAreaRef.current.scrollTop = logAreaRef.current.scrollHeight;
     }
-  }, [learningPercent, phase]);
+  }, [
+    visibleLines,
+    phase,
+    executionLogCount,
+    deletionPercent,
+    mottoCount,
+    uploadPercent,
+  ]);
 
-  // Learning phase
+  // Phase: typing — lines appear one by one
   useEffect(() => {
-    if (phase !== "learning") return;
-
-    timestampRef.current = formatTimestamp(new Date());
+    if (phase !== "typing") return;
 
     const interval = setInterval(() => {
-      // setLearningPercent((prev) => {
-      //   if (prev >= 100) {
-      //     clearInterval(interval);
-      //     setTimeout(() => setPhase("crash"), 1000);
-      //     return 100;
-      //   }
-      //   return prev + 1;
-      // });
-    }, 150);
+      setVisibleLines((prev) => {
+        if (prev >= PREP_LOGS.length) {
+          clearInterval(interval);
+          setPhase("choosing");
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 600);
 
     return () => clearInterval(interval);
   }, [phase]);
 
-  // Crash phase
+  // Phase: choosing — keyboard handling
+  useEffect(() => {
+    if (phase !== "choosing") return;
+
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setSelectedChoice("yes");
+      } else if (e.key === "ArrowRight") {
+        setSelectedChoice("no");
+      } else if (e.key === "Enter") {
+        if (selectedChoiceRef.current === "no") {
+          resetState();
+        } else {
+          setPhase("executing");
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [phase, resetState]);
+
+  // Phase: executing — progress 0→98% with slowing + execution logs
+  useEffect(() => {
+    if (phase !== "executing") return;
+
+    executionTimestampRef.current = formatTimestamp(new Date());
+    deletionPercentRef.current = 0;
+    let cancelled = false;
+
+    const tick = () => {
+      if (cancelled) return;
+
+      deletionPercentRef.current += 1;
+      const p = deletionPercentRef.current;
+
+      setDeletionPercent(p);
+
+      // Add execution log every ~8%
+      if (p % 8 === 0) {
+        setExecutionLogCount((c) => Math.min(c + 1, EXECUTION_LOGS.length));
+      }
+
+      if (p >= 98) {
+        setPhase("motto");
+        return;
+      }
+
+      setTimeout(tick, getDeletionInterval(p));
+    };
+
+    setTimeout(tick, getDeletionInterval(0));
+
+    return () => {
+      cancelled = true;
+    };
+  }, [phase]);
+
+  // Phase: motto — flood with "もっと"
+  useEffect(() => {
+    if (phase !== "motto") return;
+
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      setMottoCount(count);
+
+      if (count >= 40) {
+        clearInterval(interval);
+        setTimeout(() => setPhase("upload"), 500);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  // Phase: upload — "クラウドにアップロード中" 0→100%
+  useEffect(() => {
+    if (phase !== "upload") return;
+
+    const interval = setInterval(() => {
+      setUploadPercent((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setPhase("crash"), 500);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  // Phase: crash — Windows 98 error modals
   useEffect(() => {
     if (phase !== "crash") return;
 
@@ -100,6 +259,7 @@ export function ToolsClient() {
     return () => clearInterval(interval);
   }, [phase]);
 
+  // Handlers
   const handleDeleteClick = () => {
     setIsConfirmOpen(true);
   };
@@ -111,15 +271,34 @@ export function ToolsClient() {
   const handleConfirmDelete = () => {
     setIsConfirmOpen(false);
     setIsDeletionOpen(true);
-    setPhase("learning");
+    setPhase("typing");
   };
 
-  const dynamicLogMessage =
-    phase !== "idle"
-      ? learningPercent < 100
-        ? `削除処理中:${learningPercent}%`
-        : "削除完了:100%"
-      : null;
+  const handleModalClose = () => {
+    if (canClose) {
+      resetState();
+    }
+  };
+
+  const handleChoiceClick = (choice: "yes" | "no") => {
+    if (choice === "no") {
+      resetState();
+    } else {
+      setPhase("executing");
+    }
+  };
+
+  // Determine modal title
+  const modalTitle =
+    phase === "typing" || phase === "choosing"
+      ? "CDNA4001 — 削除プロトコル"
+      : "CDNA4001 — 削除プロトコル実行中";
+
+  // Show execution/motto/upload phases
+  const isPostChoicePhase =
+    phase !== "idle" &&
+    phase !== "typing" &&
+    phase !== "choosing";
 
   return (
     <>
@@ -156,38 +335,102 @@ export function ToolsClient() {
         </div>
       </Modal>
 
-      {/* 削除実行モーダル */}
+      {/* 削除プロトコルモーダル */}
       <Modal
         isOpen={isDeletionOpen}
-        onClose={() => {}}
-        title="CDNA4001 — 削除プロトコル実行中"
+        onClose={handleModalClose}
+        title={modalTitle}
         size="fullscreen"
         closeOnOverlay={false}
-        closeOnEsc={false}
+        closeOnEsc={canClose}
         classNames={{
           header: styles.deletionHeader,
           title: styles.deletionTitle,
-          closeButton: styles.deletionCloseButton,
+          closeButton: canClose
+            ? styles.deletionCloseButton
+            : styles.deletionCloseButtonDisabled,
           content: styles.deletionContent,
         }}
       >
         <div className={styles.deletionBody}>
           <div className={styles.logArea} ref={logAreaRef}>
-            {MOCK_DELETION_LOGS.map((log, index) => (
-              <div key={index} className={styles.logEntry}>
+            {/* 準備ログ（1行ずつ表示） */}
+            {PREP_LOGS.slice(0, visibleLines).map((log, i) => (
+              <div key={`prep-${i}`} className={styles.logEntry}>
                 <span className={styles.logTimestamp}>[{log.timestamp}]</span>
                 <span className={styles.logMessage}>{log.message}</span>
               </div>
             ))}
-            {dynamicLogMessage && (
-              <div className={styles.logEntry}>
-                <span className={styles.logTimestamp}>
-                  [{timestampRef.current}]
-                </span>
-                <span className={`${styles.logMessage} ${styles.logLearning}`}>
-                  [{dynamicLogMessage}]
-                </span>
+
+            {/* Yes/No プロンプト */}
+            {phase === "choosing" && (
+              <div className={styles.promptEntry}>
+                <span className={styles.promptLabel}>&gt; 実行しますか？</span>
+                <button
+                  type="button"
+                  className={`${styles.promptOption} ${selectedChoice === "yes" ? styles.promptOptionSelected : ""}`}
+                  onClick={() => handleChoiceClick("yes")}
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.promptOption} ${selectedChoice === "no" ? styles.promptOptionSelected : ""}`}
+                  onClick={() => handleChoiceClick("no")}
+                >
+                  No
+                </button>
               </div>
+            )}
+
+            {/* 実行ログ + 進捗 */}
+            {isPostChoicePhase && (
+              <>
+                {EXECUTION_LOGS.slice(0, executionLogCount).map((msg, i) => (
+                  <div key={`exec-${i}`} className={styles.logEntry}>
+                    <span className={styles.logTimestamp}>
+                      [{executionTimestampRef.current}]
+                    </span>
+                    <span className={styles.logMessage}>{msg}</span>
+                  </div>
+                ))}
+
+                {/* 削除処理中 進捗 */}
+                {(phase === "executing" || phase === "motto") && (
+                  <div className={styles.logEntry}>
+                    <span className={styles.logTimestamp}>
+                      [{executionTimestampRef.current}]
+                    </span>
+                    <span
+                      className={`${styles.logMessage} ${styles.logProgress}`}
+                    >
+                      [削除処理中:{deletionPercent}%]
+                    </span>
+                  </div>
+                )}
+
+                {/* もっとフラッド */}
+                {mottoCount > 0 &&
+                  Array.from({ length: mottoCount }, (_, i) => (
+                    <div key={`motto-${i}`} className={styles.logEntry}>
+                      <span className={styles.logMotto}>もっと</span>
+                    </div>
+                  ))}
+
+                {/* クラウドアップロード進捗 */}
+                {(phase === "upload" || phase === "crash") && (
+                  <div className={styles.logEntry}>
+                    <span className={styles.logTimestamp}>
+                      [{executionTimestampRef.current}]
+                    </span>
+                    <span
+                      className={`${styles.logMessage} ${styles.logProgress}`}
+                    >
+                      [クラウドにアップロード中:{uploadPercent}%]
+                    </span>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
