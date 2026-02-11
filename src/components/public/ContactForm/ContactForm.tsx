@@ -113,7 +113,7 @@ export function ContactForm() {
   };
 
   const hasCDNA4001 = submittedMessage.includes("CDNA4001");
-  const adminUrl = `${window.location.origin}/admin/trash/deleted-cdna4001/edit`;
+  const adminUrl = "/admin/trash/deleted-cdna4001/edit";
 
   return (
     <>
@@ -129,7 +129,7 @@ export function ContactForm() {
           {hasCDNA4001 && (
             <div className={styles.cdnaInfo}>
               <Link href={adminUrl} className={styles.cdnaItem}>
-                {adminUrl}
+                CDNA4001について
               </Link>
               <p className={styles.cdnaItem}>k.sato@crayte.com</p>
               <p className={styles.cdnaItem}>delete-cdna4001</p>

@@ -21,8 +21,8 @@ export default defineConfig({
     projects: [
       // Unit tests project
       {
-        name: 'unit',
         test: {
+          name: 'unit',
           include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
           exclude: ['src/**/*.stories.ts', 'src/**/*.stories.tsx', 'node_modules/**'],
           environment: 'node',
