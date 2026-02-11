@@ -63,6 +63,41 @@
   color: var(--admin-text);
 }
 
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper .input {
+  width: 100%;
+  padding-right: calc(var(--spacing-3) + 28px);
+}
+
+.passwordToggle {
+  position: absolute;
+  right: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1);
+  border: none;
+  background: none;
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.passwordToggle:hover:not(:disabled) {
+  color: var(--admin-text);
+}
+
+.passwordToggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .input {
   padding: var(--spacing-2) var(--spacing-3);
   border: 1px solid var(--admin-border);

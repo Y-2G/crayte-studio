@@ -4,17 +4,17 @@
     "username": "k.sato@crayte.com",
     "displayName": "佐藤健太",
     "role": "admin",
-    "passwordHash": "a363829fce77ed5b0cbfab3dedf4f35a6abd3185a5a17736990d20270fb3b2a1",
-    "salt": "c0363565c19d0a26a4f3c1c02929b36d",
+    "passwordHash": "d80fa22389f07dd5829c6fb345d17ef10fb0af808006d97cb2cc14c7a7ddbcd8",
+    "salt": "cd141857f3abe76965c1ab5a2d63a03a",
     "createdAt": "2024-01-01T00:00:00.000Z"
   },
   {
     "id": "user-2",
-    "username": "t.hanako@crayte.com",
+    "username": "h.tanaka@crayte.com",
     "displayName": "田中花子",
     "role": "editor",
-    "passwordHash": "4a4a73ebad179599fbd58f77e13fd5891d08ba8ba9cc1008516ef328366a82b2",
-    "salt": "90c64ef1dfc9023d13111866176b6663",
+    "passwordHash": "4c0134924a4bb91943100736056674460d484340f28b9708623adc36cefe99bb",
+    "salt": "5857e8dcb7779c148f5f022e7916c24a",
     "createdAt": "2024-01-15T00:00:00.000Z"
   }
 ]
