@@ -101,6 +101,15 @@ export {
   type PaginatedTrash,
 } from './trash';
 
+// User data access
+export {
+  getAllUsers,
+  getUserByUsername,
+  getUserById,
+  toSafeUser,
+  getSafeUserById,
+} from './users';
+
 // Media data access
 export {
   getAllMedia,

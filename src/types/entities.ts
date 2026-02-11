@@ -393,6 +393,58 @@ export interface Comment {
 }
 
 // ============================================================================
+// Users (ユーザー・認証)
+// ============================================================================
+
+/**
+ * User role
+ * - admin: Full access to all admin features
+ * - editor: Can manage content but not system settings
+ */
+export type UserRole = "admin" | "editor";
+
+/**
+ * User entity (stored in users.json)
+ */
+export interface User {
+  /** Unique identifier */
+  id: string;
+  /** Login username */
+  username: string;
+  /** Display name shown in UI */
+  displayName: string;
+  /** User role */
+  role: UserRole;
+  /** SHA-256 hashed password */
+  passwordHash: string;
+  /** Salt for password hashing */
+  salt: string;
+  /** ISO 8601 timestamp */
+  createdAt: string;
+}
+
+/**
+ * User without sensitive fields (for client-side use)
+ */
+export type SafeUser = Omit<User, "passwordHash" | "salt">;
+
+/**
+ * Session payload stored in cookie
+ */
+export interface SessionPayload {
+  /** User ID */
+  userId: string;
+  /** Username */
+  username: string;
+  /** Display name */
+  displayName: string;
+  /** User role */
+  role: UserRole;
+  /** Expiration timestamp (ms) */
+  expiresAt: number;
+}
+
+// ============================================================================
 // Type Guards
 // ============================================================================
 
@@ -475,5 +527,21 @@ export function isComment(obj: unknown): obj is Comment {
     typeof c.content === "string" &&
     typeof c.status === "string" &&
     typeof c.createdAt === "string"
+  );
+}
+
+/**
+ * Type guard for User
+ */
+export function isUser(obj: unknown): obj is User {
+  if (typeof obj !== "object" || obj === null) return false;
+  const u = obj as Record<string, unknown>;
+  return (
+    typeof u.id === "string" &&
+    typeof u.username === "string" &&
+    typeof u.displayName === "string" &&
+    typeof u.role === "string" &&
+    typeof u.passwordHash === "string" &&
+    typeof u.salt === "string"
   );
 }

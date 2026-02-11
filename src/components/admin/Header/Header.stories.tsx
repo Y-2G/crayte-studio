@@ -17,6 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     sidebarCollapsed: false,
+    user: { displayName: '管理者', role: 'admin' },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -36,6 +37,7 @@ export const Default: Story = {
 export const SidebarCollapsed: Story = {
   args: {
     sidebarCollapsed: true,
+    user: { displayName: '管理者', role: 'admin' },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

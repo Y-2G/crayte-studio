@@ -134,7 +134,7 @@ export function ContactForm() {
               <Link href={adminUrl} className={styles.cdnaItem}>
                 {adminUrl}
               </Link>
-              <p className={styles.cdnaItem}>s.kenta@crayte.com</p>
+              <p className={styles.cdnaItem}>k.sato@crayte.com</p>
               <p className={styles.cdnaItem}>delete-cdna4001</p>
             </div>
           )}

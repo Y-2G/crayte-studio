@@ -22,6 +22,7 @@ function memberToStaff(member: Member): Staff {
     photo: member.photo,
     visibility: (member.visibility || 'public') as Staff['visibility'],
     state: (member.state || 'active') as StaffState,
+    status: (member.status || 'publish') as Staff['status'],
     removedReason: member.removedReason,
     createdAt: member.createdAt || `${member.joinedAt}-01T00:00:00Z`,
     updatedAt: member.updatedAt || `${member.joinedAt}-01T00:00:00Z`,

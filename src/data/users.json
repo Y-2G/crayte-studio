@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user-1",
+    "username": "k.sato@crayte.com",
+    "displayName": "佐藤健太",
+    "role": "admin",
+    "passwordHash": "a363829fce77ed5b0cbfab3dedf4f35a6abd3185a5a17736990d20270fb3b2a1",
+    "salt": "c0363565c19d0a26a4f3c1c02929b36d",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "user-2",
+    "username": "t.hanako@crayte.com",
+    "displayName": "田中花子",
+    "role": "editor",
+    "passwordHash": "4a4a73ebad179599fbd58f77e13fd5891d08ba8ba9cc1008516ef328366a82b2",
+    "salt": "90c64ef1dfc9023d13111866176b6663",
+    "createdAt": "2024-01-15T00:00:00.000Z"
+  }
+]
